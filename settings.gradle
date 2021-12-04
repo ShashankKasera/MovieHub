@@ -10,3 +10,4 @@ rootProject.name = "MovieHub"
 include ':app'
 include ':util'
 include ':domain'
+include ':data'
