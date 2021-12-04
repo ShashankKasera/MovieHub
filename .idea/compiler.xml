@@ -1,15 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="CompilerConfiguration">
-    <bytecodeTargetLevel target="1.7">
+    <bytecodeTargetLevel target="1.8">
       <module name="MovieHub.app" target="11" />
       <module name="moviehub.buildSrc" target="11" />
       <module name="MovieHub.core" target="11" />
-      <module name="MovieHub.domain" target="1.8" />
       <module name="MovieHub.local" target="11" />
-      <module name="MovieHub.myapplication" target="11" />
+      <module name="MovieHub.presentation" target="11" />
       <module name="MovieHub.remote" target="11" />
-      <module name="MovieHub.util" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>

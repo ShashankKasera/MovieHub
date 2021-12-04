@@ -72,6 +72,7 @@ object AppDependencies {
     val presentation = arrayListOf<String>().apply {
         add(VIEWMODEL)
         add(LIVEDATA)
+        add(COROUTINE)
     }
     val retrofit = arrayListOf<String>().apply {
         add(RETROFIT)
@@ -99,10 +100,6 @@ object AppDependencies {
         add(RETROFIT_GSON)
     }
 
-    val localLibraries = arrayListOf<String>().apply {
-        add(COROUTINE)
-        add(ROOM)
-    }
 
     val androidLibraries = arrayListOf<String>().apply {
         add(COROUTINE)
@@ -125,10 +122,10 @@ object AppDependencies {
 
 }
 
-fun DependencyHandler.kapts() {
+fun DependencyHandler.room() {
     kapt(AppDependencies.ROOM_COMPILER)
+    implementation(AppDependencies.ROOM)
 }
-
 fun DependencyHandler.daggerHilt() {
     kapt(AppDependencies.DAGGER_HILT_COMPILER)
     implementation(AppDependencies.DAGGER_HILT)

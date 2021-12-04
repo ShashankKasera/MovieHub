@@ -10,8 +10,6 @@ java {
 dependencies {
 
     testImplementation(AppDependencies.testLibraries)
-    androidTestImplementation(AppDependencies.androidTestLibraries)
-
-    api(project(mapOf("path" to AppDependencies.DOMAIN)))
+    implementation(project(mapOf("path" to AppDependencies.DOMAIN)))
 
 }

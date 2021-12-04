@@ -1,4 +1,4 @@
-
+import org.jetbrains.kotlin.storage.CacheResetOnProcessCanceled.enabled
 plugins {
     id(Plugins.LIBRARY)
     kotlin(Plugins.KOTLIN_ANDROID)
@@ -48,6 +48,8 @@ dependencies {
     androidTestImplementation(AppDependencies.androidTestLibraries)
 
     daggerHilt()
-    room()
-    implementation(project(mapOf("path" to AppDependencies.DATA)))
+    api(AppDependencies.presentation)
+    api(AppDependencies.ktx)
+    implementation(project(mapOf("path" to AppDependencies.DOMAIN)))
+
 }

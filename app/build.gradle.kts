@@ -51,9 +51,7 @@ dependencies {
     testImplementation(AppDependencies.testLibraries)
     androidTestImplementation(AppDependencies.androidTestLibraries)
 
-    api(AppDependencies.appAndroidLibraries)
     daggerHilt()
-    kapts()
-    api(project(mapOf("path" to AppDependencies.UTIL)))
-    //api(project(mapOf("path" to AppDependencies.PRESENTATION)))
+    implementation(project(mapOf("path" to AppDependencies.CORE)))
+    implementation(project(mapOf("path" to AppDependencies.PRESENTATION)))
 }
