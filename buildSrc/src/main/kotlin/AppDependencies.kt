@@ -89,7 +89,8 @@ object AppDependencies {
         add(CONSTRAINT_LAYOUT)
         add(PICASSO)
         add(CIRCLE_IMAGE_VIEW)
-        add(COROUTINE)
+        add(NAVIGATION)
+        add(NAVIGATION_UI)
     }
 
     val remoteLibraries = arrayListOf<String>().apply {
@@ -120,11 +121,6 @@ object AppDependencies {
     val classpath = arrayListOf<String>().apply {
         add(GRADLE)
         add(KOTLIN)
-    }
-
-    val navigation = arrayListOf<String>().apply {
-        add(NAVIGATION)
-        add(NAVIGATION_UI)
     }
 
 }
