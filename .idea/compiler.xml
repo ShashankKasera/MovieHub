@@ -5,6 +5,7 @@
       <module name="MovieHub.app" target="11" />
       <module name="moviehub.buildSrc" target="11" />
       <module name="MovieHub.core" target="11" />
+      <module name="MovieHub.data" target="11" />
       <module name="MovieHub.local" target="11" />
       <module name="MovieHub.presentation" target="11" />
       <module name="MovieHub.remote" target="11" />

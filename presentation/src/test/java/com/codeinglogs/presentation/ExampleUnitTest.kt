@@ -1,4 +1,4 @@
-package com.codeinglogs.myapplication
+package com.codeinglogs.presentation
 
 import org.junit.Test
 
