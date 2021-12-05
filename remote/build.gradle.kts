@@ -47,7 +47,7 @@ dependencies {
     testImplementation(AppDependencies.testLibraries)
     androidTestImplementation(AppDependencies.androidTestLibraries)
 
-    implementation(AppDependencies.remoteLibraries)
+    api(AppDependencies.remoteLibraries)
     daggerHilt()
     implementation(project(mapOf("path" to AppDependencies.DATA)))
 }

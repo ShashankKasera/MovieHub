@@ -54,4 +54,8 @@ dependencies {
     daggerHilt()
     api(AppDependencies.appAndroidLibraries)
 
+    implementation(project(mapOf("path" to AppDependencies.DATA)))
+    implementation(project(mapOf("path" to AppDependencies.DOMAIN)))
+    implementation(project(mapOf("path" to AppDependencies.REMOTE)))
+
 }

@@ -1,18 +1,25 @@
-package com.codeinglogs.remote.di
+package com.codeinglogs.core.di
 
 import android.content.Context
+import com.codeinglogs.data.repository.trendingmovies.RemoteTrendingMovies
+import com.codeinglogs.data.repousercase.trendingmovies.TrendingMoviesRepositoryImp
+import com.codeinglogs.data.store.trendingmovies.TrendingMoviesDataSore
+import com.codeinglogs.data.store.trendingmovies.TrendingMoviesRemoteDataSore
+import com.codeinglogs.domain.repository.TrendingMoviesRepository
 import com.codeinglogs.remote.request.TrendingMoviesRequest
 import com.codeinglogs.remote.util.nerwork.BASE_URL
 import com.codeinglogs.remote.util.nerwork.NetworkInterceptor
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
+import dagger.hilt.android.components.ViewModelComponent
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Singleton
+
 
 @Module
 @InstallIn(SingletonComponent::class)
@@ -37,8 +44,21 @@ object RemoteModule {
 
     @Singleton
     @Provides
-    fun getTrendingMoviesRequest(retrofit: Retrofit): TrendingMoviesRequest =retrofit.create(TrendingMoviesRequest::class.java)
+    fun getTrendingMoviesRequest(retrofit: Retrofit): TrendingMoviesRequest =retrofit.create(
+        TrendingMoviesRequest::class.java)
 
+
+    @Singleton
+    @Provides
+     fun getTrendingMoviesRepository(repo : TrendingMoviesRepositoryImp): TrendingMoviesRepository = repo
+
+     @Singleton
+     @Provides
+     fun getDataSore(dataSore : TrendingMoviesRemoteDataSore): TrendingMoviesDataSore = dataSore
+
+     @Singleton
+     @Provides
+     fun getRemoteTrendingMoviesRepositorySore(dataSore : com.codeinglogs.remote.repositoryimp.TrendingMoviesRepositoryImp): RemoteTrendingMovies = dataSore
 
 
 }
