@@ -5,6 +5,7 @@ plugins {
     id(Plugins.DAGGER_HILT_PLUGIN)
     id(Plugins.SAFEARGS)
     kotlin(Plugins.KOTLIN_KAPT)
+    id("kotlin-android")
 }
 
 android {
@@ -48,6 +49,9 @@ android {
 }
 
 dependencies {
+    implementation("androidx.appcompat:appcompat:1.4.0")
+    implementation("com.google.android.material:material:1.4.0")
+    implementation("androidx.constraintlayout:constraintlayout:2.1.2")
     testImplementation(AppDependencies.testLibraries)
     androidTestImplementation(AppDependencies.androidTestLibraries)
 

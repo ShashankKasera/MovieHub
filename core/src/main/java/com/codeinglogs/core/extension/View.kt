@@ -14,8 +14,10 @@ import android.widget.ImageView
 import androidx.annotation.ColorRes
 import androidx.annotation.DrawableRes
 import androidx.appcompat.widget.AppCompatEditText
+import androidx.appcompat.widget.AppCompatImageView
 import androidx.appcompat.widget.AppCompatSpinner
 import androidx.core.content.ContextCompat
+import com.squareup.picasso.Picasso
 
 private const val DURATION = 300
 
@@ -32,6 +34,13 @@ fun View.gone() {
 }
 
 
+fun AppCompatImageView.load(resId: String, centerCrop: Boolean = true, fit: Boolean = true) {
+    Picasso.get()
+        .load(resId)
+        .also { if (centerCrop) it.centerCrop() }
+        .also { if (fit) it.fit() }
+        .into(this)
+}
 fun View.getImageDrawable(@DrawableRes id: Int): Drawable? = context.getImageDrawable(id)
 
 fun View.getResolvedColor(@ColorRes id: Int): Int = ContextCompat.getColor(context, id)

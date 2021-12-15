@@ -67,6 +67,9 @@ object AppDependencies {
     //inject
     const val INJECT  ="javax.inject:javax.inject:${Versions.JAVAX_INJECT}"
 
+    //paging
+    const val PAGING  ="androidx.paging:paging-runtime:${Versions.PAGING}"
+
 
 
     val presentation = arrayListOf<String>().apply {
@@ -92,12 +95,18 @@ object AppDependencies {
         add(CIRCLE_IMAGE_VIEW)
         add(NAVIGATION)
         add(NAVIGATION_UI)
+        add(PAGING)
     }
 
     val remoteLibraries = arrayListOf<String>().apply {
         add(COROUTINE)
         add(RETROFIT)
         add(RETROFIT_GSON)
+        add(PAGING)
+    }
+
+    val domainLibraries = arrayListOf<String>().apply {
+        add(PAGING)
     }
 
 

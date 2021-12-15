@@ -1,6 +1,5 @@
 package com.codeinglogs.presentation.maper
 
-
 import com.codeinglogs.domain.model.trendingmovies.TrendingMoviesList
 import com.codeinglogs.presentation.model.State
 import com.codeinglogs.presentation.model.trendingmovies.toPresentationTrendingMoviesList
@@ -12,3 +11,4 @@ fun  Domain<TrendingMoviesList>.toPresentationState() =
         is Domain.Failed -> State.failed(this.message)
         is Domain.Success -> State.success(this.data.toPresentationTrendingMoviesList())
     }
+

@@ -49,4 +49,6 @@ object Versions {
 
     //inject
     const val JAVAX_INJECT = "1"
+
+    const val PAGING= "3.1.0"
 }

@@ -52,5 +52,6 @@ dependencies {
     androidTestImplementation(AppDependencies.androidTestLibraries)
 
     daggerHilt()
+    api(AppDependencies.domainLibraries)
     implementation(project(mapOf("path" to AppDependencies.UTIL)))
 }

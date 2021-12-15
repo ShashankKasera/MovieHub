@@ -1,9 +1,9 @@
 package com.codeinglogs.data.store.trendingmovies
 
 
-import com.codeinglogs.data.repository.trendingmovies.RemoteTrendingMovies
+import com.codeinglogs.data.repository.trendingmovies.RemoteTrendingMoviesData
 import javax.inject.Inject
 
-class TrendingMoviesRemoteDataSore @Inject constructor (private val remoteTrendingMovies : RemoteTrendingMovies) : TrendingMoviesDataSore {
-    override fun getRemoteDataSource(): RemoteTrendingMovies =  remoteTrendingMovies
+class TrendingMoviesRemoteDataSore @Inject constructor (private val remoteTrendingMoviesData : RemoteTrendingMoviesData) : TrendingMoviesDataSore {
+    override fun getRemoteDataSource(): RemoteTrendingMoviesData =  remoteTrendingMoviesData
 }
