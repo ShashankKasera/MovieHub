@@ -8,3 +8,4 @@ const val API_KEY = "9b23345c9257faf15fe7f7424587bde7"
 //https://api.themoviedb.org/trending/all/day?api_key=9b23345c9257faf15fe7f7424587bde7
 //https://api.themoviedb.org/3/trending/all/day?api_key=9b23345c9257faf15fe7f7424587bde7
 //https://api.themoviedb.org/3/trending/person/week?api_key=9b23345c9257faf15fe7f7424587bde7
+//https://api.themoviedb.org/3/movie/top_rated?api_key=9b23345c9257faf15fe7f7424587bde7

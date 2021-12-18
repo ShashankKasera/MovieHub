@@ -70,6 +70,9 @@ object AppDependencies {
     //paging
     const val PAGING  ="androidx.paging:paging-runtime:${Versions.PAGING}"
 
+    //bannerslider
+    const val BANNERSLIDER  ="com.ss.bannerslider:bannerslider:${Versions.BANNERSLIDER}"
+
 
 
     val presentation = arrayListOf<String>().apply {
@@ -96,6 +99,7 @@ object AppDependencies {
         add(NAVIGATION)
         add(NAVIGATION_UI)
         add(PAGING)
+        add(BANNERSLIDER)
     }
 
     val remoteLibraries = arrayListOf<String>().apply {

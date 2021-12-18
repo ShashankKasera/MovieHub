@@ -2,27 +2,23 @@ package com.codeinglogs.core.di
 
 import android.content.Context
 import com.codeinglogs.data.domainrepositoryimp.*
-import com.codeinglogs.data.repository.multi.RemoteMultiData
+import com.codeinglogs.data.repository.home.RemoteHomeData
 import com.codeinglogs.data.repository.trendingmovies.RemoteTrendingMoviesData
 import com.codeinglogs.data.repository.person.RemotePersonData
-import com.codeinglogs.data.repository.trendingpersonweek.RemoteTrendingPersonWeekData
 import com.codeinglogs.data.repository.trendingtvshow.RemoteTrendingTvShowData
-import com.codeinglogs.data.store.multi.MultiDataSore
-import com.codeinglogs.data.store.multi.MultiRemoteDataSore
+import com.codeinglogs.data.store.home.HomeDataSore
+import com.codeinglogs.data.store.home.HomeRemoteDataSore
 import com.codeinglogs.data.store.person.PersonDataSore
 import com.codeinglogs.data.store.person.PersonRemoteDataSore
 import com.codeinglogs.data.store.trendingmovies.TrendingMoviesDataSore
 import com.codeinglogs.data.store.trendingmovies.TrendingMoviesRemoteDataSore
-import com.codeinglogs.data.store.trendingpersonweek.TrendingPersonWeekDataSore
-import com.codeinglogs.data.store.trendingpersonweek.TrendingPersonWeekRemoteDataSore
 import com.codeinglogs.data.store.trendingtvshow.TrendingTvShowDataSore
 import com.codeinglogs.data.store.trendingtvshow.TrendingTvShowRemoteDataSore
 import com.codeinglogs.domain.repository.*
 import com.codeinglogs.remote.datarepositoryimp.*
 import com.codeinglogs.remote.request.PersonRequest
-import com.codeinglogs.remote.request.TrendingMoviesRequest
-import com.codeinglogs.remote.request.TrendingPersonWeekRequest
-import com.codeinglogs.remote.request.TrendingTvShowRequest
+import com.codeinglogs.remote.request.MoviesRequest
+import com.codeinglogs.remote.request.TvShowRequest
 import com.codeinglogs.remote.util.nerwork.BASE_URL
 import com.codeinglogs.remote.util.nerwork.NetworkInterceptor
 import dagger.Module
@@ -59,8 +55,8 @@ object CoreModule {
 
     @Singleton
     @Provides
-    fun getTrendingMoviesRequest(retrofit: Retrofit): TrendingMoviesRequest =retrofit.create(
-        TrendingMoviesRequest::class.java)
+    fun getTrendingMoviesRequest(retrofit: Retrofit): MoviesRequest =retrofit.create(
+        MoviesRequest::class.java)
 
 
     @Singleton
@@ -98,8 +94,8 @@ object CoreModule {
 
     @Singleton
     @Provides
-    fun getTrendingTvShowRequest(retrofit: Retrofit): TrendingTvShowRequest =retrofit.create(
-        TrendingTvShowRequest::class.java)
+    fun getTrendingTvShowRequest(retrofit: Retrofit): TvShowRequest =retrofit.create(
+        TvShowRequest::class.java)
 
 
     @Singleton
@@ -114,36 +110,19 @@ object CoreModule {
     @Provides
     fun getRemoteTrendingTvShowRepositorySore(dataSore : TrendingTvShowDataRepositoryImp): RemoteTrendingTvShowData = dataSore
 
-    @Singleton
-    @Provides
-    fun getTrendingPersonWeekRequest(retrofit: Retrofit): TrendingPersonWeekRequest =retrofit.create(TrendingPersonWeekRequest::class.java)
-
-    @Singleton
-    @Provides
-    fun getTrendingPersonWeekRepository(repo : TrendingPersonWeekRepositoryDomainImp): TrendingPersonWeekRepositoryDomain = repo
-
-    @Singleton
-    @Provides
-    fun getTrendingPersonWeekRemoteDataSore(dataSore : TrendingPersonWeekRemoteDataSore): TrendingPersonWeekDataSore = dataSore
-
-    @Singleton
-    @Provides
-    fun getRemoteTrendingPersonWeekRepositorySore(dataSore : TrendingPersonWeekDataRepositoryImp): RemoteTrendingPersonWeekData = dataSore
-
-
 
 
     @Singleton
     @Provides
-    fun getMultiRepository(repo : MultiRepositoryDomainImp): MultiRepositoryDomain = repo
+    fun getMultiRepository(repo : HomeRepositoryDomainImp): HomeRepositoryDomain = repo
 
     @Singleton
     @Provides
-    fun getMultiRemoteDataSore(dataSore : MultiRemoteDataSore): MultiDataSore = dataSore
+    fun getMultiRemoteDataSore(dataSore : HomeRemoteDataSore): HomeDataSore = dataSore
 
     @Singleton
     @Provides
-    fun getRemoteMultiRepositorySore(dataSore : MultiDataRepositoryImp): RemoteMultiData = dataSore
+    fun getRemoteMultiRepositorySore(dataSore : HomeDataRepositoryImp): RemoteHomeData = dataSore
 
 
 

@@ -50,5 +50,9 @@ object Versions {
     //inject
     const val JAVAX_INJECT = "1"
 
+    //paging
     const val PAGING= "3.1.0"
+
+    //BannerSlider
+    const val BANNERSLIDER="2.0.0"
 }

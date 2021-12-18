@@ -18,6 +18,7 @@ import androidx.appcompat.widget.AppCompatImageView
 import androidx.appcompat.widget.AppCompatSpinner
 import androidx.core.content.ContextCompat
 import com.squareup.picasso.Picasso
+import de.hdodenhof.circleimageview.CircleImageView
 
 private const val DURATION = 300
 
@@ -35,6 +36,12 @@ fun View.gone() {
 
 
 fun AppCompatImageView.load(resId: String, centerCrop: Boolean = true, fit: Boolean = true) {
+    Picasso.get()
+        .load(resId)
+        .into(this)
+}
+
+fun CircleImageView.load(resId: String, centerCrop: Boolean = true, fit: Boolean = true) {
     Picasso.get()
         .load(resId)
         .also { if (centerCrop) it.centerCrop() }
