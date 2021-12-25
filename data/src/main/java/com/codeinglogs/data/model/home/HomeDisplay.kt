@@ -10,10 +10,10 @@ import com.codeinglogs.domain.model.home.HomeDisplay as DomainHomeDisplay
 
 data class HomeDisplay(
     val trendingPerson : PersonListResponce,
-    val trendingMovie : MoviesListResponce,
-    val popularMovie : MoviesListResponce,
-    val topRatedMovie : MoviesListResponce,
-    val popularTvShow : TvShowsListResponce,
+    val trendingMovie :  MoviesListResponce,
+    val popularMovie :   MoviesListResponce,
+    val topRatedMovie :  MoviesListResponce,
+    val popularTvShow :  TvShowsListResponce,
     val trendingTvShow : TvShowsListResponce,
     val topRatedTvShow : TvShowsListResponce
 )

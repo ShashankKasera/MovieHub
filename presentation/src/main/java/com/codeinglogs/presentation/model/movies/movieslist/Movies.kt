@@ -3,7 +3,7 @@ package com.codeinglogs.presentation.model.movies.movieslist
 import com.codeinglogs.domain.model.movies.movieslist.Movies as DomainResult
 
 data class Movies(
-    val id: Double?,
+    val id: Long?,
     val poster_path: String?,
     val title: String?,
     val vote_average: Double?,

@@ -16,6 +16,8 @@
             <option value="$PROJECT_DIR$/data" />
             <option value="$PROJECT_DIR$/domain" />
             <option value="$PROJECT_DIR$/local" />
+            <option value="$PROJECT_DIR$/moviedetails" />
+            <option value="$PROJECT_DIR$/moviedetailsapp" />
             <option value="$PROJECT_DIR$/presentation" />
             <option value="$PROJECT_DIR$/remote" />
             <option value="$PROJECT_DIR$/util" />

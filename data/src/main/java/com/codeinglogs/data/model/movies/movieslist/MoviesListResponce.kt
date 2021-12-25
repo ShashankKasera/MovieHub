@@ -4,10 +4,10 @@ import com.codeinglogs.domain.model.movies.movieslist.MoviesListResponce as Doma
 import com.codeinglogs.domain.model.movies.movieslist.Movies as DomainMovies
 
 data class MoviesListResponce(
-    val page: Int?,
+    val page: Int? = null,
     val results: List<Movies>?,
-    val total_pages: Int?,
-    val total_results: Int?
+    val total_pages: Int? = null,
+    val total_results: Int? = null
 )
 
 fun MoviesListResponce.toDomainMoviesListResponce() = DomainMoviesListResponce(

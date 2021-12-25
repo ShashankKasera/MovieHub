@@ -9,6 +9,7 @@ object AppDependencies {
     const val CORE =  ":core"
     const val UTIL =  ":util"
     const val PRESENTATION =  ":presentation"
+    const val MOVIEDETAILS =  ":moviedetails"
 
 
     //android ui
@@ -35,6 +36,7 @@ object AppDependencies {
 
     //room
     const val ROOM ="androidx.room:room-runtime:${Versions.ROOM}"
+    const val ROOM_KTX ="androidx.room:room-ktx:${Versions.ROOM}"
     const val ROOM_COMPILER ="androidx.room:room-compiler:${Versions.ROOM}"
 
     //retrofit
@@ -138,6 +140,7 @@ object AppDependencies {
 fun DependencyHandler.room() {
     kapt(AppDependencies.ROOM_COMPILER)
     implementation(AppDependencies.ROOM)
+    implementation(AppDependencies.ROOM_KTX)
 }
 fun DependencyHandler.daggerHilt() {
     kapt(AppDependencies.DAGGER_HILT_COMPILER)

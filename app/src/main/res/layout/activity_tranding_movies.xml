@@ -8,6 +8,7 @@
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:background="@color/colorPrimary"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".activity.TPWActivity">
@@ -21,7 +22,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:listitem="@layout/tpw_item" />
+            />
 
 
         <ProgressBar
@@ -29,7 +30,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:visibility="gone"
-            tools:visibility="visible"
+
             app:layout_constraintBottom_toBottomOf="@+id/recyclerView"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -41,7 +42,7 @@
             android:layout_height="wrap_content"
             android:text="Retry"
             android:visibility="gone"
-            tools:visibility="visible"
+
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@+id/recyclerView"
             app:layout_constraintStart_toStartOf="@+id/recyclerView"
@@ -55,7 +56,6 @@
             android:layout_marginBottom="16dp"
             android:textSize="16dp"
             android:visibility="gone"
-            tools:visibility="visible"
             app:layout_constraintBottom_toTopOf="@+id/progress_bar"
             app:layout_constraintEnd_toEndOf="@+id/button_retry"
             app:layout_constraintStart_toStartOf="@+id/button_retry" />
@@ -66,10 +66,18 @@
             android:layout_height="wrap_content"
             android:text="no result found for this query"
             android:visibility="gone"
-            tools:visibility="visible"
+
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@+id/recyclerView"
             app:layout_constraintStart_toStartOf="@+id/recyclerView"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <include
+            layout="@layout/layout_progress_bar"
+            android:id="@+id/loader"/>
+
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
 </layout>

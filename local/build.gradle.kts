@@ -44,8 +44,10 @@ android {
 
 dependencies {
 
+
     testImplementation(AppDependencies.testLibraries)
     androidTestImplementation(AppDependencies.androidTestLibraries)
+
 
     daggerHilt()
     room()

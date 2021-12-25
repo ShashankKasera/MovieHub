@@ -57,5 +57,7 @@ dependencies {
     implementation(project(mapOf("path" to AppDependencies.DATA)))
     implementation(project(mapOf("path" to AppDependencies.DOMAIN)))
     implementation(project(mapOf("path" to AppDependencies.REMOTE)))
+    implementation(project(mapOf("path" to AppDependencies.LOCAL)))
 
+    room()
 }

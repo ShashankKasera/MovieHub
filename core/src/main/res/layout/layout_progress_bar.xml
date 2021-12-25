@@ -13,11 +13,11 @@
         android:clickable="true"
         android:focusable="true"
         android:gravity="center"
-        android:visibility="gone"
-        tools:visibility="visible">
+        >
 
         <!--Progress Bar-->
         <ProgressBar
+            android:indeterminateTint="@android:color/holo_orange_dark"
             android:id="@+id/pb_progress_bar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

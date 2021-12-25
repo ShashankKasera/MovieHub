@@ -28,10 +28,16 @@ class MainActivity : BaseActivity<PersonViewModel, ActivityMainBinding>() {
         mViewModel.personList.observe(this){
             it.contentIfNotHandled?.let{it ->
                 when(it){
-                    is State.Failed -> showProgressBar(false)
-                    is State.Loading -> showProgressBar(true)
+                    is State.Failed -> {
+                        Log.i(TAG, "Failed: ${it.message}")
+                        showProgressBar(false)
+                    }
+                    is State.Loading -> {
+                        Log.i(TAG, "Loading: ${it.data}")
+                        showProgressBar(true)
+                    }
                     is State.Success -> {
-                        Log.i(TAG, "onBinding: ${it.data.results}")
+                        Log.i(TAG, "Success: ${it.data}")
                         showProgressBar(false)
                         adapter.submitList(it.data.results)
                     }
@@ -56,7 +62,7 @@ class MainActivity : BaseActivity<PersonViewModel, ActivityMainBinding>() {
 
         mViewBinding.recyclerView.layoutManager=LinearLayoutManager(this)
         mViewBinding.recyclerView.adapter=this.adapter
-        initProgressBar(mViewBinding.loader)
+        //initProgressBar(mViewBinding.loader)
 
     }
 

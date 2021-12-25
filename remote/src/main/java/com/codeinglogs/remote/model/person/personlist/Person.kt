@@ -1,12 +1,11 @@
 package com.codeinglogs.remote.model.person.personlist
 
 import com.codeinglogs.data.model.person.personlist.Person as DataPerson
-import com.codeinglogs.data.model.person.personlist.KnownFor as DataKnownFor
 
 data class Person(
     val adult: Boolean?,
     val gender: Int?,
-    val id: Int?,
+    val id: Long?,
     val known_for: List<KnownFor>?,
     val known_for_department: String?,
     val name: String?,

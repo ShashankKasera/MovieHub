@@ -66,4 +66,5 @@ abstract class BaseFragment<VM : ViewModel, VB : ViewBinding> : Fragment() {
             }
         }
     }
+
 }

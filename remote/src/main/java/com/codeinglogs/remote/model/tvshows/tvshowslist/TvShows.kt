@@ -6,7 +6,7 @@ data class TvShows(
     val backdrop_path: String?,
     val first_air_date: String?,
     val genre_ids: List<Int>?,
-    val id: Int?,
+    val id: Long?,
     val media_type: String?,
     val name: String?,
     val origin_country: List<String>?,

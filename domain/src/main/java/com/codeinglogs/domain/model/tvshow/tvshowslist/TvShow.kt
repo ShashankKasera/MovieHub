@@ -1,7 +1,7 @@
 package com.codeinglogs.domain.model.tvshow.tvshowslist
 
 data class TvShow(
-    val id: Int,
+    val id: Long,
     val name: String,
     val original_name: String,
     val overview: String,

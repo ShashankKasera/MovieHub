@@ -8,6 +8,8 @@
       <module name="MovieHub.data" target="11" />
       <module name="MovieHub.domain" target="11" />
       <module name="MovieHub.local" target="11" />
+      <module name="MovieHub.moviedetails" target="11" />
+      <module name="MovieHub.moviedetailsapp" target="11" />
       <module name="MovieHub.presentation" target="11" />
       <module name="MovieHub.remote" target="11" />
     </bytecodeTargetLevel>

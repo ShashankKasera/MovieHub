@@ -14,16 +14,6 @@
         android:background="@color/colorPrimary">
 
 
-        <ProgressBar
-            android:id="@+id/pb_home"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:visibility="gone"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/scrollView_home"
-            tools:visibility="visible" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/glleft"
@@ -67,7 +57,7 @@
                     app:layout_constraintTop_toTopOf="parent">
 
                     <ss.com.bannerslider.Slider
-                        android:id="@+id/banner_slider1"
+                        android:id="@+id/banner_slider"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content" />
 
@@ -401,8 +391,16 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/tv_toprated_tv_show_home"
                     tools:listitem="@layout/movies_and_tv_show_primary_item" />
+
+
+
+
             </androidx.constraintlayout.widget.ConstraintLayout>
         </ScrollView>
+
+        <include
+            layout="@layout/layout_progress_bar"
+            android:id="@+id/home_loader"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

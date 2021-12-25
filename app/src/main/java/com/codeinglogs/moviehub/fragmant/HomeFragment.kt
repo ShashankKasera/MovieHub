@@ -2,15 +2,24 @@ package com.codeinglogs.moviehub.fragmant
 
 import android.util.Log
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.codeinglogs.core.base.BaseFragment
+import com.codeinglogs.moviehub.PicassoImageLoadingService
+import com.codeinglogs.moviehub.adapter.HomeSliderAdapter
 import com.codeinglogs.moviehub.adapter.MoviesPrimaryAdapter
 import com.codeinglogs.moviehub.adapter.PersonPrimaryAdapter
 import com.codeinglogs.moviehub.adapter.TvShowsPrimaryAdapter
+import com.codeinglogs.moviehub.constant.IMAGE_BASE_URL_500
 import com.codeinglogs.moviehub.databinding.FragmentHomeBinding
 import com.codeinglogs.presentation.model.State
+import com.codeinglogs.presentation.model.tvshow.tvshowslist.TvShow
 import com.codeinglogs.presentation.viewmodel.home.HomeViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
+import ss.com.bannerslider.Slider
 
 private const val TAG = "123HomeFragment"
 
@@ -29,10 +38,8 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>() {
     override fun getViewBinding() = FragmentHomeBinding.inflate(layoutInflater)
 
     override fun onBinding() {
-
-
         init()
-
+        initProgressBar(mViewBinding.homeLoader)
         trendingPersonSetUpAdapter()
         trendingMovieSetUpAdapter()
         trendingTvShowSetUpAdapter()
@@ -40,9 +47,7 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>() {
         popularTvShowSetUpAdapter()
         topRatedMovieSetUpAdapter()
         topRatedTvShowSetUpAdapter()
-
         setUpObserver()
-
     }
 
     private fun init() {
@@ -59,22 +64,54 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>() {
                     }
                     is State.Loading -> {
                         Log.i(TAG, "onBinding: MultiList Loading ${it.toString()}")
-                        showProgressBar(true)
+                        if(it.data!=null&&it.data?.trendingPerson?.results?.isNotEmpty() == true){
+                            trendingPerson.submitList(it.data?.trendingPerson?.results)
+                            trendingMovie.submitList(it.data?.trendingMovie?.results)
+                            trendingTvShow.submitList(it.data?.trendingTvShow?.results)
+                            popularMovie.submitList(it.data?.popularMovie?.results)
+                            popularTvShow.submitList(it.data?.popularTvShow?.results)
+                            topRatedMovie.submitList(it.data?.topRatedMovie?.results)
+                            topRatedTvShow.submitList(it.data?.topRatedTvShow?.results)
+                            showProgressBar(false)
+                        }
+                        else{
+                            showProgressBar(true)
+                        }
+
                     }
                     is State.Success -> {
                         Log.i(TAG, "onBinding: MultiList Success ${it.data.toString()}")
-                        showProgressBar(false)
-                        trendingPerson.submitList(it.data.trendingPerson.results)
-                        trendingMovie.submitList(it.data.trendingMovie.results)
-                        trendingTvShow.submitList(it.data.trendingTvShow.results)
-                        popularMovie.submitList(it.data.popularMovie.results)
-                        popularTvShow.submitList(it.data.popularTvShow.results)
-                        topRatedMovie.submitList(it.data.topRatedMovie.results)
-                        topRatedTvShow.submitList(it.data.topRatedTvShow.results)
+                        lifecycleScope.launch(Dispatchers.Main) {
+                            delay(6000)
+                            showProgressBar(false)
+                            trendingPerson.submitList(it.data.trendingPerson.results)
+                            trendingMovie.submitList(it.data.trendingMovie.results)
+                            trendingTvShow.submitList(it.data.trendingTvShow.results)
+                            popularMovie.submitList(it.data.popularMovie.results)
+                            popularTvShow.submitList(it.data.popularTvShow.results)
+                            topRatedMovie.submitList(it.data.topRatedMovie.results)
+                            topRatedTvShow.submitList(it.data.topRatedTvShow.results)
+                        }
+
+                        addSlider(mViewBinding.bannerSlider,it.data.topRatedTvShow.results)
+
                     }
                 }
             }
         }
+
+    }
+
+    private  fun addSlider (slider: Slider, results: List<TvShow>, ) {
+
+
+        val list = ArrayList<String>()
+        for (result in results)
+            list.add(IMAGE_BASE_URL_500 + result.poster_path)
+
+        Slider.init(PicassoImageLoadingService());
+        slider.setAdapter(HomeSliderAdapter(list))
+        slider.setInterval(10000)
 
     }
 

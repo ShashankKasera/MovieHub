@@ -27,6 +27,23 @@
         <entry key="..\:/Users/User/Documents/shashankcode/moviehub/app/src/main/res/layout/trending_perosn_item.xml" value="0.6" />
         <entry key="..\:/Users/User/Documents/shashankcode/moviehub/app/src/main/res/menu/bottom_nav_menu.xml" value="0.3032128514056225" />
         <entry key="..\:/Users/User/Documents/shashankcode/moviehub/core/src/main/res/layout/layout_progress_bar.xml" value="0.20260416666666667" />
+        <entry key="..\:/Users/User/Documents/shashankcode/moviehub/moviedetails/src/main/res/drawable/bookmark_border.xml" value="0.20092592592592592" />
+        <entry key="..\:/Users/User/Documents/shashankcode/moviehub/moviedetails/src/main/res/drawable/d.xml" value="0.20092592592592592" />
+        <entry key="..\:/Users/User/Documents/shashankcode/moviehub/moviedetails/src/main/res/drawable/gredients_primary_dark_colors.xml" value="0.20092592592592592" />
+        <entry key="..\:/Users/User/Documents/shashankcode/moviehub/moviedetails/src/main/res/drawable/playlist_add.xml" value="0.20092592592592592" />
+        <entry key="..\:/Users/User/Documents/shashankcode/moviehub/moviedetails/src/main/res/drawable/round_orner.xml" value="0.20092592592592592" />
+        <entry key="..\:/Users/User/Documents/shashankcode/moviehub/moviedetails/src/main/res/layout/activity_movie_detail.xml" value="0.2936630602782071" />
+        <entry key="..\:/Users/User/Documents/shashankcode/moviehub/moviedetails/src/main/res/layout/activity_tab.xml" value="0.184375" />
+        <entry key="..\:/Users/User/Documents/shashankcode/moviehub/moviedetails/src/main/res/layout/fragment_cast.xml" value="0.20260416666666667" />
+        <entry key="..\:/Users/User/Documents/shashankcode/moviehub/moviedetails/src/main/res/layout/fragment_info.xml" value="0.2" />
+        <entry key="..\:/Users/User/Documents/shashankcode/moviehub/moviedetails/src/main/res/layout/fragment_reviews.xml" value="0.20260416666666667" />
+        <entry key="..\:/Users/User/Documents/shashankcode/moviehub/moviedetails/src/main/res/layout/fragment_similer.xml" value="0.20260416666666667" />
+        <entry key="..\:/Users/User/Documents/shashankcode/moviehub/moviedetails/src/main/res/layout/genres_item.xml" value="0.20260416666666667" />
+        <entry key="..\:/Users/User/Documents/shashankcode/moviehub/moviedetails/src/main/res/layout/item_nested_scrollview.xml" value="0.20260416666666667" />
+        <entry key="..\:/Users/User/Documents/shashankcode/moviehub/moviedetails/src/main/res/layout/movie_and_tv_show_video.xml" value="0.264" />
+        <entry key="..\:/Users/User/Documents/shashankcode/moviehub/moviedetails/src/main/res/layout/movie_type.xml" value="0.264" />
+        <entry key="..\:/Users/User/Documents/shashankcode/moviehub/moviedetails/src/main/res/layout/round_corner.xml" value="0.20260416666666667" />
+        <entry key="..\:/Users/User/Documents/shashankcode/moviehub/moviedetails/src/main/res/menu/tab_bar_item.xml" value="0.20260416666666667" />
       </map>
     </option>
   </component>

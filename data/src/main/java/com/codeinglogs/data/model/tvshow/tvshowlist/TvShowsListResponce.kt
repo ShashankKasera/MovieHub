@@ -3,10 +3,10 @@ package com.codeinglogs.data.model.tvshow.tvshowlist
 import com.codeinglogs.domain.model.tvshow.tvshowslist.TvShowsListResponce as DomainTvShowsListResponce
 import com.codeinglogs.domain.model.tvshow.tvshowslist.TvShow as DomainTvShow
 data class TvShowsListResponce(
-    val page: Int,
+    val page: Int?=null,
     val results: List<TvShow>,
-    val total_pages: Int,
-    val total_results: Int
+    val total_pages: Int?=null,
+    val total_results: Int?=null
 )
 
 fun TvShowsListResponce.toDomainTvShowsListResponce()=DomainTvShowsListResponce(

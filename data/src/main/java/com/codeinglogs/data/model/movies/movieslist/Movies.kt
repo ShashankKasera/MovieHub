@@ -3,7 +3,7 @@ package com.codeinglogs.data.model.movies.movieslist
 import com.codeinglogs.domain.model.movies.movieslist.Movies as DomainMovies
 
 data class Movies(
-    val id: Double,
+    val id: Long,
     val poster_path: String?,
     val title: String?,
     val vote_average: Double?,
@@ -15,4 +15,5 @@ fun Movies.toDomainMovies() = DomainMovies(
     title =title,
     vote_average=vote_average
 )
+
 

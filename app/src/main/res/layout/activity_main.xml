@@ -18,6 +18,7 @@
             android:layout_height="match_parent" />
 
         <include
+            android:elevation="100dp"
             layout="@layout/layout_progress_bar"
             android:id="@+id/loader"/>
 
