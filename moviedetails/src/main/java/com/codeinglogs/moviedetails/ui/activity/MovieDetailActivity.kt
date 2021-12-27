@@ -1,16 +1,25 @@
-package com.codeinglogs.moviedetails
+package com.codeinglogs.moviedetails.ui.activity
 
 import android.content.Context
 import android.content.Intent
 import android.util.Log
 import androidx.activity.viewModels
+import com.codeinglogs.core.PicassoImageLoadingService
+import com.codeinglogs.core.SliderAdapter
 import com.codeinglogs.core.base.BaseActivity
-import com.codeinglogs.moviedetails.adapter.ViewPagerAdapter
+import com.codeinglogs.core.extension.load
+import com.codeinglogs.moviedetails.ui.adapter.ViewPagerAdapter
 import com.codeinglogs.moviedetails.databinding.ActivityMovieDetailBinding
+import com.codeinglogs.moviehub.constant.IMAGE_BASE_URL_500
+import com.codeinglogs.moviehub.constant.IMAGE_BASE_URL_YOUTUBE
+import com.codeinglogs.moviehub.constant.IMAGE_back_YOUTUBE
 import com.codeinglogs.presentation.model.State
+import com.codeinglogs.presentation.model.moviedetail.videos.MovieVideo
+import com.codeinglogs.presentation.model.tvshow.tvshowslist.TvShow
 import com.codeinglogs.presentation.viewmodel.moviedetail.MovieDetailViewModel
 import com.google.android.material.tabs.TabLayoutMediator
 import dagger.hilt.android.AndroidEntryPoint
+import ss.com.bannerslider.Slider
 
 private const val TAG = "123MovieDetailActivity"
 
@@ -24,8 +33,8 @@ class MovieDetailActivity : BaseActivity<MovieDetailViewModel, ActivityMovieDeta
 
     override fun onBinding() {
 
-        mViewBinding.toolbar.setTitle("toolbar Title")
-        mViewBinding.collapsingToolbar.setTitle("collapsing")
+
+        mViewBinding.collapsingToolbar.setTitle("Movie Detail")
 
         adapter=ViewPagerAdapter(supportFragmentManager,lifecycle)
 
@@ -40,7 +49,7 @@ class MovieDetailActivity : BaseActivity<MovieDetailViewModel, ActivityMovieDeta
             }
         }.attach()
 
-        mViewModel.getMovieDetails("460458")
+        mViewModel.getMovieDetails("646380")
 
         mViewModel.movieDetails.observe(this){
             it.contentIfNotHandled?.let{it ->
@@ -56,12 +65,27 @@ class MovieDetailActivity : BaseActivity<MovieDetailViewModel, ActivityMovieDeta
                     is State.Success -> {
                         Log.i(TAG, "Success: MovieDetailActivity ${it.data}")
                         showProgressBar(false)
+
+                        addSlider(mViewBinding.bsMovieMovieDet,it.data.MovieVideosResponse.results)
                     }
                 }
             }
         }
     }
 
+
+    private  fun addSlider (slider: Slider, results: List<MovieVideo>, ) {
+
+
+        val list = ArrayList<String>()
+        for (result in results)
+            list.add(IMAGE_BASE_URL_YOUTUBE +result.key+IMAGE_back_YOUTUBE)
+
+        Slider.init(PicassoImageLoadingService());
+        slider.setAdapter(SliderAdapter(list))
+        slider.setInterval(10000)
+
+    }
 
     companion object{
         fun getInstance(context: Context) = Intent(context, MovieDetailActivity::class.java)

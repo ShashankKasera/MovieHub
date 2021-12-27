@@ -2,12 +2,14 @@ package com.codeinglogs.remote.model.moviedetail.info
 
 import com.codeinglogs.data.model.moviedetail.info.MovieInfoResponse as DataMovieInfoResponse
 import com.codeinglogs.data.model.moviedetail.info.Gener as DataGener
+import com.codeinglogs.data.model.moviedetail.info.ProductionCompanies as DataProductionCompanies
 
 data class MovieInfoResponse(
     val adult: Boolean?,
     val backdrop_path:String?,
     val belongs_to_collection: String?,
     val budget:Int?,
+    val production_companies: List<ProductionCompanies>?,
     val genres: List<Gener>?,
     val homepage: String?,
     val id: Int?,
@@ -30,6 +32,7 @@ data class MovieInfoResponse(
 
 fun MovieInfoResponse.toDataMovieInfoResponse()=DataMovieInfoResponse(
 
+    production_companies=production_companies?.toDataProductionCompanies()?: listOf(),
     backdrop_path=backdrop_path?:"",
     belongs_to_collection=belongs_to_collection?:"",
     budget=budget?:0,
@@ -56,5 +59,11 @@ fun MovieInfoResponse.toDataMovieInfoResponse()=DataMovieInfoResponse(
 fun List<Gener>.toDataGener():List<DataGener> {
     val list= mutableListOf<DataGener>()
     this.forEach { list.add(it.toDataGener()) }
+    return list
+}
+
+fun List<ProductionCompanies>.toDataProductionCompanies():List<DataProductionCompanies> {
+    val list= mutableListOf<DataProductionCompanies>()
+    this.forEach { list.add(it.toProductionCompanies()) }
     return list
 }

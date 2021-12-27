@@ -3,11 +3,12 @@
     package="com.codeinglogs.moviedetails">
 
     <application>
+
         <activity
-            android:name=".TabActivity"
+            android:name=".ui.activity.MovieDetailActivity"
             android:exported="false" />
         <activity
-            android:name=".MovieDetailActivity"
+            android:name=".ui.activity.TrandingMoviesActivity"
             android:exported="false" />
     </application>
 

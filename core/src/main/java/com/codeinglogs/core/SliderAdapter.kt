@@ -1,11 +1,11 @@
-package com.codeinglogs.moviehub.adapter
+package com.codeinglogs.core
 import ss.com.bannerslider.adapters.SliderAdapter
 import ss.com.bannerslider.viewholder.ImageSlideViewHolder
 
-class HomeSliderAdapter(private val list: List<String>) : SliderAdapter() {
+class SliderAdapter(private val list: List<String>) : SliderAdapter() {
 
     override fun getItemCount(): Int {
-        return 5
+        return list.size
     }
 
     override fun onBindImageSlide(position: Int, viewHolder: ImageSlideViewHolder) {

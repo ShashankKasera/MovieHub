@@ -1,4 +1,4 @@
-package com.codeinglogs.moviedetails.adapter
+package com.codeinglogs.moviedetails.ui.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -7,7 +7,6 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.codeinglogs.moviedetails.databinding.GenresItemBinding
 import com.codeinglogs.presentation.model.moviedetail.info.Gener
-import com.codeinglogs.presentation.model.moviedetail.info.MovieInfoResponse
 import com.codeinglogs.presentation.model.movies.movieslist.Movies
 
 class GenresAdapter() : ListAdapter<Gener, GenresAdapter.ViewHolder>(

@@ -18,7 +18,7 @@ fun MovieSimilarResponse.toDataMovieSimilarResponse()=DataMovieSimilarResponse(
 
 fun List<MovieSimilar>.toDataMovieSimilar():List<DataMovieSimilar>{
     val list= mutableListOf<DataMovieSimilar>()
-    this.forEach { list.add(it.todataMovieSimilar()) }
+    this.forEach { list.add(it.toDataMovieSimilar()) }
     return list
 }
 

@@ -1,20 +1,14 @@
 package com.codeinglogs.remote.datarepositoryimp
 
 import com.codeinglogs.data.model.State
-import com.codeinglogs.data.model.home.HomeDisplay
 import com.codeinglogs.data.model.moviedetail.MovieDetailsDisplay
 import com.codeinglogs.data.repository.moviedetails.RemoteMovieDetailData
 import com.codeinglogs.remote.model.moviedetail.credits.toDataMovieCreditsResponse
 import com.codeinglogs.remote.model.moviedetail.images.toDataMovieIMagesResponse
 import com.codeinglogs.remote.model.moviedetail.info.toDataMovieInfoResponse
-import com.codeinglogs.remote.model.moviedetail.reviews.toDataMovieReviews
 import com.codeinglogs.remote.model.moviedetail.reviews.toDataMovieReviewsResponse
 import com.codeinglogs.remote.model.moviedetail.similar.toDataMovieSimilarResponse
-import com.codeinglogs.remote.model.moviedetail.similar.todataMovieSimilar
 import com.codeinglogs.remote.model.moviedetail.videos.toDataMovieVideosResponse
-import com.codeinglogs.remote.model.movies.movieslist.toDataMoviesListResponce
-import com.codeinglogs.remote.model.person.personlist.toDataPersonListResponce
-import com.codeinglogs.remote.model.tvshows.tvshowslist.toDataTvShowsListResponce
 import com.codeinglogs.remote.request.MoviesRequest
 import kotlinx.coroutines.async
 import kotlinx.coroutines.coroutineScope

@@ -7,7 +7,7 @@ import com.codeinglogs.data.model.moviedetail.images.MoviePoster as DataMoviePos
 data class MovieImagesResponse(
     val backdrops: List<MovieBackdrop>?,
     val id: Int?,
-    val logos: List<MovieLogo>,
+    val logos: List<MovieLogo>?,
     val posters: List<MoviePoster>?
 )
 

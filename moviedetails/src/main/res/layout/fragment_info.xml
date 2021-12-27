@@ -46,8 +46,8 @@
 
                 <ImageView
                     android:id="@+id/ima_bookmark_movie_info"
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
                     app:layout_constraintBottom_toBottomOf="@+id/ima_add_movie_info"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="@+id/ima_add_movie_info"
@@ -56,11 +56,10 @@
 
                 <ImageView
                     android:id="@+id/ima_add_movie_info"
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:layout_marginTop="16dp"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
                     android:layout_marginEnd="16dp"
-                    app:layout_constraintBottom_toBottomOf="@+id/gl_movie_name_movie_info"
+                    app:layout_constraintBottom_toBottomOf="@+id/tv_time_movie_info"
                     app:layout_constraintEnd_toStartOf="@+id/ima_bookmark_movie_info"
                     app:layout_constraintTop_toTopOf="@+id/tv_time_movie_info"
                     app:srcCompat="@drawable/playlist_add" />
@@ -72,7 +71,7 @@
                     android:layout_marginTop="16dp"
                     android:text="2021"
                     android:textColor="@color/white"
-                    android:textSize="24dp"
+                    android:textSize="20dp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -84,7 +83,7 @@
                     android:layout_marginTop="16dp"
                     android:text="1 hour 55 minutes"
                     android:textColor="@color/white"
-                    android:textSize="24dp"
+                    android:textSize="20dp"
                     app:layout_constraintStart_toEndOf="@+id/tv_year_movie_info"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -95,7 +94,7 @@
                     android:layout_marginTop="8dp"
                     android:text="Money_heist"
                     android:textColor="@color/white"
-                    android:textSize="24dp"
+                    android:textSize="20dp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/tv_time_movie_info" />
 
@@ -111,7 +110,7 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/tv_movie_name_movie_info"
-                    tools:listitem="@layout/genres_item1" />
+                    tools:listitem="@layout/genres_item" />
 
                 <TextView
 
@@ -160,94 +159,18 @@
                     app:layout_constraintStart_toEndOf="@+id/tv_crew_movie_info"
                     app:layout_constraintTop_toTopOf="@+id/tv_crew_movie_info" />
 
-                <TextView
-                    android:id="@+id/tv_1_crew_movie_info"
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_crew_movie_info"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
-                    android:text="Robert Richardson"
-                    android:textColor="@color/white"
-                    android:textSize="18dp"
+                    android:orientation="horizontal"
+                    app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/tv_crew_movie_info" />
-
-                <TextView
-                    android:id="@+id/tv_1_sub_crew_movie_info"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="4dp"
-                    android:text="Camera"
-                    android:textColor="@color/light_gray"
-                    android:textSize="18dp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/tv_1_crew_movie_info" />
-
-                <TextView
-                    android:id="@+id/tv_2_crew_movie_info"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:text="Robert Richardson"
-                    android:textColor="@color/white"
-                    android:textSize="18dp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/tv_1_sub_crew_movie_info" />
-
-                <TextView
-                    android:id="@+id/tv_2_sub_crew_movie_info"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="4dp"
-                    android:text="Camera"
-                    android:textColor="@color/light_gray"
-                    android:textSize="18dp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/tv_2_crew_movie_info" />
-
-                <TextView
-                    android:id="@+id/tv_3_crew_movie_info"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:text="Robert Richardson"
-                    android:textColor="@color/white"
-                    android:textSize="18dp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/tv_2_sub_crew_movie_info" />
-
-                <TextView
-                    android:id="@+id/tv_3_sub_crew_movie_info"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="4dp"
-                    android:text="Camera"
-                    android:textColor="@color/light_gray"
-                    android:textSize="18dp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/tv_3_crew_movie_info" />
-
-                <TextView
-                    android:id="@+id/tv_4_crew_movie_info"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:text="Robert Richardson"
-                    android:textColor="@color/white"
-                    android:textSize="18dp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/tv_3_sub_crew_movie_info" />
-
-                <TextView
-                    android:id="@+id/tv_4_sub_crew_movie_info"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="4dp"
-                    android:text="Camera"
-                    android:textColor="@color/light_gray"
-                    android:textSize="18dp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/tv_4_crew_movie_info" />
-
+                    app:layout_constraintTop_toBottomOf="@+id/tv_crew_movie_info"
+                    tools:listitem="@layout/crew_item" />
                 <androidx.constraintlayout.widget.Guideline
                     android:id="@+id/gl_center"
                     android:layout_width="wrap_content"
@@ -255,94 +178,7 @@
                     android:orientation="vertical"
                     app:layout_constraintGuide_percent="0.5" />
 
-                <TextView
-                    android:id="@+id/tv_5_crew_movie_info"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:text="Robert Richardson"
-                    android:textColor="@color/white"
-                    android:textSize="18dp"
-                    app:layout_constraintStart_toStartOf="@+id/gl_center"
-                    app:layout_constraintTop_toBottomOf="@+id/tv_crew_movie_info" />
 
-                <TextView
-                    android:id="@+id/tv_5_sub_crew_movie_info"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="4dp"
-                    android:text="Camera"
-                    android:textColor="@color/light_gray"
-                    android:textSize="18dp"
-                    app:layout_constraintStart_toStartOf="@+id/gl_center"
-                    app:layout_constraintTop_toBottomOf="@+id/tv_5_crew_movie_info" />
-
-                <TextView
-                    android:id="@+id/tv_6_crew_movie_info"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:text="Robert Richardson"
-                    android:textColor="@color/white"
-                    android:textSize="18dp"
-                    app:layout_constraintStart_toStartOf="@+id/gl_center"
-                    app:layout_constraintTop_toBottomOf="@+id/tv_5_sub_crew_movie_info" />
-
-                <TextView
-                    android:id="@+id/tv_6_sub_crew_movie_info"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="4dp"
-                    android:text="Camera"
-                    android:textColor="@color/light_gray"
-                    android:textSize="18dp"
-                    app:layout_constraintStart_toStartOf="@+id/gl_center"
-                    app:layout_constraintTop_toBottomOf="@+id/tv_6_crew_movie_info" />
-
-
-                <TextView
-                    android:id="@+id/tv_7_crew_movie_info"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:text="Robert Richardson"
-                    android:textColor="@color/white"
-                    android:textSize="18dp"
-                    app:layout_constraintStart_toStartOf="@+id/gl_center"
-                    app:layout_constraintTop_toBottomOf="@+id/tv_6_sub_crew_movie_info" />
-
-                <TextView
-                    android:id="@+id/tv_7_sub_crew_movie_info"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="4dp"
-                    android:text="Camera"
-                    android:textColor="@color/light_gray"
-                    android:textSize="18dp"
-                    app:layout_constraintStart_toStartOf="@+id/gl_center"
-                    app:layout_constraintTop_toBottomOf="@+id/tv_7_crew_movie_info" />
-
-                <TextView
-                    android:id="@+id/tv_8_crew_movie_info"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:text="Robert Richardson"
-                    android:textColor="@color/white"
-                    android:textSize="18dp"
-                    app:layout_constraintStart_toStartOf="@+id/gl_center"
-                    app:layout_constraintTop_toBottomOf="@+id/tv_7_sub_crew_movie_info" />
-
-                <TextView
-                    android:id="@+id/tv_8_sub_crew_movie_info"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="4dp"
-                    android:text="Camera"
-                    android:textColor="@color/light_gray"
-                    android:textSize="18dp"
-                    app:layout_constraintStart_toStartOf="@+id/gl_center"
-                    app:layout_constraintTop_toBottomOf="@+id/tv_8_crew_movie_info" />
 
                 <View
                     android:id="@+id/v_2_Movie_info"
@@ -351,7 +187,7 @@
                     android:layout_marginTop="16dp"
                     android:background="@color/light_gray"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/tv_4_sub_crew_movie_info" />
+                    app:layout_constraintTop_toBottomOf="@+id/rv_crew_movie_info" />
 
                 <TextView
                     android:id="@+id/tv_trailer_movie_info"
@@ -510,7 +346,6 @@
                     android:layout_marginTop="16dp"
                     android:text="Title"
                     android:textColor="@color/white"
-                    android:textSize="18dp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/tv_fact_movie_info" />
 
@@ -521,7 +356,6 @@
                     android:layout_marginTop="4dp"
                     android:text="Camera"
                     android:textColor="@color/light_gray"
-                    android:textSize="18dp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/tv_mtitle_fact_movie_info" />
 
@@ -533,7 +367,6 @@
                     android:layout_marginTop="16dp"
                     android:text="Status"
                     android:textColor="@color/white"
-                    android:textSize="18dp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/tv_title_fact_movie_info" />
 
@@ -544,7 +377,6 @@
                     android:layout_marginTop="4dp"
                     android:text="Status"
                     android:textColor="@color/light_gray"
-                    android:textSize="18dp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/tv_mstatus_fact_movie_info" />
 
@@ -555,7 +387,6 @@
                     android:layout_marginTop="16dp"
                     android:text="Release Date"
                     android:textColor="@color/white"
-                    android:textSize="18dp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/tv_status_fact_movie_info" />
 
@@ -566,7 +397,6 @@
                     android:layout_marginTop="4dp"
                     android:text="Release Date"
                     android:textColor="@color/light_gray"
-                    android:textSize="18dp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/tv_mrelease_date_fact_movie_info" />
 
@@ -578,7 +408,6 @@
                     android:layout_marginTop="16dp"
                     android:text="Budget"
                     android:textColor="@color/white"
-                    android:textSize="18dp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/tv_release_date_fact_movie_info" />
 
@@ -589,7 +418,6 @@
                     android:layout_marginTop="4dp"
                     android:text="Budget"
                     android:textColor="@color/light_gray"
-                    android:textSize="18dp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/tv_mbudget_fact_movie_info" />
 
@@ -600,7 +428,6 @@
                     android:layout_marginTop="16dp"
                     android:text="Runtime"
                     android:textColor="@color/white"
-                    android:textSize="18dp"
                     app:layout_constraintStart_toStartOf="@+id/gl_center"
                     app:layout_constraintTop_toBottomOf="@+id/tv_title_fact_movie_info" />
 
@@ -611,7 +438,6 @@
                     android:layout_marginTop="4dp"
                     android:text="Runtime"
                     android:textColor="@color/light_gray"
-                    android:textSize="18dp"
                     app:layout_constraintStart_toStartOf="@+id/gl_center"
                     app:layout_constraintTop_toBottomOf="@+id/tv_mruntime_fact_movie_info" />
 
@@ -622,7 +448,6 @@
                     android:layout_marginTop="16dp"
                     android:text="Original Language"
                     android:textColor="@color/white"
-                    android:textSize="18dp"
                     app:layout_constraintStart_toStartOf="@+id/gl_center"
                     app:layout_constraintTop_toBottomOf="@+id/tv_runtime_fact_movie_info" />
 
@@ -633,7 +458,6 @@
                     android:layout_marginTop="4dp"
                     android:text="Original Language"
                     android:textColor="@color/light_gray"
-                    android:textSize="18dp"
                     app:layout_constraintStart_toStartOf="@+id/gl_center"
                     app:layout_constraintTop_toBottomOf="@+id/tv_moriginal_language_fact_movie_info" />
 
@@ -644,7 +468,6 @@
                     android:layout_marginTop="16dp"
                     android:text="Revenue"
                     android:textColor="@color/white"
-                    android:textSize="18dp"
                     app:layout_constraintStart_toStartOf="@+id/gl_center"
                     app:layout_constraintTop_toBottomOf="@+id/tv_original_language_fact_movie_info" />
 
@@ -655,7 +478,6 @@
                     android:layout_marginTop="4dp"
                     android:text="Revenue"
                     android:textColor="@color/light_gray"
-                    android:textSize="18dp"
                     app:layout_constraintStart_toStartOf="@+id/gl_center"
                     app:layout_constraintTop_toBottomOf="@+id/tv_mrevenue_fact_movie_info" />
 
@@ -685,7 +507,6 @@
                     android:layout_marginTop="4dp"
                     android:text="Camera"
                     android:textColor="@color/light_gray"
-                    android:textSize="18dp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/id_mProduction_Companies_movie_info" />
 

@@ -5,8 +5,8 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.codeinglogs.core.base.BaseFragment
-import com.codeinglogs.moviehub.PicassoImageLoadingService
-import com.codeinglogs.moviehub.adapter.HomeSliderAdapter
+import com.codeinglogs.core.PicassoImageLoadingService
+import com.codeinglogs.core.SliderAdapter
 import com.codeinglogs.moviehub.adapter.MoviesPrimaryAdapter
 import com.codeinglogs.moviehub.adapter.PersonPrimaryAdapter
 import com.codeinglogs.moviehub.adapter.TvShowsPrimaryAdapter
@@ -110,7 +110,7 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>() {
             list.add(IMAGE_BASE_URL_500 + result.poster_path)
 
         Slider.init(PicassoImageLoadingService());
-        slider.setAdapter(HomeSliderAdapter(list))
+        slider.setAdapter(SliderAdapter(list))
         slider.setInterval(10000)
 
     }

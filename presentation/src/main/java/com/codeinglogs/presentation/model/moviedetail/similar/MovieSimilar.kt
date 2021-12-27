@@ -6,11 +6,13 @@ data class MovieSimilar(
     val original_title: String,
     val poster_path: String,
     val title: String,
+    val release_date:String,
     val vote_average: Double,
 )
 
 fun DomainMovieSimilar.toPresentationMovieSimilar()=MovieSimilar(
         id = id,
+        release_date=release_date,
         original_title = original_title,
         poster_path = poster_path,
         title = title,

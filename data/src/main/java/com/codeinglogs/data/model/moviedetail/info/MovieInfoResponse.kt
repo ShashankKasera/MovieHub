@@ -2,10 +2,12 @@ package com.codeinglogs.data.model.moviedetail.info
 
 import com.codeinglogs.domain.model.moviedetail.info.MovieInfoResponse as DomainMovieInfoResponse
 import com.codeinglogs.domain.model.moviedetail.info.Gener as DomainGener
+import com.codeinglogs.domain.model.moviedetail.info.ProductionCompanies as DomainProductionCompanies
 data class MovieInfoResponse(
     val backdrop_path: String,
     val belongs_to_collection: String,
     val budget: Int,
+    val production_companies: List<ProductionCompanies>,
     val genres: List<Gener>,
     val homepage: String,
     val id: Int,
@@ -27,9 +29,10 @@ data class MovieInfoResponse(
 )
 
 fun MovieInfoResponse.toDomainMovieInfoResponse()=DomainMovieInfoResponse(
+    production_companies=production_companies.toDomainProductionCompanies(),
     backdrop_path=backdrop_path,
     belongs_to_collection=belongs_to_collection,
-    budget-budget,
+    budget=budget,
     genres=genres.toDomainGener(),
     homepage=homepage,
     id=id,
@@ -53,5 +56,11 @@ fun MovieInfoResponse.toDomainMovieInfoResponse()=DomainMovieInfoResponse(
 fun List<Gener>.toDomainGener():List<DomainGener>{
     val list= mutableListOf<DomainGener>()
     this.forEach { list.add(it.toDomainGener()) }
+    return list
+}
+
+fun List<ProductionCompanies>.toDomainProductionCompanies():List<DomainProductionCompanies>{
+    val list= mutableListOf<DomainProductionCompanies>()
+    this.forEach { list.add(it.toProductionCompanies()) }
     return list
 }

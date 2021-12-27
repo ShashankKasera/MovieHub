@@ -4,9 +4,11 @@ data class MovieInfoResponse(
     val backdrop_path: String,
     val belongs_to_collection: String,
     val budget: Int,
+    val production_companies: List<ProductionCompanies>,
     val genres: List<Gener>,
     val homepage: String,
     val id: Int,
+
     val imdb_id: String,
     val original_language: String,
     val original_title: String,

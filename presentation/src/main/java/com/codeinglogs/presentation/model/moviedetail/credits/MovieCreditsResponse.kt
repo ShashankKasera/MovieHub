@@ -5,9 +5,9 @@ import com.codeinglogs.domain.model.moviedetail.credits.Cast as DomainCast
 import com.codeinglogs.domain.model.moviedetail.credits.Crew as DomainCrew
 
 data class MovieCreditsResponse(
-    val cast: List<Cast>,
-    val crew: List<Crew>,
-    val id: Int
+    val cast: List<Cast>?,
+    val crew: List<Crew>?,
+    val id: Int?
 )
 
 fun DomainMovieCreditsResponse.toPresentationMovieCreditsResponse()=

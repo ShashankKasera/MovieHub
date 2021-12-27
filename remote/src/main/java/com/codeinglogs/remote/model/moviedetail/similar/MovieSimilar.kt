@@ -18,11 +18,12 @@ data class MovieSimilar(
     val vote_count: Int
 )
 
-fun MovieSimilar.todataMovieSimilar()=dataMovieSimilar(
+fun MovieSimilar.toDataMovieSimilar()=dataMovieSimilar(
     id=id?:0,
     original_title=original_title?:"",
     poster_path=poster_path?:"",
     title=title?:"",
+    release_date=release_date?:"",
     vote_average=vote_average?:0.0,
 
 )

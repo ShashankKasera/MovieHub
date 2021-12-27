@@ -2,9 +2,8 @@ package com.codeinglogs.moviedetailsapp
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.codeinglogs.moviedetails.MovieDetailActivity
-import com.codeinglogs.moviedetails.TabActivity
-import com.codeinglogs.moviedetails.TabActivity.Companion.getInstance
+import com.codeinglogs.moviedetails.ui.activity.MovieDetailActivity
+import com.codeinglogs.moviedetails.ui.activity.TrandingMoviesActivity
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
