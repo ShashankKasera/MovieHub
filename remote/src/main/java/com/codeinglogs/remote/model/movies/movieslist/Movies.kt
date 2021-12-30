@@ -16,7 +16,7 @@ data class Movies(
 fun Movies.toDataMovies() = DataMovies(
     id = id?:0L,
     title = original_name?:original_title,
-    poster_path = poster_path,
-    vote_average=vote_average
+    poster_path = poster_path?:"",
+    vote_average=vote_average?:0.0
 )
 

@@ -7,15 +7,12 @@ import androidx.activity.viewModels
 import com.codeinglogs.core.PicassoImageLoadingService
 import com.codeinglogs.core.SliderAdapter
 import com.codeinglogs.core.base.BaseActivity
-import com.codeinglogs.core.extension.load
 import com.codeinglogs.moviedetails.ui.adapter.ViewPagerAdapter
 import com.codeinglogs.moviedetails.databinding.ActivityMovieDetailBinding
-import com.codeinglogs.moviehub.constant.IMAGE_BASE_URL_500
 import com.codeinglogs.moviehub.constant.IMAGE_BASE_URL_YOUTUBE
 import com.codeinglogs.moviehub.constant.IMAGE_back_YOUTUBE
 import com.codeinglogs.presentation.model.State
-import com.codeinglogs.presentation.model.moviedetail.videos.MovieVideo
-import com.codeinglogs.presentation.model.tvshow.tvshowslist.TvShow
+import com.codeinglogs.presentation.model.movies.moviedetail.videos.MovieVideo
 import com.codeinglogs.presentation.viewmodel.moviedetail.MovieDetailViewModel
 import com.google.android.material.tabs.TabLayoutMediator
 import dagger.hilt.android.AndroidEntryPoint

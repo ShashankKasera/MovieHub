@@ -6,12 +6,8 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.codeinglogs.core.extension.load
-import com.codeinglogs.moviedetails.databinding.PersonItemBinding
 import com.codeinglogs.moviedetails.databinding.ReviewItemBinding
-import com.codeinglogs.moviehub.constant.IMAGE_BASE_URL_500
-import com.codeinglogs.presentation.model.moviedetail.credits.Cast
-import com.codeinglogs.presentation.model.moviedetail.reviews.MovieReviews
+import com.codeinglogs.presentation.model.movies.moviedetail.reviews.MovieReviews
 import com.codeinglogs.presentation.model.movies.movieslist.Movies
 
 class ReviewAdapter() : ListAdapter<MovieReviews, ReviewAdapter.ViewHolder>(

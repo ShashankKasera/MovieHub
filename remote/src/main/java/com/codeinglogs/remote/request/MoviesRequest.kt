@@ -1,13 +1,13 @@
 package com.codeinglogs.remote.request
 
 
-import com.codeinglogs.remote.model.moviedetail.credits.MovieCreditsResponse
-import com.codeinglogs.remote.model.moviedetail.images.MovieImagesResponse
-import com.codeinglogs.remote.model.moviedetail.info.MovieInfoResponse
-import com.codeinglogs.remote.model.moviedetail.reviews.MovieReviewsResponse
-import com.codeinglogs.remote.model.moviedetail.similar.MovieSimilarResponse
-import com.codeinglogs.remote.model.moviedetail.videos.MovieVideosResponse
-import com.codeinglogs.remote.model.movies.movieslist.MoviesListResponce
+import com.codeinglogs.remote.model.movies.moviedetail.credits.MovieCreditsResponse
+import com.codeinglogs.remote.model.movies.moviedetail.images.MovieImagesResponse
+import com.codeinglogs.remote.model.movies.moviedetail.info.MovieInfoResponse
+import com.codeinglogs.remote.model.movies.moviedetail.reviews.MovieReviewsResponse
+import com.codeinglogs.remote.model.movies.moviedetail.similar.MovieSimilarResponse
+import com.codeinglogs.remote.model.movies.moviedetail.videos.MovieVideosResponse
+import com.codeinglogs.remote.model.movies.movieslist.MoviesListResponse
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
@@ -37,16 +37,16 @@ interface MoviesRequest {
 
 
     @GET("trending/all/day")
-    suspend fun getTrendingMovie(@Query("page") page : Int): MoviesListResponce
+    suspend fun getTrendingMovie(@Query("page") page : Int): MoviesListResponse
 
     @GET("trending/all/day")
-    suspend fun getTrendingMovie(): MoviesListResponce
+    suspend fun getTrendingMovie(): MoviesListResponse
 
     @GET("movie/popular")
-    suspend fun getPoPuLarMovie(): MoviesListResponce
+    suspend fun getPoPuLarMovie(): MoviesListResponse
 
     @GET("movie/top_rated")
-    suspend fun getTopRatedMovie(): MoviesListResponce
+    suspend fun getTopRatedMovie(): MoviesListResponse
 
 
 }

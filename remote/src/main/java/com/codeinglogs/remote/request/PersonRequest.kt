@@ -1,10 +1,35 @@
 package com.codeinglogs.remote.request
 
-import com.codeinglogs.remote.model.person.personlist.PersonListResponce
+import com.codeinglogs.remote.model.person.persondetail.externalids.PersonExternalIdsResponse
+import com.codeinglogs.remote.model.person.persondetail.images.PersonImagesResponse
+import com.codeinglogs.remote.model.person.persondetail.info.PersonInfoResponse
+import com.codeinglogs.remote.model.person.persondetail.moviecredits.PersonMovieCreditsResponse
+import com.codeinglogs.remote.model.person.persondetail.taggedimages.PersonTaggedImagesResponse
+import com.codeinglogs.remote.model.person.persondetail.tvcredits.PersonTvCreditsResponse
+import com.codeinglogs.remote.model.person.personlist.PersonListResponse
 import retrofit2.http.GET
+import retrofit2.http.Path
 
 interface PersonRequest {
 
     @GET("person/popular")
-    suspend fun getPerson(): PersonListResponce
+    suspend fun getPerson(): PersonListResponse
+
+    @GET("person/{id}")
+    suspend fun getPersonInfo(@Path("id")id : String) : PersonInfoResponse
+
+    @GET("person/{id}/tagged_images")
+    suspend fun getPersonTaggedImages(@Path("id")id : String) : PersonTaggedImagesResponse
+
+    @GET("person/{id}/images")
+    suspend fun getPersonImages(@Path("id")id : String) : PersonImagesResponse
+
+    @GET("person/{id}/movie_credits")
+    suspend fun getPersonMovieCredits(@Path("id")id : String) : PersonMovieCreditsResponse
+
+    @GET("person/{id}/tv_credits")
+    suspend fun getPersonTvCredits(@Path("id")id : String) : PersonTvCreditsResponse
+
+    @GET("person/{id}/external_ids")
+    suspend fun getPersonExternalIds(@Path("id")id : String) : PersonExternalIdsResponse
 }

@@ -10,7 +10,7 @@ import com.codeinglogs.core.extension.load
 import com.codeinglogs.moviedetails.databinding.MovieAndTvShowVideoBinding
 import com.codeinglogs.moviehub.constant.IMAGE_BASE_URL_YOUTUBE
 import com.codeinglogs.moviehub.constant.IMAGE_back_YOUTUBE
-import com.codeinglogs.presentation.model.moviedetail.videos.MovieVideo
+import com.codeinglogs.presentation.model.movies.moviedetail.videos.MovieVideo
 import com.codeinglogs.presentation.model.movies.movieslist.Movies
 
 class VideoAdapter() : ListAdapter<MovieVideo, VideoAdapter.ViewHolder>(

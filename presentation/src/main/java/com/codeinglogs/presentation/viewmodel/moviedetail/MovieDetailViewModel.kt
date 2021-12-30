@@ -8,7 +8,7 @@ import com.codeinglogs.domain.usecase.GetMovieDetails
 import com.codeinglogs.presentation.maper.toPresentationState
 import com.codeinglogs.presentation.model.Event
 import com.codeinglogs.presentation.model.State
-import com.codeinglogs.presentation.model.moviedetail.MovieDetailsDisplay
+import com.codeinglogs.presentation.model.movies.moviedetail.MovieDetailsDisplay
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch

@@ -1,8 +1,7 @@
 package com.codeinglogs.data.domainrepositoryimp
 
-import android.util.Log
-import com.codeinglogs.data.model.moviedetail.toDomainMovieDetailsDisplay
-import com.codeinglogs.domain.model.moviedetail.MovieDetailsDisplay
+import com.codeinglogs.data.model.movies.moviedetail.toDomainMovieDetailsDisplay
+import com.codeinglogs.domain.model.movies.moviedetail.MovieDetailsDisplay
 import com.codeinglogs.data.store.moviedetails.MovieDetailsDataSore
 import com.codeinglogs.domain.model.State
 import com.codeinglogs.domain.repository.MovieDetailRepositoryDomain

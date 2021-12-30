@@ -6,10 +6,10 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.codeinglogs.moviedetails.databinding.GenresItemBinding
-import com.codeinglogs.presentation.model.moviedetail.info.Gener
+import com.codeinglogs.presentation.model.movies.moviedetail.info.MovieGener
 import com.codeinglogs.presentation.model.movies.movieslist.Movies
 
-class GenresAdapter() : ListAdapter<Gener, GenresAdapter.ViewHolder>(
+class GenresAdapter() : ListAdapter<MovieGener, GenresAdapter.ViewHolder>(
     DriftUtils
 ){
 
@@ -17,15 +17,15 @@ class GenresAdapter() : ListAdapter<Gener, GenresAdapter.ViewHolder>(
 
     }
 
-    companion object DriftUtils : DiffUtil.ItemCallback<Gener>(){
+    companion object DriftUtils : DiffUtil.ItemCallback<MovieGener>(){
         override fun areItemsTheSame(
-            oldItem: Gener,
-            newItem: Gener
+            oldItem: MovieGener,
+            newItem: MovieGener
         ) = oldItem.id == newItem.id
 
         override fun areContentsTheSame(
-            oldItem: Gener,
-            newItem: Gener
+            oldItem: MovieGener,
+            newItem: MovieGener
         ) = oldItem == newItem
     }
 

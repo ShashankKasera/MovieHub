@@ -3,7 +3,7 @@ package com.codeinglogs.data.domainrepositoryimp
 import com.codeinglogs.data.maper.toDomainState
 import com.codeinglogs.data.store.trendingtvshow.TrendingTvShowDataSore
 import com.codeinglogs.domain.model.State
-import com.codeinglogs.domain.model.tvshow.tvshowslist.TvShowsListResponce
+import com.codeinglogs.domain.model.tvshow.tvshowslist.TvShowsListResponse
 import com.codeinglogs.domain.repository.TrendingTvShowRepositoryDomain
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.collect
@@ -15,7 +15,7 @@ class TrendingTvShowRepositoryDomainImp @Inject constructor (private val trendin
 
 
 
-    override fun getTrendingTvShow(): Flow<State<TvShowsListResponce>> {
+    override fun getTrendingTvShow(): Flow<State<TvShowsListResponse>> {
         return flow {
             trendingTvShowDataSore.getRemoteDataSource().getTrendingTvShow().collect {
                 emit(it.toDomainState())

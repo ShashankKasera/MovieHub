@@ -1,7 +1,7 @@
 package com.codeinglogs.data.repository.moviedetails
 
 import com.codeinglogs.data.model.State
-import com.codeinglogs.data.model.moviedetail.MovieDetailsDisplay
+import com.codeinglogs.data.model.movies.moviedetail.MovieDetailsDisplay
 import kotlinx.coroutines.flow.Flow
 
 interface RemoteMovieDetailData {

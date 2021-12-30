@@ -8,7 +8,7 @@ import com.codeinglogs.domain.usecase.GetPerson
 import com.codeinglogs.presentation.maper.toPresentationState
 import com.codeinglogs.presentation.model.Event
 import com.codeinglogs.presentation.model.State
-import com.codeinglogs.presentation.model.person.personlist.PersonListResponce
+import com.codeinglogs.presentation.model.person.personlist.PersonListResponse
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
@@ -16,8 +16,8 @@ import javax.inject.Inject
 
 @HiltViewModel
 class PersonViewModel@Inject constructor(private val getPerson: GetPerson) : ViewModel() {
-    private val _personList= MutableLiveData<Event<State<PersonListResponce>>>()
-    val personList : LiveData<Event<State<PersonListResponce>>> get() = _personList
+    private val _personList= MutableLiveData<Event<State<PersonListResponse>>>()
+    val personList : LiveData<Event<State<PersonListResponse>>> get() = _personList
 
     fun getPersonList(){
         viewModelScope.launch {

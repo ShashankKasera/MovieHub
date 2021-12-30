@@ -4,8 +4,6 @@ import android.util.Log
 import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.codeinglogs.core.PicassoImageLoadingService
-import com.codeinglogs.core.SliderAdapter
 import com.codeinglogs.core.base.BaseFragment
 import com.codeinglogs.core.extension.load
 import com.codeinglogs.moviedetails.ui.adapter.GenresAdapter
@@ -14,10 +12,8 @@ import com.codeinglogs.moviedetails.databinding.FragmentInfoBinding
 import com.codeinglogs.moviedetails.ui.adapter.CrewAdapter
 import com.codeinglogs.moviehub.constant.IMAGE_BASE_URL_500
 import com.codeinglogs.presentation.model.State
-import com.codeinglogs.presentation.model.moviedetail.MovieDetailsDisplay
-import com.codeinglogs.presentation.model.tvshow.tvshowslist.TvShow
+import com.codeinglogs.presentation.model.movies.moviedetail.MovieDetailsDisplay
 import com.codeinglogs.presentation.viewmodel.moviedetail.MovieDetailViewModel
-import ss.com.bannerslider.Slider
 
 
 private const val TAG = "123InfoFragment"

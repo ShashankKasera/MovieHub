@@ -5,9 +5,9 @@ import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import com.codeinglogs.data.model.State
 import com.codeinglogs.data.model.movies.movieslist.Movies
-import com.codeinglogs.data.model.movies.movieslist.MoviesListResponce
+import com.codeinglogs.data.model.movies.movieslist.MoviesListResponse
 import com.codeinglogs.data.repository.trendingmovies.RemoteTrendingMoviesData
-import com.codeinglogs.remote.model.movies.movieslist.toDataMoviesListResponce
+import com.codeinglogs.remote.model.movies.movieslist.toDataMoviesListResponse
 import com.codeinglogs.remote.pagingsource.TrendingMoviePagingSource
 import com.codeinglogs.remote.request.MoviesRequest
 import kotlinx.coroutines.flow.Flow
@@ -20,10 +20,10 @@ class RemoteTrendingMoviesDataRepositoryImp @Inject constructor (
     private val trendingMoviePagingSource: TrendingMoviePagingSource
 ) :
     RemoteTrendingMoviesData {
-    override fun getTrendingMovies(): Flow<State<MoviesListResponce>> = flow <State<MoviesListResponce>>{
+    override fun getTrendingMovies(): Flow<State<MoviesListResponse>> = flow <State<MoviesListResponse>>{
         emit(State.loading())
         val trendingMovie = moviesRequest.getTrendingMovie()
-        emit(State.success(trendingMovie.toDataMoviesListResponce()))
+        emit(State.success(trendingMovie.toDataMoviesListResponse()))
     }.catch {
         emit(State.failed(it.message?:""))
     }

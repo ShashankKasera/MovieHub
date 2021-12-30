@@ -2,8 +2,8 @@ package com.codeinglogs.data.maper
 
 import com.codeinglogs.domain.model.State as Domain
 import com.codeinglogs.data.model.State
-import com.codeinglogs.data.model.moviedetail.MovieDetailsDisplay
-import com.codeinglogs.data.model.moviedetail.toDomainMovieDetailsDisplay
+import com.codeinglogs.data.model.movies.moviedetail.MovieDetailsDisplay
+import com.codeinglogs.data.model.movies.moviedetail.toDomainMovieDetailsDisplay
 
 fun State<MovieDetailsDisplay>.toDomainState() =
     when(this){

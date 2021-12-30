@@ -1,9 +1,9 @@
 package com.codeinglogs.local.datarepositoryimp
 
 import com.codeinglogs.data.model.home.HomeDisplay
-import com.codeinglogs.data.model.movies.movieslist.MoviesListResponce
-import com.codeinglogs.data.model.person.personlist.PersonListResponce
-import com.codeinglogs.data.model.tvshow.tvshowlist.TvShowsListResponce
+import com.codeinglogs.data.model.movies.movieslist.MoviesListResponse
+import com.codeinglogs.data.model.person.personlist.PersonListResponse
+import com.codeinglogs.data.model.tvshow.tvshowlist.TvShowsListResponse
 import com.codeinglogs.data.repository.home.LocalHomeData
 import com.codeinglogs.local.dao.*
 import com.codeinglogs.local.entity.*
@@ -36,13 +36,13 @@ class LocalHomeDataRepositoryImp
             val topRatedTvShow = async { topRatedTvShowsDao.getAllTopRatedTvShows() }
 
             HomeDisplay(
-                PersonListResponce(results = trendingPerson.await().toDataPersons()),
-                MoviesListResponce(results = trendingMovie.await().toDataMovies()),
-                MoviesListResponce(results = poPuLarMovie.await().toDataMovies()),
-                MoviesListResponce(results = topRatedMovie.await().toDataMovies()),
-                TvShowsListResponce(results = trendingTvShow.await().toDataTvShowList()),
-                TvShowsListResponce(results = poPuLarTvShow.await().toDataTvShowList()),
-                TvShowsListResponce(results = topRatedTvShow.await().toDataTvShowList()),
+                PersonListResponse(results = trendingPerson.await().toDataPersons()),
+                MoviesListResponse(results = trendingMovie.await().toDataMovies()),
+                MoviesListResponse(results = poPuLarMovie.await().toDataMovies()),
+                MoviesListResponse(results = topRatedMovie.await().toDataMovies()),
+                TvShowsListResponse(results = trendingTvShow.await().toDataTvShowList()),
+                TvShowsListResponse(results = poPuLarTvShow.await().toDataTvShowList()),
+                TvShowsListResponse(results = topRatedTvShow.await().toDataTvShowList()),
             )
 
 

@@ -8,7 +8,7 @@ import com.codeinglogs.domain.usecase.GetTrendingTvShow
 import com.codeinglogs.presentation.maper.toPresentationState
 import com.codeinglogs.presentation.model.Event
 import com.codeinglogs.presentation.model.State
-import com.codeinglogs.presentation.model.tvshow.tvshowslist.TvShowsListResponce
+import com.codeinglogs.presentation.model.tvshow.tvshowslist.TvShowsListResponse
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
@@ -17,8 +17,8 @@ import javax.inject.Inject
 @HiltViewModel
 class TrendingTvShowViewModel @Inject constructor(private val getTrendingTvShow : GetTrendingTvShow) : ViewModel() {
 
-    private val _TrendingTvShowViewModel = MutableLiveData<Event<State<TvShowsListResponce>>>()
-    val trendingTvShowViewModel : LiveData<Event<State<TvShowsListResponce>>>
+    private val _TrendingTvShowViewModel = MutableLiveData<Event<State<TvShowsListResponse>>>()
+    val trendingTvShowViewModel : LiveData<Event<State<TvShowsListResponse>>>
         get() = _TrendingTvShowViewModel
 
 

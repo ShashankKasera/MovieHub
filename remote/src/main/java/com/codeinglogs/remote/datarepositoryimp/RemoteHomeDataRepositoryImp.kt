@@ -4,9 +4,9 @@ package com.codeinglogs.remote.datarepositoryimp
 import com.codeinglogs.data.model.State
 import com.codeinglogs.data.model.home.HomeDisplay
 import com.codeinglogs.data.repository.home.RemoteHomeData
-import com.codeinglogs.remote.model.movies.movieslist.toDataMoviesListResponce
-import com.codeinglogs.remote.model.person.personlist.toDataPersonListResponce
-import com.codeinglogs.remote.model.tvshows.tvshowslist.toDataTvShowsListResponce
+import com.codeinglogs.remote.model.movies.movieslist.toDataMoviesListResponse
+import com.codeinglogs.remote.model.person.personlist.toDataPersonListResponse
+import com.codeinglogs.remote.model.tvshows.tvshowslist.toDataTvShowsListResponse
 import com.codeinglogs.remote.request.MoviesRequest
 import com.codeinglogs.remote.request.PersonRequest
 import com.codeinglogs.remote.request.TvShowRequest
@@ -34,13 +34,13 @@ class RemoteHomeDataRepositoryImp  @Inject constructor (
             val topRatedTvShow = async { tvShowRequest.getTopRatedTvShow() }
 
             HomeDisplay(
-                trendingPerson.await().toDataPersonListResponce(),
-                trendingMovie.await().toDataMoviesListResponce(),
-                poPuLarMovie.await().toDataMoviesListResponce(),
-                topRatedMovie.await().toDataMoviesListResponce(),
-                trendingTvShow.await().toDataTvShowsListResponce(),
-                poPuLarTvShow.await().toDataTvShowsListResponce(),
-                topRatedTvShow.await().toDataTvShowsListResponce()
+                trendingPerson.await().toDataPersonListResponse(),
+                trendingMovie.await().toDataMoviesListResponse(),
+                poPuLarMovie.await().toDataMoviesListResponse(),
+                topRatedMovie.await().toDataMoviesListResponse(),
+                trendingTvShow.await().toDataTvShowsListResponse(),
+                poPuLarTvShow.await().toDataTvShowsListResponse(),
+                topRatedTvShow.await().toDataTvShowsListResponse()
             )
         }
         emit(State.success(data))

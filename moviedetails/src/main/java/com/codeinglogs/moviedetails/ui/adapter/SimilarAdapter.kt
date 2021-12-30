@@ -1,6 +1,5 @@
 package com.codeinglogs.moviedetails.ui.adapter
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
@@ -9,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.codeinglogs.core.extension.load
 import com.codeinglogs.moviedetails.databinding.MovieItemBinding
 import com.codeinglogs.moviehub.constant.IMAGE_BASE_URL_500
-import com.codeinglogs.presentation.model.moviedetail.similar.MovieSimilar
+import com.codeinglogs.presentation.model.movies.moviedetail.similar.MovieSimilar
 import com.codeinglogs.presentation.model.movies.movieslist.Movies
 
 class SimilarAdapter() : ListAdapter<MovieSimilar, SimilarAdapter.ViewHolder>(

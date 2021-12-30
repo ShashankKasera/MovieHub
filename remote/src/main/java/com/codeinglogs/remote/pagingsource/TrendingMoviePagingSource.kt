@@ -19,11 +19,11 @@ class TrendingMoviePagingSource @Inject constructor (private val moviesRequest: 
         val position=params.key?:1
         return try {
             val response=moviesRequest.getTrendingMovie(position)
-            val photo=response.results.toDataMovies()
+            val photo=response.results?.toDataMovies()
             LoadResult.Page(
-                data = photo,
+                data = photo?: listOf(),
                 prevKey = if(position==1) null else position-1,
-                nextKey = if(photo.isEmpty()) null else position+1
+                nextKey = if(photo?.isEmpty() == true) null else position+1
             )
         }catch (exception: IOException){
             LoadResult.Error(exception)
