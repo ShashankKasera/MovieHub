@@ -150,6 +150,4 @@ class InfoFragment : BaseFragment<MovieDetailViewModel, FragmentInfoBinding>(){
         mViewBinding.tvProductionCompaniesMovieInfo.text=production_companies
     }
     override fun getViewBinding() = FragmentInfoBinding.inflate(layoutInflater)
-
-
 }

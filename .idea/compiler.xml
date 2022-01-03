@@ -14,6 +14,8 @@
       <module name="MovieHub.persondetailsapp" target="11" />
       <module name="MovieHub.presentation" target="11" />
       <module name="MovieHub.remote" target="11" />
+      <module name="MovieHub.tvshowdetail" target="11" />
+      <module name="MovieHub.tvshowdetailapp" target="11" />
     </bytecodeTargetLevel>
   </component>
 </project>

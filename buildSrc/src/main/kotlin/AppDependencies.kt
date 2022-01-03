@@ -11,6 +11,7 @@ object AppDependencies {
     const val PRESENTATION =  ":presentation"
     const val MOVIEDETAILS =  ":moviedetails"
     const val PERSONDETAILS =  ":persondetails"
+    const val TVSHOWDETAILS =  ":tvshowdetail"
 
 
     //android ui

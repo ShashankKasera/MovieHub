@@ -1,27 +1,17 @@
 package com.codeinglogs.remote.datarepositoryimp
 
 import com.codeinglogs.data.model.State
-import com.codeinglogs.data.model.movies.moviedetail.MovieDetailsDisplay
 import com.codeinglogs.data.model.person.persondetails.PersonDetailsDisplay
-import com.codeinglogs.data.repository.moviedetails.RemoteMovieDetailData
 import com.codeinglogs.data.repository.persondetails.RemotePersonDetailData
-import com.codeinglogs.remote.model.movies.moviedetail.credits.toDataMovieCreditsResponse
-import com.codeinglogs.remote.model.movies.moviedetail.images.toDataMovieIMagesResponse
-import com.codeinglogs.remote.model.movies.moviedetail.info.toDataMovieInfoResponse
-import com.codeinglogs.remote.model.movies.moviedetail.reviews.toDataMovieReviewsResponse
-import com.codeinglogs.remote.model.movies.moviedetail.similar.toDataMovieSimilarResponse
-import com.codeinglogs.remote.model.movies.moviedetail.videos.toDataMovieVideosResponse
 import com.codeinglogs.remote.model.person.persondetail.externalids.toDataPersonExternalIdsResponse
 import com.codeinglogs.remote.model.person.persondetail.images.toDataPersonImagesResponse
 import com.codeinglogs.remote.model.person.persondetail.info.toDataPersonInfoResponse
 import com.codeinglogs.remote.model.person.persondetail.moviecredits.toDataPersonMovieCreditsResponse
 import com.codeinglogs.remote.model.person.persondetail.taggedimages.toDataPersonTaggedImagesResponse
 import com.codeinglogs.remote.model.person.persondetail.tvcredits.toDataPersonTvCreditsResponse
-import com.codeinglogs.remote.request.MoviesRequest
 import com.codeinglogs.remote.request.PersonRequest
 import kotlinx.coroutines.async
 import kotlinx.coroutines.coroutineScope
-import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.flow
 import javax.inject.Inject

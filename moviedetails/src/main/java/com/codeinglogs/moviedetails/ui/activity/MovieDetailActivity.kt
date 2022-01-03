@@ -30,21 +30,8 @@ class MovieDetailActivity : BaseActivity<MovieDetailViewModel, ActivityMovieDeta
 
     override fun onBinding() {
 
-
-        mViewBinding.collapsingToolbar.setTitle("Movie Detail")
-
-        adapter=ViewPagerAdapter(supportFragmentManager,lifecycle)
-
-        mViewBinding.vp2MovieDet.adapter=adapter
-
-        TabLayoutMediator(mViewBinding.tlMovieDet, mViewBinding.vp2MovieDet){tab,position->
-            when(position){
-                0-> tab.text="Info"
-                1-> tab.text="Cast"
-                2-> tab.text="Reviews"
-                3-> tab.text="Similer"
-            }
-        }.attach()
+        setUpToolbar()
+        setUpTabLayout()
 
         mViewModel.getMovieDetails("646380")
 
@@ -84,6 +71,25 @@ class MovieDetailActivity : BaseActivity<MovieDetailViewModel, ActivityMovieDeta
 
     }
 
+    private fun setUpTabLayout(){
+
+        adapter=ViewPagerAdapter(supportFragmentManager,lifecycle)
+
+        mViewBinding.vp2MovieDet.adapter=adapter
+
+        TabLayoutMediator(mViewBinding.tlMovieDet, mViewBinding.vp2MovieDet){tab,position->
+            when(position){
+                0-> tab.text="Info"
+                1-> tab.text="Cast"
+                2-> tab.text="Reviews"
+                3-> tab.text="Similer"
+            }
+        }.attach()
+    }
+
+    private fun setUpToolbar(){
+        mViewBinding.collapsingToolbar.setTitle("Tv Show Detail")
+    }
     companion object{
         fun getInstance(context: Context) = Intent(context, MovieDetailActivity::class.java)
     }
