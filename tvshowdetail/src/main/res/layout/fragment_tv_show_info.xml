@@ -11,7 +11,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.fragment.TvShowInfoFragment"
+        tools:context=".ui.fragment.tvshow.TvShowInfoFragment"
         android:background="@color/colorPrimary">
 
         <androidx.constraintlayout.widget.Guideline
@@ -126,7 +126,7 @@
                     app:layout_constraintTop_toBottomOf="@+id/rv_tv_show_type_tv_show_info" />
 
                 <View
-                    android:id="@+id/v_1_Movie_info"
+                    android:id="@+id/v_1_tv_show_info"
                     android:layout_width="0dp"
                     android:layout_height="2dp"
                     android:layout_marginTop="16dp"
@@ -144,7 +144,7 @@
                     android:textColor="@color/white"
                     android:textSize="30dp"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/v_1_Movie_info" />
+                    app:layout_constraintTop_toBottomOf="@+id/v_1_tv_show_info" />
 
                 <TextView
                     android:id="@+id/iv_show_all_tv_show_info"
@@ -160,7 +160,6 @@
                     app:layout_constraintStart_toEndOf="@+id/tv_crew_tv_show_info"
                     app:layout_constraintTop_toTopOf="@+id/tv_crew_tv_show_info" />
 
-
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/rv_crew_tv_show_info"
                     android:layout_width="0dp"
@@ -172,6 +171,7 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/tv_crew_tv_show_info"
                     tools:listitem="@layout/tv_show_crew_item" />
+
                 <androidx.constraintlayout.widget.Guideline
                     android:id="@+id/gl_center"
                     android:layout_width="wrap_content"
@@ -179,10 +179,8 @@
                     android:orientation="vertical"
                     app:layout_constraintGuide_percent="0.5" />
 
-
-
                 <View
-                    android:id="@+id/v_2_Movie_info"
+                    android:id="@+id/v_2_tv_show_info"
                     android:layout_width="0dp"
                     android:layout_height="2dp"
                     android:layout_marginTop="16dp"
@@ -199,7 +197,7 @@
                     android:textColor="@color/white"
                     android:textSize="30dp"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/v_2_Movie_info" />
+                    app:layout_constraintTop_toBottomOf="@+id/v_2_tv_show_info" />
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/rv_video_tv_show_info"
@@ -213,6 +211,38 @@
                     app:layout_constraintTop_toBottomOf="@+id/tv_trailer_tv_show_info"
                     tools:listitem="@layout/tv_show_video"/>
 
+                <View
+                    android:id="@+id/v_3_tv_show_info"
+                    android:layout_width="0dp"
+                    android:layout_height="2dp"
+                    android:layout_marginTop="16dp"
+                    android:background="@color/light_gray"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/rv_video_tv_show_info" />
+
+                <TextView
+                    android:id="@+id/tv_seasons_tv_show_info"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="Seasons"
+                    android:textColor="@color/white"
+                    android:textSize="30dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/v_3_tv_show_info" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_seasons_tv_show_info"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:orientation="vertical"
+                    app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_seasons_tv_show_info"
+                    tools:listitem="@layout/tv_show_seasons"/>
 
                 <androidx.constraintlayout.widget.Guideline
                     android:id="@+id/gl_75area"
@@ -222,14 +252,14 @@
                     app:layout_constraintGuide_percent="0.27" />
 
                 <View
-                    android:id="@+id/v_3_Movie_info"
+                    android:id="@+id/v_4_tv_show_info"
                     android:layout_width="0dp"
                     android:layout_height="2dp"
                     android:layout_marginTop="16dp"
                     android:background="@color/light_gray"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/rv_video_tv_show_info" />
+                    app:layout_constraintTop_toBottomOf="@+id/rv_seasons_tv_show_info" />
 
                 <TextView
                     android:id="@+id/tv_media_tv_show_info"
@@ -240,7 +270,7 @@
                     android:textColor="@color/white"
                     android:textSize="30dp"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/v_3_Movie_info" />
+                    app:layout_constraintTop_toBottomOf="@+id/v_4_tv_show_info" />
 
                 <androidx.cardview.widget.CardView
                     android:id="@+id/cv_posters_tv_show_info"
@@ -258,6 +288,7 @@
                         android:layout_height="match_parent"
                         android:src="@drawable/movie"
                         android:scaleType="centerCrop"/>
+
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
                         android:layout_height="160dp"
@@ -319,7 +350,7 @@
                 </androidx.cardview.widget.CardView>
 
                 <View
-                    android:id="@+id/v_4_Movie_info"
+                    android:id="@+id/v_5_tv_show_info"
                     android:layout_width="0dp"
                     android:layout_height="2dp"
                     android:layout_marginTop="16dp"
@@ -337,8 +368,7 @@
                     android:textColor="@color/white"
                     android:textSize="30dp"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/v_4_Movie_info" />
-
+                    app:layout_constraintTop_toBottomOf="@+id/v_5_tv_show_info" />
 
                 <TextView
                     android:id="@+id/tv_mtitle_fact_tv_show_info"
@@ -359,7 +389,6 @@
                     android:textColor="@color/light_gray"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/tv_mtitle_fact_tv_show_info" />
-
 
                 <TextView
                     android:id="@+id/tv_mstatus_fact_tv_show_info"
@@ -400,9 +429,6 @@
                     android:textColor="@color/light_gray"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/tv_mrelease_date_fact_tv_show_info" />
-
-
-
 
                 <TextView
                     android:id="@+id/tv_mruntime_fact_tv_show_info"
@@ -447,7 +473,7 @@
 
 
                 <View
-                    android:id="@+id/v_5_Movie_info"
+                    android:id="@+id/v_6_tv_show_info"
                     android:layout_width="0dp"
                     android:layout_height="2dp"
                     android:layout_marginTop="16dp"
@@ -463,7 +489,7 @@
                     android:textColor="@color/white"
                     android:layout_marginTop="16dp"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/v_5_Movie_info" />
+                    app:layout_constraintTop_toBottomOf="@+id/v_6_tv_show_info" />
 
                 <TextView
                     android:id="@+id/tv_Production_Companies_tv_show_info"

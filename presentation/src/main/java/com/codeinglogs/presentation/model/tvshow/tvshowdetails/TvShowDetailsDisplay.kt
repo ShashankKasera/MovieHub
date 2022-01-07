@@ -31,5 +31,6 @@ fun DomainTvShowDetailsDisplay.toPresentationTvShowDetails()=TvShowDetailsDispla
     tvShowInfoResponse = tvShowInfoResponse.toPresentationTvShowInfoResponse(),
     tvShowReviewsResponse =tvShowReviewsResponse.toPresentationTvShowReviewsResponse(),
     tvShowSimilarResponse =tvShowSimilarResponse.toPresentationTvShowSimilarResponse(),
-    tvShowVideosResponse =tvShowVideosResponse.toPresentationTvShowsVideosResponse()
+    tvShowVideosResponse =tvShowVideosResponse.toPresentationTvShowsVideosResponse(),
+
 )

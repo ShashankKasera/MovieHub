@@ -1,8 +1,8 @@
 package com.codeinglogs.presentation.model.tvshow.tvshowdetails.image
 
-import com.codeinglogs.domain.model.tvshow.tvshowdetails.image.TvShowBackdrop as DomainTvShowBackdrop
+import com.codeinglogs.domain.model.tvshow.tvshowdetails.image.TvShowBackdrop  as DomainTvShowBackdrop
 import com.codeinglogs.domain.model.tvshow.tvshowdetails.image.TvShowPoster as DomainTvShowPoster
-import com.codeinglogs.domain.model.tvshow.tvshowdetails.image.TvShowImageResponse as DomainTvShowImageResponse
+import com.codeinglogs.domain.model.tvshow.tvshowdetails.image.TvShowImageResponse  as DomainTvShowImageResponse
 
 data class TvShowImageResponse(
     val backdrops: List<TvShowBackdrop>,

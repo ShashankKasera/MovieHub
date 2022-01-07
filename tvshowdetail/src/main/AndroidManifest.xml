@@ -4,7 +4,10 @@
 
     <application>
         <activity
-            android:name="com.codeinglogs.tvshowdetail.ui.activity.TvShowDetailsActivity"
+            android:name=".ui.activity.TvShowSeasonDetailsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.activity.TvShowDetailsActivity"
             android:exported="false" />
     </application>
 

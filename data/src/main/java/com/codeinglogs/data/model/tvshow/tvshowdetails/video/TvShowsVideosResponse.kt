@@ -10,7 +10,7 @@ data class TvShowsVideosResponse(
 
 fun TvShowsVideosResponse.toDomainTvShowsVideosResponse()= DomainTvShowsVideosResponse(
     id=id,
-    results = results.toDomainTvShowsVideos()
+    results =results.toDomainTvShowsVideos()
 )
 
 fun List<TvShowsVideos>.toDomainTvShowsVideos():List<DomainTvShowsVideos>{

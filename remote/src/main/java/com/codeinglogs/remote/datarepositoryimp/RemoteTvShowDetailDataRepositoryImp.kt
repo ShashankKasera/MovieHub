@@ -4,10 +4,10 @@ import com.codeinglogs.data.model.State
 import com.codeinglogs.data.model.tvshow.tvshowdetails.TvShowDetailsDisplay
 import com.codeinglogs.data.repository.tvshowetails.RemoteTvShowDetailData
 import com.codeinglogs.remote.model.tvshows.tvshowdetails.credits.toDataTvShowCreditsResponse
-import com.codeinglogs.remote.model.tvshows.tvshowdetails.image.toDataTvShowImageResponse
 import com.codeinglogs.remote.model.tvshows.tvshowdetails.info.toDataTvShowInfoResponse
 import com.codeinglogs.remote.model.tvshows.tvshowdetails.reviews.toDataTvShowReviewsResponse
 import com.codeinglogs.remote.model.tvshows.tvshowdetails.similar.toDataTvShowSimilarResponse
+import com.codeinglogs.remote.model.tvshows.tvshowdetails.image.toDataTvShowImageResponse
 import com.codeinglogs.remote.model.tvshows.tvshowdetails.video.toDataTvShowsVideosResponse
 import com.codeinglogs.remote.request.TvShowRequest
 import kotlinx.coroutines.async
@@ -22,21 +22,21 @@ class RemoteTvShowDetailDataRepositoryImp@Inject constructor (private val tvShow
         emit(State.loading())
         val data = coroutineScope{
 
-            val movieCredits = async { tvShowRequest.getTvShowCredits(id)}
-            val movieImages = async { tvShowRequest.getTvShowImages(id)}
-            val movieVideos = async { tvShowRequest.getTvShowVideos(id)}
-            val movieSimilar = async { tvShowRequest.getTvShowSimilar(id)}
-            val movieReviews = async { tvShowRequest.getTvShowReviews(id)}
-            val movieInfo = async { tvShowRequest.getTvShowInfo(id)}
+            val tvShowCredits = async { tvShowRequest.getTvShowCredits(id)}
+            val tvShowImages = async { tvShowRequest.getTvShowImages(id)}
+            val tvShowVideos = async { tvShowRequest.getTvShowVideos(id)}
+            val tvShowSimilar = async { tvShowRequest.getTvShowSimilar(id)}
+            val tvShowReviews = async { tvShowRequest.getTvShowReviews(id)}
+            val tvShowInfo = async { tvShowRequest.getTvShowInfo(id)}
 
             TvShowDetailsDisplay(
 
-                movieCredits.await().toDataTvShowCreditsResponse(),
-                movieImages.await().toDataTvShowImageResponse(),
-                movieInfo.await().toDataTvShowInfoResponse(),
-                movieReviews.await().toDataTvShowReviewsResponse(),
-                movieSimilar.await().toDataTvShowSimilarResponse(),
-                movieVideos.await().toDataTvShowsVideosResponse(),
+                tvShowCredits.await().toDataTvShowCreditsResponse(),
+                tvShowImages.await().toDataTvShowImageResponse(),
+                tvShowInfo.await().toDataTvShowInfoResponse(),
+                tvShowReviews.await().toDataTvShowReviewsResponse(),
+                tvShowSimilar.await().toDataTvShowSimilarResponse(),
+                tvShowVideos.await().toDataTvShowsVideosResponse()
 
             )
         }

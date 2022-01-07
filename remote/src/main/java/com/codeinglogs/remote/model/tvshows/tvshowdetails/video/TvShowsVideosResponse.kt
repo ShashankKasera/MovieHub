@@ -10,7 +10,7 @@ data class TvShowsVideosResponse(
 
 fun TvShowsVideosResponse.toDataTvShowsVideosResponse()=DataTvShowsVideosResponse(
     id=id?:0,
-    results = results?.toDataTvShowsVideos()?: listOf()
+    results = results?.toDataTvShowsVideos() ?: listOf()
 )
 
 fun List<TvShowsVideos>.toDataTvShowsVideos():List<DataTvShowsVideos>{

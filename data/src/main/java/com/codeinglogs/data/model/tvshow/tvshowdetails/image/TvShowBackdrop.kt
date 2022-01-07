@@ -1,4 +1,5 @@
 package com.codeinglogs.data.model.tvshow.tvshowdetails.image
+
 import com.codeinglogs.domain.model.tvshow.tvshowdetails.image.TvShowBackdrop as DomainTvShowBackdrop
 
 data class TvShowBackdrop(

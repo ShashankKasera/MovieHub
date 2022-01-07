@@ -1,11 +1,15 @@
 package com.codeinglogs.remote.request
 
+import com.codeinglogs.remote.model.tvshows.tvshowseasondetails.seasonimage.TvShowSeasonImageResponse
 import com.codeinglogs.remote.model.tvshows.tvshowdetails.credits.TvShowCreditsResponse
 import com.codeinglogs.remote.model.tvshows.tvshowdetails.image.TvShowImageResponse
 import com.codeinglogs.remote.model.tvshows.tvshowdetails.info.TvShowInfoResponse
 import com.codeinglogs.remote.model.tvshows.tvshowdetails.reviews.TvShowReviewsResponse
+import com.codeinglogs.remote.model.tvshows.tvshowseasondetails.seasons.TvShowSeasonsResponse
 import com.codeinglogs.remote.model.tvshows.tvshowdetails.similar.TvShowSimilarResponse
 import com.codeinglogs.remote.model.tvshows.tvshowdetails.video.TvShowsVideosResponse
+import com.codeinglogs.remote.model.tvshows.tvshowseasondetails.seasoncredits.TvShowSeasonsCreditsResponse
+import com.codeinglogs.remote.model.tvshows.tvshowseasondetails.seasonvideo.TvShowsSeasonVideosResponse
 import com.codeinglogs.remote.model.tvshows.tvshowslist.TvShowsListResponse
 import retrofit2.http.GET
 import retrofit2.http.Path
@@ -38,4 +42,16 @@ interface TvShowRequest {
 
     @GET("tv/{id}/similar")
     suspend fun getTvShowSimilar(@Path("id")id : String): TvShowSimilarResponse
+
+    @GET("tv/{id}/season/{season_number}")
+    suspend fun getTvShowSeason(@Path("id",)id : String,@Path("season_number",)season_number : Int): TvShowSeasonsResponse
+
+    @GET("tv/{tv_id}/season/{season_number}/credits")
+    suspend fun getTvShowSeasonCredits(@Path("tv_id",)id : String,@Path("season_number",)season_number : Int): TvShowSeasonsCreditsResponse
+
+    @GET("tv/{tv_id}/season/{season_number}/images")
+    suspend fun getTvShowSeasonImages(@Path("tv_id",)id : String,@Path("season_number",)season_number : Int): TvShowSeasonImageResponse
+
+    @GET("tv/{tv_id}/season/{season_number}/videos")
+    suspend fun getTvShowSeasonVideos(@Path("tv_id",)id : String,@Path("season_number",)season_number : Int): TvShowsSeasonVideosResponse
 }

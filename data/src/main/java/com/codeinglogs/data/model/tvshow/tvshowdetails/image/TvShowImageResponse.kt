@@ -10,7 +10,7 @@ data class TvShowImageResponse(
     val posters: List<TvShowPoster>
 )
 
-fun  TvShowImageResponse.toDomainTvShowImageResponse()= DomainTvShowImageResponse(
+fun TvShowImageResponse.toDomainTvShowImageResponse()= DomainTvShowImageResponse(
     id=id,
     backdrops = backdrops.toDomainTvShowBackdrop(),
     posters = posters.toDomainTvShowPoster()

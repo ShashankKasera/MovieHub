@@ -10,11 +10,10 @@ import com.codeinglogs.core.base.BaseActivity
 import com.codeinglogs.moviehub.constant.IMAGE_BASE_URL_YOUTUBE
 import com.codeinglogs.moviehub.constant.IMAGE_back_YOUTUBE
 import com.codeinglogs.presentation.model.State
-import com.codeinglogs.presentation.model.movies.moviedetail.videos.MovieVideo
 import com.codeinglogs.presentation.model.tvshow.tvshowdetails.video.TvShowsVideos
 import com.codeinglogs.presentation.viewmodel.tvshowdetails.TvShowDetailViewModel
 import com.codeinglogs.tvshowdetail.databinding.ActivityTvShowDetailsBinding
-import com.codeinglogs.tvshowdetail.ui.adapter.TvShowViewPagerAdapter
+import com.codeinglogs.tvshowdetail.ui.adapter.tvshow.TvShowViewPagerAdapter
 import com.google.android.material.tabs.TabLayoutMediator
 import dagger.hilt.android.AndroidEntryPoint
 import ss.com.bannerslider.Slider
@@ -34,8 +33,42 @@ class TvShowDetailsActivity : BaseActivity<TvShowDetailViewModel, ActivityTvShow
 
         setUpToolbar()
         setUpTabLayout()
-
+        setUpTvShowDetail()
         Log.i("fnjk", "onBinding: ")
+
+    }
+
+    private  fun addSlider (slider: Slider, results: List<TvShowsVideos>, ) {
+
+
+        val list = ArrayList<String>()
+        for (result in results)
+            list.add(IMAGE_BASE_URL_YOUTUBE +result.key+ IMAGE_back_YOUTUBE)
+
+        Slider.init(PicassoImageLoadingService());
+        slider.setAdapter(SliderAdapter(list))
+        slider.setInterval(10000)
+
+    }
+    private fun setUpTabLayout(){
+
+        tvShowViewPagerAdapter= TvShowViewPagerAdapter(supportFragmentManager,lifecycle)
+
+        mViewBinding.vp2TvShowDet.adapter=tvShowViewPagerAdapter
+
+        TabLayoutMediator(mViewBinding.tlTvShowDet, mViewBinding.vp2TvShowDet){tab,position->
+            when(position){
+                0-> tab.text="Info"
+                1-> tab.text="Cast"
+                2-> tab.text="Reviews"
+                3-> tab.text="Similer"
+            }
+        }.attach()
+    }
+    private fun setUpToolbar(){
+        mViewBinding.ctbTvShowDet.setTitle("Tv Show Detail")
+    }
+    private fun setUpTvShowDetail(){
         mViewModel.getTvShowDetails("88329")
 
         mViewModel.tvShowDetails.observe(this){
@@ -60,37 +93,6 @@ class TvShowDetailsActivity : BaseActivity<TvShowDetailViewModel, ActivityTvShow
         }
     }
 
-    private  fun addSlider (slider: Slider, results: List<TvShowsVideos>, ) {
-
-
-        val list = ArrayList<String>()
-        for (result in results)
-            list.add(IMAGE_BASE_URL_YOUTUBE +result.key+ IMAGE_back_YOUTUBE)
-
-        Slider.init(PicassoImageLoadingService());
-        slider.setAdapter(SliderAdapter(list))
-        slider.setInterval(10000)
-
-    }
-    private fun setUpTabLayout(){
-
-        tvShowViewPagerAdapter=TvShowViewPagerAdapter(supportFragmentManager,lifecycle)
-
-        mViewBinding.vp2TvShowDet.adapter=tvShowViewPagerAdapter
-
-        TabLayoutMediator(mViewBinding.tlTvShowDet, mViewBinding.vp2TvShowDet){tab,position->
-            when(position){
-                0-> tab.text="Info"
-                1-> tab.text="Cast"
-                2-> tab.text="Reviews"
-                3-> tab.text="Similer"
-            }
-        }.attach()
-    }
-
-    private fun setUpToolbar(){
-        mViewBinding.ctbTvShowDet.setTitle("Tv Show Detail")
-    }
     companion object{
         fun getInstance(context: Context) = Intent(context, TvShowDetailsActivity::class.java)
     }

@@ -1,0 +1,25 @@
+package com.codeinglogs.presentation.model.tvshow.tvshowseasondetails
+
+import com.codeinglogs.presentation.model.tvshow.tvshowseasondetails.seasoncredits.TvShowSeasonsCreditsResponse
+import com.codeinglogs.presentation.model.tvshow.tvshowseasondetails.seasoncredits.toPresentationTvShowSeasonsCreditsResponse
+import com.codeinglogs.presentation.model.tvshow.tvshowseasondetails.seasonimage.TvShowSeasonImageResponse
+import com.codeinglogs.presentation.model.tvshow.tvshowseasondetails.seasonimage.toPresentationTvShowSeasonImageResponse
+import com.codeinglogs.presentation.model.tvshow.tvshowseasondetails.seasons.TvShowSeasonsResponse
+import com.codeinglogs.presentation.model.tvshow.tvshowseasondetails.seasons.toPresentationTvShowSeasonsResponse
+import com.codeinglogs.presentation.model.tvshow.tvshowseasondetails.seasonvideo.TvShowsSeasonVideosResponse
+import com.codeinglogs.presentation.model.tvshow.tvshowseasondetails.seasonvideo.toPresentationTvShowsSeasonVideosResponse
+import com.codeinglogs.domain.model.tvshow.tvshowseasondetails.TvShowSeasonDetailsDisplay as DomainTvShowSeasonDetailsDisplay
+
+data class TvShowSeasonDetailsDisplay(
+    val tvShowSeasonsCreditsResponse: TvShowSeasonsCreditsResponse,
+    val tvShowSeasonsResponse: TvShowSeasonsResponse,
+    val tvShowSeasonImageResponse: TvShowSeasonImageResponse,
+    val tvShowsSeasonVideosResponse: TvShowsSeasonVideosResponse,
+)
+
+fun DomainTvShowSeasonDetailsDisplay.toPresentationTvShowSeasonDetailsDisplay()=TvShowSeasonDetailsDisplay(
+    tvShowSeasonsCreditsResponse=tvShowSeasonsCreditsResponse.toPresentationTvShowSeasonsCreditsResponse(),
+    tvShowSeasonsResponse=tvShowSeasonsResponse.toPresentationTvShowSeasonsResponse(),
+    tvShowSeasonImageResponse=tvShowSeasonImageResponse.toPresentationTvShowSeasonImageResponse(),
+    tvShowsSeasonVideosResponse=tvShowsSeasonVideosResponse.toPresentationTvShowsSeasonVideosResponse()
+)

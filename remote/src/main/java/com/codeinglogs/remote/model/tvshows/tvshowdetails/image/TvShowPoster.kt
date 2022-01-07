@@ -1,4 +1,5 @@
 package com.codeinglogs.remote.model.tvshows.tvshowdetails.image
+
 import com.codeinglogs.data.model.tvshow.tvshowdetails.image.TvShowPoster as DataTvShowPoster
 
 data class TvShowPoster(

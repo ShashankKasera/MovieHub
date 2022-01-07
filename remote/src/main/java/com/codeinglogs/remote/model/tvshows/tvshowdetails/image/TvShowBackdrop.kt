@@ -1,4 +1,5 @@
 package com.codeinglogs.remote.model.tvshows.tvshowdetails.image
+
 import com.codeinglogs.data.model.tvshow.tvshowdetails.image.TvShowBackdrop as DataTvShowBackdrop
 
 data class TvShowBackdrop(

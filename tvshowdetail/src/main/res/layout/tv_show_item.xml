@@ -55,7 +55,7 @@
         </androidx.cardview.widget.CardView>
 
         <TextView
-            android:id="@+id/tv_year"
+            android:id="@+id/tv_tv_show_year"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
@@ -76,7 +76,7 @@
             android:textSize="20dp"
             app:layout_constraintEnd_toStartOf="@+id/guideline3"
             app:layout_constraintStart_toEndOf="@+id/cv_tv_show"
-            app:layout_constraintTop_toBottomOf="@+id/tv_year" />
+            app:layout_constraintTop_toBottomOf="@+id/tv_tv_show_year" />
 
         <View
             android:id="@+id/line_tv_show"
