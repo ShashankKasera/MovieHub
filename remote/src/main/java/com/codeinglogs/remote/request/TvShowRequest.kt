@@ -1,5 +1,6 @@
 package com.codeinglogs.remote.request
 
+import com.codeinglogs.remote.model.movies.movieslist.MoviesListResponse
 import com.codeinglogs.remote.model.tvshows.tvshowseasondetails.seasonimage.TvShowSeasonImageResponse
 import com.codeinglogs.remote.model.tvshows.tvshowdetails.credits.TvShowCreditsResponse
 import com.codeinglogs.remote.model.tvshows.tvshowdetails.image.TvShowImageResponse
@@ -13,6 +14,7 @@ import com.codeinglogs.remote.model.tvshows.tvshowseasondetails.seasonvideo.TvSh
 import com.codeinglogs.remote.model.tvshows.tvshowslist.TvShowsListResponse
 import retrofit2.http.GET
 import retrofit2.http.Path
+import retrofit2.http.Query
 
 interface TvShowRequest {
 
@@ -24,6 +26,9 @@ interface TvShowRequest {
 
     @GET("tv/top_rated")
     suspend fun getTopRatedTvShow(): TvShowsListResponse
+
+    @GET("trending/all/day")
+    suspend fun getTrendingTvShow(@Query("page") page : Int): TvShowsListResponse
 
     @GET("tv/{id}")
     suspend fun getTvShowInfo(@Path("id")id : String) : TvShowInfoResponse

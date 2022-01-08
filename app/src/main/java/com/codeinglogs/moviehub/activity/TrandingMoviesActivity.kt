@@ -26,7 +26,7 @@ class TrandingMoviesActivity : BaseActivity<TrendingMoviesViewModel, ActivityTra
     override val mViewModel: TrendingMoviesViewModel by viewModels()
     override fun getViewBinding() = ActivityTrandingMoviesBinding.inflate(layoutInflater)
 
-//    lateinit var adapter: TrendingMoviesAdapter
+    //lateinit var adapter: TrendingMoviesAdapter
     lateinit var adapter: MoviesPrimaryAdapter
 
     override fun onBinding() {

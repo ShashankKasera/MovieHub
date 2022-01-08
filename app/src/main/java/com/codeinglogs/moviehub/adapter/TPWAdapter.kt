@@ -24,7 +24,6 @@ class TPWAdapter(): PagingDataAdapter<Movies, TPWAdapter.TPWViewHolder>(
             binding.textViewUserName.text = data?.title
             data?.poster_path?.let {
                 binding.imageView.load("https://image.tmdb.org/t/p/w500"+it,true)
-//                Picasso.get().load("https://image.tmdb.org/t/p/w500"+it).into(binding.imageView)
             }
         }
     }
