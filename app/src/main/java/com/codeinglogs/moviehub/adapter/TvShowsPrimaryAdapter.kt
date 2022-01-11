@@ -10,6 +10,7 @@ import com.codeinglogs.core.extension.load
 import com.codeinglogs.moviehub.constant.IMAGE_BASE_URL_500
 import com.codeinglogs.moviehub.databinding.MoviesAndTvShowPrimaryItemBinding
 import com.codeinglogs.presentation.model.tvshow.tvshowslist.TvShow
+import com.codeinglogs.tvshowdetail.ui.activity.TvShowDetailsActivity
 import com.squareup.picasso.Picasso
 
 class TvShowsPrimaryAdapter : ListAdapter<TvShow, TvShowsPrimaryAdapter.TvShowsPrimaryViewHolder>(DriftUtils) {
@@ -30,15 +31,10 @@ class TvShowsPrimaryAdapter : ListAdapter<TvShow, TvShowsPrimaryAdapter.TvShowsP
 
     inner class TvShowsPrimaryViewHolder(var binding : MoviesAndTvShowPrimaryItemBinding) : RecyclerView.ViewHolder(binding.root) {
         init {
-//            binding.textView.setOnClickListener {
-//                action.onTMovieClick(getItem(layoutPosition))
-//            }
-//            binding.textView2.setOnClickListener {
-//                action.onUMovieClick()
-//            }
-//            binding.textView3.setOnClickListener {
-//                var x = callback(10)
-//            }
+             binding.ivMovieImage.setOnClickListener {
+
+                binding.root.context.startActivity(TvShowDetailsActivity.getInstance(binding.root.context,getItem(layoutPosition).id.toString()))
+            }
         }
         fun bind(){
             val data = getItem(layoutPosition)

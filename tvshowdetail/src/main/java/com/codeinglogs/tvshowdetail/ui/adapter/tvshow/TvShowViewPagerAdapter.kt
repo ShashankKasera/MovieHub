@@ -6,7 +6,7 @@ import androidx.lifecycle.Lifecycle
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.codeinglogs.tvshowdetail.ui.fragment.tvshow.TvShowCastFragment
 import com.codeinglogs.tvshowdetail.ui.fragment.tvshow.TvShowInfoFragment
-import com.codeinglogs.tvshowdetail.ui.fragment.tvshowseason.TvShowReviewsFragment
+import com.codeinglogs.tvshowdetail.ui.fragment.tvshow.TvShowReviewsFragment
 import com.codeinglogs.tvshowdetail.ui.fragment.tvshow.TvShowSimilarFragment
 
 class TvShowViewPagerAdapter(fragmentManager: FragmentManager, lifecycal:Lifecycle):FragmentStateAdapter(fragmentManager,lifecycal) {

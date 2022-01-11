@@ -22,7 +22,7 @@ class MovieHubActivity : BaseActivity<TrendingMoviesViewModel, ActivityMovieHubB
     override fun onBinding() {
         val navHostFragment=supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
         navController=navHostFragment.navController
-        setupActionBarWithNavController(navController)
+        //setupActionBarWithNavController(navController)
         mViewBinding.bottomNavView.setupWithNavController(navController)
     }
 

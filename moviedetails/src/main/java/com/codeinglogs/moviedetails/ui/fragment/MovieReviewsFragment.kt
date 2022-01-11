@@ -4,20 +4,31 @@ import android.util.Log
 import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.codeinglogs.core.base.BaseFragment
-import com.codeinglogs.moviedetails.ui.adapter.CastAdapter
-import com.codeinglogs.moviedetails.databinding.FragmentCastBinding
+import com.codeinglogs.moviedetails.databinding.FragmentMovieReviewsBinding
+import com.codeinglogs.moviedetails.ui.adapter.MovieReviewAdapter
 import com.codeinglogs.presentation.model.State
 import com.codeinglogs.presentation.viewmodel.moviedetail.MovieDetailViewModel
 
-private const val TAG = "123CastFragment"
 
-class CastFragment : BaseFragment<MovieDetailViewModel, FragmentCastBinding>() {
+private const val TAG = "123ReviewsFragment"
+class MovieReviewsFragment : BaseFragment<MovieDetailViewModel,FragmentMovieReviewsBinding>() {
 
-    private lateinit var castAdapter: CastAdapter
+    private lateinit var movieReviewAdapter: MovieReviewAdapter
+
     override val mViewModel: MovieDetailViewModel by activityViewModels()
+    override fun getViewBinding() = FragmentMovieReviewsBinding.inflate(layoutInflater)
 
     override fun onBinding() {
 
+        init()
+        movieReviewsObserve()
+    }
+
+    private fun init() {
+        setUpReviewAdapter()
+    }
+
+    private fun movieReviewsObserve() {
         mViewModel.movieDetails.observe(this){
             it.peekContent().let{it ->
                 when(it){
@@ -33,9 +44,8 @@ class CastFragment : BaseFragment<MovieDetailViewModel, FragmentCastBinding>() {
                         Log.i(TAG, "Success: MovieDetailActivity ${it.data}")
 
                         showProgressBar(false)
-
-                        setUpCastAdapter()
-                        castAdapter.submitList(it.data.movieCreditsResponse.cast)
+                        Log.i(TAG, "onBinding: ${it.data.movieReviewsResponse.results}")
+                        movieReviewAdapter.submitList(it.data.movieReviewsResponse.results)
 
                     }
                 }
@@ -43,15 +53,12 @@ class CastFragment : BaseFragment<MovieDetailViewModel, FragmentCastBinding>() {
         }
     }
 
-    private fun setUpCastAdapter() {
-        castAdapter = CastAdapter()
-        mViewBinding.rvMovieCast.layoutManager= LinearLayoutManager(context,
-            LinearLayoutManager.VERTICAL,false)
-        mViewBinding.rvMovieCast.adapter=this.castAdapter
-
+    private fun setUpReviewAdapter() {
+        movieReviewAdapter = MovieReviewAdapter()
+        mViewBinding.rvMovieReview.layoutManager= LinearLayoutManager(context, LinearLayoutManager.VERTICAL,false)
+        mViewBinding.rvMovieReview.adapter=this.movieReviewAdapter
 
     }
-    override fun getViewBinding() = FragmentCastBinding.inflate(layoutInflater)
 
 
 }

@@ -7,7 +7,7 @@ import androidx.activity.viewModels
 import com.codeinglogs.core.PicassoImageLoadingService
 import com.codeinglogs.core.SliderAdapter
 import com.codeinglogs.core.base.BaseActivity
-import com.codeinglogs.moviedetails.ui.adapter.ViewPagerAdapter
+import com.codeinglogs.moviedetails.ui.adapter.MovieViewPagerAdapter
 import com.codeinglogs.moviedetails.databinding.ActivityMovieDetailBinding
 import com.codeinglogs.moviehub.constant.IMAGE_BASE_URL_YOUTUBE
 import com.codeinglogs.moviehub.constant.IMAGE_back_YOUTUBE
@@ -23,18 +23,17 @@ private const val TAG = "123MovieDetailActivity"
 @AndroidEntryPoint
 class MovieDetailActivity : BaseActivity<MovieDetailViewModel, ActivityMovieDetailBinding>() {
 
-    lateinit var adapter:ViewPagerAdapter
+    lateinit var adapterMovie:MovieViewPagerAdapter
     override val mViewModel: MovieDetailViewModel by viewModels()
 
     override fun getViewBinding()= ActivityMovieDetailBinding.inflate(layoutInflater)
 
     override fun onBinding() {
+        init()
+        movieDetailObserve()
+    }
 
-        setUpToolbar()
-        setUpTabLayout()
-
-        mViewModel.getMovieDetails("646380")
-
+    private fun movieDetailObserve() {
         mViewModel.movieDetails.observe(this){
             it.contentIfNotHandled?.let{it ->
                 when(it){
@@ -49,7 +48,6 @@ class MovieDetailActivity : BaseActivity<MovieDetailViewModel, ActivityMovieDeta
                     is State.Success -> {
                         Log.i(TAG, "Success: MovieDetailActivity ${it.data}")
                         showProgressBar(false)
-
                         addSlider(mViewBinding.bsMovieMovieDet,it.data.MovieVideosResponse.results)
                     }
                 }
@@ -57,6 +55,17 @@ class MovieDetailActivity : BaseActivity<MovieDetailViewModel, ActivityMovieDeta
         }
     }
 
+    private fun init(){
+        setUpToolbar()
+        setUpTabLayout()
+
+        val movieId = intent.getStringExtra(MOVIE_ID)
+        Log.i(TAG, "init: "+movieId)
+        movieId?.let {
+            mViewModel.getMovieDetails(it)
+        }
+
+    }
 
     private  fun addSlider (slider: Slider, results: List<MovieVideo>, ) {
 
@@ -73,16 +82,14 @@ class MovieDetailActivity : BaseActivity<MovieDetailViewModel, ActivityMovieDeta
 
     private fun setUpTabLayout(){
 
-        adapter=ViewPagerAdapter(supportFragmentManager,lifecycle)
-
-        mViewBinding.vp2MovieDet.adapter=adapter
-
+        adapterMovie=MovieViewPagerAdapter(supportFragmentManager,lifecycle)
+        mViewBinding.vp2MovieDet.adapter=adapterMovie
         TabLayoutMediator(mViewBinding.tlMovieDet, mViewBinding.vp2MovieDet){tab,position->
             when(position){
                 0-> tab.text="Info"
                 1-> tab.text="Cast"
                 2-> tab.text="Reviews"
-                3-> tab.text="Similer"
+                3-> tab.text="Similar"
             }
         }.attach()
     }
@@ -90,8 +97,14 @@ class MovieDetailActivity : BaseActivity<MovieDetailViewModel, ActivityMovieDeta
     private fun setUpToolbar(){
         mViewBinding.collapsingToolbar.setTitle("Tv Show Detail")
     }
+
     companion object{
-        fun getInstance(context: Context) = Intent(context, MovieDetailActivity::class.java)
+        const val MOVIE_ID = "movieId"
+
+        fun getInstance(context: Context,movieId : String) = Intent(context, MovieDetailActivity::class.java)
+            .apply {
+            putExtra(MOVIE_ID,movieId)
+        }
     }
 
 }

@@ -29,6 +29,9 @@ object Versions {
     //retrofit
     const val RETROFIT = "2.9.0"
 
+    //retrofit
+    const val RETROFIT_LOGGING = "4.9.3"
+
     //coroutines
     const val COROUTINE = "1.3.9"
 

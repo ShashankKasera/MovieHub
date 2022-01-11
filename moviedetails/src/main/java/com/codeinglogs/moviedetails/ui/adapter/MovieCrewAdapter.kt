@@ -10,7 +10,7 @@ import com.codeinglogs.moviedetails.databinding.CrewItemBinding
 import com.codeinglogs.presentation.model.movies.moviedetail.credits.MovieCrew
 import com.codeinglogs.presentation.model.movies.movieslist.Movies
 
-class CrewAdapter() : ListAdapter<MovieCrew, CrewAdapter.ViewHolder>(
+class MovieCrewAdapter() : ListAdapter<MovieCrew, MovieCrewAdapter.MovieCrewViewHolder>(
     DriftUtils
 ){
 
@@ -37,7 +37,7 @@ class CrewAdapter() : ListAdapter<MovieCrew, CrewAdapter.ViewHolder>(
             return 8
     }
 
-    inner class ViewHolder(var binding : CrewItemBinding) : RecyclerView.ViewHolder(binding.root) {
+    inner class MovieCrewViewHolder(var binding : CrewItemBinding) : RecyclerView.ViewHolder(binding.root) {
         init {
         }
         fun bind(position: Int) {
@@ -48,9 +48,9 @@ class CrewAdapter() : ListAdapter<MovieCrew, CrewAdapter.ViewHolder>(
         }
     }
 
-    override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int) = ViewHolder(CrewItemBinding.inflate(LayoutInflater.from(viewGroup.context),viewGroup,false))
+    override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int) = MovieCrewViewHolder(CrewItemBinding.inflate(LayoutInflater.from(viewGroup.context),viewGroup,false))
 
-    override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) = viewHolder.bind(position)
+    override fun onBindViewHolder(viewHolder: MovieCrewViewHolder, position: Int) = viewHolder.bind(position)
 
     interface Actions {
         fun onTMovieClick(data : Movies)

@@ -11,9 +11,7 @@ import com.codeinglogs.moviehub.constant.IMAGE_BASE_URL_500
 import com.codeinglogs.presentation.model.movies.moviedetail.similar.MovieSimilar
 import com.codeinglogs.presentation.model.movies.movieslist.Movies
 
-class SimilarAdapter() : ListAdapter<MovieSimilar, SimilarAdapter.ViewHolder>(
-    DriftUtils
-){
+class MovieSimilarAdapter() : ListAdapter<MovieSimilar, MovieSimilarAdapter.ViewHolder>(DriftUtils){
 
     init {
 
@@ -32,7 +30,12 @@ class SimilarAdapter() : ListAdapter<MovieSimilar, SimilarAdapter.ViewHolder>(
     }
 
 
-    inner class ViewHolder(var binding : MovieItemBinding) : RecyclerView.ViewHolder(binding.root) {
+
+    override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int) = ViewHolder(MovieItemBinding.inflate(LayoutInflater.from(viewGroup.context),viewGroup,false))
+
+    override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) = viewHolder.bind(position)
+
+    inner class ViewHolder(val binding : MovieItemBinding) : RecyclerView.ViewHolder(binding.root) {
         init {
         }
         fun bind(position: Int) {
@@ -46,10 +49,6 @@ class SimilarAdapter() : ListAdapter<MovieSimilar, SimilarAdapter.ViewHolder>(
                 binding.tvYear.text=data.release_date
         }
     }
-
-    override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int) = ViewHolder(MovieItemBinding.inflate(LayoutInflater.from(viewGroup.context),viewGroup,false))
-
-    override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) = viewHolder.bind(position)
 
     interface Actions {
         fun onTMovieClick(data : Movies)

@@ -1,4 +1,4 @@
-package com.codeinglogs.tvshowdetail.ui.fragment.tvshowseason
+package com.codeinglogs.tvshowdetail.ui.fragment.tvshow
 
 import android.util.Log
 import androidx.fragment.app.activityViewModels
@@ -11,16 +11,28 @@ import com.codeinglogs.tvshowdetail.ui.adapter.tvshow.TvShowReviewAdapter
 
 class TvShowReviewsFragment : BaseFragment<TvShowDetailViewModel, FragmentTvShowReviewsBinding>(){
 
-    override val mViewModel: TvShowDetailViewModel by activityViewModels()
-
-    override fun getViewBinding() = FragmentTvShowReviewsBinding.inflate(layoutInflater)
-
     private lateinit var tvShowReviewAdapter: TvShowReviewAdapter
+
+    override val mViewModel: TvShowDetailViewModel by activityViewModels()
+    override fun getViewBinding() = FragmentTvShowReviewsBinding.inflate(layoutInflater)
 
     override fun onBinding() {
 
-        setUpTvShowReviewAdapter()
+        init()
+        tvShowReviewsObserve()
+    }
 
+    private fun init(){
+        setUpTvShowReviewAdapter()
+    }
+
+    private fun setUpTvShowReviewAdapter() {
+        tvShowReviewAdapter = TvShowReviewAdapter()
+        mViewBinding.rvTvShowReview.layoutManager= LinearLayoutManager(context, LinearLayoutManager.VERTICAL,false)
+        mViewBinding.rvTvShowReview.adapter=this.tvShowReviewAdapter
+    }
+
+    private fun tvShowReviewsObserve(){
         mViewModel.tvShowDetails.observe(this){
             it.peekContent().let{it ->
                 when(it){
@@ -44,13 +56,4 @@ class TvShowReviewsFragment : BaseFragment<TvShowDetailViewModel, FragmentTvShow
             }
         }
     }
-
-    private fun setUpTvShowReviewAdapter() {
-        tvShowReviewAdapter = TvShowReviewAdapter()
-        mViewBinding.rvTvShowReview.layoutManager= LinearLayoutManager(context, LinearLayoutManager.VERTICAL,false)
-        mViewBinding.rvTvShowReview.adapter=this.tvShowReviewAdapter
-
-
-    }
-
 }

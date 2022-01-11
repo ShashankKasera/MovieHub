@@ -14,12 +14,30 @@ import com.codeinglogs.tvshowdetail.databinding.FragmentTvShowSimilarBinding
 class TvShowSimilarFragment : BaseFragment<TvShowDetailViewModel, FragmentTvShowSimilarBinding>() {
 
     private lateinit var tvShowSimilarAdapter: TvShowSimilarAdapter
-    override val mViewModel: TvShowDetailViewModel by activityViewModels()
 
+    override val mViewModel: TvShowDetailViewModel by activityViewModels()
     override fun getViewBinding() = FragmentTvShowSimilarBinding.inflate(layoutInflater)
 
     override fun onBinding() {
 
+        init()
+        tvShowSimilarObserve()
+    }
+
+    private fun init(){
+        setUpSimilarAdapter()
+    }
+
+    private fun setUpSimilarAdapter() {
+        tvShowSimilarAdapter = TvShowSimilarAdapter()
+        mViewBinding.rvTvShowSimiler.layoutManager= LinearLayoutManager(context,
+            LinearLayoutManager.VERTICAL,false)
+        mViewBinding.rvTvShowSimiler.adapter=this.tvShowSimilarAdapter
+
+
+    }
+
+    private fun tvShowSimilarObserve(){
         mViewModel.tvShowDetails.observe(this){
             it.peekContent().let{it ->
                 when(it){
@@ -36,7 +54,6 @@ class TvShowSimilarFragment : BaseFragment<TvShowDetailViewModel, FragmentTvShow
 
                         showProgressBar(false)
 
-                        setUpSimilarAdapter()
                         tvShowSimilarAdapter.submitList(it.data.tvShowSimilarResponse.results)
 
                     }
@@ -44,15 +61,5 @@ class TvShowSimilarFragment : BaseFragment<TvShowDetailViewModel, FragmentTvShow
             }
         }
     }
-
-    private fun setUpSimilarAdapter() {
-        tvShowSimilarAdapter = TvShowSimilarAdapter()
-        mViewBinding.rvTvShowSimiler.layoutManager= LinearLayoutManager(context,
-            LinearLayoutManager.VERTICAL,false)
-        mViewBinding.rvTvShowSimiler.adapter=this.tvShowSimilarAdapter
-
-
-    }
-
 
 }

@@ -6,10 +6,10 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.codeinglogs.core.base.BaseFragment
 import com.codeinglogs.core.extension.load
-import com.codeinglogs.moviedetails.ui.adapter.GenresAdapter
-import com.codeinglogs.moviedetails.ui.adapter.VideoAdapter
-import com.codeinglogs.moviedetails.databinding.FragmentInfoBinding
-import com.codeinglogs.moviedetails.ui.adapter.CrewAdapter
+import com.codeinglogs.moviedetails.databinding.FragmentMovieInfosBinding
+import com.codeinglogs.moviedetails.ui.adapter.MovieGenresAdapter
+import com.codeinglogs.moviedetails.ui.adapter.MovieVideoAdapter
+import com.codeinglogs.moviedetails.ui.adapter.MovieCrewAdapter
 import com.codeinglogs.moviehub.constant.IMAGE_BASE_URL_500
 import com.codeinglogs.presentation.model.State
 import com.codeinglogs.presentation.model.movies.moviedetail.MovieDetailsDisplay
@@ -18,16 +18,28 @@ import com.codeinglogs.presentation.viewmodel.moviedetail.MovieDetailViewModel
 
 private const val TAG = "123InfoFragment"
 
-class InfoFragment : BaseFragment<MovieDetailViewModel, FragmentInfoBinding>(){
+class MovieInfoFragment : BaseFragment<MovieDetailViewModel, FragmentMovieInfosBinding>(){
 
-    private lateinit var genresAdapter: GenresAdapter
-    private lateinit var videoAdapter: VideoAdapter
-    private lateinit var crewAdapter: CrewAdapter
+    private lateinit var movieGenresAdapter: MovieGenresAdapter
+    private lateinit var movieVideoAdapter: MovieVideoAdapter
+    private lateinit var movieCrewAdapter: MovieCrewAdapter
 
     override val mViewModel: MovieDetailViewModel by activityViewModels()
+    override fun getViewBinding() = FragmentMovieInfosBinding.inflate(layoutInflater)
 
     override fun onBinding() {
 
+        init()
+        movieInfoObserve()
+    }
+
+    private fun init() {
+        setUpGenresAdapter()
+        setUpCrewAdapter()
+        setUpVideoAdapter()
+    }
+
+    private fun movieInfoObserve(){
         mViewModel.movieDetails.observe(this){
             it.peekContent()?.let{it ->
                 when(it){
@@ -69,9 +81,8 @@ class InfoFragment : BaseFragment<MovieDetailViewModel, FragmentInfoBinding>(){
             mViewBinding.tvYearMovieInfo.text=it.data.movieInfoResponse.release_date.substring(0,4)
         else
             mViewBinding.tvYearMovieInfo.text=it.data.movieInfoResponse.release_date
-        setUpGenresAdapter()
 
-        genresAdapter.submitList(it.data.movieInfoResponse.genres)
+        movieGenresAdapter.submitList(it.data.movieInfoResponse.genres)
     }
 
     private fun convertNumberToHoursMinutes(runtime:Int):kotlin.String{
@@ -80,44 +91,37 @@ class InfoFragment : BaseFragment<MovieDetailViewModel, FragmentInfoBinding>(){
 
         return "$hours Hours: $mins Minutes"
     }
+
     private fun setUpGenresAdapter() {
-        genresAdapter = GenresAdapter()
+        movieGenresAdapter = MovieGenresAdapter()
         mViewBinding.rvMovieTypeMovieInfo.layoutManager= LinearLayoutManager(context,LinearLayoutManager.HORIZONTAL,false)
-        mViewBinding.rvMovieTypeMovieInfo.adapter=this.genresAdapter
+        mViewBinding.rvMovieTypeMovieInfo.adapter=this.movieGenresAdapter
 
 
     }
 
-
-    private  fun  setCrew(it: State.Success<MovieDetailsDisplay>) {
-
-        setUpCrewAdapter()
-
-        crewAdapter.submitList(it.data.movieCreditsResponse.crew)
-
-        Log.i(TAG, "setCrew: ${it.data.movieCreditsResponse.crew}")
+    private fun setCrew(it: State.Success<MovieDetailsDisplay>) {
+        movieCrewAdapter.submitList(it.data.movieCreditsResponse.crew)
     }
 
     private fun setUpCrewAdapter() {
-        crewAdapter = CrewAdapter()
+        movieCrewAdapter = MovieCrewAdapter()
         mViewBinding.rvCrewMovieInfo.layoutManager= GridLayoutManager(context,2)
-        mViewBinding.rvCrewMovieInfo.adapter=this.crewAdapter
+        mViewBinding.rvCrewMovieInfo.adapter=this.movieCrewAdapter
 
 
     }
 
     private fun setTrailer(it: State.Success<MovieDetailsDisplay>){
-
-        setUpVideoAdapter()
-        videoAdapter.submitList(it.data.MovieVideosResponse.results)
-
+        movieVideoAdapter.submitList(it.data.MovieVideosResponse.results)
     }
 
     private fun setUpVideoAdapter() {
-        videoAdapter = VideoAdapter()
+        movieVideoAdapter = MovieVideoAdapter()
         mViewBinding.rvVideoMovieInfo.layoutManager= LinearLayoutManager(context,LinearLayoutManager.HORIZONTAL,false)
-        mViewBinding.rvVideoMovieInfo.adapter=this.videoAdapter
+        mViewBinding.rvVideoMovieInfo.adapter=this.movieVideoAdapter
     }
+
     private fun setFact(it: State.Success<MovieDetailsDisplay>){
         mViewBinding.tvTitleFactMovieInfo.text=it.data.movieInfoResponse.title
         mViewBinding.tvStatusFactMovieInfo.text=it.data.movieInfoResponse.status
@@ -149,5 +153,5 @@ class InfoFragment : BaseFragment<MovieDetailViewModel, FragmentInfoBinding>(){
         }
         mViewBinding.tvProductionCompaniesMovieInfo.text=production_companies
     }
-    override fun getViewBinding() = FragmentInfoBinding.inflate(layoutInflater)
+
 }

@@ -1,5 +1,6 @@
 package com.codeinglogs.remote.datarepositoryimp
 
+import android.util.Log
 import com.codeinglogs.data.model.State
 import com.codeinglogs.data.model.tvshow.tvshowseasondetails.TvShowSeasonDetailsDisplay
 import com.codeinglogs.data.repository.tvshowseasondetails.RemoteTvShowSeasonDetailsData
@@ -30,6 +31,10 @@ class RemoteTvShowSeasonDetailsDataRepositoryImp @Inject constructor (private va
             val tvShowSeasonImage = async { tvShowRequest.getTvShowSeasonImages(id,season_number)}
             val tvShowSeasonVideo = async { tvShowRequest.getTvShowSeasonVideos(id,season_number)}
 
+            Log.i("jfwjkwgn", "getTvShowSeasonDetails: ${tvShowSeasonInfo.await()}")
+            Log.i("jfwjkwgn", "getTvShowSeasonDetails: ${tvShowSeasonCredits}")
+            Log.i("jfwjkwgn", "getTvShowSeasonDetails: ${tvShowSeasonImage}")
+            Log.i("jfwjkwgn", "getTvShowSeasonDetails: ${tvShowSeasonVideo}")
             TvShowSeasonDetailsDisplay(
                 tvShowSeasonCredits.await().toDataTvShowSeasonsCreditsResponse(),
                 tvShowSeasonInfo.await().toDataTvShowSeasonsResponse(),

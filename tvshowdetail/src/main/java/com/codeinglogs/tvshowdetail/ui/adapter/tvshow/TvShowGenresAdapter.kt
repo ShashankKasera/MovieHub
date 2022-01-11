@@ -9,7 +9,7 @@ import com.codeinglogs.presentation.model.tvshow.tvshowdetails.info.TvShowGenre
 import com.codeinglogs.presentation.model.tvshow.tvshowslist.TvShow
 import com.codeinglogs.tvshowdetail.databinding.TvShowGenresItemBinding
 
-class TvShowGenresAdapter() : ListAdapter<TvShowGenre, TvShowGenresAdapter.ViewHolder>(
+class TvShowGenresAdapter() : ListAdapter<TvShowGenre, TvShowGenresAdapter.TvShowGenresViewHolder>(
     DriftUtils
 ){
 
@@ -30,7 +30,7 @@ class TvShowGenresAdapter() : ListAdapter<TvShowGenre, TvShowGenresAdapter.ViewH
     }
 
 
-    inner class ViewHolder(var binding : TvShowGenresItemBinding) : RecyclerView.ViewHolder(binding.root) {
+    inner class TvShowGenresViewHolder(var binding : TvShowGenresItemBinding) : RecyclerView.ViewHolder(binding.root) {
         init {
         }
         fun bind(position: Int) {
@@ -39,9 +39,9 @@ class TvShowGenresAdapter() : ListAdapter<TvShowGenre, TvShowGenresAdapter.ViewH
         }
     }
 
-    override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int) = ViewHolder(TvShowGenresItemBinding.inflate(LayoutInflater.from(viewGroup.context),viewGroup,false))
+    override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int) = TvShowGenresViewHolder(TvShowGenresItemBinding.inflate(LayoutInflater.from(viewGroup.context),viewGroup,false))
 
-    override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) = viewHolder.bind(position)
+    override fun onBindViewHolder(viewHolder: TvShowGenresViewHolder, position: Int) = viewHolder.bind(position)
 
     interface Actions {
         fun onTTvShowClick(data : TvShow)

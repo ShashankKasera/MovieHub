@@ -6,7 +6,6 @@ import com.codeinglogs.domain.model.movies.moviedetail.info.MovieProductionCompa
 
 data class MovieInfoResponse(
     val backdrop_path: String,
-    val belongs_to_collection: String,
     val budget: Int,
     val production_companies: List<MovieProductionCompanies>,
     val genres: List<MovieGener>,
@@ -33,7 +32,6 @@ fun DomainMovieInfoResponse.toPresentationMovieInfoResponse()= MovieInfoResponse
 
     production_companies=production_companies.toPresentationProductionCompanies(),
     backdrop_path=backdrop_path,
-    belongs_to_collection=belongs_to_collection,
     budget=budget ,
     genres=genres.toPresentationGener(),
     homepage=homepage,

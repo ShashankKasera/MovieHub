@@ -1,7 +1,5 @@
 package com.codeinglogs.tvshowdetail.ui.fragment.tvshowseason
 
-import android.os.Parcel
-import android.os.Parcelable
 import android.util.Log
 import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.GridLayoutManager
@@ -15,27 +13,30 @@ import com.codeinglogs.tvshowdetail.ui.adapter.tvshowseason.TvShowSeasonCrewAdap
 import com.codeinglogs.tvshowdetail.ui.adapter.tvshowseason.TvShowSeasonPosterAdapter
 import com.codeinglogs.tvshowdetail.ui.adapter.tvshowseason.TvShowSeasonVideoAdapter
 
-class TvShowSeasonInfoFragment() : BaseFragment<TvShowSeasonDetailsViewModel, FragmentTvShowSeasonInfoBinding>(),
-    Parcelable {
+
+class TvShowSeasonInfoFragment() : BaseFragment<TvShowSeasonDetailsViewModel, FragmentTvShowSeasonInfoBinding>(){
 
     private lateinit var tvShowSeasonVideoAdapter: TvShowSeasonVideoAdapter
     private lateinit var tvShowSeasonPosterAdapter: TvShowSeasonPosterAdapter
     private lateinit var tvShowSeasonCrewAdapter: TvShowSeasonCrewAdapter
+
     override val mViewModel: TvShowSeasonDetailsViewModel by activityViewModels()
-
-    constructor(parcel: Parcel) : this() {
-
-    }
-
     override fun getViewBinding() = FragmentTvShowSeasonInfoBinding.inflate(layoutInflater)
-
 
     override fun onBinding() {
 
-        setUpTvShowSeasonDetails()
+        init()
+        tvShowSeasonDetailsObserve()
 
     }
-    private fun setUpTvShowSeasonDetails(){
+
+    private fun init() {
+        setUpCrewAdapter()
+        setUpVideoAdapter()
+        setUpPosterAdapter()
+    }
+
+    private fun tvShowSeasonDetailsObserve(){
         mViewModel.tvShowSeasonDetails.observe(this){
             it.peekContent().let{it ->
                 when(it){
@@ -61,6 +62,7 @@ class TvShowSeasonInfoFragment() : BaseFragment<TvShowSeasonDetailsViewModel, Fr
             }
         }
     }
+
     private fun setDetails(it: State.Success<TvShowSeasonDetailsDisplay>){
 
         mViewBinding.tvTvShowNameTvShowSeasonInfo.text=it.data.tvShowSeasonsResponse.name
@@ -74,13 +76,9 @@ class TvShowSeasonInfoFragment() : BaseFragment<TvShowSeasonDetailsViewModel, Fr
     }
 
     private  fun  setCrew(it: State.Success<TvShowSeasonDetailsDisplay>) {
-
-        setUpCrewAdapter()
-
         tvShowSeasonCrewAdapter.submitList(it.data.tvShowSeasonsCreditsResponse.crew)
-
-        Log.i("wkjnv", "setCrew: ${it.data.tvShowSeasonsCreditsResponse.cast}")
     }
+
     private fun setUpCrewAdapter() {
         tvShowSeasonCrewAdapter = TvShowSeasonCrewAdapter()
         mViewBinding.rvCrewTvShowSeasonInfo.layoutManager= GridLayoutManager(context,2)
@@ -90,11 +88,10 @@ class TvShowSeasonInfoFragment() : BaseFragment<TvShowSeasonDetailsViewModel, Fr
     }
 
     private fun setTrailer(it: State.Success<TvShowSeasonDetailsDisplay>){
-
-        setUpVideoAdapter()
         tvShowSeasonVideoAdapter.submitList(it.data.tvShowsSeasonVideosResponse.results)
 
     }
+
     private fun setUpVideoAdapter() {
         tvShowSeasonVideoAdapter = TvShowSeasonVideoAdapter()
         mViewBinding.rvVideoTvShowSeasonInfo.layoutManager= LinearLayoutManager(context,
@@ -103,34 +100,18 @@ class TvShowSeasonInfoFragment() : BaseFragment<TvShowSeasonDetailsViewModel, Fr
     }
 
     private fun setMedia(it: State.Success<TvShowSeasonDetailsDisplay>){
-
-        setUpPosterAdapter()
         tvShowSeasonPosterAdapter.submitList(it.data.tvShowSeasonImageResponse.posters)
 
     }
+
     private fun setUpPosterAdapter() {
         tvShowSeasonPosterAdapter = TvShowSeasonPosterAdapter()
+
+        mViewBinding.rvPosterTvShowSeasonInfo.setNestedScrollingEnabled(false)
         mViewBinding.rvPosterTvShowSeasonInfo.layoutManager= LinearLayoutManager(context,
             LinearLayoutManager.HORIZONTAL,false)
         mViewBinding.rvPosterTvShowSeasonInfo.adapter=this.tvShowSeasonPosterAdapter
-    }
 
-    override fun writeToParcel(parcel: Parcel, flags: Int) {
-
-    }
-
-    override fun describeContents(): Int {
-        return 0
-    }
-
-    companion object CREATOR : Parcelable.Creator<TvShowSeasonInfoFragment> {
-        override fun createFromParcel(parcel: Parcel): TvShowSeasonInfoFragment {
-            return TvShowSeasonInfoFragment(parcel)
-        }
-
-        override fun newArray(size: Int): Array<TvShowSeasonInfoFragment?> {
-            return arrayOfNulls(size)
-        }
     }
 
 }

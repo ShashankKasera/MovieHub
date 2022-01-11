@@ -6,6 +6,7 @@ import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.codeinglogs.core.extension.load
+import com.codeinglogs.moviehub.constant.IMAGE_BASE_URL_500
 import com.codeinglogs.presentation.model.movies.movieslist.Movies
 import com.codeinglogs.presentation.model.tvshow.tvshowdetails.credits.TvShowCast
 import com.codeinglogs.presentation.model.tvshow.tvshowslist.TvShow
@@ -25,7 +26,7 @@ class TvShowPagingAdatper: PagingDataAdapter<TvShow, TvShowPagingAdatper.TvShowP
             val data = getItem(layoutPosition)
             binding.textViewUserName.text = data?.name
             data?.poster_path.let {
-                binding.imageView.load("https://image.tmdb.org/t/p/w500"+it,true)
+                binding.imageView.load(IMAGE_BASE_URL_500+it,true)
             }
         }
     }

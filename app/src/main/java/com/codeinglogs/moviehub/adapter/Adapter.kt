@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.codeinglogs.moviehub.databinding.MovieItemBinding
+import com.codeinglogs.moviedetails.databinding.MoviePagingItemBinding
 import com.codeinglogs.presentation.model.movies.movieslist.Movies
 import com.codeinglogs.presentation.model.person.personlist.Person
 
@@ -30,7 +30,7 @@ class Adapter(val action : Actions, val callback : (data : Int) -> Int) : ListAd
     }
 
 
-    inner class ViewHolder(var binding : MovieItemBinding) : RecyclerView.ViewHolder(binding.root) {
+    inner class ViewHolder(var binding : MoviePagingItemBinding) : RecyclerView.ViewHolder(binding.root) {
         init {
 //            binding.textView.setOnClickListener {
 //                action.onTMovieClick(getItem(layoutPosition))
@@ -49,7 +49,7 @@ class Adapter(val action : Actions, val callback : (data : Int) -> Int) : ListAd
         }
     }
 
-    override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int) = ViewHolder(MovieItemBinding.inflate(LayoutInflater.from(viewGroup.context),viewGroup,false))
+    override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int) = ViewHolder(MoviePagingItemBinding.inflate(LayoutInflater.from(viewGroup.context),viewGroup,false))
 
     override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) = viewHolder.bind()
 

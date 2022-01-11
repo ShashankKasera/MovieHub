@@ -2,28 +2,34 @@ package com.codeinglogs.moviedetails.ui.fragment
 
 import android.util.Log
 import androidx.fragment.app.activityViewModels
-import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.codeinglogs.core.base.BaseFragment
-import com.codeinglogs.moviedetails.databinding.FragmentCastBinding
-import com.codeinglogs.moviedetails.databinding.FragmentReviewsBinding
-import com.codeinglogs.moviedetails.ui.adapter.CastAdapter
-import com.codeinglogs.moviedetails.ui.adapter.ReviewAdapter
+import com.codeinglogs.moviedetails.ui.adapter.MovieCastAdapter
+import com.codeinglogs.moviedetails.databinding.FragmentMovieCastBinding
 import com.codeinglogs.presentation.model.State
 import com.codeinglogs.presentation.viewmodel.moviedetail.MovieDetailViewModel
-import com.codeinglogs.presentation.viewmodel.trendingmovies.TrendingMoviesViewModel
-import kotlin.math.log
 
+private const val TAG = "123CastFragment"
 
-private const val TAG = "123ReviewsFragment"
-class ReviewsFragment : BaseFragment<MovieDetailViewModel, FragmentReviewsBinding>() {
+class MovieCastFragment : BaseFragment<MovieDetailViewModel, FragmentMovieCastBinding>() {
 
-    private lateinit var reviewAdapter: ReviewAdapter
+    private lateinit var movieCastAdapter: MovieCastAdapter
+
     override val mViewModel: MovieDetailViewModel by activityViewModels()
+    override fun getViewBinding() = FragmentMovieCastBinding.inflate(layoutInflater)
+
 
     override fun onBinding() {
 
-        setUpReviewAdapter()
+        init()
+        movieCastObserve()
+    }
+
+    private fun init() {
+        setUpCastAdapter()
+    }
+
+    private fun movieCastObserve(){
 
         mViewModel.movieDetails.observe(this){
             it.peekContent().let{it ->
@@ -40,24 +46,21 @@ class ReviewsFragment : BaseFragment<MovieDetailViewModel, FragmentReviewsBindin
                         Log.i(TAG, "Success: MovieDetailActivity ${it.data}")
 
                         showProgressBar(false)
-                        Log.i(TAG, "onBinding: ${it.data.movieReviewsResponse.results}")
-                        reviewAdapter.submitList(it.data.movieReviewsResponse.results)
+
+                        movieCastAdapter.submitList(it.data.movieCreditsResponse.cast)
 
                     }
                 }
             }
         }
     }
-
-    private fun setUpReviewAdapter() {
-        reviewAdapter = ReviewAdapter()
-        mViewBinding.rvMovieReview.layoutManager= LinearLayoutManager(context, LinearLayoutManager.VERTICAL,false)
-        mViewBinding.rvMovieReview.adapter=this.reviewAdapter
+    private fun setUpCastAdapter() {
+        movieCastAdapter = MovieCastAdapter()
+        mViewBinding.rvMovieCast.layoutManager= LinearLayoutManager(context,
+            LinearLayoutManager.VERTICAL,false)
+        mViewBinding.rvMovieCast.adapter=this.movieCastAdapter
 
 
     }
-
-    override fun getViewBinding() = FragmentReviewsBinding.inflate(layoutInflater)
-
 
 }

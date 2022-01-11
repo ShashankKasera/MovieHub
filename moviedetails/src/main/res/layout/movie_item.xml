@@ -14,7 +14,7 @@
         android:background="@color/colorPrimary">
 
 
-        <androidx.constraintlayout.widget.Guideline
+       <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -111,5 +111,6 @@
             app:layout_constraintBottom_toBottomOf="@+id/line_movie"
             app:layout_constraintEnd_toStartOf="@+id/guideline3"
             app:layout_constraintStart_toEndOf="@+id/iv_star" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

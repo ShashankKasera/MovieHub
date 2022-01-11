@@ -1,24 +1,10 @@
 package com.codeinglogs.core.di.remotemodule
 
 import android.content.Context
-import com.codeinglogs.data.domainrepositoryimp.*
-import com.codeinglogs.data.repository.home.RemoteHomeData
-import com.codeinglogs.data.repository.trendingmovies.RemoteTrendingMoviesData
-import com.codeinglogs.data.repository.person.RemotePersonData
-import com.codeinglogs.data.repository.trendingtvshow.RemoteTrendingTvShowData
-import com.codeinglogs.data.store.home.HomeDataSore
-import com.codeinglogs.data.store.home.HomeRemoteDataSore
-import com.codeinglogs.data.store.person.PersonDataSore
-import com.codeinglogs.data.store.person.PersonDataSoreImpl
-import com.codeinglogs.data.store.trendingmovies.TrendingMoviesDataSore
-import com.codeinglogs.data.store.trendingmovies.TrendingMoviesDataSoreImpl
-import com.codeinglogs.data.store.trendingtvshow.TrendingTvShowDataSore
-import com.codeinglogs.data.store.trendingtvshow.TrendingTvShowDataSoreImpl
-import com.codeinglogs.domain.repository.*
-import com.codeinglogs.remote.datarepositoryimp.*
-import com.codeinglogs.remote.request.PersonRequest
 import com.codeinglogs.remote.request.MoviesRequest
+import com.codeinglogs.remote.request.PersonRequest
 import com.codeinglogs.remote.request.TvShowRequest
+import com.codeinglogs.remote.util.nerwork.API_KEY
 import com.codeinglogs.remote.util.nerwork.BASE_URL
 import com.codeinglogs.remote.util.nerwork.NetworkInterceptor
 import dagger.Module
@@ -26,7 +12,10 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
+import okhttp3.Interceptor
 import okhttp3.OkHttpClient
+import okhttp3.Response
+import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Named
@@ -45,7 +34,14 @@ object RemoteCoreModule {
     @Provides
     @Singleton
     fun getOkHttp(@ApplicationContext appContext: Context) = OkHttpClient.Builder()
-        .addInterceptor(NetworkInterceptor(appContext))
+        //.addInterceptor(NetworkInterceptor(appContext))
+        .addNetworkInterceptor(Interceptor { chain ->
+            val originalRequest = chain.request()
+            val newHttpUrl = originalRequest.url.newBuilder().addQueryParameter("api_key", API_KEY).build()
+            val newRequest = originalRequest.newBuilder().url(newHttpUrl).build()
+            chain.proceed(newRequest)
+        })
+        .addNetworkInterceptor(HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY))
         .build()
 
     @Singleton

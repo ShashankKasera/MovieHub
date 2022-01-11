@@ -1,4 +1,4 @@
-package com.codeinglogs.tvshowdetail.ui.adapter.tvshowseason
+package com.codeinglogs.tvshowdetail.ui.adapter.tvshow
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -10,14 +10,13 @@ import com.codeinglogs.moviehub.constant.IMAGE_BASE_URL_500
 import com.codeinglogs.presentation.model.tvshow.tvshowdetails.info.TvShowSeason
 import com.codeinglogs.presentation.model.tvshow.tvshowslist.TvShow
 import com.codeinglogs.tvshowdetail.databinding.TvShowSeasonsBinding
+import com.codeinglogs.tvshowdetail.ui.activity.TvShowSeasonDetailsActivity
 
-class TvShowSeasonsAdapter() : ListAdapter<TvShowSeason, TvShowSeasonsAdapter.ViewHolder>(
+class TvShowSeasonsAdapter(val id:String) : ListAdapter<TvShowSeason, TvShowSeasonsAdapter.TvShowSeasonsViewHolder>(
     DriftUtils
 ){
 
-    init {
 
-    }
 
     companion object DriftUtils : DiffUtil.ItemCallback<TvShowSeason>(){
         override fun areItemsTheSame(
@@ -32,8 +31,12 @@ class TvShowSeasonsAdapter() : ListAdapter<TvShowSeason, TvShowSeasonsAdapter.Vi
     }
 
 
-    inner class ViewHolder(var binding : TvShowSeasonsBinding) : RecyclerView.ViewHolder(binding.root) {
+    inner class TvShowSeasonsViewHolder(var binding : TvShowSeasonsBinding) : RecyclerView.ViewHolder(binding.root) {
         init {
+            binding.clSeasonsTvShow.setOnClickListener {
+                val seasonsNumber=getItem(layoutPosition).season_number
+                binding.root.context.startActivity(TvShowSeasonDetailsActivity.getInstance(binding.root.context,id,seasonsNumber))
+            }
         }
         fun bind(position: Int) {
             val data = getItem(layoutPosition)
@@ -46,9 +49,9 @@ class TvShowSeasonsAdapter() : ListAdapter<TvShowSeason, TvShowSeasonsAdapter.Vi
         }
     }
 
-    override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int) = ViewHolder(TvShowSeasonsBinding.inflate(LayoutInflater.from(viewGroup.context),viewGroup,false))
+    override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int) = TvShowSeasonsViewHolder(TvShowSeasonsBinding.inflate(LayoutInflater.from(viewGroup.context),viewGroup,false))
 
-    override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) = viewHolder.bind(position)
+    override fun onBindViewHolder(viewHolder: TvShowSeasonsViewHolder, position: Int) = viewHolder.bind(position)
 
     interface Actions {
         fun onTTvShowClick(data : TvShow)

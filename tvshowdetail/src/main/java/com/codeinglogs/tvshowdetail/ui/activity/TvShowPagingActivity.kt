@@ -19,13 +19,33 @@ import dagger.hilt.android.AndroidEntryPoint
 class TvShowPagingActivity : BaseActivity<TrendingTvShowViewModel, ActivityTvShowPagingBinding>() {
 
     lateinit var tvShowPagingAdatper: TvShowPagingAdatper
+
     override val mViewModel: TrendingTvShowViewModel by viewModels()
     override fun getViewBinding() = ActivityTvShowPagingBinding.inflate(layoutInflater)
 
-
     override fun onBinding() {
 
+        init()
+        observe()
+        buttonRetry()
+        pagingLoadState()
+    }
+
+    private fun init(){
         mViewModel.getTrendingTvShowList()
+        setUpTvShowPagingAdatper()
+    }
+
+    private fun setUpTvShowPagingAdatper(){
+        tvShowPagingAdatper = TvShowPagingAdatper()
+        mViewBinding.recyclerView.layoutManager = LinearLayoutManager(this)
+        mViewBinding.recyclerView.adapter = this.tvShowPagingAdatper.withLoadStateHeaderAndFooter(
+            header = TvShowLoadStateAdapter { tvShowPagingAdatper.retry() },
+            footer = TvShowLoadStateAdapter { tvShowPagingAdatper.retry() },
+        )
+    }
+
+    private fun observe(){
         mViewModel.trendingTvShowViewModel.observe(this) {
             it.contentIfNotHandled?.let {
                 when (it) {
@@ -39,22 +59,18 @@ class TvShowPagingActivity : BaseActivity<TrendingTvShowViewModel, ActivityTvSho
             }
         }
 
-
         mViewModel.trendingTvShow.observe(this) {
             tvShowPagingAdatper.submitData(lifecycle, it)
         }
+    }
 
-        tvShowPagingAdatper = TvShowPagingAdatper()
-        mViewBinding.recyclerView.layoutManager = LinearLayoutManager(this)
-        mViewBinding.recyclerView.adapter = this.tvShowPagingAdatper.withLoadStateHeaderAndFooter(
-            header = TvShowLoadStateAdapter { tvShowPagingAdatper.retry() },
-            footer = TvShowLoadStateAdapter { tvShowPagingAdatper.retry() },
-        )
+    private fun buttonRetry(){
         mViewBinding.buttonRetry.setOnClickListener {
             tvShowPagingAdatper.retry()
         }
+    }
 
-
+    private fun pagingLoadState(){
         tvShowPagingAdatper.addLoadStateListener { loadState ->
 
             mViewBinding.apply {
@@ -79,8 +95,8 @@ class TvShowPagingActivity : BaseActivity<TrendingTvShowViewModel, ActivityTvSho
 
         }
 
-
     }
+
     companion object{
         fun getInstance(context: Context) = Intent(context, TvShowPagingActivity::class.java)
     }

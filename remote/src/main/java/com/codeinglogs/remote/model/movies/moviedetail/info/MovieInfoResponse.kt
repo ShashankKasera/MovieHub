@@ -7,7 +7,6 @@ import com.codeinglogs.data.model.movies.moviedetail.info.MovieProductionCompani
 data class MovieInfoResponse(
     val adult: Boolean?,
     val backdrop_path:String?,
-    val belongs_to_collection: String?,
     val budget:Int?,
     val production_companies: List<MovieProductionCompanies>?,
     val genres: List<MovieGener>?,
@@ -34,7 +33,6 @@ fun MovieInfoResponse.toDataMovieInfoResponse()=DataMovieInfoResponse(
 
     production_companies=production_companies?.toDataMovieProductionCompanies()?: listOf(),
     backdrop_path=backdrop_path?:"",
-    belongs_to_collection=belongs_to_collection?:"",
     budget=budget?:0,
     genres=genres?.toDataMovieGener()?: listOf(),
     homepage=homepage?:"",

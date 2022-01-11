@@ -13,7 +13,7 @@ import com.codeinglogs.presentation.viewmodel.tvshowdetails.TvShowDetailViewMode
 import com.codeinglogs.tvshowdetail.databinding.FragmentTvShowInfoBinding
 import com.codeinglogs.tvshowdetail.ui.adapter.tvshow.TvShowCrewAdapter
 import com.codeinglogs.tvshowdetail.ui.adapter.tvshow.TvShowGenresAdapter
-import com.codeinglogs.tvshowdetail.ui.adapter.tvshowseason.TvShowSeasonsAdapter
+import com.codeinglogs.tvshowdetail.ui.adapter.tvshow.TvShowSeasonsAdapter
 import com.codeinglogs.tvshowdetail.ui.adapter.tvshow.TvShowVideoAdapter
 
 class TvShowInfoFragment : BaseFragment<TvShowDetailViewModel, FragmentTvShowInfoBinding>(){
@@ -22,18 +22,24 @@ class TvShowInfoFragment : BaseFragment<TvShowDetailViewModel, FragmentTvShowInf
     private lateinit var tvShowSeasonsAdapter: TvShowSeasonsAdapter
     private lateinit var tvShowVideoAdapter: TvShowVideoAdapter
     private lateinit var tvShowCrewAdapter: TvShowCrewAdapter
+
     override val mViewModel: TvShowDetailViewModel by activityViewModels()
-
     override fun getViewBinding() = FragmentTvShowInfoBinding.inflate(layoutInflater)
-
 
     override fun onBinding() {
 
-        setUpTvShowDetail()
-        setUpTvShowSeasonDetails()
-
+        init()
+        tvShowDetailObserve()
     }
-    private fun setUpTvShowDetail(){
+
+    private fun init(){
+        setUpGenresAdapter()
+        setUpCrewAdapter()
+        setUpSeasonsAdapter()
+        setUpVideoAdapter()
+    }
+
+    private fun tvShowDetailObserve(){
         mViewModel.tvShowDetails.observe(this){
             it.peekContent().let{it ->
                 when(it){
@@ -52,13 +58,11 @@ class TvShowInfoFragment : BaseFragment<TvShowDetailViewModel, FragmentTvShowInf
 
                         setDetails(it)
                         setCrew(it)
-                        setUpSeasons(it)
+                        setSeasons(it)
                         setTrailer(it)
                         setFact(it)
                         setMedia(it)
                         setProductionCompanies(it)
-
-
 
                     }
                 }
@@ -66,38 +70,6 @@ class TvShowInfoFragment : BaseFragment<TvShowDetailViewModel, FragmentTvShowInf
         }
     }
 
-    private fun setUpTvShowSeasonDetails(){
-        mViewModel.tvShowDetails.observe(this){
-            it.peekContent().let{it ->
-                when(it){
-                    is State.Failed -> {
-                        Log.i("wkjnv", "Failed: TvShowDetailActivity ${it.message}")
-                        showProgressBar(false)
-                    }
-                    is State.Loading -> {
-                        Log.i("wkjnv", "Loading: TvShowDetailActivity ${it.data}")
-                        showProgressBar(true)
-                    }
-                    is State.Success -> {
-                        Log.i("wkjnv", "Success: TvShowDetailActivity ${it.data}")
-
-                        showProgressBar(false)
-
-                        setDetails(it)
-                        setCrew(it)
-                        setUpSeasons(it)
-                        setTrailer(it)
-                        setFact(it)
-                        setMedia(it)
-                        setProductionCompanies(it)
-
-
-
-                    }
-                }
-            }
-        }
-    }
     private fun setDetails(it: State.Success<TvShowDetailsDisplay>){
 
         //mViewBinding.tvTimeTvShowInfo.text=convertNumberToHoursMinutes(it.data.tvShowInfoResponse.)
@@ -108,16 +80,17 @@ class TvShowInfoFragment : BaseFragment<TvShowDetailViewModel, FragmentTvShowInf
             mViewBinding.tvYearTvShowInfo.text=it.data.tvShowInfoResponse.first_air_date.substring(0,4)
         else
             mViewBinding.tvYearTvShowInfo.text=it.data.tvShowInfoResponse.first_air_date
-        setUpGenresAdapter()
 
         tvShowGenresAdapter.submitList(it.data.tvShowInfoResponse.genres)
     }
+
     private fun convertNumberToHoursMinutes(runtime:Int):kotlin.String{
         val hours = runtime / 60
         val mins = (runtime %  60)
 
         return "$hours Hours: $mins Minutes"
     }
+
     private fun setUpGenresAdapter() {
         tvShowGenresAdapter = TvShowGenresAdapter()
         mViewBinding.rvTvShowTypeTvShowInfo.layoutManager= LinearLayoutManager(context,
@@ -126,7 +99,8 @@ class TvShowInfoFragment : BaseFragment<TvShowDetailViewModel, FragmentTvShowInf
 
 
     }
-    private  fun  setCrew(it: State.Success<TvShowDetailsDisplay>) {
+
+    private fun setCrew(it: State.Success<TvShowDetailsDisplay>) {
 
         setUpCrewAdapter()
 
@@ -134,6 +108,7 @@ class TvShowInfoFragment : BaseFragment<TvShowDetailViewModel, FragmentTvShowInf
 
         Log.i("wkjnv", "setCrew: ${it.data.tvShowCreditsResponse.crew}")
     }
+
     private fun setUpCrewAdapter() {
         tvShowCrewAdapter = TvShowCrewAdapter()
         mViewBinding.rvCrewTvShowInfo.layoutManager= GridLayoutManager(context,2)
@@ -141,29 +116,31 @@ class TvShowInfoFragment : BaseFragment<TvShowDetailViewModel, FragmentTvShowInf
 
 
     }
-    private fun setUpSeasons(it: State.Success<TvShowDetailsDisplay>){
-        setUpSeasonsAdapter()
+
+    private fun setSeasons(it: State.Success<TvShowDetailsDisplay>){
         tvShowSeasonsAdapter.submitList(it.data.tvShowInfoResponse.seasons)
 
     }
+
     private fun setUpSeasonsAdapter() {
-        tvShowSeasonsAdapter = TvShowSeasonsAdapter()
+        tvShowSeasonsAdapter = TvShowSeasonsAdapter(mViewModel.tvShowId)
         mViewBinding.rvSeasonsTvShowInfo.layoutManager= LinearLayoutManager(context,
             LinearLayoutManager.HORIZONTAL,false)
         mViewBinding.rvSeasonsTvShowInfo.adapter=this.tvShowSeasonsAdapter
     }
-    private fun setTrailer(it: State.Success<TvShowDetailsDisplay>){
 
-        setUpVideoAdapter()
+    private fun setTrailer(it: State.Success<TvShowDetailsDisplay>){
         tvShowVideoAdapter.submitList(it.data.tvShowVideosResponse.results)
 
     }
+
     private fun setUpVideoAdapter() {
         tvShowVideoAdapter = TvShowVideoAdapter()
         mViewBinding.rvVideoTvShowInfo.layoutManager= LinearLayoutManager(context,
             LinearLayoutManager.HORIZONTAL,false)
         mViewBinding.rvVideoTvShowInfo.adapter=this.tvShowVideoAdapter
     }
+
     private fun setFact(it: State.Success<TvShowDetailsDisplay>){
         mViewBinding.tvTitleFactTvShowInfo.text=it.data.tvShowInfoResponse.name
         mViewBinding.tvStatusFactTvShowInfo.text=it.data.tvShowInfoResponse.status
@@ -172,6 +149,7 @@ class TvShowInfoFragment : BaseFragment<TvShowDetailViewModel, FragmentTvShowInf
         //mViewBinding.tvRuntimeFactTvShowInfo.text=convertNumberToHoursMinutes(it.data.tvShowInfoResponse.runtime)
 
     }
+
     private fun setMedia(it: State.Success<TvShowDetailsDisplay>){
 
         if(it.data.tvShowIMagesResponse.posters.size>0) {
@@ -183,6 +161,7 @@ class TvShowInfoFragment : BaseFragment<TvShowDetailViewModel, FragmentTvShowInf
             mViewBinding.tvNumberOfBackdropTvShowInfo.text = it.data.tvShowIMagesResponse.backdrops.size.toString() + " Backdrops"
         }
     }
+
     private fun setProductionCompanies(it: State.Success<TvShowDetailsDisplay>){
         var production_companies=""
         for (i in 1..(it.data.tvShowInfoResponse.production_companies.size-1 )) {

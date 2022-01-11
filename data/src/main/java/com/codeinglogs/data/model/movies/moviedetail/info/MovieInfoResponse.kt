@@ -5,7 +5,6 @@ import com.codeinglogs.domain.model.movies.moviedetail.info.MovieGener as Domain
 import com.codeinglogs.domain.model.movies.moviedetail.info.MovieProductionCompanies as DomainMovieProductionCompanies
 data class MovieInfoResponse(
     val backdrop_path: String,
-    val belongs_to_collection: String,
     val budget: Int,
     val production_companies: List<MovieProductionCompanies>,
     val genres: List<MovieGener>,
@@ -31,7 +30,6 @@ data class MovieInfoResponse(
 fun MovieInfoResponse.toDomainMovieInfoResponse()=DomainMovieInfoResponse(
     production_companies=production_companies.toDomainProductionCompanies(),
     backdrop_path=backdrop_path,
-    belongs_to_collection=belongs_to_collection,
     budget=budget,
     genres=genres.toDomainGener(),
     homepage=homepage,

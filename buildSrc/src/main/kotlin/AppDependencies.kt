@@ -44,6 +44,8 @@ object AppDependencies {
     //retrofit
     const val RETROFIT ="com.squareup.retrofit2:retrofit:${Versions.RETROFIT}"
     const val RETROFIT_GSON ="com.squareup.retrofit2:converter-gson:${Versions.RETROFIT}"
+    const val RETROFIT_LOGGING ="com.squareup.okhttp3:logging-interceptor:${Versions.RETROFIT_LOGGING}"
+
 
     //coroutines
     const val COROUTINE ="org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.COROUTINE}"
@@ -109,6 +111,7 @@ object AppDependencies {
     val remoteLibraries = arrayListOf<String>().apply {
         add(COROUTINE)
         add(RETROFIT)
+        add(RETROFIT_LOGGING)
         add(RETROFIT_GSON)
         add(PAGING)
     }

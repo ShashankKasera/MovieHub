@@ -59,4 +59,7 @@ dependencies {
     daggerHilt()
     implementation(project(mapOf("path" to AppDependencies.CORE)))
     implementation(project(mapOf("path" to AppDependencies.PRESENTATION)))
+    implementation(project(mapOf("path" to AppDependencies.PERSONDETAILS)))
+    implementation(project(mapOf("path" to AppDependencies.MOVIEDETAILS)))
+    implementation(project(mapOf("path" to AppDependencies.TVSHOWDETAILS)))
 }

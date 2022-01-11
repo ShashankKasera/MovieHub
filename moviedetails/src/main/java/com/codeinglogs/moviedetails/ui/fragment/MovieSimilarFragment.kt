@@ -2,26 +2,28 @@ package com.codeinglogs.moviedetails.ui.fragment
 
 import android.util.Log
 import androidx.fragment.app.activityViewModels
-import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.codeinglogs.core.base.BaseFragment
-import com.codeinglogs.moviedetails.databinding.FragmentCastBinding
-import com.codeinglogs.moviedetails.databinding.FragmentSimilarBinding
-import com.codeinglogs.moviedetails.ui.adapter.CastAdapter
-import com.codeinglogs.moviedetails.ui.adapter.SimilarAdapter
+import com.codeinglogs.moviedetails.databinding.FragmentMovieSimilarBinding
+import com.codeinglogs.moviedetails.ui.adapter.MovieSimilarAdapter
 import com.codeinglogs.presentation.model.State
 import com.codeinglogs.presentation.viewmodel.moviedetail.MovieDetailViewModel
-import com.codeinglogs.presentation.viewmodel.trendingmovies.TrendingMoviesViewModel
 
 private const val TAG = "123SimilerFragment"
 
-class SimilerFragment : BaseFragment<MovieDetailViewModel, FragmentSimilarBinding>() {
+class MovieSimilarFragment : BaseFragment<MovieDetailViewModel, FragmentMovieSimilarBinding>() {
 
-    private lateinit var similarAdapter: SimilarAdapter
+    private lateinit var movieSimilarAdapter: MovieSimilarAdapter
+
     override val mViewModel: MovieDetailViewModel by activityViewModels()
+    override fun getViewBinding() = FragmentMovieSimilarBinding.inflate(layoutInflater)
 
     override fun onBinding() {
+        init()
+        movieSimilarObserve()
+    }
 
+    private fun movieSimilarObserve() {
         mViewModel.movieDetails.observe(this){
             it.peekContent()?.let{it ->
                 when(it){
@@ -39,7 +41,7 @@ class SimilerFragment : BaseFragment<MovieDetailViewModel, FragmentSimilarBindin
                         showProgressBar(false)
 
                         setUpSimilarAdapter()
-                        similarAdapter.submitList(it.data.MovieSimilarResponse.results)
+                        movieSimilarAdapter.submitList(it.data.MovieSimilarResponse.results)
 
                     }
                 }
@@ -47,15 +49,16 @@ class SimilerFragment : BaseFragment<MovieDetailViewModel, FragmentSimilarBindin
         }
     }
 
+    private fun init() {
+        setUpSimilarAdapter()
+    }
+
     private fun setUpSimilarAdapter() {
-        similarAdapter = SimilarAdapter()
+        movieSimilarAdapter = MovieSimilarAdapter()
         mViewBinding.rvMovieSimiler.layoutManager= LinearLayoutManager(context,
             LinearLayoutManager.VERTICAL,false)
-        mViewBinding.rvMovieSimiler.adapter=this.similarAdapter
-
-
+        mViewBinding.rvMovieSimiler.adapter=this.movieSimilarAdapter
     }
-    override fun getViewBinding() = FragmentSimilarBinding.inflate(layoutInflater)
 
 
 }

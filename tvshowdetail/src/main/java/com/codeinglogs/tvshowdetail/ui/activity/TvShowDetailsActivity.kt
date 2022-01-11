@@ -31,11 +31,20 @@ class TvShowDetailsActivity : BaseActivity<TvShowDetailViewModel, ActivityTvShow
 
     override fun onBinding() {
 
-        setUpToolbar()
-        setUpTabLayout()
-        setUpTvShowDetail()
-        Log.i("fnjk", "onBinding: ")
+        init()
+        tvShowDetailObserve()
+    }
 
+    private fun init(){
+        val tvShowId = intent.getStringExtra(TV_SHOW_ID)
+
+        tvShowId?.let {
+            mViewModel.tvShowId=it
+            mViewModel.getTvShowDetails(it)
+        }
+
+        setUpTabLayout()
+        setUpToolbar()
     }
 
     private  fun addSlider (slider: Slider, results: List<TvShowsVideos>, ) {
@@ -50,6 +59,7 @@ class TvShowDetailsActivity : BaseActivity<TvShowDetailViewModel, ActivityTvShow
         slider.setInterval(10000)
 
     }
+
     private fun setUpTabLayout(){
 
         tvShowViewPagerAdapter= TvShowViewPagerAdapter(supportFragmentManager,lifecycle)
@@ -65,11 +75,12 @@ class TvShowDetailsActivity : BaseActivity<TvShowDetailViewModel, ActivityTvShow
             }
         }.attach()
     }
+
     private fun setUpToolbar(){
         mViewBinding.ctbTvShowDet.setTitle("Tv Show Detail")
     }
-    private fun setUpTvShowDetail(){
-        mViewModel.getTvShowDetails("88329")
+
+    private fun tvShowDetailObserve(){
 
         mViewModel.tvShowDetails.observe(this){
             it.contentIfNotHandled?.let{it ->
@@ -94,7 +105,12 @@ class TvShowDetailsActivity : BaseActivity<TvShowDetailViewModel, ActivityTvShow
     }
 
     companion object{
-        fun getInstance(context: Context) = Intent(context, TvShowDetailsActivity::class.java)
+        const val TV_SHOW_ID = "tvShowId"
+
+        fun getInstance(context: Context,tvShowId:String) = Intent(context, TvShowDetailsActivity::class.java)
+            .apply {
+                putExtra(TV_SHOW_ID,tvShowId)
+            }
     }
 
 }

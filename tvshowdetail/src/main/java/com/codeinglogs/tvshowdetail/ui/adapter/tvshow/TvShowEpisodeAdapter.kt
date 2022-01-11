@@ -11,7 +11,7 @@ import com.codeinglogs.presentation.model.tvshow.tvshowseasondetails.seasons.TvS
 import com.codeinglogs.presentation.model.tvshow.tvshowslist.TvShow
 import com.codeinglogs.tvshowdetail.databinding.TvShowSeasonEpisodeItemBinding
 
-class TvShowEpisodeAdapter() : ListAdapter<TvShowEpisode, TvShowEpisodeAdapter.ViewHolder>(
+class TvShowEpisodeAdapter() : ListAdapter<TvShowEpisode, TvShowEpisodeAdapter.TvShowEpisodeViewHolder>(
     DriftUtils
 ){
 
@@ -32,7 +32,7 @@ class TvShowEpisodeAdapter() : ListAdapter<TvShowEpisode, TvShowEpisodeAdapter.V
     }
 
 
-    inner class ViewHolder(var binding : TvShowSeasonEpisodeItemBinding) : RecyclerView.ViewHolder(binding.root) {
+    inner class TvShowEpisodeViewHolder(var binding : TvShowSeasonEpisodeItemBinding) : RecyclerView.ViewHolder(binding.root) {
         init {
         }
         fun bind(position: Int) {
@@ -46,9 +46,9 @@ class TvShowEpisodeAdapter() : ListAdapter<TvShowEpisode, TvShowEpisodeAdapter.V
         }
     }
 
-    override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int) = ViewHolder(TvShowSeasonEpisodeItemBinding.inflate(LayoutInflater.from(viewGroup.context),viewGroup,false))
+    override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int) = TvShowEpisodeViewHolder(TvShowSeasonEpisodeItemBinding.inflate(LayoutInflater.from(viewGroup.context),viewGroup,false))
 
-    override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) = viewHolder.bind(position)
+    override fun onBindViewHolder(viewHolder: TvShowEpisodeViewHolder, position: Int) = viewHolder.bind(position)
 
     interface Actions {
         fun onTTvShowClick(data : TvShow)

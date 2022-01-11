@@ -9,7 +9,7 @@ import com.codeinglogs.moviedetails.databinding.GenresItemBinding
 import com.codeinglogs.presentation.model.movies.moviedetail.info.MovieGener
 import com.codeinglogs.presentation.model.movies.movieslist.Movies
 
-class GenresAdapter() : ListAdapter<MovieGener, GenresAdapter.ViewHolder>(
+class MovieGenresAdapter() : ListAdapter<MovieGener, MovieGenresAdapter.MovieGenresViewHolder>(
     DriftUtils
 ){
 
@@ -30,7 +30,7 @@ class GenresAdapter() : ListAdapter<MovieGener, GenresAdapter.ViewHolder>(
     }
 
 
-    inner class ViewHolder(var binding : GenresItemBinding) : RecyclerView.ViewHolder(binding.root) {
+    inner class MovieGenresViewHolder(var binding : GenresItemBinding) : RecyclerView.ViewHolder(binding.root) {
         init {
         }
         fun bind(position: Int) {
@@ -40,9 +40,9 @@ class GenresAdapter() : ListAdapter<MovieGener, GenresAdapter.ViewHolder>(
         }
     }
 
-    override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int) = ViewHolder(GenresItemBinding.inflate(LayoutInflater.from(viewGroup.context),viewGroup,false))
+    override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int) = MovieGenresViewHolder(GenresItemBinding.inflate(LayoutInflater.from(viewGroup.context),viewGroup,false))
 
-    override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) = viewHolder.bind(position)
+    override fun onBindViewHolder(viewHolder: MovieGenresViewHolder, position: Int) = viewHolder.bind(position)
 
     interface Actions {
         fun onTMovieClick(data : Movies)

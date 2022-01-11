@@ -12,7 +12,7 @@ import com.codeinglogs.persondetails.databinding.PersonImagesBinding
 import com.codeinglogs.presentation.model.movies.movieslist.Movies
 import com.codeinglogs.presentation.model.person.persondetails.images.PersonImages
 
-class PersonImagesAdapter() : ListAdapter<PersonImages, PersonImagesAdapter.ViewHolder>(
+class PersonImagesAdapter() : ListAdapter<PersonImages, PersonImagesAdapter.PersonImagesViewHolder>(
     DriftUtils
 ){
 
@@ -33,7 +33,7 @@ class PersonImagesAdapter() : ListAdapter<PersonImages, PersonImagesAdapter.View
     }
 
 
-    inner class ViewHolder(var binding : PersonImagesBinding) : RecyclerView.ViewHolder(binding.root) {
+    inner class PersonImagesViewHolder(var binding : PersonImagesBinding) : RecyclerView.ViewHolder(binding.root) {
         init {
         }
         fun bind(position: Int) {
@@ -45,9 +45,9 @@ class PersonImagesAdapter() : ListAdapter<PersonImages, PersonImagesAdapter.View
         }
     }
 
-    override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int) = ViewHolder(PersonImagesBinding.inflate(LayoutInflater.from(viewGroup.context),viewGroup,false))
+    override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int) = PersonImagesViewHolder(PersonImagesBinding.inflate(LayoutInflater.from(viewGroup.context),viewGroup,false))
 
-    override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) = viewHolder.bind(position)
+    override fun onBindViewHolder(viewHolder: PersonImagesViewHolder, position: Int) = viewHolder.bind(position)
 
     interface Actions {
         fun onTMovieClick(data : Movies)

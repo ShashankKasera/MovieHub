@@ -21,6 +21,29 @@ class PersonInfoFragment : BaseFragment<PersonDetailViewModel, FragmentPersonInf
 
     override fun onBinding() {
 
+        init()
+        personInfoObserve()
+    }
+
+    private fun init() {
+        setUpPersonImagesAdapter()
+    }
+
+    private fun setUpPersonImagesAdapter(){
+        personImagesAdapter = PersonImagesAdapter()
+        mViewBinding.rvPersonImagesPersonDet.layoutManager= LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL,false)
+        mViewBinding.rvPersonImagesPersonDet.adapter=this.personImagesAdapter
+    }
+
+    private fun setUpInfo(personInfoResponse: PersonInfoResponse){
+        mViewBinding.tvPersonBerthPersonDet.text=personInfoResponse.birthday
+        mViewBinding.tvPersonDeathdayPersonDet.text="From "+personInfoResponse.birthday+"  "+personInfoResponse.deathday
+        mViewBinding.tvAlsoKnownAsPersonDet.text= if (personInfoResponse.also_known_as.size>0) personInfoResponse.also_known_as.get(0) else ""
+        mViewBinding.tvPersonDesPersonDet.text= personInfoResponse.biography
+    }
+
+    private fun personInfoObserve(){
+
         mViewModel.personDetails.observe(this) {
 
             it.peekContent().let { it ->
@@ -37,26 +60,12 @@ class PersonInfoFragment : BaseFragment<PersonDetailViewModel, FragmentPersonInf
                         Log.i(TAG, "Success: MovieDetailActivity ${it.data}")
 
                         showProgressBar(false)
-                        setUpPersonImagesAdapter()
                         personImagesAdapter.submitList(it.data.personImagesResponse.profiles)
-                        setupInfo(it.data.personInfoResponse)
+                        setUpInfo(it.data.personInfoResponse)
                     }
                 }
             }
         }
-    }
-
-
-    private fun setupInfo(personInfoResponse: PersonInfoResponse){
-        mViewBinding.tvPersonBerthPersonDet.text=personInfoResponse.birthday
-        mViewBinding.tvPersonDeathdayPersonDet.text="From "+personInfoResponse.birthday+"  "+personInfoResponse.deathday
-        mViewBinding.tvAlsoKnownAsPersonDet.text= if (personInfoResponse.also_known_as.size>0) personInfoResponse.also_known_as.get(0) else ""
-        mViewBinding.tvPersonDesPersonDet.text= personInfoResponse.biography
-    }
-    private fun setUpPersonImagesAdapter(){
-        personImagesAdapter = PersonImagesAdapter()
-        mViewBinding.rvPersonImagesPersonDet.layoutManager= LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL,false)
-        mViewBinding.rvPersonImagesPersonDet.adapter=this.personImagesAdapter
     }
 
 }

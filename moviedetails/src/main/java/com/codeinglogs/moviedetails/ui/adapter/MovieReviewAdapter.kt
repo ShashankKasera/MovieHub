@@ -10,7 +10,7 @@ import com.codeinglogs.moviedetails.databinding.ReviewItemBinding
 import com.codeinglogs.presentation.model.movies.moviedetail.reviews.MovieReviews
 import com.codeinglogs.presentation.model.movies.movieslist.Movies
 
-class ReviewAdapter() : ListAdapter<MovieReviews, ReviewAdapter.ViewHolder>(
+class MovieReviewAdapter() : ListAdapter<MovieReviews, MovieReviewAdapter.MovieReviewViewHolder>(
     DriftUtils
 ){
 
@@ -31,7 +31,7 @@ class ReviewAdapter() : ListAdapter<MovieReviews, ReviewAdapter.ViewHolder>(
     }
 
 
-    inner class ViewHolder(var binding : ReviewItemBinding) : RecyclerView.ViewHolder(binding.root) {
+    inner class MovieReviewViewHolder(var binding : ReviewItemBinding) : RecyclerView.ViewHolder(binding.root) {
         init {
         }
         fun bind(position: Int) {
@@ -43,9 +43,9 @@ class ReviewAdapter() : ListAdapter<MovieReviews, ReviewAdapter.ViewHolder>(
         }
     }
 
-    override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int) = ViewHolder(ReviewItemBinding.inflate(LayoutInflater.from(viewGroup.context),viewGroup,false))
+    override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int) = MovieReviewViewHolder(ReviewItemBinding.inflate(LayoutInflater.from(viewGroup.context),viewGroup,false))
 
-    override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) = viewHolder.bind(position)
+    override fun onBindViewHolder(viewHolder: MovieReviewViewHolder, position: Int) = viewHolder.bind(position)
 
     interface Actions {
         fun onTMovieClick(data : Movies)

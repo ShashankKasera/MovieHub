@@ -9,9 +9,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.codeinglogs.tvshowdetail.databinding.TvShowLoadStateFooterBinding
 
 class TvShowLoadStateAdapter(private val retry: () -> Unit) :
-    LoadStateAdapter<TvShowLoadStateAdapter.LoadStateViewHolder>() {
+    LoadStateAdapter<TvShowLoadStateAdapter.TvShowLoadStateViewHolder>() {
 
-    inner class LoadStateViewHolder(private val binding: TvShowLoadStateFooterBinding) :
+    inner class TvShowLoadStateViewHolder(private val binding: TvShowLoadStateFooterBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
         init {
@@ -29,17 +29,17 @@ class TvShowLoadStateAdapter(private val retry: () -> Unit) :
         }
     }
 
-    override fun onBindViewHolder(holder: LoadStateViewHolder, loadState: LoadState) {
+    override fun onBindViewHolder(holder: TvShowLoadStateViewHolder, loadState: LoadState) {
         holder.bind(loadState)
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, loadState: LoadState): LoadStateViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, loadState: LoadState): TvShowLoadStateViewHolder {
         val binding = TvShowLoadStateFooterBinding.inflate(
             LayoutInflater.from(parent.context),
             parent,
             false
         )
 
-        return LoadStateViewHolder(binding)
+        return TvShowLoadStateViewHolder(binding)
     }
 }

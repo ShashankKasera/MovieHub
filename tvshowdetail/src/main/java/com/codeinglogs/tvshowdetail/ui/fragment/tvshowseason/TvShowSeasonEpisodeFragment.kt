@@ -12,15 +12,19 @@ import com.codeinglogs.tvshowdetail.ui.adapter.tvshow.TvShowEpisodeAdapter
 class TvShowSeasonEpisodeFragment  : BaseFragment<TvShowSeasonDetailsViewModel, FragmentTvShowEpisodeBinding>(){
 
     lateinit var tvShowEpisodeAdapter: TvShowEpisodeAdapter
-    override val mViewModel: TvShowSeasonDetailsViewModel by activityViewModels()
 
+    override val mViewModel: TvShowSeasonDetailsViewModel by activityViewModels()
     override fun getViewBinding() = FragmentTvShowEpisodeBinding.inflate(layoutInflater)
 
     override fun onBinding() {
 
-        setUpCastAdapter()
-        setUpTvShowSeasonDetails()
+        init()
+        tvShowSeasonEpisodeObserve()
 
+    }
+
+    private fun init(){
+        setUpCastAdapter()
     }
 
     private fun setUpCastAdapter() {
@@ -32,7 +36,7 @@ class TvShowSeasonEpisodeFragment  : BaseFragment<TvShowSeasonDetailsViewModel, 
 
     }
 
-    private fun setUpTvShowSeasonDetails(){
+    private fun tvShowSeasonEpisodeObserve(){
 
         mViewModel.tvShowSeasonDetails.observe(this){
             it.peekContent()?.let{it ->

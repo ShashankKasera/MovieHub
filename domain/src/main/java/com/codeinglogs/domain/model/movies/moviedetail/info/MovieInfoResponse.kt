@@ -2,7 +2,6 @@ package com.codeinglogs.domain.model.movies.moviedetail.info
 
 data class MovieInfoResponse(
     val backdrop_path: String,
-    val belongs_to_collection: String,
     val budget: Int,
     val production_companies: List<MovieProductionCompanies>,
     val genres: List<MovieGener>,

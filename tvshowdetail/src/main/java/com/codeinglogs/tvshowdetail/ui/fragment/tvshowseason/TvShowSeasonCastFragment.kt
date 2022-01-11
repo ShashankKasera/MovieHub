@@ -14,10 +14,25 @@ class TvShowSeasonCastFragment  : BaseFragment<TvShowSeasonDetailsViewModel, Fra
     private lateinit var tvShowSeasonCastAdapter: TvShowSeasonCastAdapter
 
     override val mViewModel: TvShowSeasonDetailsViewModel by activityViewModels()
-
     override fun getViewBinding() = FragmentTvShowCastBinding.inflate(layoutInflater)
 
     override fun onBinding() {
+        init()
+        tvShowSeasonCastObserve()
+    }
+
+    private fun init(){
+        setUpCastAdapter()
+    }
+
+    private fun setUpCastAdapter() {
+        tvShowSeasonCastAdapter = TvShowSeasonCastAdapter()
+        mViewBinding.rvTvShowCast.layoutManager= LinearLayoutManager(context,
+            LinearLayoutManager.VERTICAL,false)
+        mViewBinding.rvTvShowCast.adapter=this.tvShowSeasonCastAdapter
+    }
+
+    private fun tvShowSeasonCastObserve(){
 
         mViewModel.tvShowSeasonDetails.observe(this){
             it.peekContent().let{it ->
@@ -35,7 +50,6 @@ class TvShowSeasonCastFragment  : BaseFragment<TvShowSeasonDetailsViewModel, Fra
 
                         showProgressBar(false)
 
-                        setUpCastAdapter()
                         tvShowSeasonCastAdapter.submitList(it.data.tvShowSeasonsCreditsResponse.cast)
 
                     }
@@ -43,14 +57,4 @@ class TvShowSeasonCastFragment  : BaseFragment<TvShowSeasonDetailsViewModel, Fra
             }
         }
     }
-
-    private fun setUpCastAdapter() {
-        tvShowSeasonCastAdapter = TvShowSeasonCastAdapter()
-        mViewBinding.rvTvShowCast.layoutManager= LinearLayoutManager(context,
-            LinearLayoutManager.VERTICAL,false)
-        mViewBinding.rvTvShowCast.adapter=this.tvShowSeasonCastAdapter
-
-
-    }
-
 }

@@ -11,7 +11,7 @@ import com.codeinglogs.moviehub.constant.IMAGE_BASE_URL_500
 import com.codeinglogs.presentation.model.movies.moviedetail.credits.MovieCast
 import com.codeinglogs.presentation.model.movies.movieslist.Movies
 
-class CastAdapter() : ListAdapter<MovieCast, CastAdapter.ViewHolder>(
+class MovieCastAdapter() : ListAdapter<MovieCast, MovieCastAdapter.MovieCastViewHolder>(
     DriftUtils
 ){
 
@@ -32,7 +32,7 @@ class CastAdapter() : ListAdapter<MovieCast, CastAdapter.ViewHolder>(
     }
 
 
-    inner class ViewHolder(var binding : PersonItemBinding) : RecyclerView.ViewHolder(binding.root) {
+    inner class MovieCastViewHolder(var binding : PersonItemBinding) : RecyclerView.ViewHolder(binding.root) {
         init {
         }
         fun bind(position: Int) {
@@ -44,9 +44,9 @@ class CastAdapter() : ListAdapter<MovieCast, CastAdapter.ViewHolder>(
         }
     }
 
-    override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int) = ViewHolder(PersonItemBinding.inflate(LayoutInflater.from(viewGroup.context),viewGroup,false))
+    override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int) = MovieCastViewHolder(PersonItemBinding.inflate(LayoutInflater.from(viewGroup.context),viewGroup,false))
 
-    override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) = viewHolder.bind(position)
+    override fun onBindViewHolder(viewHolder: MovieCastViewHolder, position: Int) = viewHolder.bind(position)
 
     interface Actions {
         fun onTMovieClick(data : Movies)

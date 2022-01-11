@@ -11,7 +11,7 @@ import com.codeinglogs.presentation.model.tvshow.tvshowseasondetails.seasonimage
 import com.codeinglogs.presentation.model.tvshow.tvshowslist.TvShow
 import com.codeinglogs.tvshowdetail.databinding.PosterItemBinding
 
-class TvShowSeasonPosterAdapter() : ListAdapter<TvShowSeasonPoster, TvShowSeasonPosterAdapter.ViewHolder>(
+class TvShowSeasonPosterAdapter() : ListAdapter<TvShowSeasonPoster, TvShowSeasonPosterAdapter.TvShowSeasonPosterViewHolder>(
     DriftUtils
 ){
 
@@ -32,7 +32,7 @@ class TvShowSeasonPosterAdapter() : ListAdapter<TvShowSeasonPoster, TvShowSeason
     }
 
 
-    inner class ViewHolder(var binding : PosterItemBinding) : RecyclerView.ViewHolder(binding.root) {
+    inner class TvShowSeasonPosterViewHolder(var binding : PosterItemBinding) : RecyclerView.ViewHolder(binding.root) {
         init {
         }
         fun bind(position: Int) {
@@ -43,9 +43,9 @@ class TvShowSeasonPosterAdapter() : ListAdapter<TvShowSeasonPoster, TvShowSeason
         }
     }
 
-    override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int) = ViewHolder(PosterItemBinding.inflate(LayoutInflater.from(viewGroup.context),viewGroup,false))
+    override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int) = TvShowSeasonPosterViewHolder(PosterItemBinding.inflate(LayoutInflater.from(viewGroup.context),viewGroup,false))
 
-    override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) = viewHolder.bind(position)
+    override fun onBindViewHolder(viewHolder: TvShowSeasonPosterViewHolder, position: Int) = viewHolder.bind(position)
 
     interface Actions {
         fun onTTvShowClick(data : TvShow)

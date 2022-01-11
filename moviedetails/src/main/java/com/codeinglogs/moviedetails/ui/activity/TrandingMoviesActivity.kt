@@ -5,7 +5,6 @@ import android.content.Intent
 import android.util.Log
 import androidx.activity.viewModels
 import androidx.core.view.isVisible
-import androidx.lifecycle.lifecycleScope
 import androidx.paging.LoadState
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.codeinglogs.core.base.BaseActivity
@@ -15,23 +14,33 @@ import com.codeinglogs.moviedetails.ui.adapter.TrendingMoviesLoadStateAdapter
 import com.codeinglogs.presentation.model.State
 import com.codeinglogs.presentation.viewmodel.trendingmovies.TrendingMoviesViewModel
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
 
 private const val TAG = "1231viesActivity"
 
 @AndroidEntryPoint
 class TrandingMoviesActivity : BaseActivity<TrendingMoviesViewModel, ActivityTrandingMoviesBinding>() {
 
+    lateinit var trendingMoviesAdapter: TrendingMoviesAdapter
+
     override val mViewModel: TrendingMoviesViewModel by viewModels()
     override fun getViewBinding() = ActivityTrandingMoviesBinding.inflate(layoutInflater)
 
-    lateinit var adapter: TrendingMoviesAdapter
+
 
     override fun onBinding() {
 
+        init()
+        trendingMoviesObserve()
+        pagingLoadState()
+        buttonRetry()
+    }
+
+    private fun init(){
         mViewModel.getTrendingMoviesList()
+        setUpTrendingMoviesAdapter()
+    }
+
+    private fun trendingMoviesObserve(){
 
         mViewModel.trendingMoviesList.observe(this){
             it.contentIfNotHandled?.let{it ->
@@ -46,21 +55,23 @@ class TrandingMoviesActivity : BaseActivity<TrendingMoviesViewModel, ActivityTra
             }
         }
 
-
-
-
-        adapter = TrendingMoviesAdapter()
-        mViewBinding.recyclerView.layoutManager= LinearLayoutManager(this)
-        mViewBinding.recyclerView.adapter=this.adapter.withLoadStateHeaderAndFooter(
-            header = TrendingMoviesLoadStateAdapter { adapter.retry() },
-            footer = TrendingMoviesLoadStateAdapter { adapter.retry() },
-        )
-        mViewBinding.buttonRetry.setOnClickListener {
-            adapter.retry()
+        mViewModel.trendingMovies.observe(this){
+            trendingMoviesAdapter.submitData(lifecycle,it)
         }
+    }
 
+    private fun setUpTrendingMoviesAdapter(){
+        trendingMoviesAdapter = TrendingMoviesAdapter()
+        mViewBinding.recyclerView.layoutManager= LinearLayoutManager(this)
+        mViewBinding.recyclerView.adapter=this.trendingMoviesAdapter.withLoadStateHeaderAndFooter(
+            header = TrendingMoviesLoadStateAdapter { trendingMoviesAdapter.retry() },
+            footer = TrendingMoviesLoadStateAdapter { trendingMoviesAdapter.retry() },
+        )
+    }
 
-        adapter.addLoadStateListener { loadState ->
+    private fun pagingLoadState(){
+
+        trendingMoviesAdapter.addLoadStateListener { loadState ->
 
             mViewBinding.apply {
 
@@ -72,7 +83,7 @@ class TrandingMoviesActivity : BaseActivity<TrendingMoviesViewModel, ActivityTra
                 // empty view
                 if (loadState.source.refresh is LoadState.NotLoading &&
                     loadState.append.endOfPaginationReached &&
-                    adapter.itemCount < 1) {
+                    trendingMoviesAdapter.itemCount < 1) {
                     recyclerView.isVisible = false
                     textViewEmpty.isVisible = true
                 } else {
@@ -80,9 +91,11 @@ class TrandingMoviesActivity : BaseActivity<TrendingMoviesViewModel, ActivityTra
                 }
             }
         }
+    }
 
-        mViewModel.trendingMovies.observe(this){
-            adapter.submitData(lifecycle,it)
+    private fun buttonRetry(){
+        mViewBinding.buttonRetry.setOnClickListener {
+            trendingMoviesAdapter.retry()
         }
     }
 

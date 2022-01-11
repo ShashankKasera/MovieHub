@@ -32,35 +32,18 @@ class PersonDetailsActivity : BaseActivity<PersonDetailViewModel, ActivityPerson
     override fun getViewBinding()= ActivityPersonDetailsBinding.inflate(layoutInflater)
 
     override fun onBinding() {
-
-        setUpTabBar()
-
-        mViewModel.getPersonDetails("1136406")
-
-        mViewModel.personDetails.observe(this){
-            it.contentIfNotHandled?.let{it ->
-                when(it){
-                    is State.Failed -> {
-                        Log.i("gqnjjq", "Failed: PersonDetailsActivity ${it.message}")
-                        showProgressBar(false)
-                    }
-                    is State.Loading -> {
-                        Log.i("gqnjjq", "Loading: PersonDetailsActivity ${it.data}")
-                        showProgressBar(true)
-                    }
-                    is State.Success -> {
-                        Log.i("gqnjjq", "Success: PersonDetailsActivity ${it.data}")
-                        showProgressBar(false)
-                        addSlider(mViewBinding.bsPersonPersonDet,it.data.personTaggedImagesResponse.results)
-
-
-                        setupExternalIds(it.data.personExternalIdsResponse)
-                    }
-                }
-            }
-        }
+        init()
+        personDetailsObserve()
     }
 
+    private fun init(){
+        val personId = intent.getStringExtra(PERSON_ID)
+        personId?.let {
+            mViewModel.getPersonDetails(it)
+        }
+
+        setUpTabBar()
+    }
 
     private fun setupExternalIds(personExternalIdsResponse: PersonExternalIdsResponse){
         val openURL = Intent(android.content.Intent.ACTION_VIEW)
@@ -90,6 +73,7 @@ class PersonDetailsActivity : BaseActivity<PersonDetailViewModel, ActivityPerson
             personExternalIdsResponse.twitter_id
         }
     }
+
     private  fun addSlider (slider: Slider, results: List<PersonTaggedImages>, ) {
 
         val list = ArrayList<String>()
@@ -115,7 +99,36 @@ class PersonDetailsActivity : BaseActivity<PersonDetailViewModel, ActivityPerson
             }
         }.attach()
     }
+
+    private fun personDetailsObserve(){
+        mViewModel.personDetails.observe(this){
+            it.contentIfNotHandled?.let{it ->
+                when(it){
+                    is State.Failed -> {
+                        Log.i("gqnjjq", "Failed: PersonDetailsActivity ${it.message}")
+                        showProgressBar(false)
+                    }
+                    is State.Loading -> {
+                        Log.i("gqnjjq", "Loading: PersonDetailsActivity ${it.data}")
+                        showProgressBar(true)
+                    }
+                    is State.Success -> {
+                        Log.i("gqnjjq", "Success: PersonDetailsActivity ${it.data}")
+                        showProgressBar(false)
+                        addSlider(mViewBinding.bsPersonPersonDet,it.data.personTaggedImagesResponse.results)
+                        setupExternalIds(it.data.personExternalIdsResponse)
+                    }
+                }
+            }
+        }
+    }
+
     companion object{
-        fun getInstance(context: Context) = Intent(context, PersonDetailsActivity::class.java)
+        const val PERSON_ID = "PersonId"
+
+        fun getInstance(context: Context,personId : String) = Intent(context, PersonDetailsActivity::class.java)
+            .apply {
+                putExtra(PERSON_ID,personId)
+            }
     }
 }

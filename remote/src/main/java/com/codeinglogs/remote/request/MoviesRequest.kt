@@ -36,10 +36,10 @@ interface MoviesRequest {
 
 
 
-    @GET("trending/all/day")
+    @GET("trending/movie/day")
     suspend fun getTrendingMovie(@Query("page") page : Int): MoviesListResponse
 
-    @GET("trending/all/day")
+    @GET("trending/movie/day")
     suspend fun getTrendingMovie(): MoviesListResponse
 
     @GET("movie/popular")

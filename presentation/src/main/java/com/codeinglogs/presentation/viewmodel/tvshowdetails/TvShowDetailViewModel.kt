@@ -23,7 +23,7 @@ class TvShowDetailViewModel @Inject constructor(private val getTvShowDetailsUseC
     val tvShowDetails : LiveData<Event<State<TvShowDetailsDisplay>>>
         get() = _TvShowDetails
 
-
+    var tvShowId=""
 
     fun getTvShowDetails(id: String) {
         viewModelScope.launch {

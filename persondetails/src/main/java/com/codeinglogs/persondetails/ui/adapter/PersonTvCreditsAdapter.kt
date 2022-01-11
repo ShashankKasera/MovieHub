@@ -12,7 +12,7 @@ import com.codeinglogs.presentation.model.movies.movieslist.Movies
 import com.codeinglogs.presentation.model.person.persondetails.moviecredits.PersonMovieCastAndCrew
 import com.codeinglogs.presentation.model.person.persondetails.tvcredits.PersonTvCastAndCrew
 
-class PersonTvCreditsAdapter() : ListAdapter<PersonTvCastAndCrew, PersonTvCreditsAdapter.ViewHolder>(
+class PersonTvCreditsAdapter() : ListAdapter<PersonTvCastAndCrew, PersonTvCreditsAdapter.PersonTvCreditsViewHolder>(
     DriftUtils
 ){
 
@@ -33,7 +33,7 @@ class PersonTvCreditsAdapter() : ListAdapter<PersonTvCastAndCrew, PersonTvCredit
     }
 
 
-    inner class ViewHolder(var binding : PersonCreditsItemBinding) : RecyclerView.ViewHolder(binding.root) {
+    inner class PersonTvCreditsViewHolder(var binding : PersonCreditsItemBinding) : RecyclerView.ViewHolder(binding.root) {
         init {
         }
         fun bind(position: Int) {
@@ -50,9 +50,9 @@ class PersonTvCreditsAdapter() : ListAdapter<PersonTvCastAndCrew, PersonTvCredit
         }
     }
 
-    override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int) = ViewHolder(PersonCreditsItemBinding.inflate(LayoutInflater.from(viewGroup.context),viewGroup,false))
+    override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int) = PersonTvCreditsViewHolder(PersonCreditsItemBinding.inflate(LayoutInflater.from(viewGroup.context),viewGroup,false))
 
-    override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) = viewHolder.bind(position)
+    override fun onBindViewHolder(viewHolder: PersonTvCreditsViewHolder, position: Int) = viewHolder.bind(position)
 
     interface Actions {
         fun onTMovieClick(data : Movies)

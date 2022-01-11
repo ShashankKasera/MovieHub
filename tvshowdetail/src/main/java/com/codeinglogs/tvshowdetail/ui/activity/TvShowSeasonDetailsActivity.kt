@@ -28,12 +28,23 @@ class TvShowSeasonDetailsActivity : BaseActivity<TvShowSeasonDetailsViewModel, A
 
     override fun onBinding() {
 
-        setUpToolbar()
-        setUpTabLayout()
-        Log.i("fnjk", "onBinding: ")
-        setUpTvShowSeasonDetails()
+        init()
+
+        TvShowSeasonDetailsObserve()
     }
 
+    private fun init(){
+
+        val tvShowId = intent.getStringExtra(TV_SHOW_ID)
+        val tvShowSeasonNumber = intent.getIntExtra(TV_SHOW_SEASON_NUMBER,-1)
+        Log.i("nkwnk", "init: ${tvShowId}  ${tvShowSeasonNumber}")
+        tvShowId?.let {
+            mViewModel.getTvShowSeasonDetails(it,tvShowSeasonNumber)
+        }
+
+        setUpToolbar()
+        setUpTabLayout()
+    }
     private  fun addSlider (slider: Slider, results: List<TvShowEpisode>, ) {
 
 
@@ -46,6 +57,7 @@ class TvShowSeasonDetailsActivity : BaseActivity<TvShowSeasonDetailsViewModel, A
         slider.setInterval(10000)
 
     }
+
     private fun setUpTabLayout(){
 
         tvShowSeasonViewPagerAdapter= TvShowSeasonViewPagerAdapter(supportFragmentManager,lifecycle)
@@ -60,12 +72,12 @@ class TvShowSeasonDetailsActivity : BaseActivity<TvShowSeasonDetailsViewModel, A
             }
         }.attach()
     }
+
     private fun setUpToolbar(){
         mViewBinding.ctbTvShowSeasonDet.setTitle("Tv Show Detail")
     }
-    private fun setUpTvShowSeasonDetails(){
 
-        mViewModel.getTvShowSeasonDetails("93405",1)
+    private fun TvShowSeasonDetailsObserve(){
 
         mViewModel.tvShowSeasonDetails.observe(this){
             it.contentIfNotHandled?.let{it ->
@@ -90,7 +102,14 @@ class TvShowSeasonDetailsActivity : BaseActivity<TvShowSeasonDetailsViewModel, A
     }
 
     companion object{
-        fun getInstance(context: Context) = Intent(context, TvShowSeasonDetailsActivity::class.java)
+        const val TV_SHOW_ID = "tvShowId"
+        const val TV_SHOW_SEASON_NUMBER = "tvShowSeasonNumber"
+
+        fun getInstance(context: Context,tvShowId:String,season_number:Int) = Intent(context, TvShowSeasonDetailsActivity::class.java)
+            .apply {
+                putExtra(TV_SHOW_ID,tvShowId)
+                putExtra(TV_SHOW_SEASON_NUMBER,season_number)
+            }
     }
 
 }

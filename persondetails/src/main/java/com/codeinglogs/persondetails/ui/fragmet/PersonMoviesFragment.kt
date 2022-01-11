@@ -13,12 +13,22 @@ private const val TAG = "123PersonMoviesFragment"
 class PersonMoviesFragment : BaseFragment<PersonDetailViewModel, FragmentPersonMoviesBinding>(){
 
     lateinit var personMovieCreditsAdapter: PersonMovieCreditsAdapter
-    override val mViewModel: PersonDetailViewModel by activityViewModels()
 
+    override val mViewModel: PersonDetailViewModel by activityViewModels()
     override fun getViewBinding() = FragmentPersonMoviesBinding.inflate(layoutInflater)
 
     override fun onBinding() {
 
+        init()
+        personMoviesObserve()
+
+    }
+
+    private fun init() {
+        setUpPersonMoviesAdapter()
+    }
+
+    private fun personMoviesObserve() {
         mViewModel.personDetails.observe(this) {
 
             it.peekContent().let { it ->
@@ -35,8 +45,6 @@ class PersonMoviesFragment : BaseFragment<PersonDetailViewModel, FragmentPersonM
                         Log.i(TAG, "Success: MovieDetailActivity ${it.data}")
 
                         showProgressBar(false)
-
-                        setUpPersonMoviesAdapter()
                         personMovieCreditsAdapter.submitList(it.data.personMovieCreditsResponse.credit)
                     }
                 }

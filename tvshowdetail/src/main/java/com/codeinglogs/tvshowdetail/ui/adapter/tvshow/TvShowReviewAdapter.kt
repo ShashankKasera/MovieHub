@@ -10,7 +10,7 @@ import com.codeinglogs.presentation.model.tvshow.tvshowdetails.reviews.TvShowRev
 import com.codeinglogs.presentation.model.tvshow.tvshowslist.TvShow
 import com.codeinglogs.tvshowdetail.databinding.TvShowReviewItemBinding
 
-class TvShowReviewAdapter() : ListAdapter<TvShowReviews, TvShowReviewAdapter.ViewHolder>(
+class TvShowReviewAdapter() : ListAdapter<TvShowReviews, TvShowReviewAdapter.TvShowReviewViewHolder>(
     DriftUtils
 ){
 
@@ -31,7 +31,7 @@ class TvShowReviewAdapter() : ListAdapter<TvShowReviews, TvShowReviewAdapter.Vie
     }
 
 
-    inner class ViewHolder(var binding : TvShowReviewItemBinding) : RecyclerView.ViewHolder(binding.root) {
+    inner class TvShowReviewViewHolder(var binding : TvShowReviewItemBinding) : RecyclerView.ViewHolder(binding.root) {
         init {
         }
         fun bind(position: Int) {
@@ -43,9 +43,9 @@ class TvShowReviewAdapter() : ListAdapter<TvShowReviews, TvShowReviewAdapter.Vie
         }
     }
 
-    override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int) = ViewHolder(TvShowReviewItemBinding.inflate(LayoutInflater.from(viewGroup.context),viewGroup,false))
+    override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int) = TvShowReviewViewHolder(TvShowReviewItemBinding.inflate(LayoutInflater.from(viewGroup.context),viewGroup,false))
 
-    override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) = viewHolder.bind(position)
+    override fun onBindViewHolder(viewHolder: TvShowReviewViewHolder, position: Int) = viewHolder.bind(position)
 
     interface Actions {
         fun onTTvShowClick(data : TvShow)

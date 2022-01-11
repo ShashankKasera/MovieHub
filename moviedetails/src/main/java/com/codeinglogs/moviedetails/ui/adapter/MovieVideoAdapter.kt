@@ -13,7 +13,7 @@ import com.codeinglogs.moviehub.constant.IMAGE_back_YOUTUBE
 import com.codeinglogs.presentation.model.movies.moviedetail.videos.MovieVideo
 import com.codeinglogs.presentation.model.movies.movieslist.Movies
 
-class VideoAdapter() : ListAdapter<MovieVideo, VideoAdapter.ViewHolder>(
+class MovieVideoAdapter() : ListAdapter<MovieVideo, MovieVideoAdapter.MovieVideoViewHolder>(
     DriftUtils
 ){
 
@@ -34,22 +34,20 @@ class VideoAdapter() : ListAdapter<MovieVideo, VideoAdapter.ViewHolder>(
     }
 
 
-    inner class ViewHolder(var binding : MovieAndTvShowVideoBinding) : RecyclerView.ViewHolder(binding.root) {
+    inner class MovieVideoViewHolder(var binding : MovieAndTvShowVideoBinding) : RecyclerView.ViewHolder(binding.root) {
         init {
         }
         fun bind(position: Int) {
             val data = getItem(layoutPosition)
 
             binding.ivVideo.load(IMAGE_BASE_URL_YOUTUBE +data.key+IMAGE_back_YOUTUBE)
-
-            Log.i("ihik", "bind: ${IMAGE_BASE_URL_YOUTUBE +data.key+IMAGE_back_YOUTUBE}")
             binding.tvVideoTitle.text=data.name
         }
     }
 
-    override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int) = ViewHolder(MovieAndTvShowVideoBinding.inflate(LayoutInflater.from(viewGroup.context),viewGroup,false))
+    override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int) = MovieVideoViewHolder(MovieAndTvShowVideoBinding.inflate(LayoutInflater.from(viewGroup.context),viewGroup,false))
 
-    override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) = viewHolder.bind(position)
+    override fun onBindViewHolder(viewHolder: MovieVideoViewHolder, position: Int) = viewHolder.bind(position)
 
     interface Actions {
         fun onTMovieClick(data : Movies)
@@ -57,5 +55,3 @@ class VideoAdapter() : ListAdapter<MovieVideo, VideoAdapter.ViewHolder>(
     }
 
 }
-//"https://img.youtube.com/vi/w500IQqqAWMIIAQ/sddefault.jpg"
-//"https://image.tmdb.org/t/p/w500IQqqAWMIIAQ/sddefault.jpg"

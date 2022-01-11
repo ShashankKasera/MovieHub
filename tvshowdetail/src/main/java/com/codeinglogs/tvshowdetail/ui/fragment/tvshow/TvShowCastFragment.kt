@@ -14,11 +14,25 @@ class TvShowCastFragment  : BaseFragment<TvShowDetailViewModel, FragmentTvShowCa
     private lateinit var tvShowCastAdapter: TvShowCastAdapter
 
     override val mViewModel: TvShowDetailViewModel by activityViewModels()
-
     override fun getViewBinding() = FragmentTvShowCastBinding.inflate(layoutInflater)
 
     override fun onBinding() {
 
+        init()
+        TvShowCastObserve()
+    }
+
+    private fun init(){
+        setUpTvShowCastAdapter()
+    }
+    private fun setUpTvShowCastAdapter() {
+        tvShowCastAdapter = TvShowCastAdapter()
+        mViewBinding.rvTvShowCast.layoutManager= LinearLayoutManager(context,
+            LinearLayoutManager.VERTICAL,false)
+        mViewBinding.rvTvShowCast.adapter=this.tvShowCastAdapter
+    }
+
+    private fun TvShowCastObserve(){
         mViewModel.tvShowDetails.observe(this){
             it.peekContent().let{it ->
                 when(it){
@@ -34,8 +48,6 @@ class TvShowCastFragment  : BaseFragment<TvShowDetailViewModel, FragmentTvShowCa
                         Log.i("fqnk", "Success: MovieDetailActivity ${it.data}")
 
                         showProgressBar(false)
-
-                        setUpCastAdapter()
                         tvShowCastAdapter.submitList(it.data.tvShowCreditsResponse.cast)
 
                     }
@@ -44,13 +56,5 @@ class TvShowCastFragment  : BaseFragment<TvShowDetailViewModel, FragmentTvShowCa
         }
     }
 
-    private fun setUpCastAdapter() {
-        tvShowCastAdapter = TvShowCastAdapter()
-        mViewBinding.rvTvShowCast.layoutManager= LinearLayoutManager(context,
-            LinearLayoutManager.VERTICAL,false)
-        mViewBinding.rvTvShowCast.adapter=this.tvShowCastAdapter
-
-
-    }
 
 }

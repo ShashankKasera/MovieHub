@@ -10,18 +10,16 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.fragment.CastFragment">
+        tools:context=".ui.fragment.MovieSimilarFragment">
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv_movie_cast"
+            android:id="@+id/rv_movie_similer"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:listitem="@layout/person_item" />
-
+            tools:listitem="@layout/movie_item" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

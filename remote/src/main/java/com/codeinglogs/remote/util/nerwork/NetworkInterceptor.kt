@@ -16,7 +16,7 @@ class NetworkInterceptor (val context: Context) : Interceptor {
             throw NoConnectivityException()
         }
         val originalRequest = chain.request()
-        val newHttpUrl = originalRequest.url().newBuilder().addQueryParameter("api_key", API_KEY).build()
+        val newHttpUrl = originalRequest.url.newBuilder().addQueryParameter("api_key", API_KEY).build()
         val newRequest = originalRequest.newBuilder().url(newHttpUrl).build()
         return chain.proceed(newRequest)
     }
