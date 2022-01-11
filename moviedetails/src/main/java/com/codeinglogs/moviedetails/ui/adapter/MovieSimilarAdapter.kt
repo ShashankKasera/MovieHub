@@ -42,6 +42,7 @@ class MovieSimilarAdapter() : ListAdapter<MovieSimilar, MovieSimilarAdapter.View
             val data = getItem(layoutPosition)
 
             binding.ivMovie.load(IMAGE_BASE_URL_500 +data.poster_path)
+            binding.tvMovieName.text=data.title
             binding.tvReting.text=data.vote_average.toString()
             if(data.release_date.length>0)
                 binding.tvYear.text=data.release_date.substring(0,4)
