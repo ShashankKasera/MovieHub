@@ -136,7 +136,7 @@
                     app:layout_constraintTop_toBottomOf="@+id/v_1_Movie_info" />
 
                 <TextView
-                    android:id="@+id/iv_show_all_tv_show_season_info"
+                    android:id="@+id/tv_show_all_tv_show_season_info"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Show all"

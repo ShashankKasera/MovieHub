@@ -4,6 +4,12 @@
 
     <application>
         <activity
+            android:name=".ui.activity.TvShowSeasonAllCrewActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.activity.TvShowAllCrewActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.activity.TvShowPagingActivity"
             android:exported="false" />
         <activity

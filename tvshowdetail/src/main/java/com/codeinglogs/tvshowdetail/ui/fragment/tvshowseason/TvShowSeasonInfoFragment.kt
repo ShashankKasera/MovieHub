@@ -9,6 +9,8 @@ import com.codeinglogs.presentation.model.State
 import com.codeinglogs.presentation.model.tvshow.tvshowseasondetails.TvShowSeasonDetailsDisplay
 import com.codeinglogs.presentation.viewmodel.tvshowseasondetails.TvShowSeasonDetailsViewModel
 import com.codeinglogs.tvshowdetail.databinding.FragmentTvShowSeasonInfoBinding
+import com.codeinglogs.tvshowdetail.ui.activity.TvShowAllCrewActivity
+import com.codeinglogs.tvshowdetail.ui.activity.TvShowSeasonAllCrewActivity
 import com.codeinglogs.tvshowdetail.ui.adapter.tvshowseason.TvShowSeasonCrewAdapter
 import com.codeinglogs.tvshowdetail.ui.adapter.tvshowseason.TvShowSeasonPosterAdapter
 import com.codeinglogs.tvshowdetail.ui.adapter.tvshowseason.TvShowSeasonVideoAdapter
@@ -57,6 +59,9 @@ class TvShowSeasonInfoFragment() : BaseFragment<TvShowSeasonDetailsViewModel, Fr
                         setCrew(it)
                         setTrailer(it)
                         setMedia(it)
+                        mViewBinding.tvShowAllTvShowSeasonInfo.setOnClickListener(){
+                            startActivity(TvShowSeasonAllCrewActivity.getInstance(requireContext(),mViewModel.tvShowSeasonId,mViewModel.tvShowSeasonNumber))
+                        }
                     }
                 }
             }

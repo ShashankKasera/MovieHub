@@ -60,8 +60,10 @@ class MovieDetailActivity : BaseActivity<MovieDetailViewModel, ActivityMovieDeta
         setUpTabLayout()
 
         val movieId = intent.getStringExtra(MOVIE_ID)
+
         Log.i(TAG, "init: "+movieId)
         movieId?.let {
+            mViewModel.movieId=it
             mViewModel.getMovieDetails(it)
         }
 
@@ -95,7 +97,7 @@ class MovieDetailActivity : BaseActivity<MovieDetailViewModel, ActivityMovieDeta
     }
 
     private fun setUpToolbar(){
-        mViewBinding.collapsingToolbar.setTitle("Tv Show Detail")
+        mViewBinding.collapsingToolbar.setTitle("Movie Detail")
     }
 
     companion object{

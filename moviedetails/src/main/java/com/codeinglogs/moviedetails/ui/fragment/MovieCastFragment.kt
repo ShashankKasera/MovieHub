@@ -6,11 +6,14 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.codeinglogs.core.base.BaseFragment
 import com.codeinglogs.moviedetails.ui.adapter.MovieCastAdapter
 import com.codeinglogs.moviedetails.databinding.FragmentMovieCastBinding
+import com.codeinglogs.moviedetails.ui.route.PersonRoute
 import com.codeinglogs.presentation.model.State
 import com.codeinglogs.presentation.viewmodel.moviedetail.MovieDetailViewModel
+import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
 private const val TAG = "123CastFragment"
-
+@AndroidEntryPoint
 class MovieCastFragment : BaseFragment<MovieDetailViewModel, FragmentMovieCastBinding>() {
 
     private lateinit var movieCastAdapter: MovieCastAdapter

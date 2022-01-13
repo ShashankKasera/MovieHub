@@ -5,8 +5,10 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.codeinglogs.core.Navigation
 import com.codeinglogs.core.extension.load
 import com.codeinglogs.moviedetails.databinding.PersonItemBinding
+import com.codeinglogs.moviedetails.ui.route.PersonRoute
 import com.codeinglogs.moviehub.constant.IMAGE_BASE_URL_500
 import com.codeinglogs.presentation.model.movies.moviedetail.credits.MovieCast
 import com.codeinglogs.presentation.model.movies.movieslist.Movies
@@ -34,11 +36,14 @@ class MovieCastAdapter() : ListAdapter<MovieCast, MovieCastAdapter.MovieCastView
 
     inner class MovieCastViewHolder(var binding : PersonItemBinding) : RecyclerView.ViewHolder(binding.root) {
         init {
+//            binding.root.setOnClickListener {
+//                binding.root.context.startActivity(context,getItem(layoutPosition).id.toString()))
+//            }
         }
         fun bind(position: Int) {
             val data = getItem(layoutPosition)
 
-            binding.tvProfileImage.load(IMAGE_BASE_URL_500+data.profile_path)
+            binding.ivPersonImage.load(IMAGE_BASE_URL_500+data.profile_path)
             binding.tvName.text=data.name
             binding.tvProfession.text=data.character
         }

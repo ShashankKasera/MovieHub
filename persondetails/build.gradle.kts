@@ -55,5 +55,5 @@ dependencies {
 
     daggerHilt()
     api(project(mapOf("path" to AppDependencies.CORE)))
-    api(project(mapOf("path" to AppDependencies.PRESENTATION)))
+    implementation(project(mapOf("path" to AppDependencies.PRESENTATION)))
 }

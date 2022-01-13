@@ -22,6 +22,8 @@ class MovieDetailViewModel@Inject constructor(private val getMovieDetailsUseCase
         get() = _MovieDetails
 
 
+    var movieId=""
+
     fun getMovieDetails(id: String) {
         viewModelScope.launch {
             getMovieDetailsUseCase(id).collect{

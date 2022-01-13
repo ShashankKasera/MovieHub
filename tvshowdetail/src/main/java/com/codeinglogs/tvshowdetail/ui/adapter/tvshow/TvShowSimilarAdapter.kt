@@ -10,6 +10,7 @@ import com.codeinglogs.moviehub.constant.IMAGE_BASE_URL_500
 import com.codeinglogs.presentation.model.tvshow.tvshowdetails.similar.TvShowSimilar
 import com.codeinglogs.presentation.model.tvshow.tvshowslist.TvShow
 import com.codeinglogs.tvshowdetail.databinding.TvShowItemBinding
+import com.codeinglogs.tvshowdetail.ui.activity.TvShowDetailsActivity
 
 class TvShowSimilarAdapter() : ListAdapter<TvShowSimilar, TvShowSimilarAdapter.TvShowSimilarViewHolder>(
     DriftUtils
@@ -34,6 +35,9 @@ class TvShowSimilarAdapter() : ListAdapter<TvShowSimilar, TvShowSimilarAdapter.T
 
     inner class TvShowSimilarViewHolder(var binding : TvShowItemBinding) : RecyclerView.ViewHolder(binding.root) {
         init {
+            binding.clTvShow.setOnClickListener {
+                binding.root.context.startActivity(TvShowDetailsActivity.getInstance(binding.root.context,getItem(layoutPosition).id.toString()))
+            }
         }
         fun bind(position: Int) {
             val data = getItem(layoutPosition)

@@ -6,6 +6,7 @@ dependencyResolutionManagement {
         jcenter() // Warning: this repository is going to shut down soon
     }
 }
+
 rootProject.name = "MovieHub"
 include ':app'
 include ':util'
@@ -21,3 +22,4 @@ include ':persondetails'
 include ':persondetailsapp'
 include ':tvshowdetail'
 include ':tvshowdetailapp'
+include ':navigation'

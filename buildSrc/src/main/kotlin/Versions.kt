@@ -41,6 +41,9 @@ object Versions {
     //Safe Args
     const val SAFE_ARGS = "2.3.5"
 
+    //quadrant Args
+    const val QUADRANT = "1.6.1"
+
     //ktx
     const val KTX = "1.4.0"
 

@@ -12,6 +12,7 @@ import com.codeinglogs.presentation.model.movies.movieslist.Movies
 import com.codeinglogs.presentation.model.person.persondetails.moviecredits.PersonMovieCastAndCrew
 import com.codeinglogs.presentation.model.person.persondetails.tvcredits.PersonTvCastAndCrew
 
+
 class PersonTvCreditsAdapter() : ListAdapter<PersonTvCastAndCrew, PersonTvCreditsAdapter.PersonTvCreditsViewHolder>(
     DriftUtils
 ){
@@ -35,6 +36,9 @@ class PersonTvCreditsAdapter() : ListAdapter<PersonTvCastAndCrew, PersonTvCredit
 
     inner class PersonTvCreditsViewHolder(var binding : PersonCreditsItemBinding) : RecyclerView.ViewHolder(binding.root) {
         init {
+            binding.clMovieTvShow.setOnClickListener {
+              //  binding.root.context.startActivity(TvShowDetailsActivity.getInstance(binding.root.context,getItem(layoutPosition).id.toString()))
+            }
         }
         fun bind(position: Int) {
             val data = getItem(layoutPosition)

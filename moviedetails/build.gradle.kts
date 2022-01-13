@@ -1,9 +1,7 @@
-import org.jetbrains.kotlin.storage.CacheResetOnProcessCanceled.enabled
 plugins {
     id(Plugins.LIBRARY)
     kotlin(Plugins.KOTLIN_ANDROID)
     kotlin(Plugins.KOTLIN_KAPT)
-
     id(Plugins.DAGGER_HILT_PLUGIN)
     id("kotlin-android")
 }
@@ -55,5 +53,5 @@ dependencies {
 
     daggerHilt()
     api(project(mapOf("path" to AppDependencies.CORE)))
-    api(project(mapOf("path" to AppDependencies.PRESENTATION)))
+    implementation(project(mapOf("path" to AppDependencies.PRESENTATION)))
 }

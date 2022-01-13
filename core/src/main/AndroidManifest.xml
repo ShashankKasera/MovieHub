@@ -3,7 +3,7 @@
     package="com.codeinglogs.core">
 
     <application>
-
+        <activity android:name="com.gaelmarhic.demo.MainActivity" />
     </application>
 
 </manifest>

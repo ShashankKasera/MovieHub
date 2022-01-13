@@ -39,6 +39,8 @@ class TvShowSeasonDetailsActivity : BaseActivity<TvShowSeasonDetailsViewModel, A
         val tvShowSeasonNumber = intent.getIntExtra(TV_SHOW_SEASON_NUMBER,-1)
         Log.i("nkwnk", "init: ${tvShowId}  ${tvShowSeasonNumber}")
         tvShowId?.let {
+            mViewModel.tvShowSeasonId=it
+            mViewModel.tvShowSeasonNumber=tvShowSeasonNumber
             mViewModel.getTvShowSeasonDetails(it,tvShowSeasonNumber)
         }
 

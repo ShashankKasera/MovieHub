@@ -10,6 +10,7 @@ import com.codeinglogs.moviehub.constant.IMAGE_BASE_URL_500
 import com.codeinglogs.persondetails.databinding.PersonCreditsItemBinding
 import com.codeinglogs.presentation.model.movies.movieslist.Movies
 import com.codeinglogs.presentation.model.person.persondetails.moviecredits.PersonMovieCastAndCrew
+//import com.codeinglogs.tvshowdetail.ui.activity.TvShowDetailsActivity
 
 class PersonMovieCreditsAdapter() : ListAdapter<PersonMovieCastAndCrew, PersonMovieCreditsAdapter.PersonMovieCreditsViewHolder>(
     DriftUtils
@@ -34,6 +35,9 @@ class PersonMovieCreditsAdapter() : ListAdapter<PersonMovieCastAndCrew, PersonMo
 
     inner class PersonMovieCreditsViewHolder(var binding : PersonCreditsItemBinding) : RecyclerView.ViewHolder(binding.root) {
         init {
+            binding.clMovieTvShow.setOnClickListener {
+                //binding.root.context.startActivity(MovieDetailActivity.getInstance(binding.root.context,getItem(layoutPosition).id.toString()))
+            }
         }
         fun bind(position: Int) {
             val data = getItem(layoutPosition)

@@ -21,6 +21,8 @@ class TvShowSeasonDetailsViewModel @Inject constructor(private val getTvShowSeas
     val tvShowSeasonDetails : LiveData<Event<State<TvShowSeasonDetailsDisplay>>>
     get() = _TvShowSeasonDetails
 
+    var tvShowSeasonId=""
+    var tvShowSeasonNumber=-1
 
     fun getTvShowSeasonDetails(id: String,season_number:Int) {
         viewModelScope.launch {

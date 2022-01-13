@@ -7,6 +7,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.codeinglogs.core.base.BaseFragment
 import com.codeinglogs.core.extension.load
 import com.codeinglogs.moviedetails.databinding.FragmentMovieInfosBinding
+import com.codeinglogs.moviedetails.ui.activity.MovieCrewActivity
+import com.codeinglogs.moviedetails.ui.activity.MovieDetailActivity
 import com.codeinglogs.moviedetails.ui.adapter.MovieGenresAdapter
 import com.codeinglogs.moviedetails.ui.adapter.MovieVideoAdapter
 import com.codeinglogs.moviedetails.ui.adapter.MovieCrewAdapter
@@ -31,6 +33,7 @@ class MovieInfoFragment : BaseFragment<MovieDetailViewModel, FragmentMovieInfosB
 
         init()
         movieInfoObserve()
+
     }
 
     private fun init() {
@@ -63,13 +66,16 @@ class MovieInfoFragment : BaseFragment<MovieDetailViewModel, FragmentMovieInfosB
                         setMedia(it)
                         setProductionCompanies(it)
 
-
+                        mViewBinding.tvShowAllMovieInfo.setOnClickListener(){
+                            startActivity(MovieCrewActivity.getInstance(requireContext(),mViewModel.movieId))
+                        }
 
                     }
                 }
             }
         }
     }
+
 
     private fun setDetails(it: State.Success<MovieDetailsDisplay>){
 

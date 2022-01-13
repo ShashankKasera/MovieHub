@@ -12,6 +12,7 @@ object AppDependencies {
     const val MOVIEDETAILS =  ":moviedetails"
     const val PERSONDETAILS =  ":persondetails"
     const val TVSHOWDETAILS =  ":tvshowdetail"
+    const val ROUTE =  ":navigation"
 
 
     //android ui
@@ -52,6 +53,9 @@ object AppDependencies {
 
     //safe-args
     const val SAFE_ARGS ="androidx.navigation:navigation-safe-args-gradle-plugin:${Versions.SAFE_ARGS}"
+
+    //safe-args
+    const val QUADRANT ="gradle.plugin.com.gaelmarhic:quadrant:${Versions.QUADRANT}"
 
     //navigation
     const val NAVIGATION ="androidx.navigation:navigation-fragment-ktx:${Versions.NAVIGATION}"

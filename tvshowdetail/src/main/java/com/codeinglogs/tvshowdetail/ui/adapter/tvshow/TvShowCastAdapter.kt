@@ -11,6 +11,7 @@ import com.codeinglogs.moviehub.constant.IMAGE_BASE_URL_500
 import com.codeinglogs.presentation.model.tvshow.tvshowdetails.credits.TvShowCast
 import com.codeinglogs.presentation.model.tvshow.tvshowslist.TvShow
 import com.codeinglogs.tvshowdetail.databinding.TvShowPersonItemBinding
+import com.codeinglogs.tvshowdetail.ui.activity.TvShowDetailsActivity
 
 class TvShowCastAdapter() : ListAdapter<TvShowCast, TvShowCastAdapter.TvShowCastViewHolder>(
     DriftUtils
@@ -35,11 +36,14 @@ class TvShowCastAdapter() : ListAdapter<TvShowCast, TvShowCastAdapter.TvShowCast
 
     inner class TvShowCastViewHolder(var binding : TvShowPersonItemBinding) : RecyclerView.ViewHolder(binding.root) {
         init {
+            binding.clPerson.setOnClickListener {
+              //  binding.root.context.startActivity(PersonDetailsActivity.getInstance(binding.root.context,getItem(layoutPosition).id.toString()))
+            }
         }
         fun bind(position: Int) {
             val data = getItem(layoutPosition)
 
-            binding.tvProfileImage.load(IMAGE_BASE_URL_500+data.profile_path)
+            binding.ivProfileImage.load(IMAGE_BASE_URL_500+data.profile_path)
             binding.tvName.text=data.name
             binding.tvProfession.text=data.known_for_department
 

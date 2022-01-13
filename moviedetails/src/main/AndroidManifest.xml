@@ -3,13 +3,16 @@
     package="com.codeinglogs.moviedetails">
 
     <application>
-
+        <activity
+            android:name=".ui.activity.MovieCrewActivity"
+            android:exported="false" />
         <activity
             android:name=".ui.activity.MovieDetailActivity"
             android:exported="false" />
         <activity
             android:name=".ui.activity.TrandingMoviesActivity"
             android:exported="false" />
+        <activity android:name="com.codeinglogs.persondetails.ui.activity.PersonDetailsActivity" />
     </application>
 
 </manifest>

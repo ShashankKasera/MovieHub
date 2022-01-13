@@ -11,6 +11,7 @@ import com.codeinglogs.presentation.model.State
 import com.codeinglogs.presentation.model.tvshow.tvshowdetails.TvShowDetailsDisplay
 import com.codeinglogs.presentation.viewmodel.tvshowdetails.TvShowDetailViewModel
 import com.codeinglogs.tvshowdetail.databinding.FragmentTvShowInfoBinding
+import com.codeinglogs.tvshowdetail.ui.activity.TvShowAllCrewActivity
 import com.codeinglogs.tvshowdetail.ui.adapter.tvshow.TvShowCrewAdapter
 import com.codeinglogs.tvshowdetail.ui.adapter.tvshow.TvShowGenresAdapter
 import com.codeinglogs.tvshowdetail.ui.adapter.tvshow.TvShowSeasonsAdapter
@@ -64,6 +65,9 @@ class TvShowInfoFragment : BaseFragment<TvShowDetailViewModel, FragmentTvShowInf
                         setMedia(it)
                         setProductionCompanies(it)
 
+                        mViewBinding.tvShowAllTvShowInfo.setOnClickListener(){
+                            startActivity(TvShowAllCrewActivity.getInstance(requireContext(),mViewModel.tvShowId))
+                        }
                     }
                 }
             }

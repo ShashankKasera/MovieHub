@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.codeinglogs.core.extension.load
 import com.codeinglogs.moviedetails.databinding.MovieItemBinding
+import com.codeinglogs.moviedetails.ui.activity.MovieDetailActivity
 import com.codeinglogs.moviehub.constant.IMAGE_BASE_URL_500
 import com.codeinglogs.presentation.model.movies.moviedetail.similar.MovieSimilar
 import com.codeinglogs.presentation.model.movies.movieslist.Movies
@@ -37,6 +38,9 @@ class MovieSimilarAdapter() : ListAdapter<MovieSimilar, MovieSimilarAdapter.View
 
     inner class ViewHolder(val binding : MovieItemBinding) : RecyclerView.ViewHolder(binding.root) {
         init {
+            binding.clMovie.setOnClickListener {
+                binding.root.context.startActivity(MovieDetailActivity.getInstance(binding.root.context,getItem(layoutPosition).id.toString()))
+            }
         }
         fun bind(position: Int) {
             val data = getItem(layoutPosition)

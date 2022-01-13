@@ -35,11 +35,14 @@ class TvShowSeasonCastAdapter() : ListAdapter<TvShowSeasonsCast, TvShowSeasonCas
 
     inner class TvShowSeasonCastViewHolder(var binding : TvShowPersonItemBinding) : RecyclerView.ViewHolder(binding.root) {
         init {
+            binding.clPerson.setOnClickListener {
+               // binding.root.context.startActivity(PersonDetailsActivity.getInstance(binding.root.context,getItem(layoutPosition).id.toString()))
+            }
         }
         fun bind(position: Int) {
             val data = getItem(layoutPosition)
 
-            binding.tvProfileImage.load(IMAGE_BASE_URL_500+data.profile_path)
+            binding.ivProfileImage.load(IMAGE_BASE_URL_500+data.profile_path)
             binding.tvName.text=data.name
             binding.tvProfession.text=data.known_for_department
 
