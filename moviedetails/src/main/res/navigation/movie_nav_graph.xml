@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/movie_nav_graph"
+    app:startDestination="@id/moviePagingFragment">
+
+    <fragment
+        android:id="@+id/moviePagingFragment"
+        android:name="com.codeinglogs.moviedetails.ui.fragment.MoviePagingFragment"
+        android:label="MoviePagingFragment" >
+        <argument
+            android:name="movieType"
+            app:argType="com.codeinglogs.presentation.model.movies.movieenum.MovieType" />
+    </fragment>
+</navigation>

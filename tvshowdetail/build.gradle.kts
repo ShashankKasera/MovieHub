@@ -3,8 +3,8 @@ plugins {
     id(Plugins.LIBRARY)
     kotlin(Plugins.KOTLIN_ANDROID)
     kotlin(Plugins.KOTLIN_KAPT)
-
     id(Plugins.DAGGER_HILT_PLUGIN)
+    id(Plugins.SAFEARGS)
     id("kotlin-android")
 }
 
@@ -55,5 +55,5 @@ dependencies {
 
     daggerHilt()
     api(project(mapOf("path" to AppDependencies.CORE)))
-    implementation(project(mapOf("path" to AppDependencies.PRESENTATION)))
+    api(project(mapOf("path" to AppDependencies.PRESENTATION)))
 }

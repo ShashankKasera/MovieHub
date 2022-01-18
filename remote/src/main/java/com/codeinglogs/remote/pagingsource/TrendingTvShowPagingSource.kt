@@ -9,7 +9,7 @@ import retrofit2.HttpException
 import java.io.IOException
 import javax.inject.Inject
 
-class TrendingTvShowPagingSource @Inject constructor (private val moviesRequest: TvShowRequest) : PagingSource<Int, TvShow>() {
+class TrendingTvShowPagingSource @Inject constructor (private val tvShowRequest: TvShowRequest) : PagingSource<Int, TvShow>() {
     override fun getRefreshKey(state: PagingState<Int, TvShow>): Int? {
         TODO("Not yet implemented")
     }
@@ -17,7 +17,7 @@ class TrendingTvShowPagingSource @Inject constructor (private val moviesRequest:
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, TvShow> {
         val position=params.key?:1
         return try {
-            val response=moviesRequest.getTrendingTvShow(position)
+            val response=tvShowRequest.getTrendingTvShow(position)
             val photo=response.results?.toDataTvShow()
             LoadResult.Page(
                 data = photo?: listOf(),

@@ -11,6 +11,7 @@ data class Movies (
     val original_title: String,
     val original_name: String,
     val poster_path: String,
+    val release_date: String,
     val vote_average: Double,
 )
 
@@ -18,6 +19,7 @@ fun Movies.toDataMovies() = DataMovies(
     id = id ,
     title = original_name ?: original_title,
     poster_path = poster_path,
+    release_date = release_date,
     vote_average = vote_average
 )
 
@@ -32,6 +34,7 @@ fun DataMovies.toLocalMovies() = Movies(
     original_name = title?:"",
     original_title = title?:"",
     poster_path = poster_path?:"",
+    release_date = release_date?:"",
     vote_average = vote_average?:0.0
 )
 

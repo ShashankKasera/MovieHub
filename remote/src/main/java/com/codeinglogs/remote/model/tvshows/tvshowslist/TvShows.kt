@@ -23,6 +23,7 @@ fun TvShows.toDataTvShow()=DataTvShow(
     id=id?:0,
     name=name?:"",
     original_name=original_name?:"",
+    first_air_date=first_air_date?:"",
     overview=overview?:"",
     poster_path=poster_path?:"",
     vote_average=vote_average?:0.0

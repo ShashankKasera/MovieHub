@@ -8,21 +8,37 @@
         <entry key="..\:/Users/User/Documents/shashankcode/moviehub/app/src/main/res/drawable/selected_slide_indicator.xml" value="0.22291666666666668" />
         <entry key="..\:/Users/User/Documents/shashankcode/moviehub/app/src/main/res/drawable/slider_background.xml" value="0.20277777777777778" />
         <entry key="..\:/Users/User/Documents/shashankcode/moviehub/app/src/main/res/drawable/unselected_slide_indicator.xml" value="0.22291666666666668" />
+        <entry key="..\:/Users/User/Documents/shashankcode/moviehub/app/src/main/res/layout/activity_app_info.xml" value="0.20260416666666667" />
         <entry key="..\:/Users/User/Documents/shashankcode/moviehub/app/src/main/res/layout/activity_main.xml" value="0.20260416666666667" />
-        <entry key="..\:/Users/User/Documents/shashankcode/moviehub/app/src/main/res/layout/activity_movie_hub.xml" value="0.20260416666666667" />
+        <entry key="..\:/Users/User/Documents/shashankcode/moviehub/app/src/main/res/layout/activity_movie_hub.xml" value="0.176" />
+        <entry key="..\:/Users/User/Documents/shashankcode/moviehub/app/src/main/res/layout/activity_movie_paging.xml" value="0.19074074074074074" />
+        <entry key="..\:/Users/User/Documents/shashankcode/moviehub/app/src/main/res/layout/activity_person.xml" value="0.20260416666666667" />
+        <entry key="..\:/Users/User/Documents/shashankcode/moviehub/app/src/main/res/layout/activity_person_paging.xml" value="0.20260416666666667" />
+        <entry key="..\:/Users/User/Documents/shashankcode/moviehub/app/src/main/res/layout/activity_search.xml" value="0.33796698523023455" />
         <entry key="..\:/Users/User/Documents/shashankcode/moviehub/app/src/main/res/layout/activity_tpw.xml" value="0.1648148148148148" />
         <entry key="..\:/Users/User/Documents/shashankcode/moviehub/app/src/main/res/layout/activity_tpwactivity.xml" value="0.20260416666666667" />
         <entry key="..\:/Users/User/Documents/shashankcode/moviehub/app/src/main/res/layout/activity_tranding_movies.xml" value="0.20260416666666667" />
+        <entry key="..\:/Users/User/Documents/shashankcode/moviehub/app/src/main/res/layout/activity_tv_show_paging.xml" value="0.20260416666666667" />
         <entry key="..\:/Users/User/Documents/shashankcode/moviehub/app/src/main/res/layout/fragment_hmoe.xml" value="0.136" />
         <entry key="..\:/Users/User/Documents/shashankcode/moviehub/app/src/main/res/layout/fragment_home.xml" value="0.2" />
+        <entry key="..\:/Users/User/Documents/shashankcode/moviehub/app/src/main/res/layout/fragment_home_paging.xml" value="0.20260416666666667" />
         <entry key="..\:/Users/User/Documents/shashankcode/moviehub/app/src/main/res/layout/fragment_menu.xml" value="0.20260416666666667" />
+        <entry key="..\:/Users/User/Documents/shashankcode/moviehub/app/src/main/res/layout/fragment_movie_my_list.xml" value="0.20260416666666667" />
         <entry key="..\:/Users/User/Documents/shashankcode/moviehub/app/src/main/res/layout/fragment_my_list.xml" value="0.20260416666666667" />
+        <entry key="..\:/Users/User/Documents/shashankcode/moviehub/app/src/main/res/layout/fragment_search.xml" value="0.20260416666666667" />
+        <entry key="..\:/Users/User/Documents/shashankcode/moviehub/app/src/main/res/layout/fragment_search_movie.xml" value="0.20260416666666667" />
+        <entry key="..\:/Users/User/Documents/shashankcode/moviehub/app/src/main/res/layout/fragment_search_person.xml" value="0.20260416666666667" />
+        <entry key="..\:/Users/User/Documents/shashankcode/moviehub/app/src/main/res/layout/fragment_search_tv_show.xml" value="0.20260416666666667" />
         <entry key="..\:/Users/User/Documents/shashankcode/moviehub/app/src/main/res/layout/fragment_setting.xml" value="0.20260416666666667" />
+        <entry key="..\:/Users/User/Documents/shashankcode/moviehub/app/src/main/res/layout/fragment_tv_show_my_list.xml" value="0.20260416666666667" />
         <entry key="..\:/Users/User/Documents/shashankcode/moviehub/app/src/main/res/layout/load_state_footer.xml" value="0.20260416666666667" />
+        <entry key="..\:/Users/User/Documents/shashankcode/moviehub/app/src/main/res/layout/movie_and_tv_show_secondary_item.xml" value="0.20260416666666667" />
         <entry key="..\:/Users/User/Documents/shashankcode/moviehub/app/src/main/res/layout/movie_item.xml" value="0.20260416666666667" />
         <entry key="..\:/Users/User/Documents/shashankcode/moviehub/app/src/main/res/layout/movies_and_tv_show_item.xml" value="0.20260416666666667" />
         <entry key="..\:/Users/User/Documents/shashankcode/moviehub/app/src/main/res/layout/movies_and_tv_show_primary_item.xml" value="0.1814814814814815" />
+        <entry key="..\:/Users/User/Documents/shashankcode/moviehub/app/src/main/res/layout/my_list_item.xml" value="0.20260416666666667" />
         <entry key="..\:/Users/User/Documents/shashankcode/moviehub/app/src/main/res/layout/perosn_primary_item.xml" value="0.20260416666666667" />
+        <entry key="..\:/Users/User/Documents/shashankcode/moviehub/app/src/main/res/layout/person_secondary_item.xml" value="0.20260416666666667" />
         <entry key="..\:/Users/User/Documents/shashankcode/moviehub/app/src/main/res/layout/tpw_item.xml" value="0.20260416666666667" />
         <entry key="..\:/Users/User/Documents/shashankcode/moviehub/app/src/main/res/layout/tpw_load_state.xml" value="0.20260416666666667" />
         <entry key="..\:/Users/User/Documents/shashankcode/moviehub/app/src/main/res/layout/trending_movies_item.xml" value="0.4" />
@@ -37,6 +53,7 @@
         <entry key="..\:/Users/User/Documents/shashankcode/moviehub/moviedetails/src/main/res/drawable/slider_background.xml" value="0.20277777777777778" />
         <entry key="..\:/Users/User/Documents/shashankcode/moviehub/moviedetails/src/main/res/layout/activity_movie_crew.xml" value="0.20260416666666667" />
         <entry key="..\:/Users/User/Documents/shashankcode/moviehub/moviedetails/src/main/res/layout/activity_movie_detail.xml" value="0.2936630602782071" />
+        <entry key="..\:/Users/User/Documents/shashankcode/moviehub/moviedetails/src/main/res/layout/activity_movies_paging.xml" value="0.20260416666666667" />
         <entry key="..\:/Users/User/Documents/shashankcode/moviehub/moviedetails/src/main/res/layout/activity_tab.xml" value="0.184375" />
         <entry key="..\:/Users/User/Documents/shashankcode/moviehub/moviedetails/src/main/res/layout/activity_tranding_movies.xml" value="0.20260416666666667" />
         <entry key="..\:/Users/User/Documents/shashankcode/moviehub/moviedetails/src/main/res/layout/crew_item.xml" value="0.20260416666666667" />
@@ -45,6 +62,7 @@
         <entry key="..\:/Users/User/Documents/shashankcode/moviehub/moviedetails/src/main/res/layout/fragment_movie_cast.xml" value="0.20260416666666667" />
         <entry key="..\:/Users/User/Documents/shashankcode/moviehub/moviedetails/src/main/res/layout/fragment_movie_info.xml" value="0.19867211440245147" />
         <entry key="..\:/Users/User/Documents/shashankcode/moviehub/moviedetails/src/main/res/layout/fragment_movie_infos.xml" value="0.20260416666666667" />
+        <entry key="..\:/Users/User/Documents/shashankcode/moviehub/moviedetails/src/main/res/layout/fragment_movie_paging.xml" value="0.20260416666666667" />
         <entry key="..\:/Users/User/Documents/shashankcode/moviehub/moviedetails/src/main/res/layout/fragment_movie_reviews.xml" value="0.20260416666666667" />
         <entry key="..\:/Users/User/Documents/shashankcode/moviehub/moviedetails/src/main/res/layout/fragment_movie_similar.xml" value="0.20260416666666667" />
         <entry key="..\:/Users/User/Documents/shashankcode/moviehub/moviedetails/src/main/res/layout/fragment_reviews.xml" value="0.20260416666666667" />
@@ -84,6 +102,7 @@
         <entry key="..\:/Users/User/Documents/shashankcode/moviehub/tvshowdetail/src/main/res/layout/fragment_tv_show_cast.xml" value="0.20260416666666667" />
         <entry key="..\:/Users/User/Documents/shashankcode/moviehub/tvshowdetail/src/main/res/layout/fragment_tv_show_episode.xml" value="0.20260416666666667" />
         <entry key="..\:/Users/User/Documents/shashankcode/moviehub/tvshowdetail/src/main/res/layout/fragment_tv_show_info.xml" value="0.19543973941368079" />
+        <entry key="..\:/Users/User/Documents/shashankcode/moviehub/tvshowdetail/src/main/res/layout/fragment_tv_show_paging.xml" value="0.20260416666666667" />
         <entry key="..\:/Users/User/Documents/shashankcode/moviehub/tvshowdetail/src/main/res/layout/fragment_tv_show_reviews.xml" value="0.20260416666666667" />
         <entry key="..\:/Users/User/Documents/shashankcode/moviehub/tvshowdetail/src/main/res/layout/fragment_tv_show_season_cast.xml" value="0.20260416666666667" />
         <entry key="..\:/Users/User/Documents/shashankcode/moviehub/tvshowdetail/src/main/res/layout/fragment_tv_show_season_info.xml" value="0.20260416666666667" />

@@ -45,8 +45,14 @@ interface MoviesRequest {
     @GET("movie/popular")
     suspend fun getPoPuLarMovie(): MoviesListResponse
 
+    @GET("movie/popular")
+    suspend fun getPoPuLarMovie(@Query("page") page : Int): MoviesListResponse
+
     @GET("movie/top_rated")
     suspend fun getTopRatedMovie(): MoviesListResponse
+
+    @GET("movie/top_rated")
+    suspend fun getTopRatedMovie(@Query("page") page : Int): MoviesListResponse
 
 
 }

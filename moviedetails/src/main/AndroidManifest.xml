@@ -10,7 +10,7 @@
             android:name=".ui.activity.MovieDetailActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.activity.TrandingMoviesActivity"
+            android:name=".ui.activity.MoviesPagingActivity"
             android:exported="false" />
         <activity android:name="com.codeinglogs.persondetails.ui.activity.PersonDetailsActivity" />
     </application>

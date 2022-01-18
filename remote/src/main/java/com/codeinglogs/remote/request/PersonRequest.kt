@@ -1,5 +1,6 @@
 package com.codeinglogs.remote.request
 
+import com.codeinglogs.remote.model.movies.movieslist.MoviesListResponse
 import com.codeinglogs.remote.model.person.persondetail.externalids.PersonExternalIdsResponse
 import com.codeinglogs.remote.model.person.persondetail.images.PersonImagesResponse
 import com.codeinglogs.remote.model.person.persondetail.info.PersonInfoResponse
@@ -9,11 +10,15 @@ import com.codeinglogs.remote.model.person.persondetail.tvcredits.PersonTvCredit
 import com.codeinglogs.remote.model.person.personlist.PersonListResponse
 import retrofit2.http.GET
 import retrofit2.http.Path
+import retrofit2.http.Query
 
 interface PersonRequest {
 
     @GET("person/popular")
     suspend fun getPerson(): PersonListResponse
+
+    @GET("person/popular")
+    suspend fun getPoPuLarPerson(@Query("page") page : Int): PersonListResponse
 
     @GET("person/{id}")
     suspend fun getPersonInfo(@Path("id")id : String) : PersonInfoResponse

@@ -33,6 +33,8 @@ class TvShowAllCrewActivity : BaseActivity<TvShowDetailViewModel, ActivityTvShow
 
     private fun init() {
 
+        mViewBinding.tbTvShowAllCrew.setTitle("Crew")
+
         val movieId = intent.getStringExtra(TVSHOWID)
 
         movieId?.let {

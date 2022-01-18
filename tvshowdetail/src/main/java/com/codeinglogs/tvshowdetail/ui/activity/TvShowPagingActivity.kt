@@ -8,70 +8,60 @@ import androidx.core.view.isVisible
 import androidx.paging.LoadState
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.codeinglogs.core.base.BaseActivity
-import com.codeinglogs.presentation.model.State
-import com.codeinglogs.presentation.viewmodel.trendingtvshow.TrendingTvShowViewModel
+import com.codeinglogs.presentation.model.tvshow.tvshowenum.TvShowType
+import com.codeinglogs.presentation.viewmodel.pagingtvshow.TvShowPagingViewModel
 import com.codeinglogs.tvshowdetail.databinding.ActivityTvShowPagingBinding
 import com.codeinglogs.tvshowdetail.ui.adapter.tvshow.TvShowLoadStateAdapter
-import com.codeinglogs.tvshowdetail.ui.adapter.tvshow.TvShowPagingAdatper
+import com.codeinglogs.tvshowdetail.ui.adapter.tvshow.TvShowPagingAdapter
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class TvShowPagingActivity : BaseActivity<TrendingTvShowViewModel, ActivityTvShowPagingBinding>() {
+class TvShowPagingActivity : BaseActivity<TvShowPagingViewModel, ActivityTvShowPagingBinding>() {
 
-    lateinit var tvShowPagingAdatper: TvShowPagingAdatper
+    lateinit var tvShowPagingAdapter: TvShowPagingAdapter
 
-    override val mViewModel: TrendingTvShowViewModel by viewModels()
+    override val mViewModel: TvShowPagingViewModel by viewModels()
     override fun getViewBinding() = ActivityTvShowPagingBinding.inflate(layoutInflater)
 
     override fun onBinding() {
 
         init()
-        observe()
         buttonRetry()
         pagingLoadState()
     }
 
     private fun init(){
-        mViewModel.getTrendingTvShowList()
-        setUpTvShowPagingAdatper()
+        val type = intent.getSerializableExtra(TYPE) as TvShowType
+        Log.i("kjkk", "init: $type")
+        setUpTvShowPagingAdapter()
+        TvShowPagingObserve(type)
     }
 
-    private fun setUpTvShowPagingAdatper(){
-        tvShowPagingAdatper = TvShowPagingAdatper()
+    private fun setUpTvShowPagingAdapter(){
+        tvShowPagingAdapter = TvShowPagingAdapter()
         mViewBinding.recyclerView.layoutManager = LinearLayoutManager(this)
-        mViewBinding.recyclerView.adapter = this.tvShowPagingAdatper.withLoadStateHeaderAndFooter(
-            header = TvShowLoadStateAdapter { tvShowPagingAdatper.retry() },
-            footer = TvShowLoadStateAdapter { tvShowPagingAdatper.retry() },
+        mViewBinding.recyclerView.adapter = this.tvShowPagingAdapter.withLoadStateHeaderAndFooter(
+            header = TvShowLoadStateAdapter { tvShowPagingAdapter.retry() },
+            footer = TvShowLoadStateAdapter { tvShowPagingAdapter.retry() },
         )
     }
 
-    private fun observe(){
-        mViewModel.trendingTvShowViewModel.observe(this) {
-            it.contentIfNotHandled?.let {
-                when (it) {
-                    is State.Failed -> showProgressBar(false)
-                    is State.Loading -> showProgressBar(true)
-                    is State.Success -> {
-                        Log.i("fwkjgnkq", "onBinding: ${it.data.results}")
-                        showProgressBar(false)
-                    }
-                }
-            }
-        }
+    private fun TvShowPagingObserve(type: TvShowType) {
 
-        mViewModel.trendingTvShow.observe(this) {
-            tvShowPagingAdatper.submitData(lifecycle, it)
+
+        mViewModel.getTvShowList(type).observe(this) {
+            tvShowPagingAdapter.submitData(lifecycle, it)
         }
     }
 
     private fun buttonRetry(){
         mViewBinding.buttonRetry.setOnClickListener {
-            tvShowPagingAdatper.retry()
+            tvShowPagingAdapter.retry()
         }
     }
 
     private fun pagingLoadState(){
-        tvShowPagingAdatper.addLoadStateListener { loadState ->
+        tvShowPagingAdapter.addLoadStateListener { loadState ->
 
             mViewBinding.apply {
 
@@ -83,7 +73,7 @@ class TvShowPagingActivity : BaseActivity<TrendingTvShowViewModel, ActivityTvSho
                 // empty view
                 if (loadState.source.refresh is LoadState.NotLoading &&
                     loadState.append.endOfPaginationReached &&
-                    tvShowPagingAdatper.itemCount < 1
+                    tvShowPagingAdapter.itemCount < 1
                 ) {
                     recyclerView.isVisible = false
                     textViewEmpty.isVisible = true
@@ -98,6 +88,10 @@ class TvShowPagingActivity : BaseActivity<TrendingTvShowViewModel, ActivityTvSho
     }
 
     companion object{
-        fun getInstance(context: Context) = Intent(context, TvShowPagingActivity::class.java)
+        const val TYPE = "type"
+
+        fun getInstance(context: Context,type : TvShowType) = Intent(context, TvShowPagingActivity::class.java).apply {
+            putExtra(TYPE,type)
+        }
     }
 }

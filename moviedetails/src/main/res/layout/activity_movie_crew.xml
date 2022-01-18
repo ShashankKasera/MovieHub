@@ -12,13 +12,34 @@
         android:layout_height="match_parent"
         tools:context=".ui.activity.MovieCrewActivity">
 
-        <androidx.recyclerview.widget.RecyclerView
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/abl_Movie_crew"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:background="@color/colorPrimary">
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/tb_movie_crew"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:elevation="7dp"
+                android:text="Home"
+                android:background="@color/colorPrimary">
+
+            </androidx.appcompat.widget.Toolbar>
+
+        </com.google.android.material.appbar.AppBarLayout>
+
+                <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_movie_crew"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/abl_Movie_crew"
             tools:listitem="@layout/person_item" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/tv_show_nav_graph"
+    app:startDestination="@id/tvShowPagingFragment">
+
+    <fragment
+        android:id="@+id/tvShowPagingFragment"
+        android:name="com.codeinglogs.tvshowdetail.ui.fragment.tvshow.TvShowPagingFragment"
+        android:label="TvShowPagingFragment" >
+
+        <argument
+            android:name="tvShowType"
+            app:argType="com.codeinglogs.presentation.model.tvshow.tvshowenum.TvShowType" />
+    </fragment>
+</navigation>

@@ -34,6 +34,7 @@ class TvShowSeasonAllCrewActivity : BaseActivity<TvShowSeasonDetailsViewModel, A
     }
 
     private fun init() {
+        mViewBinding.tbTvShowSeasonAllCrew.setTitle("Crew")
 
         val tvShowId = intent.getStringExtra(TV_SHOW_ID)
         val tvShowSeasonNumber = intent.getIntExtra(TV_SHOW_SEASON_NUMBER,-1)

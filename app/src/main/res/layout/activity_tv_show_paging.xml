@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".activity.TvShowPagingActivity">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_tv_show_paging_home"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:listitem="@layout/movie_and_tv_show_secondary_item" />
+
+
+        <ProgressBar
+            android:id="@+id/pb_tv_show_paging_home"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            tools:visibility="visible"
+            app:layout_constraintBottom_toBottomOf="@+id/rv_tv_show_paging_home"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/rv_tv_show_paging_home" />
+
+        <Button
+            android:id="@+id/b_retry_tv_show_paging_home"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Retry"
+            android:visibility="gone"
+            tools:visibility="visible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/rv_tv_show_paging_home"
+            app:layout_constraintStart_toStartOf="@+id/rv_tv_show_paging_home"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_error_tv_show_paging_home"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="result could not be loaded"
+            android:layout_marginBottom="16dp"
+            android:textSize="16dp"
+            android:visibility="gone"
+            tools:visibility="visible"
+            app:layout_constraintBottom_toTopOf="@+id/pb_tv_show_paging_home"
+            app:layout_constraintEnd_toEndOf="@+id/b_retry_tv_show_paging_home"
+            app:layout_constraintStart_toStartOf="@+id/b_retry_tv_show_paging_home" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

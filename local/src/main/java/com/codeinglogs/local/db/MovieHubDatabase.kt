@@ -7,7 +7,8 @@ import com.codeinglogs.local.dao.*
 import com.codeinglogs.local.entity.*
 
 @Database(
-    entities = [Movies::class,
+    entities = [
+        Movies::class,
         Persons::class,
         TvShows::class,
         TrendingMovies::class,
@@ -16,7 +17,7 @@ import com.codeinglogs.local.entity.*
         PopularMovies::class,
         PopularTvShows::class,
         TopRatedMovies::class,
-        TopRatedTvShows::class], version = 1, exportSchema = false
+        TopRatedTvShows::class], version = 2, exportSchema = false
 )
 abstract class MovieHubDatabase : RoomDatabase() {
     abstract fun getMoviesDao(): MoviesDao

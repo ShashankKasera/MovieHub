@@ -9,14 +9,16 @@ data class Movies(
     val original_title: String?,
     val poster_path: String?,
     val title: String?,
+    val release_date: String?,
     val vote_average: Double?,
 
 )
 
 fun Movies.toDataMovies() = DataMovies(
     id = id?:0L,
-    title = original_name?:original_title,
+    title = original_name?:original_title?:"",
     poster_path = poster_path?:"",
-    vote_average=vote_average?:0.0
+    vote_average=vote_average?:0.0,
+    release_date=release_date?:""
 )
 

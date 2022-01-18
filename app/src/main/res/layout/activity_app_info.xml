@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".activity.AppInfoActivity"
+        android:background="@color/colorPrimary">
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_begin="70dp" />
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/ima_profile_image_app_info"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:src="@drawable/mayank"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/guideline1" />
+
+        <TextView
+            android:id="@+id/tv_app_name_app_info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Movie Hub"
+            android:layout_marginTop="30dp"
+            android:textSize="20dp"
+            android:textColor="@color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ima_profile_image_app_info" />
+
+        <TextView
+            android:id="@+id/tv_creatur_name_app_info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="is created by Shashank Kasera"
+            android:textSize="20dp"
+            android:textColor="@color/white"
+            android:layout_marginTop="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_app_name_app_info" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_begin="400dp" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="16dp" />
+
+        <ImageView
+            android:id="@+id/ima_github_app_info"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            app:tint="@color/white"
+            app:layout_constraintStart_toStartOf="@+id/guideline3"
+            app:layout_constraintTop_toTopOf="@+id/guideline2"
+            app:srcCompat="@drawable/github" />
+
+        <TextView
+            android:id="@+id/tv_github_app_info"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="Github"
+            android:textSize="16dp"
+            android:textColor="@color/light_gray"
+            app:layout_constraintBottom_toBottomOf="@+id/ima_github_app_info"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/ima_github_app_info"
+            app:layout_constraintTop_toTopOf="@+id/ima_github_app_info" />
+
+
+        <ImageView
+            android:id="@+id/ima_linkdin_app_info"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="24dp"
+            app:layout_constraintStart_toStartOf="@+id/guideline3"
+            app:layout_constraintTop_toBottomOf="@+id/ima_github_app_info"
+            app:srcCompat="@drawable/linkdin"
+            app:tint="@color/white" />
+
+        <TextView
+            android:id="@+id/tv_linkdin_app_info"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="Linkdin"
+            android:textSize="16dp"
+            android:textColor="@color/light_gray"
+            app:layout_constraintBottom_toBottomOf="@+id/ima_linkdin_app_info"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/ima_linkdin_app_info"
+            app:layout_constraintTop_toTopOf="@+id/ima_linkdin_app_info" />
+
+        <ImageView
+            android:id="@+id/ima_insta_app_info"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="24dp"
+            app:layout_constraintStart_toStartOf="@+id/guideline3"
+            app:layout_constraintTop_toBottomOf="@+id/ima_linkdin_app_info"
+            app:srcCompat="@drawable/instagram"
+            app:tint="@color/white" />
+
+        <TextView
+            android:id="@+id/tv_insta_app_info"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="Instagram"
+            android:textSize="16dp"
+            android:textColor="@color/light_gray"
+            app:layout_constraintBottom_toBottomOf="@+id/ima_insta_app_info"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/ima_insta_app_info"
+            app:layout_constraintTop_toTopOf="@+id/ima_insta_app_info" />
+
+
+        <ImageView
+            android:id="@+id/ima_facebook_app_info"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="24dp"
+            app:layout_constraintStart_toStartOf="@+id/guideline3"
+            app:layout_constraintTop_toBottomOf="@+id/ima_insta_app_info"
+            app:srcCompat="@drawable/fb"
+            app:tint="@color/white" />
+
+        <TextView
+            android:id="@+id/tv_facebook_app_info"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="Facebook"
+            android:textSize="16dp"
+            android:textColor="@color/light_gray"
+            app:layout_constraintBottom_toBottomOf="@+id/ima_facebook_app_info"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/ima_facebook_app_info"
+            app:layout_constraintTop_toTopOf="@+id/ima_facebook_app_info" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

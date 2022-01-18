@@ -21,14 +21,22 @@ interface TvShowRequest {
     @GET("trending/tv/day")
     suspend fun getTrendingTvShow(): TvShowsListResponse
 
+    @GET("trending/tv/day")
+    suspend fun getTrendingTvShow(@Query("page") page : Int): TvShowsListResponse
+
     @GET("tv/popular")
     suspend fun getPoPuLarTvShow(): TvShowsListResponse
+
+    @GET("tv/popular")
+    suspend fun getPoPuLarTvShow(@Query("page") page : Int): TvShowsListResponse
 
     @GET("tv/top_rated")
     suspend fun getTopRatedTvShow(): TvShowsListResponse
 
-    @GET("trending/all/day")
-    suspend fun getTrendingTvShow(@Query("page") page : Int): TvShowsListResponse
+    @GET("tv/top_rated")
+    suspend fun getTopRatedTvShow(@Query("page") page : Int): TvShowsListResponse
+
+
 
     @GET("tv/{id}")
     suspend fun getTvShowInfo(@Path("id")id : String) : TvShowInfoResponse

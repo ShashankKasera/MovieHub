@@ -8,6 +8,7 @@ data class TvShow(
     val name: String,
     val original_name: String,
     val overview: String,
+    val first_air_date: String,
     val poster_path: String,
     val vote_average:Double,
 )
@@ -16,6 +17,7 @@ fun DomainResultTrendingTvShow.toPresentationTvShow()=TvShow(
     id=id,
     vote_average=vote_average,
     name=name,
+    first_air_date=first_air_date,
     poster_path=poster_path,
     original_name=original_name,
     overview=overview,

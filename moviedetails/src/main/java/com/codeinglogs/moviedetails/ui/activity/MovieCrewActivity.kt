@@ -30,6 +30,8 @@ class MovieCrewActivity : BaseActivity<MovieDetailViewModel, ActivityMovieCrewBi
 
     private fun init() {
 
+        mViewBinding.tbMovieCrew.setTitle("Crew")
+
         val movieId = intent.getStringExtra(MOVIE_ID)
 
         movieId?.let {

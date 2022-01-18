@@ -7,9 +7,9 @@
         android:icon="@drawable/ic_home"
         />
     <item
-        android:id="@+id/settingFragment"
-        android:title="Setting"
-        android:icon="@drawable/ic_settings"
+        android:id="@+id/searchFragment"
+        android:title="Search"
+        android:icon="@drawable/ic_search"
         />
 
     <item

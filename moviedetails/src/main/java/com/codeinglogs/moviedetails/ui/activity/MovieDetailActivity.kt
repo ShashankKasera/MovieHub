@@ -62,6 +62,7 @@ class MovieDetailActivity : BaseActivity<MovieDetailViewModel, ActivityMovieDeta
         val movieId = intent.getStringExtra(MOVIE_ID)
 
         Log.i(TAG, "init: "+movieId)
+
         movieId?.let {
             mViewModel.movieId=it
             mViewModel.getMovieDetails(it)

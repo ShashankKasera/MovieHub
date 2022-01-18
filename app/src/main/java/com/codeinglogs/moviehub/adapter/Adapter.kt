@@ -15,6 +15,7 @@ class Adapter(val action : Actions, val callback : (data : Int) -> Int) : ListAd
 
     init {
 
+
     }
 
     companion object DriftUtils : DiffUtil.ItemCallback<Person>(){

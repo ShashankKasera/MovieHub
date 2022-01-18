@@ -7,13 +7,18 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.codeinglogs.core.base.BaseFragment
 import com.codeinglogs.core.PicassoImageLoadingService
 import com.codeinglogs.core.SliderAdapter
+import com.codeinglogs.moviehub.activity.MoviePagingActivity
+import com.codeinglogs.moviehub.activity.PersonPagingActivity
+import com.codeinglogs.moviehub.activity.TvShowPagingActivity
 import com.codeinglogs.moviehub.adapter.MoviesPrimaryAdapter
 import com.codeinglogs.moviehub.adapter.PersonPrimaryAdapter
 import com.codeinglogs.moviehub.adapter.TvShowsPrimaryAdapter
 import com.codeinglogs.moviehub.constant.IMAGE_BASE_URL_500
 import com.codeinglogs.moviehub.databinding.FragmentHomeBinding
 import com.codeinglogs.presentation.model.State
-import com.codeinglogs.presentation.model.tvshow.tvshowslist.TvShow
+import com.codeinglogs.presentation.model.movies.movieenum.MovieType
+import com.codeinglogs.presentation.model.movies.movieslist.Movies
+import com.codeinglogs.presentation.model.tvshow.tvshowenum.TvShowType
 import com.codeinglogs.presentation.viewmodel.home.HomeViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.Dispatchers
@@ -51,7 +56,32 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>() {
     }
 
     private fun init() {
+        onClick()
         mViewModel.getHome()
+    }
+
+    private fun onClick() {
+        mViewBinding.tvTrendingPersonMoreHome.setOnClickListener(){
+            startActivity(PersonPagingActivity.getInstance(requireContext()))
+        }
+        mViewBinding.tvTrendingMovieMoreHome.setOnClickListener(){
+            startActivity(MoviePagingActivity.getInstance(requireContext(),MovieType.TRENDING))
+        }
+        mViewBinding.tvTrendingShowMoreHome.setOnClickListener(){
+            startActivity(TvShowPagingActivity.getInstance(requireContext(),TvShowType.TRENDING))
+        }
+        mViewBinding.tvPopularMovieMoreHome.setOnClickListener(){
+            startActivity(MoviePagingActivity.getInstance(requireContext(),MovieType.POPULAR))
+        }
+        mViewBinding.tvPopularTvShowMoreHome.setOnClickListener(){
+            startActivity(TvShowPagingActivity.getInstance(requireContext(),TvShowType.POPULAR))
+        }
+        mViewBinding.tvTopratedMoviesMoreHome.setOnClickListener(){
+            startActivity(MoviePagingActivity.getInstance(requireContext(),MovieType.TOP_RATED))
+        }
+        mViewBinding.tvTopratedTvShowMoreHome.setOnClickListener(){
+            startActivity(TvShowPagingActivity.getInstance(requireContext(),TvShowType.TOP_RATED))
+        }
     }
 
     private fun setUpObserver() {
@@ -93,7 +123,11 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>() {
                             topRatedTvShow.submitList(it.data.topRatedTvShow.results)
                         }
 
-                        addSlider(mViewBinding.bannerSlider,it.data.topRatedTvShow.results)
+                        it.data.trendingMovie.results?.let { trendingMovie ->
+                            addSlider(mViewBinding.bannerSlider,
+                                trendingMovie
+                            )
+                        }
 
                     }
                 }
@@ -102,7 +136,7 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>() {
 
     }
 
-    private  fun addSlider (slider: Slider, results: List<TvShow>, ) {
+    private  fun addSlider (slider: Slider, results: List<Movies> ) {
 
 
         val list = ArrayList<String>()
