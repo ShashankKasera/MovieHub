@@ -1,30 +1,18 @@
 package com.codeinglogs.remote.model.tvshows.tvshowdetails.credits
 
-import com.codeinglogs.data.model.tvshow.tvshowdetails.credits.TvShowCast as DataTvShowCast
-import com.codeinglogs.data.model.tvshow.tvshowdetails.credits.TvShowCrew as DataTvShowCrew
+import com.codeinglogs.remote.model.person.personlist.Person
+import com.codeinglogs.remote.model.person.personlist.toDataPerson
 import com.codeinglogs.data.model.tvshow.tvshowdetails.credits.TvShowCreditsResponse as DataTvShowCreditsResponse
 
 
 data class TvShowCreditsResponse(
-    val cast: List<TvShowCast>?,
-    val crew: List<TvShowCrew>?,
+    val cast: List<Person>?,
+    val crew: List<Person>?,
     val id: Int?
 )
 
 fun TvShowCreditsResponse.toDataTvShowCreditsResponse()=DataTvShowCreditsResponse(
-    cast=cast?.toDataTvShowCast()?: listOf(),
-    crew=crew?.toDataTvShowCrew()?: listOf(),
+    cast=cast?.toDataPerson()?: listOf(),
+    crew=crew?.toDataPerson()?: listOf(),
     id=id?:0
 )
-
-fun List<TvShowCast>.toDataTvShowCast():List<DataTvShowCast>{
-    val list= mutableListOf<DataTvShowCast>()
-    this.forEach { list.add(it.toDataTvShowCast()) }
-    return list
-}
-
-fun List<TvShowCrew>.toDataTvShowCrew():List<DataTvShowCrew>{
-    val list= mutableListOf<DataTvShowCrew>()
-    this.forEach { list.add(it.toDataTvShowCrew()) }
-    return list
-}

@@ -84,47 +84,40 @@
         </com.google.android.material.appbar.AppBarLayout>
         <!-- Your Scrollable View : Can be Nested Scroll View or Recycler View-->
 
-        <androidx.core.widget.NestedScrollView
-            android:id="@+id/nestedScrollView"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:fillViewport="true"
-            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
-            <androidx.constraintlayout.widget.ConstraintLayout
+
+            <com.google.android.material.tabs.TabLayout
+                android:nestedScrollingEnabled="true"
+                android:id="@+id/tl_tv_show_det"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="50dp"
+                android:background="@color/colorPrimary"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
+                app:layout_constraintTop_toTopOf="parent"
+                app:tabSelectedTextColor="@color/white"
+                app:tabTextColor="@color/light_gray">
 
+            </com.google.android.material.tabs.TabLayout>
 
-                <com.google.android.material.tabs.TabLayout
-                    android:nestedScrollingEnabled="true"
-                    android:id="@+id/tl_tv_show_det"
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:background="@color/colorPrimary"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:tabSelectedTextColor="@color/white"
-                    app:tabTextColor="@color/light_gray">
+            <androidx.viewpager2.widget.ViewPager2
+                android:id="@+id/vp2_tv_show_det"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tl_tv_show_det" />
 
-                </com.google.android.material.tabs.TabLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
-                <androidx.viewpager2.widget.ViewPager2
-                    android:id="@+id/vp2_tv_show_det"
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/tl_tv_show_det" />
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-        </androidx.core.widget.NestedScrollView>
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </layout>

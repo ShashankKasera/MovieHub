@@ -9,6 +9,7 @@ data class Person(
     val known_for: List<KnownFor>?,
     val known_for_department: String?,
     val name: String?,
+    val character: String?,
     val popularity: Double?,
     val profile_path: String?
 )
@@ -17,5 +18,6 @@ fun Person.toDataPerson() = DataPerson(
     id=id?:0,
     known_for_department=known_for_department?:"",
     name=name?:"",
+    character=character?:"",
     profile_path=profile_path?:"",
 )

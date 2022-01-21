@@ -1,31 +1,18 @@
 package com.codeinglogs.data.model.tvshow.tvshowseasondetails.seasoncredits
 
-import com.codeinglogs.domain.model.tvshow.tvshowseasondetails.seasoncredits.TvShowSeasonsCrew as DomainTvShowSeasonsCrew
-import com.codeinglogs.domain.model.tvshow.tvshowseasondetails.seasoncredits.TvShowSeasonsCast as DomainTvShowSeasonsCast
+import com.codeinglogs.data.model.person.personlist.Person
+import com.codeinglogs.data.model.person.personlist.toDomainPerson
 import com.codeinglogs.domain.model.tvshow.tvshowseasondetails.seasoncredits.TvShowSeasonsCreditsResponse as DomainTvShowSeasonsCreditsResponse
 
 
 data class TvShowSeasonsCreditsResponse(
-    val cast: List<TvShowSeasonsCast>,
-    val crew: List<TvShowSeasonsCrew>,
+    val cast: List<Person>,
+    val crew: List<Person>,
     val id: Int
 )
 
 fun TvShowSeasonsCreditsResponse.toDomainTvShowSeasonsCreditsResponse()= DomainTvShowSeasonsCreditsResponse(
-    cast=cast.toDomainTvShowSeasonsCast(),
-    crew=crew.toDomainTvShowSeasonsCrew(),
+    cast=cast.toDomainPerson(),
+    crew=crew.toDomainPerson(),
     id=id
 )
-
-fun List<TvShowSeasonsCrew>.toDomainTvShowSeasonsCrew():List<DomainTvShowSeasonsCrew>{
-    val list= mutableListOf<DomainTvShowSeasonsCrew>()
-    this.forEach { list.add(it.toDomainTvShowSeasonsCrew()) }
-    return list
-}
-
-fun List<TvShowSeasonsCast>.toDomainTvShowSeasonsCast():List<DomainTvShowSeasonsCast>{
-    val list= mutableListOf<DomainTvShowSeasonsCast>()
-    this.forEach { list.add(it.toDomainTvShowSeasonsCast()) }
-    return list
-}
-

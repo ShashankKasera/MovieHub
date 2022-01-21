@@ -1,5 +1,6 @@
 package com.codeinglogs.tvshowdetail.ui.fragment.tvshow
 
+import android.os.Bundle
 import android.util.Log
 import androidx.core.view.isVisible
 import androidx.fragment.app.activityViewModels
@@ -12,8 +13,9 @@ import com.codeinglogs.presentation.viewmodel.pagingtvshow.TvShowPagingViewModel
 import com.codeinglogs.tvshowdetail.databinding.FragmentTvShowPagingBinding
 import com.codeinglogs.tvshowdetail.ui.adapter.tvshow.TvShowLoadStateAdapter
 import com.codeinglogs.tvshowdetail.ui.adapter.tvshow.TvShowPagingAdapter
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class TvShowPagingFragment : BaseFragment<TvShowPagingViewModel, FragmentTvShowPagingBinding>() {
 
     private lateinit var tvShowPagingAdapter: TvShowPagingAdapter
@@ -84,5 +86,13 @@ class TvShowPagingFragment : BaseFragment<TvShowPagingViewModel, FragmentTvShowP
 
         }
 
+    }
+
+    companion object {
+        fun newInstance(bundle: Bundle): TvShowPagingFragment {
+            val fragment = TvShowPagingFragment()
+            fragment.arguments = bundle
+            return fragment
+        }
     }
 }

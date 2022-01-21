@@ -26,6 +26,7 @@ fun TvShows.toDataTvShow()=DataTvShow(
     first_air_date=first_air_date?:"",
     overview=overview?:"",
     poster_path=poster_path?:"",
+    backdrop_path=backdrop_path?:"",
     vote_average=vote_average?:0.0
 
 )

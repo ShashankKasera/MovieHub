@@ -7,12 +7,11 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.codeinglogs.core.extension.load
 import com.codeinglogs.moviehub.constant.IMAGE_BASE_URL_500
-import com.codeinglogs.presentation.model.tvshow.tvshowdetails.similar.TvShowSimilar
 import com.codeinglogs.presentation.model.tvshow.tvshowslist.TvShow
 import com.codeinglogs.tvshowdetail.databinding.TvShowItemBinding
 import com.codeinglogs.tvshowdetail.ui.activity.TvShowDetailsActivity
 
-class TvShowSimilarAdapter() : ListAdapter<TvShowSimilar, TvShowSimilarAdapter.TvShowSimilarViewHolder>(
+class TvShowSimilarAdapter() : ListAdapter<TvShow, TvShowSimilarAdapter.TvShowSimilarViewHolder>(
     DriftUtils
 ){
 
@@ -20,15 +19,15 @@ class TvShowSimilarAdapter() : ListAdapter<TvShowSimilar, TvShowSimilarAdapter.T
 
     }
 
-    companion object DriftUtils : DiffUtil.ItemCallback<TvShowSimilar>(){
+    companion object DriftUtils : DiffUtil.ItemCallback<TvShow>(){
         override fun areItemsTheSame(
-            oldItem: TvShowSimilar,
-            newItem: TvShowSimilar
+            oldItem: TvShow,
+            newItem: TvShow
         ) = oldItem.id == newItem.id
 
         override fun areContentsTheSame(
-            oldItem: TvShowSimilar,
-            newItem: TvShowSimilar
+            oldItem: TvShow,
+            newItem: TvShow
         ) = oldItem == newItem
     }
 

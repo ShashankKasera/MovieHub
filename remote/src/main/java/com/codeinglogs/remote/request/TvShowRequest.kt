@@ -1,5 +1,6 @@
 package com.codeinglogs.remote.request
 
+import com.codeinglogs.remote.model.movies.moviedetail.similar.MovieSimilarResponse
 import com.codeinglogs.remote.model.movies.movieslist.MoviesListResponse
 import com.codeinglogs.remote.model.tvshows.tvshowseasondetails.seasonimage.TvShowSeasonImageResponse
 import com.codeinglogs.remote.model.tvshows.tvshowdetails.credits.TvShowCreditsResponse
@@ -55,6 +56,9 @@ interface TvShowRequest {
 
     @GET("tv/{id}/similar")
     suspend fun getTvShowSimilar(@Path("id")id : String): TvShowSimilarResponse
+
+    @GET("tv/{id}/similar")
+    suspend fun getTvShowSimilar(@Path("id")id : String,@Query("page") page : Int): TvShowSimilarResponse
 
     @GET("tv/{id}/season/{season_number}")
     suspend fun getTvShowSeason(@Path("id",)id : String,@Path("season_number",)season_number : Int): TvShowSeasonsResponse

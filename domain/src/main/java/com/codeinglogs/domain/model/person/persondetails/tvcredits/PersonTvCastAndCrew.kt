@@ -5,5 +5,5 @@ data class PersonTvCastAndCrew (
     val vote_average: Double,
     val first_air_date: String,
     val name: String,
-    val id: Int,
+    val id: Long,
 )

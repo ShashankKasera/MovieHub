@@ -9,9 +9,7 @@ import com.codeinglogs.data.model.tvshow.tvshowlist.TvShow
 import com.codeinglogs.data.model.tvshow.tvshowlist.TvShowsListResponse
 import com.codeinglogs.data.repository.pagingtvshow.RemoteTvShowPagingData
 import com.codeinglogs.remote.model.tvshows.tvshowslist.toDataTvShowsListResponse
-import com.codeinglogs.remote.pagingsource.PopularTvShowPagingSource
-import com.codeinglogs.remote.pagingsource.TopRatedTvShowPagingSource
-import com.codeinglogs.remote.pagingsource.TrendingTvShowPagingSource
+import com.codeinglogs.remote.pagingsource.*
 import com.codeinglogs.remote.request.TvShowRequest
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.catch
@@ -22,7 +20,8 @@ private const val TAG = "123MainActivity"
 class RemoteTvShowPagingDataRepositoryImp @Inject constructor (
     private val trendingTvShowPagingSource: TrendingTvShowPagingSource,
     private val topRatedTvShowPagingSource: TopRatedTvShowPagingSource,
-    private val popularTvShowPagingSource: PopularTvShowPagingSource
+    private val popularTvShowPagingSource: PopularTvShowPagingSource,
+    private val similarTvShowPagingSource: SimilarTvShowPagingSource,
     ) :
     RemoteTvShowPagingData {
 
@@ -59,5 +58,17 @@ class RemoteTvShowPagingDataRepositoryImp @Inject constructor (
             pagingSourceFactory = { topRatedTvShowPagingSource }
         ).flow
     }
+
+    override fun getPagingSimilarTvShow(): Flow<PagingData<TvShow>> {
+        return Pager(
+            config = PagingConfig(
+                pageSize = 20,
+                maxSize = 100,
+                enablePlaceholders = false
+            ),
+            pagingSourceFactory = { similarTvShowPagingSource }
+        ).flow
+    }
+
 
 }

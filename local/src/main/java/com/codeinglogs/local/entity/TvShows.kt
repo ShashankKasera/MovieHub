@@ -14,6 +14,7 @@ data class TvShows(
     val overview: String,
     val vote_average: Double,
     val poster_path: String,
+    val backdrop_path: String,
 )
 
 fun TvShows.toDataTvShow()= DataTvShow(
@@ -24,6 +25,7 @@ fun TvShows.toDataTvShow()= DataTvShow(
     overview=overview,
     vote_average=vote_average,
     poster_path=poster_path,
+    backdrop_path=backdrop_path,
 
 )
 
@@ -42,6 +44,7 @@ fun DataTvShow.toLocalTvShows() = TvShows(
     overview=overview,
     vote_average=vote_average,
     poster_path=poster_path,
+    backdrop_path=backdrop_path,
 )
 
 fun List<DataTvShow>.toLocalTvShows():List<TvShows>{

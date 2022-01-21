@@ -9,6 +9,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        //startActivity(PersonDetailsActivity.getInstance(this,"1136406"))
+        startActivity(PersonDetailsActivity.getInstance(this,"1136406"))
     }
 }

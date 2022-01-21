@@ -21,5 +21,53 @@
             app:layout_constraintTop_toTopOf="parent"
             tools:listitem="@layout/movie_item" />
 
+        <ProgressBar
+            android:id="@+id/progress_bar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            tools:visibility="visible"
+            app:layout_constraintBottom_toBottomOf="@+id/rv_movie_similer"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/rv_movie_similer" />
+
+        <Button
+            android:id="@+id/button_retry"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Retry"
+            android:visibility="gone"
+            tools:visibility="visible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/rv_movie_similer"
+            app:layout_constraintStart_toStartOf="@+id/rv_movie_similer"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textView_error"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="result could not be loaded"
+            android:layout_marginBottom="16dp"
+            android:textSize="16dp"
+            android:visibility="gone"
+            tools:visibility="visible"
+            app:layout_constraintBottom_toTopOf="@+id/progress_bar"
+            app:layout_constraintEnd_toEndOf="@+id/button_retry"
+            app:layout_constraintStart_toStartOf="@+id/button_retry" />
+
+        <TextView
+            android:id="@+id/text_view_empty"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="no result found for this query"
+            android:visibility="gone"
+            tools:visibility="visible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/rv_movie_similer"
+            app:layout_constraintStart_toStartOf="@+id/rv_movie_similer"
+            app:layout_constraintTop_toTopOf="parent" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

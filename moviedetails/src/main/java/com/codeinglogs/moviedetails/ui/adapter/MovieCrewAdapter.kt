@@ -7,10 +7,10 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.codeinglogs.moviedetails.databinding.CrewItemBinding
-import com.codeinglogs.presentation.model.movies.moviedetail.credits.MovieCrew
 import com.codeinglogs.presentation.model.movies.movieslist.Movies
+import com.codeinglogs.presentation.model.person.personlist.Person
 
-class MovieCrewAdapter() : ListAdapter<MovieCrew, MovieCrewAdapter.MovieCrewViewHolder>(
+class MovieCrewAdapter() : ListAdapter<Person, MovieCrewAdapter.MovieCrewViewHolder>(
     DriftUtils
 ){
 
@@ -18,15 +18,15 @@ class MovieCrewAdapter() : ListAdapter<MovieCrew, MovieCrewAdapter.MovieCrewView
 
     }
 
-    companion object DriftUtils : DiffUtil.ItemCallback<MovieCrew>(){
+    companion object DriftUtils : DiffUtil.ItemCallback<Person>(){
         override fun areItemsTheSame(
-            oldItem: MovieCrew,
-            newItem: MovieCrew
+            oldItem: Person,
+            newItem: Person
         ) = oldItem.id == newItem.id
 
         override fun areContentsTheSame(
-            oldItem: MovieCrew,
-            newItem: MovieCrew
+            oldItem: Person,
+            newItem: Person
         ) = oldItem == newItem
     }
 

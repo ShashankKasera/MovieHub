@@ -31,5 +31,11 @@ class TvShowPagingRepositoryDomainImp @Inject constructor (
                 tvShowPagingDataSore.getRemoteDataSource()
                     .getPagingTopRatedTvShow().map { it -> it.map { it.toDomainTrendingTvShowResult() } }
             }
+            TvShowType.SIMILAR -> {
+                Log.i("jkwn", "getPagingTvShow: TOP_RATED $tvShowType")
+                tvShowPagingDataSore.getRemoteDataSource()
+                    .getPagingSimilarTvShow().map { it -> it.map { it.toDomainTrendingTvShowResult() } }
+            }
+
         }
 }

@@ -1,31 +1,19 @@
 package com.codeinglogs.data.model.tvshow.tvshowdetails.credits
 
-import com.codeinglogs.domain.model.tvshow.tvshowdetails.credits.TvShowCast as DomainTvShowCast
-import com.codeinglogs.domain.model.tvshow.tvshowdetails.credits.TvShowCrew as DomainTvShowCrew
+import com.codeinglogs.data.model.person.personlist.Person
+import com.codeinglogs.data.model.person.personlist.toDomainPerson
 import com.codeinglogs.domain.model.tvshow.tvshowdetails.credits.TvShowCreditsResponse as domainTvShowCreditsResponse
 
 
 data class TvShowCreditsResponse(
-    val cast: List<TvShowCast>,
-    val crew: List<TvShowCrew>,
+    val cast: List<Person>,
+    val crew: List<Person>,
     val id: Int
 )
 
 
 fun TvShowCreditsResponse.toDomainTvShowCreditsResponse()= domainTvShowCreditsResponse(
-    cast=cast.toDomainTvShowCast(),
-    crew=crew.toDomainTvShowCrew(),
+    cast=cast.toDomainPerson(),
+    crew=crew.toDomainPerson(),
     id=id
 )
-
-fun List<TvShowCast>.toDomainTvShowCast():List<DomainTvShowCast>{
-    val list= mutableListOf<DomainTvShowCast>()
-    this.forEach { list.add(it.toDomainTvShowCast()) }
-    return list
-}
-
-fun List<TvShowCrew>.toDomainTvShowCrew():List<DomainTvShowCrew>{
-    val list= mutableListOf<DomainTvShowCrew>()
-    this.forEach { list.add(it.toDomainTvShowCrew()) }
-    return list
-}

@@ -6,6 +6,7 @@ data class Person(
     val id: Long,
     val known_for_department: String,
     val name: String,
+    val character: String,
     val profile_path: String
 )
 
@@ -13,5 +14,6 @@ fun Person.toDomainPerson() = DomainPerson(
     id=id,
     known_for_department=known_for_department,
     name=name,
+    character=character,
     profile_path=profile_path,
 )

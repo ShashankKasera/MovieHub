@@ -1,10 +1,11 @@
 package com.codeinglogs.remote.model.person.persondetail.tvcredits
+import com.codeinglogs.remote.model.tvshows.tvshowslist.TvShows
 import com.codeinglogs.data.model.person.persondetails.tvcredits.PersonTvCastAndCrew as DataPersonTvCastAndCrew
 import com.codeinglogs.data.model.person.persondetails.tvcredits.PersonTvCreditsResponse as DataPersonTvCreditsResponse
 
 data class PersonTvCreditsResponse(
-    val cast: List<PersonTvCast>?,
-    val crew: List<PersonTvCrew>?,
+    val cast: List<TvShows>?,
+    val crew: List<TvShows>?,
     val id: Int?
 )
 

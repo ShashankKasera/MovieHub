@@ -5,6 +5,6 @@ data class PersonMovieCastAndCrew(
     val release_date: String,
     val vote_average: Double,
     val title: String,
-    val id: Int,
+    val id: Long,
     val original_title: String,
 )

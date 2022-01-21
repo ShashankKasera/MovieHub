@@ -1,11 +1,12 @@
 package com.codeinglogs.remote.model.person.persondetail.moviecredits
 
+import com.codeinglogs.remote.model.movies.movieslist.Movies
 import com.codeinglogs.data.model.person.persondetails.moviecredits.PersonMovieCreditsResponse as DataPersonMovieCreditsResponse
 import com.codeinglogs.data.model.person.persondetails.moviecredits.PersonMovieCastAndCrew as DataPersonMovieCastAndCrew
 
 data class PersonMovieCreditsResponse(
-    val cast: List<PersonMovieCast>?,
-    val crew: List<PersonMovieCrew>?,
+    val cast: List<Movies>?,
+    val crew: List<Movies>?,
     val id: Int?
 )
 

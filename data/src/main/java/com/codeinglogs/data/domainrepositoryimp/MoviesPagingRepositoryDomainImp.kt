@@ -32,6 +32,10 @@ class MoviesPagingRepositoryDomainImp @Inject constructor (
                 moviesPagingDataSore.getRemoteDataSource()
                 .getPagingTopRatedMovies().map { it -> it.map { it.toDomainMovies() } }
             }
+            MovieType.SIMILAR ->{
+                moviesPagingDataSore.getRemoteDataSource()
+                    .getPagingSimilarMovies().map { it -> it.map { it.toDomainMovies() } }
+            }
         }
 
 

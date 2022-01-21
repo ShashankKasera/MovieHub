@@ -6,11 +6,11 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.codeinglogs.presentation.model.tvshow.tvshowdetails.credits.TvShowCrew
+import com.codeinglogs.presentation.model.person.personlist.Person
 import com.codeinglogs.presentation.model.tvshow.tvshowslist.TvShow
 import com.codeinglogs.tvshowdetail.databinding.TvShowCrewItemBinding
 
-class TvShowCrewAdapter() : ListAdapter<TvShowCrew, TvShowCrewAdapter.TvShowCrewViewHolder>(
+class TvShowCrewAdapter() : ListAdapter<Person, TvShowCrewAdapter.TvShowCrewViewHolder>(
     DriftUtils
 ){
 
@@ -18,15 +18,15 @@ class TvShowCrewAdapter() : ListAdapter<TvShowCrew, TvShowCrewAdapter.TvShowCrew
 
     }
 
-    companion object DriftUtils : DiffUtil.ItemCallback<TvShowCrew>(){
+    companion object DriftUtils : DiffUtil.ItemCallback<Person>(){
         override fun areItemsTheSame(
-            oldItem: TvShowCrew,
-            newItem: TvShowCrew
+            oldItem: Person,
+            newItem: Person
         ) = oldItem.id == newItem.id
 
         override fun areContentsTheSame(
-            oldItem: TvShowCrew,
-            newItem: TvShowCrew
+            oldItem: Person,
+            newItem: Person
         ) = oldItem == newItem
     }
 

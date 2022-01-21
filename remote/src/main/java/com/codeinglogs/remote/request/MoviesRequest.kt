@@ -34,6 +34,9 @@ interface MoviesRequest {
     @GET("movie/{id}/similar")
     suspend fun getMovieSimilar(@Path("id")id : String): MovieSimilarResponse
 
+    @GET("movie/{id}/similar")
+    suspend fun getMovieSimilar(@Path("id")id : String,@Query("page") page : Int): MovieSimilarResponse
+
 
 
     @GET("trending/movie/day")

@@ -9,10 +9,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.codeinglogs.core.extension.load
 import com.codeinglogs.moviedetails.databinding.PersonItemBinding
 import com.codeinglogs.moviehub.constant.IMAGE_BASE_URL_500
-import com.codeinglogs.presentation.model.movies.moviedetail.credits.MovieCrew
 import com.codeinglogs.presentation.model.movies.movieslist.Movies
+import com.codeinglogs.presentation.model.person.personlist.Person
 
-class MovieAllCrewAdapter: ListAdapter<MovieCrew, MovieAllCrewAdapter.MovieAllCrewViewHolder>(
+class MovieAllCrewAdapter: ListAdapter<Person, MovieAllCrewAdapter.MovieAllCrewViewHolder>(
     DriftUtils
 ){
 
@@ -20,15 +20,15 @@ class MovieAllCrewAdapter: ListAdapter<MovieCrew, MovieAllCrewAdapter.MovieAllCr
 
     }
 
-    companion object DriftUtils : DiffUtil.ItemCallback<MovieCrew>(){
+    companion object DriftUtils : DiffUtil.ItemCallback<Person>(){
         override fun areItemsTheSame(
-            oldItem: MovieCrew,
-            newItem: MovieCrew
+            oldItem: Person,
+            newItem: Person
         ) = oldItem.id == newItem.id
 
         override fun areContentsTheSame(
-            oldItem: MovieCrew,
-            newItem: MovieCrew
+            oldItem: Person,
+            newItem: Person
         ) = oldItem == newItem
     }
 

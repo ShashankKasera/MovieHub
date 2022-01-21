@@ -9,24 +9,23 @@ import com.codeinglogs.core.extension.load
 import com.codeinglogs.moviedetails.databinding.MovieItemBinding
 import com.codeinglogs.moviedetails.ui.activity.MovieDetailActivity
 import com.codeinglogs.moviehub.constant.IMAGE_BASE_URL_500
-import com.codeinglogs.presentation.model.movies.moviedetail.similar.MovieSimilar
 import com.codeinglogs.presentation.model.movies.movieslist.Movies
 
-class MovieSimilarAdapter() : ListAdapter<MovieSimilar, MovieSimilarAdapter.ViewHolder>(DriftUtils){
+class MovieSimilarAdapter() : ListAdapter<Movies, MovieSimilarAdapter.ViewHolder>(DriftUtils){
 
     init {
 
     }
 
-    companion object DriftUtils : DiffUtil.ItemCallback<MovieSimilar>(){
+    companion object DriftUtils : DiffUtil.ItemCallback<Movies>(){
         override fun areItemsTheSame(
-            oldItem: MovieSimilar,
-            newItem: MovieSimilar
+            oldItem: Movies,
+            newItem: Movies
         ) = oldItem.id == newItem.id
 
         override fun areContentsTheSame(
-            oldItem: MovieSimilar,
-            newItem: MovieSimilar
+            oldItem: Movies,
+            newItem: Movies
         ) = oldItem == newItem
     }
 

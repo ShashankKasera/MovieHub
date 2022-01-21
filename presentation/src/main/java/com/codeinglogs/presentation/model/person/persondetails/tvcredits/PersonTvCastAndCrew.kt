@@ -4,7 +4,7 @@ import com.codeinglogs.domain.model.person.persondetails.tvcredits.PersonTvCastA
 data class PersonTvCastAndCrew (
     val backdrop_path: String,
     val vote_average: Double,
-    val id: Int,
+    val id: Long,
     val first_air_date: String,
     val name: String,
 

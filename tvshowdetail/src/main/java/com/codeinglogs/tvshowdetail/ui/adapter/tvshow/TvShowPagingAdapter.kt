@@ -9,13 +9,14 @@ import com.codeinglogs.core.extension.load
 import com.codeinglogs.moviehub.constant.IMAGE_BASE_URL_500
 import com.codeinglogs.presentation.model.movies.movieslist.Movies
 import com.codeinglogs.presentation.model.tvshow.tvshowslist.TvShow
+import com.codeinglogs.tvshowdetail.databinding.TvShowItemBinding
 import com.codeinglogs.tvshowdetail.databinding.TvShowPagingItemBinding
 
 class TvShowPagingAdapter: PagingDataAdapter<TvShow, TvShowPagingAdapter.TvShowPagingViewHolder>(
     DriftUtils
 ) {
 
-    inner class TvShowPagingViewHolder(var binding : TvShowPagingItemBinding): RecyclerView.ViewHolder(binding.root){
+    inner class TvShowPagingViewHolder(var binding : TvShowItemBinding): RecyclerView.ViewHolder(binding.root){
 
         init {
 
@@ -23,10 +24,16 @@ class TvShowPagingAdapter: PagingDataAdapter<TvShow, TvShowPagingAdapter.TvShowP
 
         fun bind(){
             val data = getItem(layoutPosition)
-            binding.textViewUserName.text = data?.name
+            binding.tvTvShowName.text = data?.name
+            binding.tvReting.text = data?.vote_average.toString()
             data?.poster_path.let {
-                binding.imageView.load(IMAGE_BASE_URL_500+it,true)
+                binding.ivTvShow.load(IMAGE_BASE_URL_500+it,true)
             }
+
+            if(data?.first_air_date?.length?:0>0)
+                binding.tvTvShowYear.text=data?.first_air_date?.substring(0,4)
+            else
+                binding.tvTvShowYear.text=data?.first_air_date
         }
     }
 
@@ -49,6 +56,6 @@ class TvShowPagingAdapter: PagingDataAdapter<TvShow, TvShowPagingAdapter.TvShowP
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int)=
-        TvShowPagingViewHolder(TvShowPagingItemBinding.inflate(LayoutInflater.from(parent.context),parent,false))
+        TvShowPagingViewHolder(TvShowItemBinding.inflate(LayoutInflater.from(parent.context),parent,false))
 
 }

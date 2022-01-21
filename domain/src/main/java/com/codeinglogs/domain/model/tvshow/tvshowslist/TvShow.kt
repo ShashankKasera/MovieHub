@@ -8,4 +8,5 @@ data class TvShow(
     val first_air_date: String,
     val vote_average: Double,
     val poster_path: String,
+    val backdrop_path: String,
 )

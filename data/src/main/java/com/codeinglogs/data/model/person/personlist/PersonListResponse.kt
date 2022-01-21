@@ -15,9 +15,9 @@ fun PersonListResponse.toDomainPersonListResponse() =
         page=page,
         total_pages=total_pages,
         total_results=total_results,
-        results=results.toDomainPersonResultList()
+        results=results.toDomainPerson()
     )
-fun List<Person>.toDomainPersonResultList() : List<DomainPerson>{
+fun List<Person>.toDomainPerson() : List<DomainPerson>{
     val list = mutableListOf<DomainPerson>()
     this.forEach { list.add(it.toDomainPerson()) }
     return list

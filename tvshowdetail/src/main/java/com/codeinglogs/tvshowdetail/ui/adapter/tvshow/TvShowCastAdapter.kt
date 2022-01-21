@@ -8,12 +8,12 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.codeinglogs.core.extension.load
 import com.codeinglogs.moviehub.constant.IMAGE_BASE_URL_500
-import com.codeinglogs.presentation.model.tvshow.tvshowdetails.credits.TvShowCast
+import com.codeinglogs.presentation.model.person.personlist.Person
 import com.codeinglogs.presentation.model.tvshow.tvshowslist.TvShow
 import com.codeinglogs.tvshowdetail.databinding.TvShowPersonItemBinding
 import com.codeinglogs.tvshowdetail.ui.activity.TvShowDetailsActivity
 
-class TvShowCastAdapter() : ListAdapter<TvShowCast, TvShowCastAdapter.TvShowCastViewHolder>(
+class TvShowCastAdapter() : ListAdapter<Person, TvShowCastAdapter.TvShowCastViewHolder>(
     DriftUtils
 ){
 
@@ -21,15 +21,15 @@ class TvShowCastAdapter() : ListAdapter<TvShowCast, TvShowCastAdapter.TvShowCast
 
     }
 
-    companion object DriftUtils : DiffUtil.ItemCallback<TvShowCast>(){
+    companion object DriftUtils : DiffUtil.ItemCallback<Person>(){
         override fun areItemsTheSame(
-            oldItem: TvShowCast,
-            newItem: TvShowCast
+            oldItem: Person,
+            newItem: Person
         ) = oldItem.id == newItem.id
 
         override fun areContentsTheSame(
-            oldItem: TvShowCast,
-            newItem: TvShowCast
+            oldItem: Person,
+            newItem: Person
         ) = oldItem == newItem
     }
 

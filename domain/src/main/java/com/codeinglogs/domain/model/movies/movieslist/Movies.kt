@@ -4,6 +4,7 @@ data class Movies(
     val id: Long,
     val title: String,
     val poster_path: String,
+    val backdrop_path: String,
     val release_date: String,
     val vote_average: Double,
 )

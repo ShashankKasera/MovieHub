@@ -1,8 +1,10 @@
 package com.codeinglogs.moviedetails.ui.fragment
 
+import android.os.Bundle
 import android.util.Log
 import androidx.core.view.isVisible
 import androidx.fragment.app.activityViewModels
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
 import androidx.paging.LoadState
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -12,28 +14,28 @@ import com.codeinglogs.moviedetails.ui.adapter.MoviesPagingAdapter
 import com.codeinglogs.moviedetails.ui.adapter.MoviesPagingLoadStateAdapter
 import com.codeinglogs.presentation.model.movies.movieenum.MovieType
 import com.codeinglogs.presentation.viewmodel.pagingmovies.MoviesPagingViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MoviePagingFragment: BaseFragment<MoviesPagingViewModel, FragmentMoviePagingBinding>() {
 
     private lateinit var moviesPagingAdapter: MoviesPagingAdapter
-    private val args:  MoviePagingFragmentArgs by navArgs()
+    private val args: MoviePagingFragmentArgs by navArgs()
 
-    override val mViewModel: MoviesPagingViewModel by activityViewModels()
+    override val mViewModel: MoviesPagingViewModel by viewModels()
     override fun getViewBinding() = FragmentMoviePagingBinding.inflate(layoutInflater)
 
     override fun onBinding() {
-
         init()
         buttonRetry()
         pagingLoadState()
     }
 
-
     private fun init(){
         val type = args.movieType
-        Log.i("kjkk", "init: $type")
+        Log.i("dscnsbdcb", "init: $type")
         setUpMoviePagingAdapter()
-        MoviePagingObserve(type)
+        moviePagingObserve(type)
     }
 
     private fun setUpMoviePagingAdapter(){
@@ -45,8 +47,7 @@ class MoviePagingFragment: BaseFragment<MoviesPagingViewModel, FragmentMoviePagi
         )
     }
 
-    private fun MoviePagingObserve(type: MovieType) {
-
+    private fun moviePagingObserve(type: MovieType) {
         mViewModel.getMoviesList(type).observe(this) {
             moviesPagingAdapter.submitData(lifecycle, it)
         }
@@ -62,7 +63,6 @@ class MoviePagingFragment: BaseFragment<MoviesPagingViewModel, FragmentMoviePagi
         moviesPagingAdapter.addLoadStateListener { loadState ->
 
             mViewBinding.apply {
-
                 pbMoviePaging.isVisible = loadState.source.refresh is LoadState.Loading
                 rvMoviePaging.isVisible = loadState.source.refresh is LoadState.NotLoading
                 bRetryMoviePaging.isVisible = loadState.source.refresh is LoadState.Error
@@ -79,9 +79,15 @@ class MoviePagingFragment: BaseFragment<MoviesPagingViewModel, FragmentMoviePagi
                     tvErrorMoviePaging.isVisible = false
                 }
             }
-
-
         }
+    }
 
+
+    companion object {
+        fun newInstance(bundle: Bundle): MoviePagingFragment {
+            val fragment = MoviePagingFragment()
+            fragment.arguments = bundle
+            return fragment
+        }
     }
 }
