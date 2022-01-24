@@ -36,7 +36,7 @@ class SearchFragment : BaseFragment<MoviesPagingViewModel, FragmentSearchBinding
             startActivity(TvShowPagingActivity.getInstance(requireContext(), TvShowType.TRENDING))
         }
         mViewBinding.cvPerson.setOnClickListener(){
-            startActivity(PersonPagingActivity.getInstance(requireContext(),PersonType.SEARCH))
+            startActivity(PersonPagingActivity.getInstance(requireContext(),PersonType.POPULAR))
         }
     }
 
