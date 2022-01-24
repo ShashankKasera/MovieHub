@@ -8,11 +8,17 @@ import com.codeinglogs.data.model.tvshow.tvshowlist.TvShow
 import com.codeinglogs.remote.model.tvshows.tvshowslist.toDataTvShow
 import com.codeinglogs.remote.request.MoviesRequest
 import com.codeinglogs.remote.request.TvShowRequest
+import dagger.assisted.Assisted
+import dagger.assisted.AssistedFactory
+import dagger.assisted.AssistedInject
 import retrofit2.HttpException
 import java.io.IOException
 import javax.inject.Inject
 
-class SimilarTvShowPagingSource @Inject constructor (private val tvShowRequest: TvShowRequest) : PagingSource<Int, TvShow>() {
+class SimilarTvShowPagingSource @AssistedInject constructor (
+    private val tvShowRequest: TvShowRequest,
+    @Assisted("tvShowIdSimilar")val  tvShowId : String
+) : PagingSource<Int, TvShow>() {
     override fun getRefreshKey(state: PagingState<Int, TvShow>): Int? {
         TODO("Not yet implemented")
     }
@@ -20,7 +26,7 @@ class SimilarTvShowPagingSource @Inject constructor (private val tvShowRequest: 
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, TvShow> {
         val position=params.key?:1
         return try {
-            val response=tvShowRequest.getTvShowSimilar("69740",position)
+            val response=tvShowRequest.getTvShowSimilar(tvShowId,position)
             val photo=response.results?.toDataTvShow()
             LoadResult.Page(
                 data = photo?: listOf(),
@@ -34,6 +40,10 @@ class SimilarTvShowPagingSource @Inject constructor (private val tvShowRequest: 
         }
     }
 
+    @AssistedFactory
+    interface SimilarTvShowPagingSourceFactory{
+        fun create(@Assisted("tvShowIdSimilar") tvShowId : String) : SimilarTvShowPagingSource
+    }
 
 
 }

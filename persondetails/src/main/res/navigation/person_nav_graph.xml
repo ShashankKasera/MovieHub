@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/person_nav_graph"
+    app:startDestination="@id/personPagingFragment">
+
+    <fragment
+        android:id="@+id/personPagingFragment"
+        android:name="com.codeinglogs.persondetails.ui.fragmet.PersonPagingFragment"
+        android:label="PersonPagingFragment" >
+        <argument
+            android:name="personType"
+            app:argType="com.codeinglogs.presentation.model.person.personenum.PersonType" />
+        <argument
+            android:name="personSearch"
+            app:argType="string"
+            android:defaultValue=" " />
+    </fragment>
+</navigation>

@@ -8,5 +8,6 @@ interface RemoteTvShowPagingData {
     fun getPagingTrendingTvShow(): Flow<PagingData<TvShow>>
     fun getPagingPopularTvShow(): Flow<PagingData<TvShow>>
     fun getPagingTopRatedTvShow(): Flow<PagingData<TvShow>>
-    fun getPagingSimilarTvShow(): Flow<PagingData<TvShow>>
+    fun getPagingSimilarTvShow(tvShowId : String): Flow<PagingData<TvShow>>
+    fun getPagingSearchTvShow(tvShowSearch : String): Flow<PagingData<TvShow>>
 }

@@ -10,6 +10,7 @@ import com.codeinglogs.core.base.BaseActivity
 import com.codeinglogs.moviehub.adapter.HomeLoadStateAdapter
 import com.codeinglogs.moviehub.adapter.PersonPagingAdapter
 import com.codeinglogs.moviehub.databinding.ActivityPersonPagingBinding
+import com.codeinglogs.presentation.model.person.personenum.PersonType
 import com.codeinglogs.presentation.viewmodel.pagingperson.PersonPagingViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -27,16 +28,18 @@ class PersonPagingActivity : BaseActivity<PersonPagingViewModel, ActivityPersonP
         init()
     }
 
-    private fun personPagingObserve() {
+    private fun personPagingObserve(type: PersonType, PersonSearch: String) {
 
-        mViewModel.person.observe(this){
+        mViewModel.getPersonList(type,PersonSearch).observe(this){
             personPagingAdapter.submitData(lifecycle,it)
         }
     }
 
     private fun init(){
 
-        personPagingObserve()
+        val type = intent.getSerializableExtra(TYPE) as PersonType
+        val PersonSearch = intent.getStringExtra(PERSONSEARCH) as String
+        personPagingObserve(type,PersonSearch)
         setUpPersonPagingAdapter()
         loadState()
         retry()
@@ -79,7 +82,13 @@ class PersonPagingActivity : BaseActivity<PersonPagingViewModel, ActivityPersonP
 
 
     companion object{
-        fun getInstance(context: Context) = Intent(context, PersonPagingActivity::class.java)
+        const val TYPE = "type"
+        const val PERSONSEARCH = "personSearch"
+        fun getInstance(context: Context,type : PersonType,personSearch:String ="") = Intent(context, PersonPagingActivity::class.java).apply {
+            putExtra(TYPE,type)
+            putExtra(PERSONSEARCH,personSearch)
+
+        }
     }
 
 }

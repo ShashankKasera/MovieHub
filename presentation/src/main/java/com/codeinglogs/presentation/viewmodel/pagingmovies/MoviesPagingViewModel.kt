@@ -17,8 +17,8 @@ class MoviesPagingViewModel @Inject constructor(
     private val getMoviesPagingUseCase: GetMoviesPaging,
     ) : ViewModel() {
 
-    fun getMoviesList(type : MovieType)  = getMoviesPagingUseCase(
-        type.toDomainMovieType()
+    fun getMoviesList(type : MovieType,id:String,movieSearch:String)  = getMoviesPagingUseCase(
+        type.toDomainMovieType(),id,movieSearch
     ).map {
         it.map {
             it.toPresentationMovies()

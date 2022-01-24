@@ -34,9 +34,11 @@ class TvShowPagingFragment : BaseFragment<TvShowPagingViewModel, FragmentTvShowP
 
     private fun init(){
         val type = args.tvShowType
+        val id = args.tvShowId
+        val tvShowSearch = args.tvShowSearch
         Log.i("kjkk", "init: $type")
         setUpTvShowPagingAdapter()
-        TvShowPagingObserve(type)
+        TvShowPagingObserve(type,id,tvShowSearch)
     }
 
     private fun setUpTvShowPagingAdapter(){
@@ -48,9 +50,9 @@ class TvShowPagingFragment : BaseFragment<TvShowPagingViewModel, FragmentTvShowP
         )
     }
 
-    private fun TvShowPagingObserve(type: TvShowType) {
+    private fun TvShowPagingObserve(type: TvShowType, id: String, tvShowSearch: String) {
 
-        mViewModel.getTvShowList(type).observe(this) {
+        mViewModel.getTvShowList(type,id,tvShowSearch).observe(this) {
             tvShowPagingAdapter.submitData(lifecycle, it)
         }
     }

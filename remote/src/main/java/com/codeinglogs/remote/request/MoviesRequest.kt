@@ -7,14 +7,13 @@ import com.codeinglogs.remote.model.movies.moviedetail.info.MovieInfoResponse
 import com.codeinglogs.remote.model.movies.moviedetail.reviews.MovieReviewsResponse
 import com.codeinglogs.remote.model.movies.moviedetail.similar.MovieSimilarResponse
 import com.codeinglogs.remote.model.movies.moviedetail.videos.MovieVideosResponse
+import com.codeinglogs.remote.model.movies.moviesearch.MovieSearchResponse
 import com.codeinglogs.remote.model.movies.movieslist.MoviesListResponse
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
 
 interface MoviesRequest {
-
-
 
     @GET("movie/{movie_id}")
     suspend fun getMovieInfo (@Path("movie_id") movie : String ) : MovieInfoResponse
@@ -56,6 +55,9 @@ interface MoviesRequest {
 
     @GET("movie/top_rated")
     suspend fun getTopRatedMovie(@Query("page") page : Int): MoviesListResponse
+
+    @GET("search/movie")
+    suspend fun getMovieSearch(@Query("page") page : Int,@Query("query") query : String): MovieSearchResponse
 
 
 }

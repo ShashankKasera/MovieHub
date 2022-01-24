@@ -6,5 +6,5 @@ import com.codeinglogs.domain.model.movies.movieslist.Movies
 import kotlinx.coroutines.flow.Flow
 
 interface MoviesPagingRepositoryDomain {
-    fun getPagingMovies(movieType: MovieType): Flow<PagingData<Movies>>
+    fun getPagingMovies(movieType: MovieType, id: String, movieSearch: String): Flow<PagingData<Movies>>
 }

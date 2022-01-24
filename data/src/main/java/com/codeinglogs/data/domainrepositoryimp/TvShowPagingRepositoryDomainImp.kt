@@ -13,7 +13,7 @@ class TvShowPagingRepositoryDomainImp @Inject constructor (
     private val tvShowPagingDataSore : TvShowPagingDataSore) :
     TvShowPagingRepositoryDomain {
 
-    override fun getPagingTvShow(tvShowType: TvShowType)=
+    override fun getPagingTvShow(tvShowType: TvShowType, id: String, tvShowSearch: String)=
         when(tvShowType) {
             TvShowType.TRENDING -> {
                 Log.i("jkwn", "getPagingMovies: TRENDING $tvShowType")
@@ -34,7 +34,12 @@ class TvShowPagingRepositoryDomainImp @Inject constructor (
             TvShowType.SIMILAR -> {
                 Log.i("jkwn", "getPagingTvShow: TOP_RATED $tvShowType")
                 tvShowPagingDataSore.getRemoteDataSource()
-                    .getPagingSimilarTvShow().map { it -> it.map { it.toDomainTrendingTvShowResult() } }
+                    .getPagingSimilarTvShow(id).map { it -> it.map { it.toDomainTrendingTvShowResult() } }
+            }
+            TvShowType.SEARCH -> {
+                Log.i("jkwn", "getPagingTvShow: TOP_RATED $tvShowType")
+                tvShowPagingDataSore.getRemoteDataSource()
+                    .getPagingSearchTvShow(tvShowSearch).map { it -> it.map { it.toDomainTrendingTvShowResult() } }
             }
 
         }

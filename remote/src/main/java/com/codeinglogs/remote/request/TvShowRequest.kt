@@ -1,6 +1,7 @@
 package com.codeinglogs.remote.request
 
 import com.codeinglogs.remote.model.movies.moviedetail.similar.MovieSimilarResponse
+import com.codeinglogs.remote.model.movies.moviesearch.MovieSearchResponse
 import com.codeinglogs.remote.model.movies.movieslist.MoviesListResponse
 import com.codeinglogs.remote.model.tvshows.tvshowseasondetails.seasonimage.TvShowSeasonImageResponse
 import com.codeinglogs.remote.model.tvshows.tvshowdetails.credits.TvShowCreditsResponse
@@ -10,6 +11,7 @@ import com.codeinglogs.remote.model.tvshows.tvshowdetails.reviews.TvShowReviewsR
 import com.codeinglogs.remote.model.tvshows.tvshowseasondetails.seasons.TvShowSeasonsResponse
 import com.codeinglogs.remote.model.tvshows.tvshowdetails.similar.TvShowSimilarResponse
 import com.codeinglogs.remote.model.tvshows.tvshowdetails.video.TvShowsVideosResponse
+import com.codeinglogs.remote.model.tvshows.tvshowsearch.TvShowSearchResponse
 import com.codeinglogs.remote.model.tvshows.tvshowseasondetails.seasoncredits.TvShowSeasonsCreditsResponse
 import com.codeinglogs.remote.model.tvshows.tvshowseasondetails.seasonvideo.TvShowsSeasonVideosResponse
 import com.codeinglogs.remote.model.tvshows.tvshowslist.TvShowsListResponse
@@ -71,4 +73,8 @@ interface TvShowRequest {
 
     @GET("tv/{tv_id}/season/{season_number}/videos")
     suspend fun getTvShowSeasonVideos(@Path("tv_id",)id : String,@Path("season_number",)season_number : Int): TvShowsSeasonVideosResponse
+
+    @GET("search/tv")
+    suspend fun getTvShowSearch(@Query("page") page : Int,@Query("query") query : String): TvShowSearchResponse
+
 }

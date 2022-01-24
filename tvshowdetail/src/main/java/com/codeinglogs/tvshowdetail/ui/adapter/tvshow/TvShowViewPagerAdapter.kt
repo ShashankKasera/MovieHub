@@ -8,7 +8,11 @@ import com.codeinglogs.presentation.model.movies.movieenum.MovieType
 import com.codeinglogs.presentation.model.tvshow.tvshowenum.TvShowType
 import com.codeinglogs.tvshowdetail.ui.fragment.tvshow.*
 
-class TvShowViewPagerAdapter(fragmentManager: FragmentManager, lifecycal:Lifecycle):FragmentStateAdapter(fragmentManager,lifecycal) {
+class TvShowViewPagerAdapter(
+    fragmentManager: FragmentManager,
+    lifecycal:Lifecycle,
+    private val id:String
+):FragmentStateAdapter(fragmentManager,lifecycal) {
     override fun getItemCount(): Int {
         return  4
     }
@@ -18,7 +22,7 @@ class TvShowViewPagerAdapter(fragmentManager: FragmentManager, lifecycal:Lifecyc
             0 -> TvShowInfoFragment()
             1 -> TvShowCastFragment()
             2 -> TvShowReviewsFragment()
-            3 -> TvShowPagingFragment.newInstance(TvShowPagingFragmentArgs(TvShowType.SIMILAR).toBundle())
+            3 -> TvShowPagingFragment.newInstance(TvShowPagingFragmentArgs(TvShowType.SIMILAR,id).toBundle())
             else -> Fragment()
         }
     }

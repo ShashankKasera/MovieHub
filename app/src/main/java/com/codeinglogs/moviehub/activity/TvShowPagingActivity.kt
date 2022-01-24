@@ -2,6 +2,7 @@ package com.codeinglogs.moviehub.activity
 
 import android.content.Context
 import android.content.Intent
+import android.util.Log
 import androidx.activity.viewModels
 import androidx.core.view.isVisible
 import androidx.paging.LoadState
@@ -27,13 +28,17 @@ class TvShowPagingActivity : BaseActivity<TvShowPagingViewModel, ActivityTvShowP
         init()
 
         val type = intent.getSerializableExtra(TYPE) as TvShowType
-        tvShowPagingObserve(type)
+        val tvShowId = intent.getStringExtra(TVSHOWID) as String
+        val tvShowSearch = intent.getStringExtra(TVSHOWSEARCH) as String
+
+        Log.i("jjegw", "onBinding: $type    $tvShowId")
+        tvShowPagingObserve(type,tvShowId,tvShowSearch)
     }
 
-    private fun tvShowPagingObserve(type: TvShowType) {
+    private fun tvShowPagingObserve(type: TvShowType, tvShowId: String, tvShowSearch: String) {
 
 
-        mViewModel.getTvShowList(type).observe(this){
+        mViewModel.getTvShowList(type,tvShowId,tvShowSearch).observe(this){
             tvShowPagingAdapter.submitData(lifecycle,it)
         }
     }
@@ -83,9 +88,13 @@ class TvShowPagingActivity : BaseActivity<TvShowPagingViewModel, ActivityTvShowP
 
     companion object{
         const val TYPE = "type"
+        const val TVSHOWID = "tvShowType"
+        const val TVSHOWSEARCH = "tvShowSearch"
 
-        fun getInstance(context: Context,type : TvShowType) = Intent(context, TvShowPagingActivity::class.java).apply {
+        fun getInstance(context: Context,type : TvShowType,tvShowId:String = "",tvShowSearch:String = "") = Intent(context, TvShowPagingActivity::class.java).apply {
             putExtra(TYPE,type)
+            putExtra(TVSHOWID,tvShowId)
+            putExtra(TVSHOWSEARCH,tvShowSearch)
         }
 
     }

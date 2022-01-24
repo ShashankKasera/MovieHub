@@ -30,7 +30,7 @@ class TvShowPagingActivity : BaseActivity<TvShowPagingViewModel, ActivityTvShowP
 
         val navHostFragment=supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
         navController=navHostFragment.navController
-        navController.setGraph(R.navigation.tv_show_nav_graph,TvShowPagingFragmentArgs(type).toBundle())
+        navController.setGraph(R.navigation.tv_show_nav_graph,TvShowPagingFragmentArgs(type,"").toBundle())
     }
 
     companion object{

@@ -3,7 +3,6 @@ package com.codeinglogs.moviedetails.ui.fragment
 import android.os.Bundle
 import android.util.Log
 import androidx.core.view.isVisible
-import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
 import androidx.paging.LoadState
@@ -33,9 +32,11 @@ class MoviePagingFragment: BaseFragment<MoviesPagingViewModel, FragmentMoviePagi
 
     private fun init(){
         val type = args.movieType
+        val id = args.id
+        val movieSearch = args.movieSearch
         Log.i("dscnsbdcb", "init: $type")
         setUpMoviePagingAdapter()
-        moviePagingObserve(type)
+        moviePagingObserve(type,id,movieSearch)
     }
 
     private fun setUpMoviePagingAdapter(){
@@ -47,8 +48,8 @@ class MoviePagingFragment: BaseFragment<MoviesPagingViewModel, FragmentMoviePagi
         )
     }
 
-    private fun moviePagingObserve(type: MovieType) {
-        mViewModel.getMoviesList(type).observe(this) {
+    private fun moviePagingObserve(type: MovieType, id: String, movieSearch: String) {
+        mViewModel.getMoviesList(type,id,movieSearch).observe(this) {
             moviesPagingAdapter.submitData(lifecycle, it)
         }
     }

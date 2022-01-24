@@ -3,9 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <data>
 
-    </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -85,7 +83,7 @@
                         app:srcCompat="@drawable/search"
                         app:tint="@color/light_gray" />
 
-                    <EditText
+                    <TextView
                         android:id="@+id/et_movie_tv_person"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"

@@ -35,7 +35,7 @@ class MoviesPagingActivity : BaseActivity<MoviesPagingViewModel, ActivityMoviesP
 
         val navHostFragment=supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
         navController=navHostFragment.navController
-        navController.setGraph(R.navigation.movie_nav_graph,MoviePagingFragmentArgs(type).toBundle())
+        navController.setGraph(R.navigation.movie_nav_graph,MoviePagingFragmentArgs(type,"").toBundle())
     }
 
     companion object{

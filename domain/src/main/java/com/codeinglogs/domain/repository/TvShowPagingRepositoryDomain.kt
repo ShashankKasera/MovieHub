@@ -6,5 +6,5 @@ import com.codeinglogs.domain.model.tvshow.tvshowslist.TvShow
 import kotlinx.coroutines.flow.Flow
 
 interface TvShowPagingRepositoryDomain {
-    fun getPagingTvShow(tvShowType: TvShowType): Flow<PagingData<TvShow>>
+    fun getPagingTvShow(tvShowType: TvShowType, id: String, tvShowSearch: String): Flow<PagingData<TvShow>>
 }

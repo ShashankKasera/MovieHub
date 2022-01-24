@@ -10,5 +10,12 @@
         <argument
             android:name="movieType"
             app:argType="com.codeinglogs.presentation.model.movies.movieenum.MovieType" />
+        <argument
+            android:name="id"
+            app:argType="string" />
+        <argument
+            android:name="movieSearch"
+            app:argType="string"
+            android:defaultValue=" " />
     </fragment>
 </navigation>

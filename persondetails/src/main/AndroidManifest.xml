@@ -4,6 +4,9 @@
 
     <application>
         <activity
+            android:name=".ui.activity.PersonPagingActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.activity.PersonDetailsActivity"
             android:exported="true" />
     </application>

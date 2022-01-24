@@ -41,9 +41,10 @@ class TvShowDetailsActivity : BaseActivity<TvShowDetailViewModel, ActivityTvShow
         tvShowId?.let {
             mViewModel.tvShowId=it
             mViewModel.getTvShowDetails(it)
+            setUpTabLayout(it)
         }
 
-        setUpTabLayout()
+
         setUpToolbar()
     }
 
@@ -60,9 +61,9 @@ class TvShowDetailsActivity : BaseActivity<TvShowDetailViewModel, ActivityTvShow
 
     }
 
-    private fun setUpTabLayout(){
+    private fun setUpTabLayout(id:String){
 
-        tvShowViewPagerAdapter= TvShowViewPagerAdapter(supportFragmentManager,lifecycle)
+        tvShowViewPagerAdapter= TvShowViewPagerAdapter(supportFragmentManager,lifecycle,id)
 
         mViewBinding.vp2TvShowDet.adapter=tvShowViewPagerAdapter
 

@@ -5,5 +5,5 @@ import com.codeinglogs.domain.repository.TvShowPagingRepositoryDomain
 import javax.inject.Inject
 
 class GetTvShowPaging @Inject constructor(private val tvShowPagingRepositoryDomain: TvShowPagingRepositoryDomain) {
-    operator fun invoke(tvShowType: TvShowType) = tvShowPagingRepositoryDomain.getPagingTvShow(tvShowType)
+    operator fun invoke(tvShowType: TvShowType, id: String, tvShowSearch: String) = tvShowPagingRepositoryDomain.getPagingTvShow(tvShowType,id,tvShowSearch)
 }

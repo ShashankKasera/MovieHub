@@ -3,14 +3,11 @@ package com.codeinglogs.moviehub.fragmant
 import android.util.Log
 import androidx.core.view.isVisible
 import androidx.fragment.app.activityViewModels
-import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
 import androidx.paging.LoadState
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.codeinglogs.core.base.BaseFragment
-import com.codeinglogs.moviehub.databinding.FragmentSearchMovieBinding
 import com.codeinglogs.presentation.model.tvshow.tvshowenum.TvShowType
-import com.codeinglogs.presentation.viewmodel.pagingmovies.MoviesPagingViewModel
 import com.codeinglogs.presentation.viewmodel.pagingtvshow.TvShowPagingViewModel
 import com.codeinglogs.tvshowdetail.databinding.FragmentTvShowPagingBinding
 import com.codeinglogs.tvshowdetail.ui.adapter.tvshow.TvShowLoadStateAdapter
@@ -36,9 +33,11 @@ class HomePagingFragment : BaseFragment<TvShowPagingViewModel, FragmentTvShowPag
 
     private fun init(){
         val type = args.tvShowType
+        val id = args.tvShowId
+        val tvShowSearch = args.tvShowSearch
         Log.i("kjkk", "init: $type")
         setUpTvShowPagingAdapter()
-        TvShowPagingObserve(type)
+        tvShowPagingObserve(type,id,tvShowSearch)
     }
 
     private fun setUpTvShowPagingAdapter(){
@@ -50,9 +49,9 @@ class HomePagingFragment : BaseFragment<TvShowPagingViewModel, FragmentTvShowPag
         )
     }
 
-    private fun TvShowPagingObserve(type: TvShowType) {
+    private fun tvShowPagingObserve(type: TvShowType, id: String, tvShowSearch: String) {
 
-        mViewModel.getTvShowList(type).observe(this) {
+        mViewModel.getTvShowList(type,id,tvShowSearch).observe(this) {
             tvShowPagingAdapter.submitData(lifecycle, it)
         }
     }

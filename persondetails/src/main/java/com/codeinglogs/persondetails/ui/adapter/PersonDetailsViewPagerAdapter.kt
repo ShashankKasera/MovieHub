@@ -6,7 +6,7 @@ import androidx.lifecycle.Lifecycle
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.codeinglogs.persondetails.ui.fragmet.PersonInfoFragment
 import com.codeinglogs.persondetails.ui.fragmet.PersonMoviesFragment
-import com.codeinglogs.persondetails.ui.fragmet.PersonTvShowsFragment
+import com.codeinglogs.persondetails.ui.fragmet.PersonPagingFragment
 
 class PersonDetailsViewPagerAdapter(fragmentManager: FragmentManager, lifecycal:Lifecycle):FragmentStateAdapter(fragmentManager,lifecycal) {
     override fun getItemCount(): Int {
@@ -17,7 +17,7 @@ class PersonDetailsViewPagerAdapter(fragmentManager: FragmentManager, lifecycal:
         return when(position){
             0 -> PersonInfoFragment()
             1 -> PersonMoviesFragment()
-            2 -> PersonTvShowsFragment()
+            2 -> PersonPagingFragment()
             else -> Fragment()
         }
     }

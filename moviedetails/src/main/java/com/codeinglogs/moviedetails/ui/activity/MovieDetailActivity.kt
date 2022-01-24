@@ -57,8 +57,6 @@ class MovieDetailActivity : BaseActivity<MovieDetailViewModel, ActivityMovieDeta
 
     private fun init(){
         setUpToolbar()
-        setUpTabLayout()
-
         val movieId = intent.getStringExtra(MOVIE_ID)
 
         Log.i(TAG, "init: "+movieId)
@@ -66,6 +64,7 @@ class MovieDetailActivity : BaseActivity<MovieDetailViewModel, ActivityMovieDeta
         movieId?.let {
             mViewModel.movieId=it
             mViewModel.getMovieDetails(it)
+            setUpTabLayout(movieId)
         }
 
     }
@@ -83,9 +82,9 @@ class MovieDetailActivity : BaseActivity<MovieDetailViewModel, ActivityMovieDeta
 
     }
 
-    private fun setUpTabLayout(){
+    private fun setUpTabLayout(movieId: String) {
 
-        adapterMovie=MovieViewPagerAdapter(supportFragmentManager,lifecycle)
+        adapterMovie=MovieViewPagerAdapter(supportFragmentManager,lifecycle,movieId)
         mViewBinding.vp2MovieDet.adapter=adapterMovie
         TabLayoutMediator(mViewBinding.tlMovieDet, mViewBinding.vp2MovieDet){tab,position->
             when(position){

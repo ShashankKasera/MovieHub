@@ -6,4 +6,5 @@ import kotlinx.coroutines.flow.Flow
 
 interface RemotePersonPagingData {
     fun getPagingPopularPersons(): Flow<PagingData<Person>>
+    fun getPagingSearchPersons(personSearch : String): Flow<PagingData<Person>>
 }

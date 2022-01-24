@@ -12,5 +12,12 @@
         <argument
             android:name="tvShowType"
             app:argType="com.codeinglogs.presentation.model.tvshow.tvshowenum.TvShowType" />
+        <argument
+            android:name="tvShowId"
+            app:argType="string" />
+        <argument
+            android:name="tvShowSearch"
+            app:argType="string"
+            android:defaultValue=" " />
     </fragment>
 </navigation>

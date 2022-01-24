@@ -2,7 +2,7 @@ package com.codeinglogs.presentation.model.movies.movieenum
 import com.codeinglogs.domain.model.movies.movieenum.MovieType as DomainMovieType
 
 enum class MovieType {
-    TRENDING,POPULAR,TOP_RATED,SIMILAR
+    TRENDING,POPULAR,TOP_RATED,SIMILAR,SEARCH
 }
 
 fun MovieType.toDomainMovieType()= when(this){
@@ -10,4 +10,5 @@ fun MovieType.toDomainMovieType()= when(this){
     MovieType.POPULAR -> DomainMovieType.POPULAR
     MovieType.TOP_RATED -> DomainMovieType.TOP_RATED
     MovieType.SIMILAR -> DomainMovieType.SIMILAR
+    MovieType.SEARCH -> DomainMovieType.SEARCH
 }

@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.codeinglogs.core.extension.load
 import com.codeinglogs.moviedetails.databinding.MovieItemBinding
 import com.codeinglogs.moviedetails.databinding.MoviePagingItemBinding
+import com.codeinglogs.moviedetails.ui.activity.MovieDetailActivity
 import com.codeinglogs.presentation.model.movies.movieslist.Movies
 
 class MoviesPagingAdapter():
@@ -15,6 +16,7 @@ class MoviesPagingAdapter():
 
     inner class MoviesPagingViewHolder(var binding : MovieItemBinding): RecyclerView.ViewHolder(binding.root){
         fun bind() {
+
             val data = getItem(layoutPosition)
             binding.tvMovieName.text = data?.title
             binding.tvReting.text = data?.vote_average.toString()
@@ -26,6 +28,10 @@ class MoviesPagingAdapter():
                 binding.tvYear.text=data?.release_date?.substring(0,4)
             else
                 binding.tvYear.text=data?.release_date
+
+            binding.clMovie.setOnClickListener(){
+                binding.root.context.startActivity(MovieDetailActivity.getInstance(binding.root.context,data?.id.toString()))
+            }
         }
 
     }

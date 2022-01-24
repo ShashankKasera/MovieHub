@@ -16,8 +16,8 @@ class TvShowPagingViewModel @Inject constructor(
     private val getTvShowPaging : GetTvShowPaging,
     ) : ViewModel() {
 
-    fun getTvShowList(type : TvShowType)  = getTvShowPaging(
-        type.toDomainTvShowType()
+    fun getTvShowList(type : TvShowType,id:String,tvShowSearch:String)  = getTvShowPaging(
+        type.toDomainTvShowType(),id,tvShowSearch
     ).map {
         it.map {
             it.toPresentationTvShow()

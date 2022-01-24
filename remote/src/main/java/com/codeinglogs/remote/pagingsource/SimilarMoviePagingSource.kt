@@ -1,15 +1,22 @@
 package com.codeinglogs.remote.pagingsource
 
+import android.util.Log
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import com.codeinglogs.data.model.movies.movieslist.Movies
 import com.codeinglogs.remote.model.movies.movieslist.toDataMovies
 import com.codeinglogs.remote.request.MoviesRequest
+import dagger.assisted.Assisted
+import dagger.assisted.AssistedFactory
+import dagger.assisted.AssistedInject
 import retrofit2.HttpException
 import java.io.IOException
 import javax.inject.Inject
 
-class SimilarMoviePagingSource @Inject constructor (private val moviesRequest: MoviesRequest) : PagingSource<Int, Movies>() {
+class SimilarMoviePagingSource @AssistedInject constructor (
+    private val moviesRequest: MoviesRequest,
+    @Assisted("movieIdSimilar")val  movieId : String
+    ) : PagingSource<Int, Movies>() {
     override fun getRefreshKey(state: PagingState<Int, Movies>): Int? {
         TODO("Not yet implemented")
     }
@@ -17,7 +24,7 @@ class SimilarMoviePagingSource @Inject constructor (private val moviesRequest: M
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, Movies> {
         val position=params.key?:1
         return try {
-            val response=moviesRequest.getMovieSimilar("634649",position)
+            val response=moviesRequest.getMovieSimilar(movieId,position)
             val photo=response.results?.toDataMovies()
             LoadResult.Page(
                 data = photo?: listOf(),
@@ -31,6 +38,11 @@ class SimilarMoviePagingSource @Inject constructor (private val moviesRequest: M
         }
     }
 
+
+    @AssistedFactory
+    interface SimilarMoviePagingSourceFactory{
+        fun create(@Assisted("movieIdSimilar") movieId : String) : SimilarMoviePagingSource
+    }
 
 
 }

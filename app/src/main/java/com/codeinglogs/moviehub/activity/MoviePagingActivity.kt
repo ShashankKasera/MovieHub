@@ -29,9 +29,9 @@ class MoviePagingActivity : BaseActivity<MoviesPagingViewModel, ActivityMoviePag
 
     }
 
-    private fun moviePagingObserve(type: MovieType) {
+    private fun moviePagingObserve(type: MovieType, movieId: String, movieSearch: String) {
 
-        mViewModel.getMoviesList(type).observe(this){
+        mViewModel.getMoviesList(type,movieId,movieSearch).observe(this){
             moviePagingAdapter.submitData(lifecycle,it)
         }
     }
@@ -39,8 +39,10 @@ class MoviePagingActivity : BaseActivity<MoviesPagingViewModel, ActivityMoviePag
     private fun init(){
 
         val type = intent.getSerializableExtra(TYPE) as MovieType
+        val movieId = intent.getStringExtra(MOVIEID) as String
+        val movieSearch = intent.getStringExtra(MOVIESEARCH) as String
         Log.i("kfkmlw", "init: $type")
-        moviePagingObserve(type)
+        moviePagingObserve(type,movieId,movieSearch)
         setUpMoviePagingAdapter()
         loadState()
         retry()
@@ -85,9 +87,13 @@ class MoviePagingActivity : BaseActivity<MoviesPagingViewModel, ActivityMoviePag
     companion object{
 
         const val TYPE = "type"
+        const val MOVIEID = "movieId"
+        const val MOVIESEARCH = "movieSearch"
 
-        fun getInstance(context: Context,type : MovieType) = Intent(context, MoviePagingActivity::class.java).apply {
+        fun getInstance(context: Context,type : MovieType,movieId:String = "",movieSearch:String = "") = Intent(context, MoviePagingActivity::class.java).apply {
             putExtra(TYPE,type)
+            putExtra(MOVIEID,movieId)
+            putExtra(MOVIESEARCH,movieSearch)
         }
 
 

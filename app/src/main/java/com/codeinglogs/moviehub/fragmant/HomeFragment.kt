@@ -18,6 +18,7 @@ import com.codeinglogs.moviehub.databinding.FragmentHomeBinding
 import com.codeinglogs.presentation.model.State
 import com.codeinglogs.presentation.model.movies.movieenum.MovieType
 import com.codeinglogs.presentation.model.movies.movieslist.Movies
+import com.codeinglogs.presentation.model.person.personenum.PersonType
 import com.codeinglogs.presentation.model.tvshow.tvshowenum.TvShowType
 import com.codeinglogs.presentation.viewmodel.home.HomeViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -62,7 +63,7 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>() {
 
     private fun onClick() {
         mViewBinding.tvTrendingPersonMoreHome.setOnClickListener(){
-            startActivity(PersonPagingActivity.getInstance(requireContext()))
+            startActivity(PersonPagingActivity.getInstance(requireContext(),PersonType.POPULAR))
         }
         mViewBinding.tvTrendingMovieMoreHome.setOnClickListener(){
             startActivity(MoviePagingActivity.getInstance(requireContext(),MovieType.TRENDING))

@@ -8,6 +8,8 @@ import com.codeinglogs.remote.model.person.persondetail.moviecredits.PersonMovie
 import com.codeinglogs.remote.model.person.persondetail.taggedimages.PersonTaggedImagesResponse
 import com.codeinglogs.remote.model.person.persondetail.tvcredits.PersonTvCreditsResponse
 import com.codeinglogs.remote.model.person.personlist.PersonListResponse
+import com.codeinglogs.remote.model.person.personsearch.PersonSearchResponse
+import com.codeinglogs.remote.model.tvshows.tvshowsearch.TvShowSearchResponse
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
@@ -37,4 +39,8 @@ interface PersonRequest {
 
     @GET("person/{id}/external_ids")
     suspend fun getPersonExternalIds(@Path("id")id : String) : PersonExternalIdsResponse
+
+    @GET("search/person")
+    suspend fun getPersonSearch(@Query("page") page : Int,@Query("query") query : String): PersonSearchResponse
+
 }

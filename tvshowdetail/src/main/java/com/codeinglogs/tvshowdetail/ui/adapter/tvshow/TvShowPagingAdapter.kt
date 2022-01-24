@@ -11,6 +11,7 @@ import com.codeinglogs.presentation.model.movies.movieslist.Movies
 import com.codeinglogs.presentation.model.tvshow.tvshowslist.TvShow
 import com.codeinglogs.tvshowdetail.databinding.TvShowItemBinding
 import com.codeinglogs.tvshowdetail.databinding.TvShowPagingItemBinding
+import com.codeinglogs.tvshowdetail.ui.activity.TvShowDetailsActivity
 
 class TvShowPagingAdapter: PagingDataAdapter<TvShow, TvShowPagingAdapter.TvShowPagingViewHolder>(
     DriftUtils
@@ -34,6 +35,10 @@ class TvShowPagingAdapter: PagingDataAdapter<TvShow, TvShowPagingAdapter.TvShowP
                 binding.tvTvShowYear.text=data?.first_air_date?.substring(0,4)
             else
                 binding.tvTvShowYear.text=data?.first_air_date
+
+            binding.clTvShow.setOnClickListener(){
+                binding.root.context.startActivity(TvShowDetailsActivity.getInstance(binding.root.context,data?.id.toString()))
+            }
         }
     }
 
