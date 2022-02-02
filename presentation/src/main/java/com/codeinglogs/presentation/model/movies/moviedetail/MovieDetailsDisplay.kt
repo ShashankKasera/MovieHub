@@ -20,7 +20,6 @@ data class MovieDetailsDisplay(
     val movieIMagesResponse: MovieIMagesResponse,
     val movieInfoResponse: MovieInfoResponse,
     val movieReviewsResponse: MovieReviewsResponse,
-    val MovieSimilarResponse: MovieSimilarResponse,
     val MovieVideosResponse: MovieVideosResponse,
 )
 
@@ -29,6 +28,5 @@ fun DomainMovieDetailsDisplay.toPresentationMovieDetailsDisplay()=MovieDetailsDi
     movieIMagesResponse=movieIMagesResponse.toPresentationMovieIMagesResponse(),
     movieInfoResponse=movieInfoResponse.toPresentationMovieInfoResponse(),
     movieReviewsResponse=movieReviewsResponse.toPresentationMovieReviewsResponse(),
-    MovieSimilarResponse=MovieSimilarResponse.toPresentationMovieReviewsResponse(),
     MovieVideosResponse=MovieVideosResponse.toPresentationMovieVideosResponse(),
 )

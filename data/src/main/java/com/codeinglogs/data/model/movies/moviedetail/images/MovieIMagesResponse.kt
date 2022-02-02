@@ -6,8 +6,8 @@ import com.codeinglogs.domain.model.movies.moviedetail.images.MoviePoster as Dom
 
 
 data class MovieIMagesResponse(
-    val backdrops: List<MovieBackdrop>,
     val id: Int,
+    val backdrops: List<MovieBackdrop>,
     val posters: List<MoviePoster>
 )
 

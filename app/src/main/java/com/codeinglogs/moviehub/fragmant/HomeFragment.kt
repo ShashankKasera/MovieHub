@@ -5,8 +5,8 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.codeinglogs.core.base.BaseFragment
-import com.codeinglogs.core.PicassoImageLoadingService
-import com.codeinglogs.core.SliderAdapter
+import com.codeinglogs.core.util.PicassoImageLoadingService
+import com.codeinglogs.core.util.SliderAdapter
 import com.codeinglogs.moviehub.activity.MoviePagingActivity
 import com.codeinglogs.moviehub.activity.PersonPagingActivity
 import com.codeinglogs.moviehub.activity.TvShowPagingActivity

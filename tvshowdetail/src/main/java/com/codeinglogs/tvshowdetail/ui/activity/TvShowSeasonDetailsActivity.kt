@@ -4,8 +4,8 @@ import android.content.Context
 import android.content.Intent
 import android.util.Log
 import androidx.activity.viewModels
-import com.codeinglogs.core.PicassoImageLoadingService
-import com.codeinglogs.core.SliderAdapter
+import com.codeinglogs.core.util.PicassoImageLoadingService
+import com.codeinglogs.core.util.SliderAdapter
 import com.codeinglogs.core.base.BaseActivity
 import com.codeinglogs.moviehub.constant.IMAGE_BASE_URL_500
 import com.codeinglogs.presentation.model.State

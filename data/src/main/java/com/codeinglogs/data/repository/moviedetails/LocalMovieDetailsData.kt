@@ -4,6 +4,7 @@ import com.codeinglogs.data.model.movies.moviedetail.MovieDetailsDisplay
 
 interface LocalMovieDetailData {
 
-    fun getMovieDetail(): MovieDetailsDisplay
+    suspend fun getMovieDetail(id: String): MovieDetailsDisplay
+    suspend fun insertMovieDetail(MovieDetailsDisplay : MovieDetailsDisplay)
 
 }

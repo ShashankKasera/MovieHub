@@ -1,10 +1,14 @@
 package com.codeinglogs.core.di
 
 import com.codeinglogs.data.domainrepositoryimp.MovieDetailRepositoryDomainImp
+import com.codeinglogs.data.repository.home.LocalHomeData
+import com.codeinglogs.data.repository.moviedetails.LocalMovieDetailData
 import com.codeinglogs.data.repository.moviedetails.RemoteMovieDetailData
 import com.codeinglogs.data.store.moviedetails.MovieDetailDataSoreImpl
 import com.codeinglogs.data.store.moviedetails.MovieDetailsDataSore
 import com.codeinglogs.domain.repository.MovieDetailRepositoryDomain
+import com.codeinglogs.local.datarepositoryimp.LocalHomeDataRepositoryImp
+import com.codeinglogs.local.datarepositoryimp.LocalMovieDetailsDataRepositoryImp
 import com.codeinglogs.remote.datarepositoryimp.RemoteMovieDetailDataRepositoryImp
 import dagger.Module
 import dagger.Provides
@@ -27,5 +31,9 @@ object MovieDetailModule {
     @Singleton
     @Provides
     fun getRemoteMovieDetailRepositorySore(dataSoreRemote : RemoteMovieDetailDataRepositoryImp): RemoteMovieDetailData = dataSoreRemote
+
+    @Singleton
+    @Provides
+    fun getLocalMovieDetailDataRepositoryImp(dataSoreRemote : LocalMovieDetailsDataRepositoryImp): LocalMovieDetailData = dataSoreRemote
 
 }

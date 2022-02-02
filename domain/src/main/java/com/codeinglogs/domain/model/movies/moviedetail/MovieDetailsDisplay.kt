@@ -12,6 +12,5 @@ data class MovieDetailsDisplay(
     val movieIMagesResponse: MovieIMagesResponse,
     val movieInfoResponse: MovieInfoResponse,
     val movieReviewsResponse: MovieReviewsResponse,
-    val MovieSimilarResponse: MovieSimilarResponse,
     val MovieVideosResponse: MovieVideosResponse,
 )

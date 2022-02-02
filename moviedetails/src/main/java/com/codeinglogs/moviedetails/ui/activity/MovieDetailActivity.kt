@@ -4,8 +4,8 @@ import android.content.Context
 import android.content.Intent
 import android.util.Log
 import androidx.activity.viewModels
-import com.codeinglogs.core.PicassoImageLoadingService
-import com.codeinglogs.core.SliderAdapter
+import com.codeinglogs.core.util.PicassoImageLoadingService
+import com.codeinglogs.core.util.SliderAdapter
 import com.codeinglogs.core.base.BaseActivity
 import com.codeinglogs.moviedetails.ui.adapter.MovieViewPagerAdapter
 import com.codeinglogs.moviedetails.databinding.ActivityMovieDetailBinding
@@ -103,8 +103,7 @@ class MovieDetailActivity : BaseActivity<MovieDetailViewModel, ActivityMovieDeta
     companion object{
         const val MOVIE_ID = "movieId"
 
-        fun getInstance(context: Context,movieId : String) = Intent(context, MovieDetailActivity::class.java)
-            .apply {
+        fun getInstance(context: Context,movieId : String) = Intent(context, MovieDetailActivity::class.java).apply {
             putExtra(MOVIE_ID,movieId)
         }
     }

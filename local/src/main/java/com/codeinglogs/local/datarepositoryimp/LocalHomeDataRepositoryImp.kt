@@ -6,7 +6,9 @@ import com.codeinglogs.data.model.person.personlist.PersonListResponse
 import com.codeinglogs.data.model.tvshow.tvshowlist.TvShowsListResponse
 import com.codeinglogs.data.repository.home.LocalHomeData
 import com.codeinglogs.local.dao.*
+import com.codeinglogs.local.dao.home.*
 import com.codeinglogs.local.entity.*
+import com.codeinglogs.local.entity.home.*
 import kotlinx.coroutines.async
 import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.launch
@@ -27,6 +29,7 @@ class LocalHomeDataRepositoryImp
         ): LocalHomeData {
     override suspend fun getHomeDisplay(): HomeDisplay {
         val data = coroutineScope {
+
             val trendingPerson = async { trendingPersonsDao.getAllTrendingPersons() }
             val trendingMovie = async { trendingMoviesDao.getAllTrendingMovie() }
             val poPuLarMovie = async { popularMoviesDao.getAllPopularMovies() }
@@ -65,11 +68,9 @@ class LocalHomeDataRepositoryImp
         }
         coroutineScope {
             launch { trendingPersonsDao.insertAllTrendingPersons(*homeDisplay.trendingPerson.results.toLocalTrendingPersonsList().toTypedArray()) }
-
             launch { popularMoviesDao.insertAllPopularMovies(*homeDisplay.popularMovie.results?.toLocalPopularMoviesList()?.toTypedArray()?: arrayOf()) }
             launch { topRatedMoviesDao.insertAllTopRatedMovies(*homeDisplay.topRatedMovie.results?.toLocalTopRatedMoviesList()?.toTypedArray()?: arrayOf()) }
             launch { trendingMoviesDao.insertAllTrendingMovies(*homeDisplay.trendingMovie.results?.toLocalTrendingMoviesList()?.toTypedArray()?: arrayOf()) }
-
             launch { popularTvShowsDao.insertAllPopularTvShows(*homeDisplay.popularTvShow.results.toLocalPopularTvShowsList().toTypedArray()) }
             launch { topRatedTvShowsDao.insertAllTopRatedTvShows(*homeDisplay.topRatedTvShow.results.toLocalTopRatedTvShowsList().toTypedArray()) }
             launch { trendingTvShowsDao.insertAllTrendingTvShows(*homeDisplay.trendingTvShow.results.toLocalTrendingTvShowsList().toTypedArray()) }

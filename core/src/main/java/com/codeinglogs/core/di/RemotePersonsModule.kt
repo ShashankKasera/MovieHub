@@ -40,6 +40,4 @@ object RemotePersonsModule {
     @Provides
     fun getLocalPersonData(dataSoreRemote : LocalPersonDataRepositoryImp): LocalPersonData = dataSoreRemote
 
-
-
 }

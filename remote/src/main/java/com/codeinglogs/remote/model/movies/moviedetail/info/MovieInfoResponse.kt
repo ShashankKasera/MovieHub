@@ -35,23 +35,18 @@ fun MovieInfoResponse.toDataMovieInfoResponse()=DataMovieInfoResponse(
     backdrop_path=backdrop_path?:"",
     budget=budget?:0,
     genres=genres?.toDataMovieGener()?: listOf(),
-    homepage=homepage?:"",
     id=id?:0,
-    imdb_id=imdb_id?:"",
     original_language=original_language?:"",
     original_title=original_title?:"",
     overview=overview?:"",
-    popularity=popularity?:0.0,
     poster_path=poster_path?:"",
     release_date=release_date?:"",
     revenue=revenue?:0,
     runtime=runtime?:0,
     status=status?:"",
-    tagline=tagline?:"",
     title=title?:"",
-    video=video?:false,
     vote_average=vote_average?:0.0,
-    vote_count=vote_count?:0
+
 )
 
 fun List<MovieGener>.toDataMovieGener():List<DataMovieGener> {

@@ -13,10 +13,7 @@ data class MovieReviewsResponse(
 
 fun MovieReviewsResponse.toDataMovieReviewsResponse()=DataMovieReviewsResponse(
     id=id?:0,
-    page=page?:0,
     results=results?.toDataMovieReviews()?: listOf(),
-    total_pages=total_pages?:0,
-    total_results=total_results?:0
 )
 
 fun List<MovieReviews>.toDataMovieReviews():List<DataMovieReviews>{

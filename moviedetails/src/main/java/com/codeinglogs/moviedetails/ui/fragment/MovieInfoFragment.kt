@@ -2,13 +2,13 @@ package com.codeinglogs.moviedetails.ui.fragment
 
 import android.util.Log
 import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.codeinglogs.core.base.BaseFragment
 import com.codeinglogs.core.extension.load
 import com.codeinglogs.moviedetails.databinding.FragmentMovieInfosBinding
 import com.codeinglogs.moviedetails.ui.activity.MovieCrewActivity
-import com.codeinglogs.moviedetails.ui.activity.MovieDetailActivity
 import com.codeinglogs.moviedetails.ui.adapter.MovieGenresAdapter
 import com.codeinglogs.moviedetails.ui.adapter.MovieVideoAdapter
 import com.codeinglogs.moviedetails.ui.adapter.MovieCrewAdapter
@@ -16,6 +16,9 @@ import com.codeinglogs.moviehub.constant.IMAGE_BASE_URL_500
 import com.codeinglogs.presentation.model.State
 import com.codeinglogs.presentation.model.movies.moviedetail.MovieDetailsDisplay
 import com.codeinglogs.presentation.viewmodel.moviedetail.MovieDetailViewModel
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 
 private const val TAG = "123InfoFragment"
@@ -37,6 +40,7 @@ class MovieInfoFragment : BaseFragment<MovieDetailViewModel, FragmentMovieInfosB
     }
 
     private fun init() {
+        initProgressBar(mViewBinding.movieDetailLoader)
         setUpGenresAdapter()
         setUpCrewAdapter()
         setUpVideoAdapter()
@@ -47,28 +51,44 @@ class MovieInfoFragment : BaseFragment<MovieDetailViewModel, FragmentMovieInfosB
             it.peekContent()?.let{it ->
                 when(it){
                     is State.Failed -> {
-                        Log.i(TAG, "Failed: MovieDetailActivity ${it.message}")
-                        showProgressBar(false)
-                    }
-                    is State.Loading -> {
-                        Log.i(TAG, "Loading: MovieDetailActivity ${it.data}")
+                        Log.i(TAG, "Failed: 123InfoFragment ${it.message}")
                         showProgressBar(true)
                     }
-                    is State.Success -> {
-                        Log.i(TAG, "Success: MovieDetailActivity ${it.data}")
+                    is State.Loading -> {
+                        Log.i(TAG, "Loading: 123InfoFragment ${it.data}")
 
-                        showProgressBar(false)
-
-                        setDetails(it)
-                        setCrew(it)
-                        setTrailer(it)
-                        setFact(it)
-                        setMedia(it)
-                        setProductionCompanies(it)
-
-                        mViewBinding.tvShowAllMovieInfo.setOnClickListener(){
-                            startActivity(MovieCrewActivity.getInstance(requireContext(),mViewModel.movieId))
+                        if(it.data!=null&&it.data?.movieCreditsResponse?.crew?.isNotEmpty() == true){
+                            setDetails(it.data!!)
+                            setCrew(it.data!!)
+                            setTrailer(it.data!!)
+                            setFact(it.data!!)
+                            setMedia(it.data!!)
+                            setProductionCompanies(it.data!!)
+                            showProgressBar(false)
                         }
+                        else{
+                            showProgressBar(true)
+                        }
+                    }
+                    is State.Success -> {
+                        Log.i(TAG, "Success: 123InfoFragment ${it.data}")
+
+                        lifecycleScope.launch(Dispatchers.Main) {
+                            delay(6000)
+                            showProgressBar(false)
+
+                            setDetails(it.data)
+                            setCrew(it.data)
+                            setTrailer(it.data)
+                            setFact(it.data)
+                            setMedia(it.data)
+                            setProductionCompanies(it.data)
+
+                            mViewBinding.tvShowAllMovieInfo.setOnClickListener(){
+                                startActivity(MovieCrewActivity.getInstance(requireContext(),mViewModel.movieId))
+                            }
+                        }
+
 
                     }
                 }
@@ -77,18 +97,18 @@ class MovieInfoFragment : BaseFragment<MovieDetailViewModel, FragmentMovieInfosB
     }
 
 
-    private fun setDetails(it: State.Success<MovieDetailsDisplay>){
+    private fun setDetails(it: MovieDetailsDisplay){
 
-        mViewBinding.tvTimeMovieInfo.text=convertNumberToHoursMinutes(it.data.movieInfoResponse.runtime)
-        mViewBinding.tvMovieNameMovieInfo.text=it.data.movieInfoResponse.title
-        mViewBinding.tvDescriptionMovieInfo.text=it.data.movieInfoResponse.overview
+        mViewBinding.tvTimeMovieInfo.text=convertNumberToHoursMinutes(it.movieInfoResponse.runtime)
+        mViewBinding.tvMovieNameMovieInfo.text=it.movieInfoResponse.title
+        mViewBinding.tvDescriptionMovieInfo.text=it.movieInfoResponse.overview
 
-        if(it.data.movieInfoResponse.release_date.length>4)
-            mViewBinding.tvYearMovieInfo.text=it.data.movieInfoResponse.release_date.substring(0,4)
+        if(it.movieInfoResponse.release_date.length>4)
+            mViewBinding.tvYearMovieInfo.text=it.movieInfoResponse.release_date.substring(0,4)
         else
-            mViewBinding.tvYearMovieInfo.text=it.data.movieInfoResponse.release_date
+            mViewBinding.tvYearMovieInfo.text=it.movieInfoResponse.release_date
 
-        movieGenresAdapter.submitList(it.data.movieInfoResponse.genres)
+        movieGenresAdapter.submitList(it.movieInfoResponse.genres)
     }
 
     private fun convertNumberToHoursMinutes(runtime:Int):kotlin.String{
@@ -106,8 +126,8 @@ class MovieInfoFragment : BaseFragment<MovieDetailViewModel, FragmentMovieInfosB
 
     }
 
-    private fun setCrew(it: State.Success<MovieDetailsDisplay>) {
-        movieCrewAdapter.submitList(it.data.movieCreditsResponse.crew)
+    private fun setCrew(it: MovieDetailsDisplay) {
+        movieCrewAdapter.submitList(it.movieCreditsResponse.crew)
     }
 
     private fun setUpCrewAdapter() {
@@ -118,8 +138,8 @@ class MovieInfoFragment : BaseFragment<MovieDetailViewModel, FragmentMovieInfosB
 
     }
 
-    private fun setTrailer(it: State.Success<MovieDetailsDisplay>){
-        movieVideoAdapter.submitList(it.data.MovieVideosResponse.results)
+    private fun setTrailer(it: MovieDetailsDisplay){
+        movieVideoAdapter.submitList(it.MovieVideosResponse.results)
     }
 
     private fun setUpVideoAdapter() {
@@ -128,34 +148,34 @@ class MovieInfoFragment : BaseFragment<MovieDetailViewModel, FragmentMovieInfosB
         mViewBinding.rvVideoMovieInfo.adapter=this.movieVideoAdapter
     }
 
-    private fun setFact(it: State.Success<MovieDetailsDisplay>){
-        mViewBinding.tvTitleFactMovieInfo.text=it.data.movieInfoResponse.title
-        mViewBinding.tvStatusFactMovieInfo.text=it.data.movieInfoResponse.status
-        mViewBinding.tvReleaseDateFactMovieInfo.text=it.data.movieInfoResponse.release_date
-        mViewBinding.tvOriginalLanguageFactMovieInfo.text=it.data.movieInfoResponse.original_language
-        mViewBinding.tvRuntimeFactMovieInfo.text=convertNumberToHoursMinutes(it.data.movieInfoResponse.runtime)
-        mViewBinding.tvBudgetFactMovieInfo.text=it.data.movieInfoResponse.budget.toString()
-        mViewBinding.tvRevenueFactMovieInfo.text=it.data.movieInfoResponse.revenue.toString()
-        mViewBinding.tvRevenueFactMovieInfo.text=it.data.movieInfoResponse.revenue.toString()
+    private fun setFact(it: MovieDetailsDisplay){
+        mViewBinding.tvTitleFactMovieInfo.text=it.movieInfoResponse.title
+        mViewBinding.tvStatusFactMovieInfo.text=it.movieInfoResponse.status
+        mViewBinding.tvReleaseDateFactMovieInfo.text=it.movieInfoResponse.release_date
+        mViewBinding.tvOriginalLanguageFactMovieInfo.text=it.movieInfoResponse.original_language
+        mViewBinding.tvRuntimeFactMovieInfo.text=convertNumberToHoursMinutes(it.movieInfoResponse.runtime)
+        mViewBinding.tvBudgetFactMovieInfo.text=it.movieInfoResponse.budget.toString()
+        mViewBinding.tvRevenueFactMovieInfo.text=it.movieInfoResponse.revenue.toString()
+        mViewBinding.tvRevenueFactMovieInfo.text=it.movieInfoResponse.revenue.toString()
 
     }
 
-    private fun setMedia(it: State.Success<MovieDetailsDisplay>){
+    private fun setMedia(it: MovieDetailsDisplay){
 
-        if(it.data.movieIMagesResponse.posters.size>0) {
-            mViewBinding.ivPosterMovieInfo.load(IMAGE_BASE_URL_500 + it.data.movieIMagesResponse.posters.get(0).file_path)
-            mViewBinding.tvNumberOfPosterMovieInfo.text = it.data.movieIMagesResponse.posters.size.toString() + " Posters"
+        if(it.movieIMagesResponse.posters.size>0) {
+            mViewBinding.ivPosterMovieInfo.load(IMAGE_BASE_URL_500 + it.movieIMagesResponse.posters.get(0).file_path)
+            mViewBinding.tvNumberOfPosterMovieInfo.text = it.movieIMagesResponse.posters.size.toString() + " Posters"
         }
-        if(it.data.movieIMagesResponse.backdrops.size>0) {
-            mViewBinding.ivBackdropMovieInfo.load(IMAGE_BASE_URL_500 + it.data.movieIMagesResponse.backdrops.get(0).file_path)
-            mViewBinding.tvNumberOfBackdropMovieInfo.text = it.data.movieIMagesResponse.backdrops.size.toString() + " Backdrops"
+        if(it.movieIMagesResponse.backdrops.size>0) {
+            mViewBinding.ivBackdropMovieInfo.load(IMAGE_BASE_URL_500 + it.movieIMagesResponse.backdrops.get(0).file_path)
+            mViewBinding.tvNumberOfBackdropMovieInfo.text = it.movieIMagesResponse.backdrops.size.toString() + " Backdrops"
         }
     }
 
-    private fun setProductionCompanies(it: State.Success<MovieDetailsDisplay>){
+    private fun setProductionCompanies(it: MovieDetailsDisplay){
         var production_companies=""
-        for (i in 1..(it.data.movieInfoResponse.production_companies.size-1 )) {
-            production_companies+=it.data.movieInfoResponse.production_companies.get(i).name+", "
+        for (i in 1..(it.movieInfoResponse.production_companies.size-1 )) {
+            production_companies+=it.movieInfoResponse.production_companies.get(i).name+", "
         }
         mViewBinding.tvProductionCompaniesMovieInfo.text=production_companies
     }

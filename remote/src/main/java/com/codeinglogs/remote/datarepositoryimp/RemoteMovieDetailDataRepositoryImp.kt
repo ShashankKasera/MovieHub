@@ -1,5 +1,6 @@
 package com.codeinglogs.remote.datarepositoryimp
 
+import android.util.Log
 import com.codeinglogs.data.model.State
 import com.codeinglogs.data.model.movies.moviedetail.MovieDetailsDisplay
 import com.codeinglogs.data.repository.moviedetails.RemoteMovieDetailData
@@ -25,23 +26,26 @@ class RemoteMovieDetailDataRepositoryImp@Inject constructor (private val moviesR
             val movieCredits = async { moviesRequest.getMovieCredits(id)}
             val movieImages = async { moviesRequest.getMovieImages(id)}
             val movieVideos = async { moviesRequest.getMovieVideos(id)}
-            val movieSimilar = async { moviesRequest.getMovieSimilar(id)}
             val movieReviews = async { moviesRequest.getMovieReviews(id)}
             val movieInfo = async { moviesRequest.getMovieInfo(id)}
-
+            Log.i("iin", "getMovieDetail  movieCredits: me   $id")
+            Log.i("iin", "getMovieDetail  movieCredits: ${movieCredits.await()}")
+            Log.i("iin", "getMovieDetail  movieImages: ${movieImages.await()}")
+            Log.i("iin", "getMovieDetail  movieVideos: ${movieVideos.await()}")
+            Log.i("iin", "getMovieDetail  movieReviews: ${movieReviews.await()}")
+            Log.i("iin", "getMovieDetail  movieInfo: ${movieInfo.await()}")
             MovieDetailsDisplay(
-
                 movieCredits.await().toDataMovieCreditsResponse(),
                 movieImages.await().toDataMovieIMagesResponse(),
                 movieInfo.await().toDataMovieInfoResponse(),
                 movieReviews.await().toDataMovieReviewsResponse(),
-                movieSimilar.await().toDataMovieSimilarResponse(),
                 movieVideos.await().toDataMovieVideosResponse(),
-
             )
         }
         emit(State.success(data))
     }.catch {
+
+        Log.i("iin", "getMovieDetail  failed: ${it.message}")
         emit(State.failed(it.message?:""))
     }
 }

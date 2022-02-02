@@ -2,7 +2,6 @@ package com.codeinglogs.local.dao
 
 import androidx.lifecycle.LiveData
 import androidx.room.*
-import com.codeinglogs.local.entity.Movies
 import com.codeinglogs.local.entity.Persons
 
 @Dao

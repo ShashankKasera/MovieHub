@@ -8,6 +8,7 @@ data class MovieBackdrop(
 )
 
 fun MovieBackdrop.toDomainMovieBackdrop()= DomainMovieBackdrop(
+
     file_path=file_path,
     vote_count=vote_count
 )

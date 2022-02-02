@@ -6,9 +6,9 @@ import com.codeinglogs.domain.model.movies.moviedetail.credits.MovieCreditsRespo
 
 
 data class MovieCreditsResponse(
+    val id: Int,
     val cast: List<Person>,
     val crew: List<Person>,
-    val id: Int
 )
 
 fun MovieCreditsResponse.toDomainMovieCreditsResponse()= DomainMovieCreditsResponse(

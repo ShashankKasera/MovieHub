@@ -33,12 +33,12 @@ fun List<Movies>.toDataMovies() : List<DataMovies>{
 
 fun DataMovies.toLocalMovies() = Movies(
     id = id ,
-    original_name = title?:"",
-    original_title = title?:"",
-    poster_path = poster_path?:"",
-    backdrop_path = backdrop_path?:"",
-    release_date = release_date?:"",
-    vote_average = vote_average?:0.0
+    original_name = title,
+    original_title = title,
+    poster_path = poster_path,
+    backdrop_path = backdrop_path,
+    release_date = release_date,
+    vote_average = vote_average
 )
 
 fun List<DataMovies>.toLocalMovies() : List<Movies>{
