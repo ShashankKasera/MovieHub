@@ -35,7 +35,7 @@ class MovieCrewActivity : BaseActivity<MovieDetailViewModel, ActivityMovieCrewBi
         val movieId = intent.getStringExtra(MOVIE_ID)
 
         movieId?.let {
-            mViewModel.getMovieDetails(it)
+            //mViewModel.getMovieDetails(it)
         }
         setUpAllCrewAdapter()
 

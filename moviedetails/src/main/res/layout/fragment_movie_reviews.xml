@@ -21,5 +21,8 @@
             app:layout_constraintTop_toTopOf="parent"
             tools:listitem="@layout/review_item" />
 
+        <include
+            layout="@layout/layout_progress_bar"
+            android:id="@+id/movie_detail_review_loader"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

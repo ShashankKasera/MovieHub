@@ -24,4 +24,7 @@ interface MovieInfoResponseDao {
 
     @Query("SELECT * FROM MovieInfoResponse WHERE MovieInfoResponse.id == (:movieId)")
     fun getMovieInfoResponse(movieId : Int) : MovieInfoResponse
+
+    @Query("SELECT EXISTS(SELECT * FROM MovieInfoResponse WHERE id = :movieId)")
+    fun isMovieInfoIsExist(movieId : Int) : Boolean
 }

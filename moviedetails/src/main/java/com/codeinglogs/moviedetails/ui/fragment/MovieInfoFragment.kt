@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.codeinglogs.core.base.BaseFragment
 import com.codeinglogs.core.extension.load
+import com.codeinglogs.core.extension.showToast
 import com.codeinglogs.moviedetails.databinding.FragmentMovieInfosBinding
 import com.codeinglogs.moviedetails.ui.activity.MovieCrewActivity
 import com.codeinglogs.moviedetails.ui.adapter.MovieGenresAdapter
@@ -16,13 +17,14 @@ import com.codeinglogs.moviehub.constant.IMAGE_BASE_URL_500
 import com.codeinglogs.presentation.model.State
 import com.codeinglogs.presentation.model.movies.moviedetail.MovieDetailsDisplay
 import com.codeinglogs.presentation.viewmodel.moviedetail.MovieDetailViewModel
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 
 private const val TAG = "123InfoFragment"
-
+@AndroidEntryPoint
 class MovieInfoFragment : BaseFragment<MovieDetailViewModel, FragmentMovieInfosBinding>(){
 
     private lateinit var movieGenresAdapter: MovieGenresAdapter
@@ -52,10 +54,11 @@ class MovieInfoFragment : BaseFragment<MovieDetailViewModel, FragmentMovieInfosB
                 when(it){
                     is State.Failed -> {
                         Log.i(TAG, "Failed: 123InfoFragment ${it.message}")
-                        showProgressBar(true)
+                        showProgressBar(false)
+                        showToast(it.message)
                     }
                     is State.Loading -> {
-                        Log.i(TAG, "Loading: 123InfoFragment ${it.data}")
+                        Log.i(TAG, "Loading: 123InfoFragment ")
 
                         if(it.data!=null&&it.data?.movieCreditsResponse?.crew?.isNotEmpty() == true){
                             setDetails(it.data!!)
@@ -74,9 +77,7 @@ class MovieInfoFragment : BaseFragment<MovieDetailViewModel, FragmentMovieInfosB
                         Log.i(TAG, "Success: 123InfoFragment ${it.data}")
 
                         lifecycleScope.launch(Dispatchers.Main) {
-                            delay(6000)
                             showProgressBar(false)
-
                             setDetails(it.data)
                             setCrew(it.data)
                             setTrailer(it.data)

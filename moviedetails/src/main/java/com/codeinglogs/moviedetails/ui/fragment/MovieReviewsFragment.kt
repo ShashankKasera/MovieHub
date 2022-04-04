@@ -4,6 +4,7 @@ import android.util.Log
 import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.codeinglogs.core.base.BaseFragment
+import com.codeinglogs.core.extension.showToast
 import com.codeinglogs.moviedetails.databinding.FragmentMovieReviewsBinding
 import com.codeinglogs.moviedetails.ui.adapter.MovieReviewAdapter
 import com.codeinglogs.presentation.model.State
@@ -25,6 +26,7 @@ class MovieReviewsFragment : BaseFragment<MovieDetailViewModel,FragmentMovieRevi
     }
 
     private fun init() {
+        initProgressBar(mViewBinding.movieDetailReviewLoader)
         setUpReviewAdapter()
     }
 
@@ -35,10 +37,18 @@ class MovieReviewsFragment : BaseFragment<MovieDetailViewModel,FragmentMovieRevi
                     is State.Failed -> {
                         Log.i(TAG, "Failed: MovieDetailActivity ${it.message}")
                         showProgressBar(false)
+                        showToast(it.message)
                     }
                     is State.Loading -> {
                         Log.i(TAG, "Loading: MovieDetailActivity ${it.data}")
-                        showProgressBar(true)
+
+                        if(it.data!=null && it.data?.movieReviewsResponse?.results?.isNotEmpty() == true){
+                            movieReviewAdapter.submitList(it.data!!.movieReviewsResponse.results)
+                            showProgressBar(false)
+                        }
+                        else{
+                            showProgressBar(true)
+                        }
                     }
                     is State.Success -> {
                         Log.i(TAG, "Success: MovieDetailActivity ${it.data}")

@@ -58,7 +58,7 @@ import com.codeinglogs.local.entity.moviedetail.video.MovieVideoRelation
         MovieReviews::class,
         MovieReviewRelation::class,
         MovieVideo::class,
-        MovieVideoRelation::class,       ], version = 2, exportSchema = false
+        MovieVideoRelation::class,       ], version = 3, exportSchema = false
 )
 abstract class MovieHubDatabase : RoomDatabase() {
     abstract fun getMoviesDao(): MoviesDao

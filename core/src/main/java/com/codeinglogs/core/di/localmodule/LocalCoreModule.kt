@@ -39,7 +39,7 @@ object LocalCoreModule {
     @Singleton
     @Provides
     fun getRoomDB(@ApplicationContext context: Context, @Named("DBName")name :String) =
-        Room.databaseBuilder(context,MovieHubDatabase::class.java,name).build()
+        Room.databaseBuilder(context,MovieHubDatabase::class.java,name).fallbackToDestructiveMigration().build()
 
 
 

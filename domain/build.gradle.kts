@@ -53,5 +53,5 @@ dependencies {
 
     daggerHilt()
     api(AppDependencies.domainLibraries)
-    implementation(project(mapOf("path" to AppDependencies.UTIL)))
+
 }

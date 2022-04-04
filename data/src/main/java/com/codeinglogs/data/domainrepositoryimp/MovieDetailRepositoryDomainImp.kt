@@ -19,11 +19,18 @@ class MovieDetailRepositoryDomainImp @Inject constructor (private val movieDetai
 
         movieDetailsDataSore.getRemoteDataSource().getMovieDetail(id).collect {
             when(it){
-                is RemoteState.Failed -> emit(State.failed(it.message))
+                is RemoteState.Failed -> {
+                    if(!movieDetailsDataSore.getLocalDataSource().isMovieDetailExist(id)){
+                        emit(State.failed(it.message?:""))
+                    }
+                }
                 is RemoteState.Loading -> {
-                    //Log.i("kng", "getMovieDetail: ${movieDetailsDataSore.getLocalDataSource().getMovieDetail(id)}")
-                    //emit(State.loading(movieDetailsDataSore.getLocalDataSource().getMovieDetail(id).toDomainMovieDetailsDisplay()))
-                    //emit(State.loading())
+                    if(movieDetailsDataSore.getLocalDataSource().isMovieDetailExist(id)){
+                        emit(State.loading(movieDetailsDataSore.getLocalDataSource().getMovieDetail(id).toDomainMovieDetailsDisplay()))
+                    }
+                    else{
+                        emit(State.loading())
+                    }
                 }
                 is RemoteState.Success -> {
                     movieDetailsDataSore.getLocalDataSource().insertMovieDetail(it.data)
@@ -32,7 +39,8 @@ class MovieDetailRepositoryDomainImp @Inject constructor (private val movieDetai
             }
         }
     }.catch {
-        emit(State.failed(it.message?:""))
-        Log.i("hjk", "getMovieDetail: ${it.message}")
+        if(!movieDetailsDataSore.getLocalDataSource().isMovieDetailExist(id)){
+            emit(State.failed(it.message?:""))
+        }
     }.flowOn(Dispatchers.IO)
 }

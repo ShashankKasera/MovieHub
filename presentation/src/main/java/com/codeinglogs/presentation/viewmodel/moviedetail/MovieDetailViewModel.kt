@@ -1,5 +1,6 @@
 package com.codeinglogs.presentation.viewmodel.moviedetail
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -21,14 +22,14 @@ class MovieDetailViewModel@Inject constructor(private val getMovieDetailsUseCase
     val movieDetails : LiveData<Event<State<MovieDetailsDisplay>>>
         get() = _MovieDetails
 
-
     var movieId=""
 
     fun getMovieDetails(id: String) {
+        Log.i("sdmcdm", "getDetails: ")
         viewModelScope.launch {
             getMovieDetailsUseCase(id).collect{
+                Log.i("sdmcdm", "getMovieDetails: $it")
                 _MovieDetails.value=Event(it.toPresentationState())
-
             }
         }
     }

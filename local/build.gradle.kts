@@ -52,5 +52,5 @@ dependencies {
     daggerHilt()
     room()
     implementation(project(mapOf("path" to AppDependencies.DATA)))
-    api(project(mapOf("path" to AppDependencies.UTIL)))
+    implementation(project(mapOf("path" to AppDependencies.UTIL)))
 }

@@ -23,17 +23,17 @@ class RemoteMovieDetailDataRepositoryImp@Inject constructor (private val moviesR
         emit(State.loading())
         val data = coroutineScope{
 
+            Log.i("dsjfbckj", "getMovieDetail  movieCredits: me   $id")
             val movieCredits = async { moviesRequest.getMovieCredits(id)}
+            Log.i("dsjfbckj", "getMovieDetail  movieCredits: ${movieCredits.await()}")
             val movieImages = async { moviesRequest.getMovieImages(id)}
+            Log.i("dsjfbckj", "getMovieDetail  movieImages: ${movieImages.await()}")
             val movieVideos = async { moviesRequest.getMovieVideos(id)}
+            Log.i("dsjfbckj", "getMovieDetail  movieVideos: ${movieVideos.await()}")
             val movieReviews = async { moviesRequest.getMovieReviews(id)}
+            Log.i("dsjfbckj", "getMovieDetail  movieReviews: ${movieReviews.await()}")
             val movieInfo = async { moviesRequest.getMovieInfo(id)}
-            Log.i("iin", "getMovieDetail  movieCredits: me   $id")
-            Log.i("iin", "getMovieDetail  movieCredits: ${movieCredits.await()}")
-            Log.i("iin", "getMovieDetail  movieImages: ${movieImages.await()}")
-            Log.i("iin", "getMovieDetail  movieVideos: ${movieVideos.await()}")
-            Log.i("iin", "getMovieDetail  movieReviews: ${movieReviews.await()}")
-            Log.i("iin", "getMovieDetail  movieInfo: ${movieInfo.await()}")
+            Log.i("dsjfbckj", "getMovieDetail  movieInfo: ${movieInfo.await()}")
             MovieDetailsDisplay(
                 movieCredits.await().toDataMovieCreditsResponse(),
                 movieImages.await().toDataMovieIMagesResponse(),
@@ -45,7 +45,7 @@ class RemoteMovieDetailDataRepositoryImp@Inject constructor (private val moviesR
         emit(State.success(data))
     }.catch {
 
-        Log.i("iin", "getMovieDetail  failed: ${it.message}")
+        Log.i("dsjfbckj", "getMovieDetail  failed: ${it.message}")
         emit(State.failed(it.message?:""))
     }
 }

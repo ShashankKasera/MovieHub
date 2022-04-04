@@ -4,6 +4,7 @@
     <bytecodeTargetLevel target="1.8">
       <module name="MovieHub.app" target="11" />
       <module name="moviehub.buildSrc" target="11" />
+      <module name="MovieHub.buildSrc" target="11" />
       <module name="MovieHub.common" target="11" />
       <module name="MovieHub.core" target="11" />
       <module name="MovieHub.data" target="11" />

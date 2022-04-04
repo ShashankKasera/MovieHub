@@ -98,6 +98,10 @@ class LocalMovieDetailsDataRepositoryImp  @Inject constructor (
 
     }
 
+    override suspend fun isMovieDetailExist(movieId: String): Boolean {
+        return movieInfoResponseDao.isMovieInfoIsExist(movieId.toInt())
+    }
+
     override suspend fun insertMovieDetail(MovieDetails: MovieDetailsDisplay) {
         coroutineScope {
             launch {

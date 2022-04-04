@@ -13,6 +13,7 @@ import com.codeinglogs.moviehub.constant.IMAGE_BASE_URL_YOUTUBE
 import com.codeinglogs.moviehub.constant.IMAGE_back_YOUTUBE
 import com.codeinglogs.presentation.model.State
 import com.codeinglogs.presentation.model.movies.moviedetail.videos.MovieVideo
+import com.codeinglogs.presentation.model.movies.moviedetail.videos.MovieVideosResponse
 import com.codeinglogs.presentation.viewmodel.moviedetail.MovieDetailViewModel
 import com.google.android.material.tabs.TabLayoutMediator
 import dagger.hilt.android.AndroidEntryPoint
@@ -34,7 +35,7 @@ class MovieDetailActivity : BaseActivity<MovieDetailViewModel, ActivityMovieDeta
     }
 
     private fun movieDetailObserve() {
-        mViewModel.movieDetails.observe(this){
+        mViewModel.movieDetails.observe(this){ it ->
             it.contentIfNotHandled?.let{it ->
                 when(it){
                     is State.Failed -> {
@@ -43,7 +44,14 @@ class MovieDetailActivity : BaseActivity<MovieDetailViewModel, ActivityMovieDeta
                     }
                     is State.Loading -> {
                         Log.i(TAG, "Loading: MovieDetailActivity ${it.data}")
-                        showProgressBar(true)
+
+                        it.data?.let {
+                            showProgressBar(false)
+                            addSlider(mViewBinding.bsMovieMovieDet,it.MovieVideosResponse.results)
+                        }?: run {
+                            showProgressBar(true)
+                        }
+
                     }
                     is State.Success -> {
                         Log.i(TAG, "Success: MovieDetailActivity ${it.data}")
