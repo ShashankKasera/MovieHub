@@ -12,6 +12,7 @@ data class TvShowReviews(
 )
 
 fun TvShowReviews.toDataTvShowReviews()=DataTvShowReviews(
+    id=id?:"",
     author=author?:"",
     content=content?:""
 )

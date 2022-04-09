@@ -5,7 +5,7 @@ import androidx.lifecycle.LiveData
 import androidx.room.*
 import com.codeinglogs.local.entity.Persons
 import com.codeinglogs.local.entity.moviedetail.credits.MovieCreditsToCrewRelation
-import com.codeinglogs.local.entity.moviedetail.video.MovieVideo
+
 @Dao
 interface MovieCreditsToCrewRelationDao {
     @Insert

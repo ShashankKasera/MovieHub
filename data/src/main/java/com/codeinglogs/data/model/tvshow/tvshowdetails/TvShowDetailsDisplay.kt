@@ -17,18 +17,16 @@ import com.codeinglogs.domain.model.tvshow.tvshowdetails.TvShowDetailsDisplay as
 
 data class TvShowDetailsDisplay(
     val tvShowCreditsResponse: TvShowCreditsResponse,
-    val tvShowIMagesResponse: TvShowImageResponse,
+    val tvShowImagesResponse: TvShowImageResponse,
     val tvShowInfoResponse: TvShowInfoResponse,
     val tvShowReviewsResponse: TvShowReviewsResponse,
-    val tvShowSimilarResponse: TvShowSimilarResponse,
     val tvShowVideosResponse: TvShowsVideosResponse,
     )
 
 fun TvShowDetailsDisplay.toDomainTvShowDetails()=DomainTvShowDetailsDisplay(
     tvShowCreditsResponse =tvShowCreditsResponse.toDomainTvShowCreditsResponse(),
-    tvShowIMagesResponse = tvShowIMagesResponse.toDomainTvShowImageResponse(),
+    tvShowIMagesResponse = tvShowImagesResponse.toDomainTvShowImageResponse(),
     tvShowInfoResponse = tvShowInfoResponse.toDomainTvShowInfoResponse(),
     tvShowReviewsResponse =tvShowReviewsResponse.toDomainTvShowReviewsResponse(),
-    tvShowSimilarResponse =tvShowSimilarResponse.toDomainTvShowSimilarResponse(),
     tvShowVideosResponse = tvShowVideosResponse.toDomainTvShowsVideosResponse(),
 )

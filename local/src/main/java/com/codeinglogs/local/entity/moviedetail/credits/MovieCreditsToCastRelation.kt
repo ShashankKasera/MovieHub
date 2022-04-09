@@ -30,7 +30,8 @@ data class MovieCreditsToCastRelation (
     val movieId : String, //31223
 )
 
-fun DataMovieCast.toLocalMovieCreditsToCastRelation(movieId : String,) = MovieCreditsToCastRelation(getId(movieId,id.toString()),movieCastId = id.toString(),movieId=movieId)
+fun DataMovieCast.toLocalMovieCreditsToCastRelation(movieId : String,) = MovieCreditsToCastRelation(
+    getId(movieId,id.toString()),movieCastId = id.toString(),movieId=movieId)
 
 fun List<DataMovieCast>.toLocalMovieCreditsToCastRelationList(movieId : String,) : List<MovieCreditsToCastRelation>{
     val list = mutableListOf<MovieCreditsToCastRelation>()

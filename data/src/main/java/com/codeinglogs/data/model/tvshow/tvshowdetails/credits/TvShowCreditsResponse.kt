@@ -6,9 +6,10 @@ import com.codeinglogs.domain.model.tvshow.tvshowdetails.credits.TvShowCreditsRe
 
 
 data class TvShowCreditsResponse(
+    val id: Int,
     val cast: List<Person>,
     val crew: List<Person>,
-    val id: Int
+
 )
 
 

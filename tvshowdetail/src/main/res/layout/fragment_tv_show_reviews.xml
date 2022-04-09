@@ -20,5 +20,8 @@
             app:layout_constraintTop_toTopOf="parent"
             tools:listitem="@layout/tv_show_review_item" />
 
+        <include
+            layout="@layout/layout_progress_bar"
+            android:id="@+id/tvshow_detail_review_loader"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

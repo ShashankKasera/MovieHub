@@ -20,5 +20,8 @@
             tools:listitem="@layout/tv_show_person_item" />
 
 
+        <include
+            layout="@layout/layout_progress_bar"
+            android:id="@+id/tvshow_detail_cast_loader"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

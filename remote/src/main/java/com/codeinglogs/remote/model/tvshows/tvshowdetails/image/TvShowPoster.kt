@@ -13,5 +13,6 @@ data class TvShowPoster(
 )
 
 fun TvShowPoster.toDataTvShowPoster()=DataTvShowPoster(
-    file_path=file_path?:""
+    file_path=file_path?:"",
+    vote_count=vote_count?:0
 )

@@ -1,5 +1,6 @@
 package com.codeinglogs.data.domainrepositoryimp
 
+import com.codeinglogs.data.model.movies.moviedetail.toDomainMovieDetailsDisplay
 import com.codeinglogs.data.model.tvshow.tvshowdetails.toDomainTvShowDetails
 import com.codeinglogs.data.store.tvshowdetails.TvShowDetailsDataSore
 import com.codeinglogs.domain.model.State
@@ -15,17 +16,28 @@ class TvShowDetailRepositoryDomainImp @Inject constructor (private val tvShowDet
     override fun getTvShowDetail(id:String)=flow <State<TvShowDetailsDisplay>>{
         tvShowDetailsDataSore.getRemoteDataSource().getTvShowDetail(id).collect {
             when(it){
-                is RemoteState.Failed -> emit(State.failed(it.message))
+                is RemoteState.Failed -> {
+                    if(!tvShowDetailsDataSore.getLocalDataSource().isTvShowDetailExist(id)){
+                        emit(State.failed(it.message?:""))
+                    }
+                }
                 is RemoteState.Loading -> {
-                    //emit(State.loading(tvShowDetailsDataSore.getLocalDataSource().getHomeDisplay().toDomainHomeDisplay()))
+                    if(tvShowDetailsDataSore.getLocalDataSource().isTvShowDetailExist(id)){
+                        emit(State.loading(tvShowDetailsDataSore.getLocalDataSource().getTvShowDetail(id).toDomainTvShowDetails()))
+                    }
+                    else{
+                        emit(State.loading())
+                    }
                 }
                 is RemoteState.Success -> {
-                    //tvShowDetailsDataSore.getLocalDataSource().insertHomeDisplay(it.data)
+                    tvShowDetailsDataSore.getLocalDataSource().insertTvShowDetail(it.data)
                     emit(State.success(it.data.toDomainTvShowDetails()))
                 }
             }
         }
     }.catch {
-        emit(State.failed(it.message?:""))
+        if(!tvShowDetailsDataSore.getLocalDataSource().isTvShowDetailExist(id)){
+            emit(State.failed(it.message?:""))
+        }
     }.flowOn(Dispatchers.IO)
 }

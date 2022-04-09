@@ -5,8 +5,8 @@ import com.codeinglogs.domain.model.tvshow.tvshowdetails.image.TvShowPoster as D
 import com.codeinglogs.domain.model.tvshow.tvshowdetails.image.TvShowImageResponse as DomainTvShowImageResponse
 
 data class TvShowImageResponse(
-    val backdrops: List<TvShowBackdrop>,
     val id: Int,
+    val backdrops: List<TvShowBackdrop>,
     val posters: List<TvShowPoster>
 )
 

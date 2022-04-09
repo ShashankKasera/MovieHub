@@ -2,10 +2,12 @@ package com.codeinglogs.tvshowdetail.ui.fragment.tvshow
 
 import android.util.Log
 import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.codeinglogs.core.base.BaseFragment
 import com.codeinglogs.core.extension.load
+import com.codeinglogs.core.extension.showToast
 import com.codeinglogs.moviehub.constant.IMAGE_BASE_URL_500
 import com.codeinglogs.presentation.model.State
 import com.codeinglogs.presentation.model.tvshow.tvshowdetails.TvShowDetailsDisplay
@@ -16,7 +18,10 @@ import com.codeinglogs.tvshowdetail.ui.adapter.tvshow.TvShowCrewAdapter
 import com.codeinglogs.tvshowdetail.ui.adapter.tvshow.TvShowGenresAdapter
 import com.codeinglogs.tvshowdetail.ui.adapter.tvshow.TvShowSeasonsAdapter
 import com.codeinglogs.tvshowdetail.ui.adapter.tvshow.TvShowVideoAdapter
-
+import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+@AndroidEntryPoint
 class TvShowInfoFragment : BaseFragment<TvShowDetailViewModel, FragmentTvShowInfoBinding>(){
 
     private lateinit var tvShowGenresAdapter: TvShowGenresAdapter
@@ -34,6 +39,7 @@ class TvShowInfoFragment : BaseFragment<TvShowDetailViewModel, FragmentTvShowInf
     }
 
     private fun init(){
+        initProgressBar(mViewBinding.tvshowDetailLoader)
         setUpGenresAdapter()
         setUpCrewAdapter()
         setUpSeasonsAdapter()
@@ -47,26 +53,39 @@ class TvShowInfoFragment : BaseFragment<TvShowDetailViewModel, FragmentTvShowInf
                     is State.Failed -> {
                         Log.i("wkjnv", "Failed: TvShowDetailActivity ${it.message}")
                         showProgressBar(false)
+                        showToast(it.message)
                     }
                     is State.Loading -> {
                         Log.i("wkjnv", "Loading: TvShowDetailActivity ${it.data}")
-                        showProgressBar(true)
+                        if(it.data!=null&&it.data?.tvShowCreditsResponse?.crew?.isNotEmpty() == true){
+                            setDetails(it.data!!)
+                            setCrew(it.data!!)
+                            setSeasons(it.data!!)
+                            setTrailer(it.data!!)
+                            setFact(it.data!!)
+                            setMedia(it.data!!)
+                            setProductionCompanies(it.data!!)
+                            showProgressBar(false)
+                        }
+                        else{
+                            showProgressBar(true)
+                        }
                     }
                     is State.Success -> {
                         Log.i("wkjnv", "Success: TvShowDetailActivity ${it.data}")
 
-                        showProgressBar(false)
+                        lifecycleScope.launch(Dispatchers.Main) {
+                            showProgressBar(false)
+                            setDetails(it.data)
+                            setCrew(it.data)
+                            setTrailer(it.data)
+                            setFact(it.data)
+                            setMedia(it.data)
+                            setProductionCompanies(it.data)
 
-                        setDetails(it)
-                        setCrew(it)
-                        setSeasons(it)
-                        setTrailer(it)
-                        setFact(it)
-                        setMedia(it)
-                        setProductionCompanies(it)
-
-                        mViewBinding.tvShowAllTvShowInfo.setOnClickListener(){
-                            startActivity(TvShowAllCrewActivity.getInstance(requireContext(),mViewModel.tvShowId))
+                            mViewBinding.tvShowAllTvShowInfo.setOnClickListener(){
+                                startActivity(TvShowAllCrewActivity.getInstance(requireContext(),mViewModel.tvShowId))
+                            }
                         }
                     }
                 }
@@ -74,18 +93,18 @@ class TvShowInfoFragment : BaseFragment<TvShowDetailViewModel, FragmentTvShowInf
         }
     }
 
-    private fun setDetails(it: State.Success<TvShowDetailsDisplay>){
+    private fun setDetails(it: TvShowDetailsDisplay){
 
         //mViewBinding.tvTimeTvShowInfo.text=convertNumberToHoursMinutes(it.data.tvShowInfoResponse.)
-        mViewBinding.tvTvShowNameTvShowInfo.text=it.data.tvShowInfoResponse.name
-        mViewBinding.tvDescriptionTvShowInfo.text=it.data.tvShowInfoResponse.overview
+        mViewBinding.tvTvShowNameTvShowInfo.text=it.tvShowInfoResponse.name
+        mViewBinding.tvDescriptionTvShowInfo.text=it.tvShowInfoResponse.overview
 
-        if(it.data.tvShowInfoResponse.first_air_date.length>4)
-            mViewBinding.tvYearTvShowInfo.text=it.data.tvShowInfoResponse.first_air_date.substring(0,4)
+        if(it.tvShowInfoResponse.first_air_date.length>4)
+            mViewBinding.tvYearTvShowInfo.text=it.tvShowInfoResponse.first_air_date.substring(0,4)
         else
-            mViewBinding.tvYearTvShowInfo.text=it.data.tvShowInfoResponse.first_air_date
+            mViewBinding.tvYearTvShowInfo.text=it.tvShowInfoResponse.first_air_date
 
-        tvShowGenresAdapter.submitList(it.data.tvShowInfoResponse.genres)
+        tvShowGenresAdapter.submitList(it.tvShowInfoResponse.genres)
     }
 
     private fun convertNumberToHoursMinutes(runtime:Int):kotlin.String{
@@ -104,13 +123,13 @@ class TvShowInfoFragment : BaseFragment<TvShowDetailViewModel, FragmentTvShowInf
 
     }
 
-    private fun setCrew(it: State.Success<TvShowDetailsDisplay>) {
+    private fun setCrew(it: TvShowDetailsDisplay) {
 
         setUpCrewAdapter()
 
-        tvShowCrewAdapter.submitList(it.data.tvShowCreditsResponse.crew)
+        tvShowCrewAdapter.submitList(it.tvShowCreditsResponse.crew)
 
-        Log.i("wkjnv", "setCrew: ${it.data.tvShowCreditsResponse.crew}")
+        Log.i("wkjnv", "setCrew: ${it.tvShowCreditsResponse.crew}")
     }
 
     private fun setUpCrewAdapter() {
@@ -121,8 +140,8 @@ class TvShowInfoFragment : BaseFragment<TvShowDetailViewModel, FragmentTvShowInf
 
     }
 
-    private fun setSeasons(it: State.Success<TvShowDetailsDisplay>){
-        tvShowSeasonsAdapter.submitList(it.data.tvShowInfoResponse.seasons)
+    private fun setSeasons(it: TvShowDetailsDisplay){
+        tvShowSeasonsAdapter.submitList(it.tvShowInfoResponse.seasons)
 
     }
 
@@ -133,8 +152,8 @@ class TvShowInfoFragment : BaseFragment<TvShowDetailViewModel, FragmentTvShowInf
         mViewBinding.rvSeasonsTvShowInfo.adapter=this.tvShowSeasonsAdapter
     }
 
-    private fun setTrailer(it: State.Success<TvShowDetailsDisplay>){
-        tvShowVideoAdapter.submitList(it.data.tvShowVideosResponse.results)
+    private fun setTrailer(it: TvShowDetailsDisplay){
+        tvShowVideoAdapter.submitList(it.tvShowVideosResponse.results)
 
     }
 
@@ -145,31 +164,31 @@ class TvShowInfoFragment : BaseFragment<TvShowDetailViewModel, FragmentTvShowInf
         mViewBinding.rvVideoTvShowInfo.adapter=this.tvShowVideoAdapter
     }
 
-    private fun setFact(it: State.Success<TvShowDetailsDisplay>){
-        mViewBinding.tvTitleFactTvShowInfo.text=it.data.tvShowInfoResponse.name
-        mViewBinding.tvStatusFactTvShowInfo.text=it.data.tvShowInfoResponse.status
-        mViewBinding.tvReleaseDateFactTvShowInfo.text=it.data.tvShowInfoResponse.first_air_date
-        mViewBinding.tvOriginalLanguageFactTvShowInfo.text=it.data.tvShowInfoResponse.original_language
-        //mViewBinding.tvRuntimeFactTvShowInfo.text=convertNumberToHoursMinutes(it.data.tvShowInfoResponse.runtime)
+    private fun setFact(it: TvShowDetailsDisplay){
+        mViewBinding.tvTitleFactTvShowInfo.text=it.tvShowInfoResponse.name
+        mViewBinding.tvStatusFactTvShowInfo.text=it.tvShowInfoResponse.status
+        mViewBinding.tvReleaseDateFactTvShowInfo.text=it.tvShowInfoResponse.first_air_date
+        mViewBinding.tvOriginalLanguageFactTvShowInfo.text=it.tvShowInfoResponse.original_language
+        //mViewBinding.tvRuntimeFactTvShowInfo.text=convertNumberToHoursMinutes(it.tvShowInfoResponse.runtime)
 
     }
 
-    private fun setMedia(it: State.Success<TvShowDetailsDisplay>){
+    private fun setMedia(it: TvShowDetailsDisplay){
 
-        if(it.data.tvShowIMagesResponse.posters.size>0) {
-            mViewBinding.ivPosterTvShowInfo.load(IMAGE_BASE_URL_500 + it.data.tvShowIMagesResponse.posters.get(0).file_path)
-            mViewBinding.tvNumberOfPosterTvShowInfo.text = it.data.tvShowIMagesResponse.posters.size.toString() + " Posters"
+        if(it.tvShowIMagesResponse.posters.size>0) {
+            mViewBinding.ivPosterTvShowInfo.load(IMAGE_BASE_URL_500 + it.tvShowIMagesResponse.posters.get(0).file_path)
+            mViewBinding.tvNumberOfPosterTvShowInfo.text = it.tvShowIMagesResponse.posters.size.toString() + " Posters"
         }
-        if(it.data.tvShowIMagesResponse.backdrops.size>0) {
-            mViewBinding.ivBackdropTvShowInfo.load(IMAGE_BASE_URL_500 + it.data.tvShowIMagesResponse.backdrops.get(0).file_path)
-            mViewBinding.tvNumberOfBackdropTvShowInfo.text = it.data.tvShowIMagesResponse.backdrops.size.toString() + " Backdrops"
+        if(it.tvShowIMagesResponse.backdrops.size>0) {
+            mViewBinding.ivBackdropTvShowInfo.load(IMAGE_BASE_URL_500 + it.tvShowIMagesResponse.backdrops.get(0).file_path)
+            mViewBinding.tvNumberOfBackdropTvShowInfo.text = it.tvShowIMagesResponse.backdrops.size.toString() + " Backdrops"
         }
     }
 
-    private fun setProductionCompanies(it: State.Success<TvShowDetailsDisplay>){
+    private fun setProductionCompanies(it: TvShowDetailsDisplay){
         var production_companies=""
-        for (i in 1..(it.data.tvShowInfoResponse.production_companies.size-1 )) {
-            production_companies+=it.data.tvShowInfoResponse.production_companies.get(i).name+", "
+        for (i in 1..(it.tvShowInfoResponse.production_companies.size-1 )) {
+            production_companies+=it.tvShowInfoResponse.production_companies.get(i).name+", "
         }
         mViewBinding.tvProductionCompaniesTvShowInfo.text=production_companies
     }

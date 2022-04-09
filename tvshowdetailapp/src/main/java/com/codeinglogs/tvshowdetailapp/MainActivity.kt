@@ -12,8 +12,8 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        startActivity(TvShowPagingActivity.getInstance(this,TvShowType.SEARCH))
-        //startActivity(TvShowDetailsActivity.getInstance(this,"88329"))
+        //startActivity(TvShowPagingActivity.getInstance(this,TvShowType.SEARCH))
+        startActivity(TvShowDetailsActivity.getInstance(this,"88329"))
         //startActivity(TvShowSeasonDetailsActivity.getInstance(this,"88329",1))
     }
 }

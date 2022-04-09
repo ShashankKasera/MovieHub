@@ -74,8 +74,8 @@ class MovieCastFragment : BaseFragment<MovieDetailViewModel, FragmentMovieCastBi
     }
     private fun setUpCastAdapter() {
         movieCastAdapter = MovieCastAdapter()
-        mViewBinding.rvMovieCast.layoutManager= LinearLayoutManager(context,
-            LinearLayoutManager.VERTICAL,false)
+        mViewBinding.rvMovieCast.layoutManager= LinearLayoutManager(
+            context, LinearLayoutManager.VERTICAL,false)
         mViewBinding.rvMovieCast.adapter=this.movieCastAdapter
 
 

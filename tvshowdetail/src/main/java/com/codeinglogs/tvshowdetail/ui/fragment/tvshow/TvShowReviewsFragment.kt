@@ -4,6 +4,7 @@ import android.util.Log
 import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.codeinglogs.core.base.BaseFragment
+import com.codeinglogs.core.extension.showToast
 import com.codeinglogs.presentation.model.State
 import com.codeinglogs.presentation.viewmodel.tvshowdetails.TvShowDetailViewModel
 import com.codeinglogs.tvshowdetail.databinding.FragmentTvShowReviewsBinding
@@ -23,6 +24,7 @@ class TvShowReviewsFragment : BaseFragment<TvShowDetailViewModel, FragmentTvShow
     }
 
     private fun init(){
+        initProgressBar(mViewBinding.tvshowDetailReviewLoader)
         setUpTvShowReviewAdapter()
     }
 
@@ -37,18 +39,26 @@ class TvShowReviewsFragment : BaseFragment<TvShowDetailViewModel, FragmentTvShow
             it.peekContent().let{it ->
                 when(it){
                     is State.Failed -> {
-                        Log.i("jwn", "Failed: TvShowReviewsFragment ${it.message}")
+                        Log.i("giwnk", "Failed: MovieDetailActivity ${it.message}")
                         showProgressBar(false)
+                        showToast(it.message)
                     }
                     is State.Loading -> {
-                        Log.i("jwn", "Loading: TvShowReviewsFragment ${it.data}")
-                        showProgressBar(true)
+                        Log.i("giwnk", "Loading: MovieDetailActivity ${it.data}")
+
+                        if(it.data!=null && it.data?.tvShowReviewsResponse?.results?.isNotEmpty() == true){
+                            tvShowReviewAdapter.submitList(it.data!!.tvShowReviewsResponse.results)
+                            showProgressBar(false)
+                        }
+                        else{
+                            showProgressBar(true)
+                        }
                     }
                     is State.Success -> {
-                        Log.i("jwn", "Success: TvShowReviewsFragment ${it.data}")
+                        Log.i("giwnk", "Success: MovieDetailActivity ${it.data}")
 
                         showProgressBar(false)
-                        Log.i("jwn", "onBinding: ${it.data.tvShowReviewsResponse.results}")
+                        Log.i("giwnk", "onBinding: ${it.data.tvShowReviewsResponse.results}")
                         tvShowReviewAdapter.submitList(it.data.tvShowReviewsResponse.results)
 
                     }

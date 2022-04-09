@@ -14,7 +14,6 @@ data class TvShowDetailsDisplay(
     val tvShowIMagesResponse: TvShowImageResponse,
     val tvShowInfoResponse: TvShowInfoResponse,
     val tvShowReviewsResponse: TvShowReviewsResponse,
-    val tvShowSimilarResponse: TvShowSimilarResponse,
     val tvShowVideosResponse: TvShowsVideosResponse,
 
     )

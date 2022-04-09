@@ -13,5 +13,6 @@ data class TvShowBackdrop(
 )
 
 fun TvShowBackdrop.toDataTvShowBackdrop()=DataTvShowBackdrop(
-    file_path=file_path?:""
+    file_path=file_path?:"",
+    vote_count=vote_count?:0
 )

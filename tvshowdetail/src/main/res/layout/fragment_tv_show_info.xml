@@ -503,5 +503,8 @@
 
         </androidx.core.widget.NestedScrollView>
 
+        <include
+            layout="@layout/layout_progress_bar"
+            android:id="@+id/tvshow_detail_loader"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

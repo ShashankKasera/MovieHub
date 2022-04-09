@@ -20,7 +20,6 @@ data class TvShowDetailsDisplay(
     val tvShowIMagesResponse: TvShowImageResponse,
     val tvShowInfoResponse: TvShowInfoResponse,
     val tvShowReviewsResponse: TvShowReviewsResponse,
-    val tvShowSimilarResponse: TvShowSimilarResponse,
     val tvShowVideosResponse: TvShowsVideosResponse,
 
     )
@@ -30,7 +29,5 @@ fun DomainTvShowDetailsDisplay.toPresentationTvShowDetails()=TvShowDetailsDispla
     tvShowIMagesResponse =tvShowIMagesResponse.toPresentationTvShowImageResponse(),
     tvShowInfoResponse = tvShowInfoResponse.toPresentationTvShowInfoResponse(),
     tvShowReviewsResponse =tvShowReviewsResponse.toPresentationTvShowReviewsResponse(),
-    tvShowSimilarResponse =tvShowSimilarResponse.toPresentationTvShowSimilarResponse(),
     tvShowVideosResponse =tvShowVideosResponse.toPresentationTvShowsVideosResponse(),
-
 )

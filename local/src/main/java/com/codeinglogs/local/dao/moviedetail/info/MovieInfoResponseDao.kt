@@ -2,7 +2,6 @@ package com.codeinglogs.local.dao.moviedetail.info
 
 import androidx.lifecycle.LiveData
 import androidx.room.*
-import com.codeinglogs.local.entity.moviedetail.image.MovieBackdrop
 import com.codeinglogs.local.entity.moviedetail.info.MovieInfoResponse
 @Dao
 interface MovieInfoResponseDao {

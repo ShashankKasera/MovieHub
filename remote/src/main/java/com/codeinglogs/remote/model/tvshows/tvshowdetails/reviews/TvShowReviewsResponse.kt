@@ -5,18 +5,12 @@ import com.codeinglogs.data.model.tvshow.tvshowdetails.reviews.TvShowReviewsResp
 
 data class TvShowReviewsResponse(
     val id: Int?,
-    val page: Int?,
     val results: List<TvShowReviews>?,
-    val total_pages: Int?,
-    val total_results: Int?
 )
 
 fun TvShowReviewsResponse.toDataTvShowReviewsResponse()=DataTvShowReviewsResponse(
     id =id?:0,
-    page =page?:0,
     results =results?.toDataTvShowReviews()?: listOf(),
-    total_pages =total_pages?:0,
-    total_results =total_results?:0
 )
 
 fun List<TvShowReviews>.toDataTvShowReviews():List<DataTvShowReviews>{

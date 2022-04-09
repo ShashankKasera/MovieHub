@@ -25,7 +25,6 @@ class RemoteTvShowDetailDataRepositoryImp@Inject constructor (private val tvShow
             val tvShowCredits = async { tvShowRequest.getTvShowCredits(id)}
             val tvShowImages = async { tvShowRequest.getTvShowImages(id)}
             val tvShowVideos = async { tvShowRequest.getTvShowVideos(id)}
-            val tvShowSimilar = async { tvShowRequest.getTvShowSimilar(id)}
             val tvShowReviews = async { tvShowRequest.getTvShowReviews(id)}
             val tvShowInfo = async { tvShowRequest.getTvShowInfo(id)}
 
@@ -35,7 +34,6 @@ class RemoteTvShowDetailDataRepositoryImp@Inject constructor (private val tvShow
                 tvShowImages.await().toDataTvShowImageResponse(),
                 tvShowInfo.await().toDataTvShowInfoResponse(),
                 tvShowReviews.await().toDataTvShowReviewsResponse(),
-                tvShowSimilar.await().toDataTvShowSimilarResponse(),
                 tvShowVideos.await().toDataTvShowsVideosResponse()
 
             )

@@ -16,6 +16,17 @@ import com.codeinglogs.local.dao.moviedetail.reviews.MovieReviewRelationDao
 import com.codeinglogs.local.dao.moviedetail.reviews.MovieReviewsDao
 import com.codeinglogs.local.dao.moviedetail.video.MovieVideoRelationDao
 import com.codeinglogs.local.dao.moviedetail.video.MoviesVideoDao
+import com.codeinglogs.local.dao.tvshowdetails.credits.TvShowCreditsToCastRelationDao
+import com.codeinglogs.local.dao.tvshowdetails.credits.TvShowCreditsToCrewRelationDao
+import com.codeinglogs.local.dao.tvshowdetails.image.TvShowBackdropDao
+import com.codeinglogs.local.dao.tvshowdetails.image.TvShowImagesToBackdropRelationDao
+import com.codeinglogs.local.dao.tvshowdetails.image.TvShowImagesToPosterRelationDao
+import com.codeinglogs.local.dao.tvshowdetails.image.TvShowPosterDao
+import com.codeinglogs.local.dao.tvshowdetails.info.*
+import com.codeinglogs.local.dao.tvshowdetails.review.TvShowReviewRelationDao
+import com.codeinglogs.local.dao.tvshowdetails.review.TvShowReviewsDao
+import com.codeinglogs.local.dao.tvshowdetails.video.TvShowVideoDao
+import com.codeinglogs.local.dao.tvshowdetails.video.TvShowVideoRelationDao
 import com.codeinglogs.local.db.MovieHubDatabase
 import com.codeinglogs.local.entity.moviedetail.credits.MovieCreditsToCastRelation
 import dagger.Module
@@ -40,9 +51,6 @@ object LocalCoreModule {
     @Provides
     fun getRoomDB(@ApplicationContext context: Context, @Named("DBName")name :String) =
         Room.databaseBuilder(context,MovieHubDatabase::class.java,name).fallbackToDestructiveMigration().build()
-
-
-
 
     @Singleton
     @Provides
@@ -144,4 +152,73 @@ object LocalCoreModule {
     @Provides
     fun getMovieVideoRelationDao(db: MovieHubDatabase): MovieVideoRelationDao = db.getMovieVideoRelationDao()
 
+    //TvShow Details
+
+    @Singleton
+    @Provides
+    fun getTvShowCreditsToCastRelationDao(db: MovieHubDatabase): TvShowCreditsToCastRelationDao = db.getTvShowCreditsToCastRelationDao()
+
+    @Singleton
+    @Provides
+    fun getTvShowCreditsToCrewRelationDao(db: MovieHubDatabase): TvShowCreditsToCrewRelationDao = db.getTvShowCreditsToCrewRelationDao()
+
+    @Singleton
+    @Provides
+    fun getTvShowBackdropDao(db: MovieHubDatabase): TvShowBackdropDao = db.getTvShowBackdropDao()
+
+    @Singleton
+    @Provides
+    fun getTvShowImagesToBackdropRelationDao(db: MovieHubDatabase): TvShowImagesToBackdropRelationDao = db.getTvShowImagesToBackdropRelationDao()
+
+    @Singleton
+    @Provides
+    fun getTvShowImagesToPosterRelationDao(db: MovieHubDatabase): TvShowImagesToPosterRelationDao = db.getTvShowImagesToPosterRelationDao()
+
+    @Singleton
+    @Provides
+    fun getTvShowPosterDao(db: MovieHubDatabase): TvShowPosterDao = db.getTvShowPosterDao()
+
+    @Singleton
+    @Provides
+    fun getTvShowGenerDao(db: MovieHubDatabase): TvShowGenreDao = db.getTvShowGenerDao()
+
+    @Singleton
+    @Provides
+    fun getTvShowInfoResponseDao(db: MovieHubDatabase): TvShowInfoResponseDao = db.getTvShowInfoResponseDao()
+
+    @Singleton
+    @Provides
+    fun getTvShowInfoToGenerRelationDao(db: MovieHubDatabase): TvShowInfoToGenerRelationDao = db.getTvShowInfoToGenerRelationDao()
+
+    @Singleton
+    @Provides
+    fun getTvShowInfoToProductionCompaniesRelationDao(db: MovieHubDatabase): TvShowInfoToProductionCompaniesRelationDao = db.getTvShowInfoToProductionCompaniesRelationDao()
+
+    @Singleton
+    @Provides
+    fun getTvShowProductionCompaniesDao(db: MovieHubDatabase): TvShowProductionCompanyDao = db.getTvShowProductionCompaniesDao()
+
+    @Singleton
+    @Provides
+    fun getTvShowInfoToSeasonRelationDao(db: MovieHubDatabase): TvShowInfoToSeasonRelationDao = db.getTvShowInfoToSeasonRelationDao()
+
+    @Singleton
+    @Provides
+    fun getTvShowSeasonDao(db: MovieHubDatabase): TvShowSeasonDao = db.getTvShowSeasonDao()
+
+    @Singleton
+    @Provides
+    fun getTvShowReviewRelationDao(db: MovieHubDatabase): TvShowReviewRelationDao = db.getTvShowReviewRelationDao()
+
+    @Singleton
+    @Provides
+    fun getTvShowReviewsDao(db: MovieHubDatabase): TvShowReviewsDao = db.getTvShowReviewsDao()
+
+    @Singleton
+    @Provides
+    fun getTvShowsVideoDao(db: MovieHubDatabase): TvShowVideoDao = db.getTvShowsVideoDao()
+
+    @Singleton
+    @Provides
+    fun getTvShowVideoRelationDao(db: MovieHubDatabase): TvShowVideoRelationDao = db.getTvShowVideoRelationDao()
 }
