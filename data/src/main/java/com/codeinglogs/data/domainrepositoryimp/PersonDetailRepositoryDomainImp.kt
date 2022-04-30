@@ -21,10 +21,10 @@ class PersonDetailRepositoryDomainImp@Inject constructor (private val personDeta
             when(it){
                 is RemoteState.Failed -> emit(State.failed(it.message))
                 is RemoteState.Loading -> {
-                    //emit(State.loading(movieDetailsDataSore.getLocalDataSource().getHomeDisplay().toDomainHomeDisplay()))
+                    //emit(State.loading(personDetailsDataSore.getLocalDataSource().getHomeDisplay().toDomainHomeDisplay()))
                 }
                 is RemoteState.Success -> {
-                    //movieDetailsDataSore.getLocalDataSource().insertHomeDisplay(it.data)
+                    //personDetailsDataSore.getLocalDataSource().insertHomeDisplay(it.data)
                     emit(State.success(it.data.toDomainPersonDetailsDisplay()))
                 }
             }

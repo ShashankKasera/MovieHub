@@ -13,10 +13,7 @@ data class PersonTaggedImagesResponse(
 
 fun PersonTaggedImagesResponse.toDataPersonTaggedImagesResponse()=DataPersonTaggedImagesResponse(
     id=id?:0,
-    page=page?:0,
     results=results?.toDataPersonTaggedImages()?: listOf(),
-    total_pages=total_pages?:0,
-    total_results=total_results?:0
 )
 
 fun List<PersonTaggedImages>.toDataPersonTaggedImages():List<DataPersonTaggedImages>{

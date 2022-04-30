@@ -5,18 +5,12 @@ import com.codeinglogs.domain.model.person.persondetails.taggedimages.PersonTagg
 
 data class PersonTaggedImagesResponse(
     val id: Int,
-    val page: Int,
     val results: List<PersonTaggedImages>,
-    val total_pages: Int,
-    val total_results: Int
 )
 
 fun DomainPersonTaggedImagesResponse.toPresentationPersonTaggedImagesResponse()= PersonTaggedImagesResponse(
     id=id,
-    page=page,
     results=results.toPresentationPersonTaggedImages(),
-    total_pages=total_pages,
-    total_results=total_results
 )
 
 fun List<DomainPersonTaggedImages>.toPresentationPersonTaggedImages():List<PersonTaggedImages>{
