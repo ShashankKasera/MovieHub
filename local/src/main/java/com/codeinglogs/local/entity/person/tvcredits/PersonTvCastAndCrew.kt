@@ -37,7 +37,7 @@ fun DataPersonTvCastAndCrew.toLocalPersonTvCastAndCrew() = PersonTvCastAndCrew(
     id=id,
 )
 
-fun List<DataPersonTvCastAndCrew>.toLocalPersonTvCastAndCrew() : List<PersonTvCastAndCrew>{
+fun List<DataPersonTvCastAndCrew>.toLocalPersonTvCastAndCrewList() : List<PersonTvCastAndCrew>{
     val list = mutableListOf<PersonTvCastAndCrew>()
     this.forEach { list.add(it.toLocalPersonTvCastAndCrew()) }
     return list

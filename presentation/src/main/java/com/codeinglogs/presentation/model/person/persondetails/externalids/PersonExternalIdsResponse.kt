@@ -2,6 +2,7 @@ package com.codeinglogs.presentation.model.person.persondetails.externalids
 
 import com.codeinglogs.domain.model.person.persondetails.externalids.PersonExternalIdsResponse as DomainPersonExternalIdsResponse
 data class PersonExternalIdsResponse(
+    val id: Int,
     val facebook_id: String,
     val imdb_id: String,
     val instagram_id: String,
@@ -9,6 +10,7 @@ data class PersonExternalIdsResponse(
 )
 
 fun DomainPersonExternalIdsResponse.toPresentationPersonExternalIdsResponse()= PersonExternalIdsResponse(
+        id=id,
         facebook_id = facebook_id,
         imdb_id = imdb_id,
         instagram_id = instagram_id,

@@ -50,6 +50,7 @@ class MoviePagingFragment: BaseFragment<MoviesPagingViewModel, FragmentMoviePagi
 
     private fun moviePagingObserve(type: MovieType, id: String, movieSearch: String) {
         mViewModel.getMoviesList(type,id,movieSearch).observe(this) {
+            Log.i("mknekb", "moviePagingObserve: $it")
             moviesPagingAdapter.submitData(lifecycle, it)
         }
     }

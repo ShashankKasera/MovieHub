@@ -20,5 +20,8 @@
             app:layout_constraintTop_toTopOf="parent"
             tools:listitem="@layout/person_credits_item" />
 
+        <include
+            layout="@layout/layout_progress_bar"
+            android:id="@+id/person_detail_movie_loader"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

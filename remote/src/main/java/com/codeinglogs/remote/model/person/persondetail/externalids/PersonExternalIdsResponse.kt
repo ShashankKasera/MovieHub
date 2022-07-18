@@ -14,6 +14,7 @@ data class PersonExternalIdsResponse(
 )
 
 fun PersonExternalIdsResponse.toDataPersonExternalIdsResponse()=DataPersonExternalIdsResponse(
+    id=id?:0,
     facebook_id =facebook_id?:"",
     imdb_id =imdb_id?:"",
     instagram_id =instagram_id?:"",

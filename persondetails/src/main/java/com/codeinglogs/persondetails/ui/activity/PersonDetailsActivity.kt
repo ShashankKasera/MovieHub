@@ -41,14 +41,12 @@ class PersonDetailsActivity : BaseActivity<PersonDetailViewModel, ActivityPerson
         personId?.let {
             mViewModel.getPersonDetails(it)
         }
-
         setUpTabBar()
     }
 
     private fun setupExternalIds(personExternalIdsResponse: PersonExternalIdsResponse){
         val openURL = Intent(android.content.Intent.ACTION_VIEW)
         mViewBinding.ivFacebookPersonDet.setOnClickListener {
-
 
             openURL.data = Uri.parse(FACEBOOK_BASE_URL+personExternalIdsResponse.instagram_id)
             startActivity(openURL)
@@ -106,11 +104,19 @@ class PersonDetailsActivity : BaseActivity<PersonDetailViewModel, ActivityPerson
                 when(it){
                     is State.Failed -> {
                         Log.i("gqnjjq", "Failed: PersonDetailsActivity ${it.message}")
+
                         showProgressBar(false)
                     }
                     is State.Loading -> {
                         Log.i("gqnjjq", "Loading: PersonDetailsActivity ${it.data}")
-                        showProgressBar(true)
+                        it.data?.let {
+                            showProgressBar(false)
+                            addSlider(mViewBinding.bsPersonPersonDet,it.personTaggedImagesResponse.results)
+                            setupExternalIds(it.personExternalIdsResponse)
+                        }?: run {
+                            showProgressBar(true)
+                        }
+
                     }
                     is State.Success -> {
                         Log.i("gqnjjq", "Success: PersonDetailsActivity ${it.data}")

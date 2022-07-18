@@ -15,7 +15,7 @@ fun PersonTaggedImages.toDataPersonTaggedImages() =
         file_path=file_path
     )
 
-fun List<PersonTaggedImages>.toDataPersonTaggedImagesList() : List<DataPersonTaggedImages>{
+fun List<PersonTaggedImages>.toDataPersonTaggedImages() : List<DataPersonTaggedImages>{
     val list = mutableListOf<DataPersonTaggedImages>()
     this.forEach { list.add(it.toDataPersonTaggedImages()) }
     return list

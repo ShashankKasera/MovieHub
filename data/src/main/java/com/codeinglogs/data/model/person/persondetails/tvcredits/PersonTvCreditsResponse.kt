@@ -5,8 +5,8 @@ import com.codeinglogs.domain.model.person.persondetails.tvcredits.PersonTvCredi
 
 
 data class PersonTvCreditsResponse(
+    val id: Int,
     val credit:List<PersonTvCastAndCrew>,
-    val id: Int
 )
 
 fun PersonTvCreditsResponse.toDomainPersonTvCreditsResponse()=DomainPersonTvCreditsResponse(

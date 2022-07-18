@@ -7,7 +7,6 @@ import  com.codeinglogs.data.model.person.persondetails.info.PersonInfoResponse 
 data class PersonInfoResponse(
     @PrimaryKey
     val id: Int,
-    val also_known_as: List<String>,
     val biography: String,
     val birthday: String,
     val deathday: String,
@@ -19,7 +18,7 @@ data class PersonInfoResponse(
 )
 
 fun PersonInfoResponse.toDataPersonInfoResponse() = DataPersonInfoResponse(
-        also_known_as = also_known_as,
+
         biography =biography,
         birthday =birthday,
         deathday =deathday,
@@ -32,7 +31,7 @@ fun PersonInfoResponse.toDataPersonInfoResponse() = DataPersonInfoResponse(
     )
 
 fun DataPersonInfoResponse.toLocalPersonInfoResponse() = PersonInfoResponse(
-    also_known_as = also_known_as,
+
     biography =biography,
     birthday =birthday,
     deathday =deathday,

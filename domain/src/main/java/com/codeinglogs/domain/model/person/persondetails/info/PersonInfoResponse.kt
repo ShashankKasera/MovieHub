@@ -2,7 +2,6 @@ package com.codeinglogs.domain.model.person.persondetails.info
 
 data class PersonInfoResponse(
 
-    val also_known_as: List<String>,
     val biography: String,
     val birthday: String,
     val deathday: String,

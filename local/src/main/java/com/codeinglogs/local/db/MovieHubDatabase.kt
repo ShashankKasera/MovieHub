@@ -16,6 +16,16 @@ import com.codeinglogs.local.dao.moviedetail.reviews.MovieReviewRelationDao
 import com.codeinglogs.local.dao.moviedetail.reviews.MovieReviewsDao
 import com.codeinglogs.local.dao.moviedetail.video.MovieVideoRelationDao
 import com.codeinglogs.local.dao.moviedetail.video.MoviesVideoDao
+import com.codeinglogs.local.dao.persondetail.externalids.PersonExternalIdsResponseDao
+import com.codeinglogs.local.dao.persondetail.image.PersonImagesDao
+import com.codeinglogs.local.dao.persondetail.image.PersonImagesRelationDao
+import com.codeinglogs.local.dao.persondetail.info.PersonInfoResponseDao
+import com.codeinglogs.local.dao.persondetail.moviecredits.PersonMovieCastAndCrewDao
+import com.codeinglogs.local.dao.persondetail.moviecredits.PersonMovieCastAndCrewRelationDao
+import com.codeinglogs.local.dao.persondetail.taggedimages.PersonTaggedImagesDao
+import com.codeinglogs.local.dao.persondetail.taggedimages.PersonTaggedImagesRelationDao
+import com.codeinglogs.local.dao.persondetail.tvcredits.PersonTvCastAndCrewDao
+import com.codeinglogs.local.dao.persondetail.tvcredits.PersonTvCastAndCrewRelationDao
 import com.codeinglogs.local.dao.tvshowdetails.credits.TvShowCreditsToCastRelationDao
 import com.codeinglogs.local.dao.tvshowdetails.credits.TvShowCreditsToCrewRelationDao
 import com.codeinglogs.local.dao.tvshowdetails.image.TvShowBackdropDao
@@ -41,6 +51,16 @@ import com.codeinglogs.local.entity.moviedetail.reviews.MovieReviewRelation
 import com.codeinglogs.local.entity.moviedetail.reviews.MovieReviews
 import com.codeinglogs.local.entity.moviedetail.video.MovieVideo
 import com.codeinglogs.local.entity.moviedetail.video.MovieVideoRelation
+import com.codeinglogs.local.entity.person.externalids.PersonExternalIdsResponse
+import com.codeinglogs.local.entity.person.image.PersonImages
+import com.codeinglogs.local.entity.person.image.PersonImagesRelation
+import com.codeinglogs.local.entity.person.info.PersonInfoResponse
+import com.codeinglogs.local.entity.person.moviecredits.PersonMovieCastAndCrew
+import com.codeinglogs.local.entity.person.moviecredits.PersonMovieCastAndCrewRelation
+import com.codeinglogs.local.entity.person.taggedimages.PersonTaggedImages
+import com.codeinglogs.local.entity.person.taggedimages.PersonTaggedImagesRelation
+import com.codeinglogs.local.entity.person.tvcredits.PersonTvCastAndCrew
+import com.codeinglogs.local.entity.person.tvcredits.PersonTvCastAndCrewRelation
 import com.codeinglogs.local.entity.tvshowdetails.credits.TvShowCreditsToCastRelation
 import com.codeinglogs.local.entity.tvshowdetails.credits.TvShowCreditsToCrewRelation
 import com.codeinglogs.local.entity.tvshowdetails.image.TvShowBackdrop
@@ -105,7 +125,21 @@ import com.codeinglogs.local.entity.tvshowdetails.video.TvShowVideoRelation
         TvShowReviewRelation::class,
         TvShowVideo::class,
         TvShowVideoRelation::class,
-        ], version = 4, exportSchema = false
+
+
+        //Person Details
+
+        PersonImages::class,
+        PersonImagesRelation::class,
+        PersonMovieCastAndCrew::class,
+        PersonMovieCastAndCrewRelation::class,
+        PersonTaggedImages::class,
+        PersonTvCastAndCrew::class,
+        PersonTvCastAndCrewRelation::class,
+        PersonExternalIdsResponse::class,
+        PersonInfoResponse::class,
+        PersonTaggedImagesRelation::class
+        ], version = 5, exportSchema = false
 )
 abstract class MovieHubDatabase : RoomDatabase() {
 
@@ -157,4 +191,16 @@ abstract class MovieHubDatabase : RoomDatabase() {
     abstract fun getTvShowReviewsDao(): TvShowReviewsDao
     abstract fun getTvShowsVideoDao(): TvShowVideoDao
     abstract fun getTvShowVideoRelationDao(): TvShowVideoRelationDao
+
+    //Person Details
+    abstract fun getPersonExternalIdsResponseDao(): PersonExternalIdsResponseDao
+    abstract fun getPersonImagesDao(): PersonImagesDao
+    abstract fun getPersonImagesRelationDao(): PersonImagesRelationDao
+    abstract fun getPersonInfoResponseDao(): PersonInfoResponseDao
+    abstract fun getPersonMovieCastAndCrewDao(): PersonMovieCastAndCrewDao
+    abstract fun getPersonMovieCastAndCrewRelationDao(): PersonMovieCastAndCrewRelationDao
+    abstract fun getPersonTaggedImagesDao(): PersonTaggedImagesDao
+    abstract fun getPersonTaggedImagesRelationDao(): PersonTaggedImagesRelationDao
+    abstract fun getPersonTvCastAndCrewDao(): PersonTvCastAndCrewDao
+    abstract fun getPersonTvCastAndCrewRelationDao(): PersonTvCastAndCrewRelationDao
 }

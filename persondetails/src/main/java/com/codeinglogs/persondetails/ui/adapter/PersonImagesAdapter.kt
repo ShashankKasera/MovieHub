@@ -38,10 +38,8 @@ class PersonImagesAdapter() : ListAdapter<PersonImages, PersonImagesAdapter.Pers
         }
         fun bind(position: Int) {
             val data = getItem(layoutPosition)
-
+            Log.i("mhmklkmf", "bind: ${IMAGE_BASE_URL_500+data.file_path} ")
             binding.ivPersonImages.load(IMAGE_BASE_URL_500+data.file_path)
-
-
         }
     }
 

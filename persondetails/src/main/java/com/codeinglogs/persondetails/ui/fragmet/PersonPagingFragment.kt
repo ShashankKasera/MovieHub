@@ -51,6 +51,7 @@ class PersonPagingFragment : BaseFragment<PersonPagingViewModel, FragmentPersonP
 
     private fun personPagingObserve(type: PersonType, personSearch: String) {
         mViewModel.getPersonList(type,personSearch).observe(this) {
+            Log.i("mknekb", "personPagingObserve: $it")
             personPagingAdapter.submitData(lifecycle, it)
         }
     }

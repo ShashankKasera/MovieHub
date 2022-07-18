@@ -10,7 +10,6 @@ import com.codeinglogs.moviehub.constant.IMAGE_BASE_URL_500
 import com.codeinglogs.persondetails.databinding.PersonCreditsItemBinding
 import com.codeinglogs.presentation.model.movies.movieslist.Movies
 import com.codeinglogs.presentation.model.person.persondetails.moviecredits.PersonMovieCastAndCrew
-//import com.codeinglogs.tvshowdetail.ui.activity.TvShowDetailsActivity
 
 class PersonMovieCreditsAdapter() : ListAdapter<PersonMovieCastAndCrew, PersonMovieCreditsAdapter.PersonMovieCreditsViewHolder>(
     DriftUtils

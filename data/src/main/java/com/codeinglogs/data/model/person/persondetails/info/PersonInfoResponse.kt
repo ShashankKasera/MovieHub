@@ -3,7 +3,6 @@ import com.codeinglogs.domain.model.person.persondetails.info.PersonInfoResponse
 
 data class PersonInfoResponse(
 
-    val also_known_as: List<String>,
     val biography: String,
     val birthday: String,
     val deathday: String,
@@ -16,7 +15,7 @@ data class PersonInfoResponse(
 )
 
 fun PersonInfoResponse.toDomainPersonInfoResponse()= DomainPersonInfoResponse(
-    also_known_as = also_known_as,
+
     biography =biography,
     birthday =birthday,
     deathday =deathday,

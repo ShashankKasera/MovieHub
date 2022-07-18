@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.codeinglogs.domain.usecase.getPersonDetail
+import com.codeinglogs.domain.usecase.GetPersonDetail
 import com.codeinglogs.presentation.maper.toPresentationState
 import com.codeinglogs.presentation.model.Event
 import com.codeinglogs.presentation.model.State
@@ -15,7 +15,7 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class PersonDetailViewModel @Inject constructor(private val getPersonDetailsUseCase: getPersonDetail): ViewModel() {
+class PersonDetailViewModel @Inject constructor(private val getPersonDetailsUseCase: GetPersonDetail): ViewModel() {
 
     private val _PersonDetails = MutableLiveData<Event<State<PersonDetailsDisplay>>>()
     val personDetails : LiveData<Event<State<PersonDetailsDisplay>>>

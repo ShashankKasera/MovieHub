@@ -9,7 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".fragmant.HomeFragment"
-        android:background="@color/colorPrimary">
+        android:background="@color/background">
 
 
 
@@ -25,7 +25,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            app:layout_constraintGuide_end="16dp" />
+            app:layout_constraintGuide_end="8dp" />
 
         <ScrollView
             android:id="@+id/scrollView_home"
@@ -56,6 +56,8 @@
 
                     <ss.com.bannerslider.Slider
                         android:id="@+id/banner_slider"
+                        app:slider_loopSlides="true"
+                        app:slider_animateIndicators="true"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content" />
 
@@ -68,7 +70,8 @@
                     android:layout_marginTop="24dp"
                     android:text="Trending"
                     android:textColor="@color/white"
-                    android:textSize="24dp"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/CV_Home" />
 
@@ -76,7 +79,8 @@
                     android:id="@+id/tv_person_home"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
+                    android:layout_marginStart="10dp"
+                    android:textStyle="bold"
                     android:text="Persons"
                     android:textColor="@color/light_gray"
                     app:layout_constraintBottom_toBottomOf="@+id/tv_trending_person_home"
@@ -86,9 +90,11 @@
                     android:id="@+id/tv_trending_person_more_home"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="8dp"
+                    android:layout_marginEnd="8dp"
                     android:text="More"
                     android:textColor="@color/pink"
+                    android:textStyle="bold"
+                    android:textSize="14sp"
                     app:layout_constraintBottom_toBottomOf="@+id/tv_person_home"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="1.0"
@@ -115,7 +121,8 @@
                     android:layout_marginTop="24dp"
                     android:text="Trending"
                     android:textColor="@color/white"
-                    android:textSize="24dp"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/rv_trending_person_home" />
 
@@ -123,7 +130,8 @@
                     android:id="@+id/tv_movie_home"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
+                    android:layout_marginStart="10dp"
+                    android:textStyle="bold"
                     android:text="Movies"
                     android:textColor="@color/light_gray"
                     app:layout_constraintBottom_toBottomOf="@+id/tv_trending_movie_home"
@@ -133,10 +141,11 @@
                     android:id="@+id/tv_trending_movie_more_home"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="16dp"
                     android:text="More"
-
+                    android:layout_marginRight="8dp"
                     android:textColor="@color/pink"
+                    android:textStyle="bold"
+                    android:textSize="14sp"
                     app:layout_constraintBottom_toBottomOf="@+id/tv_movie_home"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="1.0"
@@ -163,7 +172,8 @@
                     android:layout_marginTop="24dp"
                     android:text="Trending"
                     android:textColor="@color/white"
-                    android:textSize="24dp"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/rv_trending_movies_home" />
 
@@ -171,7 +181,8 @@
                     android:id="@+id/tv_tv_show_home"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
+                    android:layout_marginStart="10dp"
+                    android:textStyle="bold"
                     android:text="Tv Shows"
                     android:textColor="@color/light_gray"
                     app:layout_constraintBottom_toBottomOf="@+id/tv_trending_tv_show_home"
@@ -181,9 +192,12 @@
                     android:id="@+id/tv_trending_show_more_home"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="16dp"
+                    android:layout_marginEnd="8dp"
                     android:text="More"
+                    android:layout_marginRight="8dp"
                     android:textColor="@color/pink"
+                    android:textStyle="bold"
+                    android:textSize="14sp"
                     app:layout_constraintBottom_toBottomOf="@+id/tv_tv_show_home"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="1.0"
@@ -210,7 +224,8 @@
                     android:layout_marginTop="24dp"
                     android:text="Popular"
                     android:textColor="@color/white"
-                    android:textSize="24dp"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/rv_trending_tv_show_home" />
 
@@ -218,7 +233,8 @@
                     android:id="@+id/tv_pop_movie_home"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
+                    android:layout_marginStart="10dp"
+                    android:textStyle="bold"
                     android:text="Movies"
                     android:textColor="@color/light_gray"
                     app:layout_constraintBottom_toBottomOf="@+id/tv_popular_movie_home"
@@ -228,10 +244,12 @@
                     android:id="@+id/tv_popular_movie_more_home"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="16dp"
+                    android:layout_marginEnd="8dp"
                     android:text="More"
 
                     android:textColor="@color/pink"
+                    android:textStyle="bold"
+                    android:textSize="14sp"
                     app:layout_constraintBottom_toBottomOf="@+id/tv_pop_movie_home"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="1.0"
@@ -255,10 +273,11 @@
                     android:id="@+id/tv_popular_tv_show_home"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="24dp"
+                    android:layout_marginTop="20sp"
                     android:text="Popular"
                     android:textColor="@color/white"
-                    android:textSize="24dp"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/rv_popular_movies_home" />
 
@@ -266,7 +285,8 @@
                     android:id="@+id/tv_pop_tv_show_home"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
+                    android:layout_marginStart="10dp"
+                    android:textStyle="bold"
                     android:text="Tv Shows"
                     android:textColor="@color/light_gray"
                     app:layout_constraintBottom_toBottomOf="@+id/tv_popular_tv_show_home"
@@ -276,9 +296,11 @@
                     android:id="@+id/tv_popular_tv_show_more_home"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="16dp"
+                    android:layout_marginEnd="8dp"
                     android:text="More"
                     android:textColor="@color/pink"
+                    android:textStyle="bold"
+                    android:textSize="14sp"
                     app:layout_constraintBottom_toBottomOf="@+id/tv_pop_tv_show_home"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="1.0"
@@ -304,7 +326,8 @@
                     android:layout_marginTop="24dp"
                     android:text="Top Rated"
                     android:textColor="@color/white"
-                    android:textSize="24dp"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/rv_popular_tv_show_home" />
 
@@ -312,7 +335,8 @@
                     android:id="@+id/tv_movies_home"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
+                    android:layout_marginStart="10dp"
+                    android:textStyle="bold"
                     android:text="Movies"
                     android:textColor="@color/light_gray"
                     app:layout_constraintBottom_toBottomOf="@+id/tv_toprated_movies_home"
@@ -322,9 +346,11 @@
                     android:id="@+id/tv_toprated_movies_more_home"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="16dp"
+                    android:layout_marginEnd="8dp"
                     android:text="More"
                     android:textColor="@color/pink"
+                    android:textStyle="bold"
+                    android:textSize="14sp"
                     app:layout_constraintBottom_toBottomOf="@+id/tv_movies_home"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="1.0"
@@ -348,10 +374,11 @@
                     android:id="@+id/tv_toprated_tv_show_home"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="24dp"
+                    android:layout_marginTop="20sp"
                     android:text="Top Rated"
                     android:textColor="@color/white"
-                    android:textSize="24dp"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/rv_toprated_movies_home" />
 
@@ -359,7 +386,8 @@
                     android:id="@+id/tv_tv_shows_home"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
+                    android:layout_marginStart="10dp"
+                    android:textStyle="bold"
                     android:text="TV Shows"
                     android:textColor="@color/light_gray"
                     app:layout_constraintBottom_toBottomOf="@+id/tv_toprated_tv_show_home"
@@ -369,9 +397,11 @@
                     android:id="@+id/tv_toprated_tv_show_more_home"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="16dp"
+                    android:layout_marginEnd="8dp"
                     android:text="More"
                     android:textColor="@color/pink"
+                    android:textStyle="bold"
+                    android:textSize="14sp"
                     app:layout_constraintBottom_toBottomOf="@+id/tv_tv_shows_home"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="1.0"

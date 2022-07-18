@@ -19,7 +19,7 @@ data class PersonInfoResponse(
 )
 
 fun PersonInfoResponse.toDataPersonInfoResponse()=DataPersonInfoResponse(
-    also_known_as = also_known_as?: listOf(),
+
     biography =biography?:"",
     birthday =birthday?:"",
     deathday =deathday?:"",

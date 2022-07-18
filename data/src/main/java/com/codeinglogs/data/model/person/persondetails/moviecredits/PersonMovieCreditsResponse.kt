@@ -4,8 +4,9 @@ import com.codeinglogs.domain.model.person.persondetails.moviecredits.PersonMovi
 import com.codeinglogs.domain.model.person.persondetails.moviecredits.PersonMovieCastAndCrew as DomainPersonMovieCastAndCrew
 
 data class PersonMovieCreditsResponse(
+
+    val id: Int,
     val credit:List<PersonMovieCastAndCrew>,
-    val id: Int
 )
 
 fun PersonMovieCreditsResponse.toDomainPersonMovieCreditsResponse()=DomainPersonMovieCreditsResponse(

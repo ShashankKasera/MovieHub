@@ -1,10 +1,12 @@
 package com.codeinglogs.core.di
 
 import com.codeinglogs.data.domainrepositoryimp.PersonDetailRepositoryDomainImp
+import com.codeinglogs.data.repository.persondetails.LocalPersonDetailData
 import com.codeinglogs.data.repository.persondetails.RemotePersonDetailData
 import com.codeinglogs.data.store.persondetails.PersonDetailDataSoreImpl
 import com.codeinglogs.data.store.persondetails.PersonDetailsDataSore
 import com.codeinglogs.domain.repository.PersonDetailRepositoryDomain
+import com.codeinglogs.local.datarepositoryimp.LocalPersonDetailsDataRepositoryImp
 import com.codeinglogs.remote.datarepositoryimp.RemotePersonDetailsDataRepositoryImp
 import dagger.Module
 import dagger.Provides
@@ -27,5 +29,9 @@ object PersonDetailModule {
     @Singleton
     @Provides
     fun getRemotePersonDetailRepositorySore(dataSoreRemote : RemotePersonDetailsDataRepositoryImp): RemotePersonDetailData = dataSoreRemote
+
+    @Singleton
+    @Provides
+    fun getLocalPersonDetailDataRepositoryImp(dataSoreRemote : LocalPersonDetailsDataRepositoryImp): LocalPersonDetailData = dataSoreRemote
 
 }

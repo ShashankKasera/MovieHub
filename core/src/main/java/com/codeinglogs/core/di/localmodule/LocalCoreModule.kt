@@ -16,6 +16,16 @@ import com.codeinglogs.local.dao.moviedetail.reviews.MovieReviewRelationDao
 import com.codeinglogs.local.dao.moviedetail.reviews.MovieReviewsDao
 import com.codeinglogs.local.dao.moviedetail.video.MovieVideoRelationDao
 import com.codeinglogs.local.dao.moviedetail.video.MoviesVideoDao
+import com.codeinglogs.local.dao.persondetail.externalids.PersonExternalIdsResponseDao
+import com.codeinglogs.local.dao.persondetail.image.PersonImagesDao
+import com.codeinglogs.local.dao.persondetail.image.PersonImagesRelationDao
+import com.codeinglogs.local.dao.persondetail.info.PersonInfoResponseDao
+import com.codeinglogs.local.dao.persondetail.moviecredits.PersonMovieCastAndCrewDao
+import com.codeinglogs.local.dao.persondetail.moviecredits.PersonMovieCastAndCrewRelationDao
+import com.codeinglogs.local.dao.persondetail.taggedimages.PersonTaggedImagesDao
+import com.codeinglogs.local.dao.persondetail.taggedimages.PersonTaggedImagesRelationDao
+import com.codeinglogs.local.dao.persondetail.tvcredits.PersonTvCastAndCrewDao
+import com.codeinglogs.local.dao.persondetail.tvcredits.PersonTvCastAndCrewRelationDao
 import com.codeinglogs.local.dao.tvshowdetails.credits.TvShowCreditsToCastRelationDao
 import com.codeinglogs.local.dao.tvshowdetails.credits.TvShowCreditsToCrewRelationDao
 import com.codeinglogs.local.dao.tvshowdetails.image.TvShowBackdropDao
@@ -221,4 +231,48 @@ object LocalCoreModule {
     @Singleton
     @Provides
     fun getTvShowVideoRelationDao(db: MovieHubDatabase): TvShowVideoRelationDao = db.getTvShowVideoRelationDao()
+
+
+    //Person details
+
+    @Singleton
+    @Provides
+    fun getPersonExternalIdsResponseDao(db: MovieHubDatabase): PersonExternalIdsResponseDao = db.getPersonExternalIdsResponseDao()
+
+    @Singleton
+    @Provides
+    fun getPersonImagesDao(db: MovieHubDatabase): PersonImagesDao = db.getPersonImagesDao()
+
+    @Singleton
+    @Provides
+    fun getPersonImagesRelationDao(db: MovieHubDatabase): PersonImagesRelationDao = db.getPersonImagesRelationDao()
+
+    @Singleton
+    @Provides
+    fun getPersonMovieCastAndCrewDao(db: MovieHubDatabase): PersonMovieCastAndCrewDao = db.getPersonMovieCastAndCrewDao()
+
+    @Singleton
+    @Provides
+    fun getPersonMovieCastAndCrewRelationDao(db: MovieHubDatabase): PersonMovieCastAndCrewRelationDao = db.getPersonMovieCastAndCrewRelationDao()
+
+    @Singleton
+    @Provides
+    fun getPersonTaggedImagesDao(db: MovieHubDatabase): PersonTaggedImagesDao = db.getPersonTaggedImagesDao()
+
+    @Singleton
+    @Provides
+    fun getPersonTaggedImagesRelationDao(db: MovieHubDatabase): PersonTaggedImagesRelationDao = db.getPersonTaggedImagesRelationDao()
+
+    @Singleton
+    @Provides
+    fun getPersonTvCastAndCrewDao(db: MovieHubDatabase): PersonTvCastAndCrewDao = db.getPersonTvCastAndCrewDao()
+
+    @Singleton
+    @Provides
+    fun getPersonTvCastAndCrewRelationDao(db: MovieHubDatabase): PersonTvCastAndCrewRelationDao = db.getPersonTvCastAndCrewRelationDao()
+
+    @Singleton
+    @Provides
+    fun getPersonInfoResponseDao(db: MovieHubDatabase): PersonInfoResponseDao = db.getPersonInfoResponseDao()
+
 }
