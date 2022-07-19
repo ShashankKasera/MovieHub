@@ -38,7 +38,13 @@ class MovieInfoFragment : BaseFragment<MovieDetailViewModel, FragmentMovieInfosB
 
         init()
         movieInfoObserve()
+        onclick()
+    }
 
+    private fun onclick() {
+        mViewBinding.imaBookmarkMovieInfo.setOnClickListener {
+            mViewModel.getBookmarkMovies(mViewModel.movieId.toLong())
+        }
     }
 
     private fun init() {
@@ -88,6 +94,7 @@ class MovieInfoFragment : BaseFragment<MovieDetailViewModel, FragmentMovieInfosB
                             mViewBinding.tvShowAllMovieInfo.setOnClickListener(){
                                 startActivity(MovieCrewActivity.getInstance(requireContext(),mViewModel.movieId))
                             }
+
                         }
 
 
@@ -95,7 +102,26 @@ class MovieInfoFragment : BaseFragment<MovieDetailViewModel, FragmentMovieInfosB
                 }
             }
         }
+        mViewModel.bookmarkMovies.observe(this){
+            it.peekContent()?.let { it ->
+                when(it){
+                    is State.Failed -> {
+                        Log.i(TAG, "Failed: 123InfoFragment ${it.message}")
+                        showProgressBar(false)
+                        showToast(it.message)
+                    }
+                    is State.Loading -> {
+
+                    }
+                    is State.Success -> {
+
+                        Log.i("hkkbk", "movieInfoObserve: ")
+                    }
+                }
+            }
+        }
     }
+
 
 
     private fun setDetails(it: MovieDetailsDisplay){

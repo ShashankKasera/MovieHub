@@ -4,6 +4,7 @@ package com.codeinglogs.local.db
 import androidx.room.Database
 import androidx.room.RoomDatabase
 import com.codeinglogs.local.dao.*
+import com.codeinglogs.local.dao.bookmark.BookmarkMoviesDao
 import com.codeinglogs.local.dao.home.*
 import com.codeinglogs.local.dao.moviedetail.credits.MovieCreditsToCastRelationDao
 import com.codeinglogs.local.dao.moviedetail.credits.MovieCreditsToCrewRelationDao
@@ -39,6 +40,7 @@ import com.codeinglogs.local.dao.tvshowdetails.review.TvShowReviewsDao
 import com.codeinglogs.local.dao.tvshowdetails.video.TvShowVideoDao
 import com.codeinglogs.local.dao.tvshowdetails.video.TvShowVideoRelationDao
 import com.codeinglogs.local.entity.*
+import com.codeinglogs.local.entity.bookmark.BookmarkMovies
 import com.codeinglogs.local.entity.home.*
 import com.codeinglogs.local.entity.moviedetail.credits.MovieCreditsToCastRelation
 import com.codeinglogs.local.entity.moviedetail.credits.MovieCreditsToCrewRelation
@@ -138,8 +140,13 @@ import com.codeinglogs.local.entity.tvshowdetails.video.TvShowVideoRelation
         PersonTvCastAndCrewRelation::class,
         PersonExternalIdsResponse::class,
         PersonInfoResponse::class,
-        PersonTaggedImagesRelation::class
-        ], version = 5, exportSchema = false
+        PersonTaggedImagesRelation::class,
+
+
+        //Bookmark
+
+        BookmarkMovies::class
+        ], version = 6, exportSchema = false
 )
 abstract class MovieHubDatabase : RoomDatabase() {
 
@@ -203,4 +210,7 @@ abstract class MovieHubDatabase : RoomDatabase() {
     abstract fun getPersonTaggedImagesRelationDao(): PersonTaggedImagesRelationDao
     abstract fun getPersonTvCastAndCrewDao(): PersonTvCastAndCrewDao
     abstract fun getPersonTvCastAndCrewRelationDao(): PersonTvCastAndCrewRelationDao
+
+    //Bookmark
+    abstract fun getBookmarkMoviesDao(): BookmarkMoviesDao
 }

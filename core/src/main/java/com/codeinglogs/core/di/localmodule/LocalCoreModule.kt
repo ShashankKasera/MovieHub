@@ -4,6 +4,7 @@ import android.content.Context
 import androidx.room.Room
 import com.codeinglogs.local.constant.ROOM_DB_NAME
 import com.codeinglogs.local.dao.*
+import com.codeinglogs.local.dao.bookmark.BookmarkMoviesDao
 import com.codeinglogs.local.dao.home.*
 import com.codeinglogs.local.dao.moviedetail.credits.MovieCreditsToCastRelationDao
 import com.codeinglogs.local.dao.moviedetail.credits.MovieCreditsToCrewRelationDao
@@ -274,5 +275,11 @@ object LocalCoreModule {
     @Singleton
     @Provides
     fun getPersonInfoResponseDao(db: MovieHubDatabase): PersonInfoResponseDao = db.getPersonInfoResponseDao()
+
+    //Bookmark
+
+    @Singleton
+    @Provides
+    fun getBookmarkMoviesDao(db: MovieHubDatabase): BookmarkMoviesDao = db.getBookmarkMoviesDao()
 
 }
