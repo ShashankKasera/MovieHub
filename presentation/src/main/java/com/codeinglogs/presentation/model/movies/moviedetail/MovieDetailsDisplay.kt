@@ -12,6 +12,7 @@ import com.codeinglogs.presentation.model.movies.moviedetail.similar.MovieSimila
 import com.codeinglogs.presentation.model.movies.moviedetail.similar.toPresentationMovieReviewsResponse
 import com.codeinglogs.presentation.model.movies.moviedetail.videos.MovieVideosResponse
 import com.codeinglogs.presentation.model.movies.moviedetail.videos.toPresentationMovieVideosResponse
+import com.codeinglogs.presentation.model.movies.mylist.*
 
 import com.codeinglogs.domain.model.movies.moviedetail.MovieDetailsDisplay as DomainMovieDetailsDisplay
 
@@ -21,6 +22,8 @@ data class MovieDetailsDisplay(
     val movieInfoResponse: MovieInfoResponse,
     val movieReviewsResponse: MovieReviewsResponse,
     val MovieVideosResponse: MovieVideosResponse,
+    val myMovieList: List<MyMovieListDisplay>,
+    val Bookmark: Boolean
 )
 
 fun DomainMovieDetailsDisplay.toPresentationMovieDetailsDisplay()=MovieDetailsDisplay(
@@ -29,4 +32,6 @@ fun DomainMovieDetailsDisplay.toPresentationMovieDetailsDisplay()=MovieDetailsDi
     movieInfoResponse=movieInfoResponse.toPresentationMovieInfoResponse(),
     movieReviewsResponse=movieReviewsResponse.toPresentationMovieReviewsResponse(),
     MovieVideosResponse=MovieVideosResponse.toPresentationMovieVideosResponse(),
+    myMovieList=myMovieList.toPresentationMyMovieListDisplayList(),
+    Bookmark = Bookmark
 )

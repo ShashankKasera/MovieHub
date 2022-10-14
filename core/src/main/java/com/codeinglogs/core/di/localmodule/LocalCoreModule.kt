@@ -5,7 +5,11 @@ import androidx.room.Room
 import com.codeinglogs.local.constant.ROOM_DB_NAME
 import com.codeinglogs.local.dao.*
 import com.codeinglogs.local.dao.bookmark.BookmarkMoviesDao
+import com.codeinglogs.local.dao.bookmark.BookmarkPersonsDao
+import com.codeinglogs.local.dao.bookmark.BookmarkTvShowsDao
 import com.codeinglogs.local.dao.home.*
+import com.codeinglogs.local.dao.maylist.movie.MyMovieListDao
+import com.codeinglogs.local.dao.maylist.movie.MyMovieListDetailsDao
 import com.codeinglogs.local.dao.moviedetail.credits.MovieCreditsToCastRelationDao
 import com.codeinglogs.local.dao.moviedetail.credits.MovieCreditsToCrewRelationDao
 import com.codeinglogs.local.dao.moviedetail.image.MovieBackdropDao
@@ -39,7 +43,6 @@ import com.codeinglogs.local.dao.tvshowdetails.review.TvShowReviewsDao
 import com.codeinglogs.local.dao.tvshowdetails.video.TvShowVideoDao
 import com.codeinglogs.local.dao.tvshowdetails.video.TvShowVideoRelationDao
 import com.codeinglogs.local.db.MovieHubDatabase
-import com.codeinglogs.local.entity.moviedetail.credits.MovieCreditsToCastRelation
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -281,5 +284,21 @@ object LocalCoreModule {
     @Singleton
     @Provides
     fun getBookmarkMoviesDao(db: MovieHubDatabase): BookmarkMoviesDao = db.getBookmarkMoviesDao()
+
+    @Singleton
+    @Provides
+    fun getBookmarkTvShowsDao(db: MovieHubDatabase): BookmarkTvShowsDao = db.getBookmarkTvShowsDao()
+
+    @Singleton
+    @Provides
+    fun getBookmarkPersonsDao(db: MovieHubDatabase): BookmarkPersonsDao = db.getBookmarkPersonsDao()
+
+    @Singleton
+    @Provides
+    fun getMyMovieListDao(db: MovieHubDatabase): MyMovieListDao = db.getMyMovieListDao()
+
+    @Singleton
+    @Provides
+    fun getMyMovieListDetailsDao(db: MovieHubDatabase): MyMovieListDetailsDao = db.getMyMovieListDetailsDao()
 
 }

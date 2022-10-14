@@ -5,7 +5,11 @@ import androidx.room.Database
 import androidx.room.RoomDatabase
 import com.codeinglogs.local.dao.*
 import com.codeinglogs.local.dao.bookmark.BookmarkMoviesDao
+import com.codeinglogs.local.dao.bookmark.BookmarkPersonsDao
+import com.codeinglogs.local.dao.bookmark.BookmarkTvShowsDao
 import com.codeinglogs.local.dao.home.*
+import com.codeinglogs.local.dao.maylist.movie.MyMovieListDao
+import com.codeinglogs.local.dao.maylist.movie.MyMovieListDetailsDao
 import com.codeinglogs.local.dao.moviedetail.credits.MovieCreditsToCastRelationDao
 import com.codeinglogs.local.dao.moviedetail.credits.MovieCreditsToCrewRelationDao
 import com.codeinglogs.local.dao.moviedetail.image.MovieBackdropDao
@@ -41,6 +45,8 @@ import com.codeinglogs.local.dao.tvshowdetails.video.TvShowVideoDao
 import com.codeinglogs.local.dao.tvshowdetails.video.TvShowVideoRelationDao
 import com.codeinglogs.local.entity.*
 import com.codeinglogs.local.entity.bookmark.BookmarkMovies
+import com.codeinglogs.local.entity.bookmark.BookmarkPersons
+import com.codeinglogs.local.entity.bookmark.BookmarkTvShows
 import com.codeinglogs.local.entity.home.*
 import com.codeinglogs.local.entity.moviedetail.credits.MovieCreditsToCastRelation
 import com.codeinglogs.local.entity.moviedetail.credits.MovieCreditsToCrewRelation
@@ -53,6 +59,8 @@ import com.codeinglogs.local.entity.moviedetail.reviews.MovieReviewRelation
 import com.codeinglogs.local.entity.moviedetail.reviews.MovieReviews
 import com.codeinglogs.local.entity.moviedetail.video.MovieVideo
 import com.codeinglogs.local.entity.moviedetail.video.MovieVideoRelation
+import com.codeinglogs.local.entity.mylist.movie.MyMovieList
+import com.codeinglogs.local.entity.mylist.movie.MyMovieListDetails
 import com.codeinglogs.local.entity.person.externalids.PersonExternalIdsResponse
 import com.codeinglogs.local.entity.person.image.PersonImages
 import com.codeinglogs.local.entity.person.image.PersonImagesRelation
@@ -145,8 +153,14 @@ import com.codeinglogs.local.entity.tvshowdetails.video.TvShowVideoRelation
 
         //Bookmark
 
-        BookmarkMovies::class
-        ], version = 6, exportSchema = false
+        BookmarkMovies::class,
+        BookmarkTvShows::class,
+        BookmarkPersons::class,
+
+        //MayList
+        MyMovieList::class,
+        MyMovieListDetails::class,
+        ], version = 11, exportSchema = false
 )
 abstract class MovieHubDatabase : RoomDatabase() {
 
@@ -213,4 +227,10 @@ abstract class MovieHubDatabase : RoomDatabase() {
 
     //Bookmark
     abstract fun getBookmarkMoviesDao(): BookmarkMoviesDao
+    abstract fun getBookmarkTvShowsDao(): BookmarkTvShowsDao
+    abstract fun getBookmarkPersonsDao(): BookmarkPersonsDao
+
+    //MayList
+    abstract fun getMyMovieListDao(): MyMovieListDao
+    abstract fun getMyMovieListDetailsDao(): MyMovieListDetailsDao
 }

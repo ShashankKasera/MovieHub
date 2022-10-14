@@ -30,6 +30,7 @@ class TvShowDetailRepositoryDomainImp @Inject constructor (private val tvShowDet
                     }
                 }
                 is RemoteState.Success -> {
+                    it.data.Bookmark=tvShowDetailsDataSore.getLocalDataSource().isBookmarkTvShowsIsExist(id.toLong())
                     tvShowDetailsDataSore.getLocalDataSource().insertTvShowDetail(it.data)
                     emit(State.success(it.data.toDomainTvShowDetails()))
                 }

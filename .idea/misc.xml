@@ -126,6 +126,10 @@
         <entry key="..\:/Users/User/Documents/shashankcode/moviehub/tvshowdetail/src/main/res/layout/tv_show_seasons.xml" value="0.39738805970149255" />
         <entry key="..\:/Users/User/Documents/shashankcode/moviehub/tvshowdetail/src/main/res/layout/tv_show_video.xml" value="0.20260416666666667" />
         <entry key="..\:/Users/User/Documents/shashankcode/moviehub/tvshowdetailapp/src/main/res/layout/activity_main.xml" value="0.20260416666666667" />
+        <entry key="..\:/shashank/android/MovieHub/app/src/main/res/drawable/add.xml" value="0.1545" />
+        <entry key="..\:/shashank/android/MovieHub/app/src/main/res/drawable/bookmark.xml" value="0.1545" />
+        <entry key="..\:/shashank/android/MovieHub/app/src/main/res/drawable/bookmark_border.xml" value="0.1545" />
+        <entry key="..\:/shashank/android/MovieHub/app/src/main/res/drawable/bookmark_selection.xml" value="0.1545" />
         <entry key="..\:/shashank/android/MovieHub/app/src/main/res/drawable/ic_my_list.xml" value="0.1545" />
         <entry key="..\:/shashank/android/MovieHub/app/src/main/res/drawable/ic_search.xml" value="0.1545" />
         <entry key="..\:/shashank/android/MovieHub/app/src/main/res/layout/activity_main.xml" value="0.22708333333333333" />
@@ -135,17 +139,30 @@
         <entry key="..\:/shashank/android/MovieHub/app/src/main/res/layout/movies_and_tv_show_primary_item.xml" value="0.22708333333333333" />
         <entry key="..\:/shashank/android/MovieHub/app/src/main/res/layout/perosn_primary_item.xml" value="0.22708333333333333" />
         <entry key="..\:/shashank/android/MovieHub/app/src/main/res/menu/bottom_nav_menu.xml" value="0.22708333333333333" />
+        <entry key="..\:/shashank/android/MovieHub/moviedetails/src/main/res/drawable/add.xml" value="0.1545" />
+        <entry key="..\:/shashank/android/MovieHub/moviedetails/src/main/res/drawable/bookmark.xml" value="0.1545" />
+        <entry key="..\:/shashank/android/MovieHub/moviedetails/src/main/res/layout/add_movie_item.xml" value="0.22708333333333333" />
+        <entry key="..\:/shashank/android/MovieHub/moviedetails/src/main/res/layout/add_new_list_dialog.xml" value="0.22708333333333333" />
+        <entry key="..\:/shashank/android/MovieHub/moviedetails/src/main/res/layout/crew_item.xml" value="0.22708333333333333" />
+        <entry key="..\:/shashank/android/MovieHub/moviedetails/src/main/res/layout/custom_movie_dialog.xml" value="0.22708333333333333" />
+        <entry key="..\:/shashank/android/MovieHub/moviedetails/src/main/res/layout/fragment_custom_dialog.xml" value="0.22708333333333333" />
         <entry key="..\:/shashank/android/MovieHub/moviedetails/src/main/res/layout/fragment_movie_cast.xml" value="0.22708333333333333" />
         <entry key="..\:/shashank/android/MovieHub/moviedetails/src/main/res/layout/fragment_movie_infos.xml" value="0.22708333333333333" />
         <entry key="..\:/shashank/android/MovieHub/moviedetails/src/main/res/layout/fragment_movie_reviews.xml" value="0.22708333333333333" />
+        <entry key="..\:/shashank/android/MovieHub/moviedetails/src/main/res/layout/genres_item.xml" value="0.22708333333333333" />
+        <entry key="..\:/shashank/android/MovieHub/moviedetails/src/main/res/layout/movie_item.xml" value="0.22708333333333333" />
+        <entry key="..\:/shashank/android/MovieHub/moviedetails/src/main/res/layout/movie_paging_item.xml" value="0.22708333333333333" />
         <entry key="..\:/shashank/android/MovieHub/persondetails/src/main/res/layout/fragment_person_info.xml" value="0.22708333333333333" />
         <entry key="..\:/shashank/android/MovieHub/persondetails/src/main/res/layout/fragment_person_movies.xml" value="0.22708333333333333" />
+        <entry key="..\:/shashank/android/MovieHub/persondetails/src/main/res/layout/fragment_person_paging.xml" value="0.22708333333333333" />
         <entry key="..\:/shashank/android/MovieHub/persondetails/src/main/res/layout/fragment_person_tv_shows.xml" value="0.22708333333333333" />
         <entry key="..\:/shashank/android/MovieHub/persondetails/src/main/res/layout/person_images.xml" value="0.22708333333333333" />
         <entry key="..\:/shashank/android/MovieHub/persondetailsapp/src/main/res/layout/activity_main.xml" value="0.22708333333333333" />
+        <entry key="..\:/shashank/android/MovieHub/tvshowdetail/src/main/res/drawable/bookmark.xml" value="0.1545" />
         <entry key="..\:/shashank/android/MovieHub/tvshowdetail/src/main/res/layout/fragment_tv_show_cast.xml" value="0.22708333333333333" />
         <entry key="..\:/shashank/android/MovieHub/tvshowdetail/src/main/res/layout/fragment_tv_show_info.xml" value="0.22708333333333333" />
         <entry key="..\:/shashank/android/MovieHub/tvshowdetail/src/main/res/layout/fragment_tv_show_reviews.xml" value="0.22708333333333333" />
+        <entry key="..\:/shashank/android/MovieHub/tvshowdetailapp/src/main/res/layout/fragment_custom_dailog.xml" value="0.22708333333333333" />
       </map>
     </option>
   </component>

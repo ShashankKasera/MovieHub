@@ -71,6 +71,7 @@ class MovieDetailActivity : BaseActivity<MovieDetailViewModel, ActivityMovieDeta
 
         movieId?.let {
             mViewModel.movieId=it
+            Log.i("njknjk", "init: ${it}")
             mViewModel.getMovieDetails(it)
             setUpTabLayout(movieId)
         }

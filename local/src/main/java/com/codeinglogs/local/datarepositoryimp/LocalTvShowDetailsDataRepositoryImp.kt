@@ -8,6 +8,8 @@ import com.codeinglogs.data.model.tvshow.tvshowdetails.reviews.TvShowReviewsResp
 import com.codeinglogs.data.model.tvshow.tvshowdetails.video.TvShowsVideosResponse
 import com.codeinglogs.data.repository.tvshowetails.LocalTvShowDetailData
 import com.codeinglogs.local.dao.PersonsDao
+import com.codeinglogs.local.dao.bookmark.BookmarkMoviesDao
+import com.codeinglogs.local.dao.bookmark.BookmarkTvShowsDao
 import com.codeinglogs.local.dao.moviedetail.info.MovieGenerDao
 import com.codeinglogs.local.dao.moviedetail.info.MovieInfoToGenerRelationDao
 import com.codeinglogs.local.dao.moviedetail.info.MovieProductionCompaniesDao
@@ -59,7 +61,8 @@ class LocalTvShowDetailsDataRepositoryImp @Inject constructor (
     private val tvShowReviewRelationDao: TvShowReviewRelationDao,
     private val tvShowsVideoDao: TvShowVideoDao,
     private val tvShowVideoRelationDao: TvShowVideoRelationDao,
-    private val tvShowInfoResponseDao : TvShowInfoResponseDao
+    private val tvShowInfoResponseDao : TvShowInfoResponseDao,
+    private val bookmarkTvShowsDao: BookmarkTvShowsDao
 ): LocalTvShowDetailData {
     override suspend fun getTvShowDetail(id: String): TvShowDetailsDisplay {
         return coroutineScope{
@@ -139,6 +142,10 @@ class LocalTvShowDetailsDataRepositoryImp @Inject constructor (
                 tvShowVideoRelationDao.insertAlTvShowVideoRelation(*TvShowDetails.tvShowVideosResponse.results.toLocalTvShowVideoRelationList(TvShowDetails.tvShowInfoResponse.id.toString()).toTypedArray())
             }
         }
+    }
+
+    override suspend fun isBookmarkTvShowsIsExist(tvShowId: Long): Boolean {
+        return bookmarkTvShowsDao.isBookmarkTvShowsIsExist(tvShowId =tvShowId )
     }
 
 

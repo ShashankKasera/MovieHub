@@ -38,6 +38,7 @@ class LocalHomeDataRepositoryImp
             val poPuLarTvShow = async { popularTvShowsDao.getAllPopularTvShows() }
             val topRatedTvShow = async { topRatedTvShowsDao.getAllTopRatedTvShows() }
 
+
             HomeDisplay(
                 PersonListResponse(results = trendingPerson.await().toDataPersons()),
                 MoviesListResponse(results = trendingMovie.await().toDataMovies()),

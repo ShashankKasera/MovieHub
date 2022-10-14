@@ -7,6 +7,7 @@ import com.codeinglogs.remote.request.TvShowRequest
 import com.codeinglogs.remote.util.nerwork.API_KEY
 import com.codeinglogs.remote.util.nerwork.BASE_URL
 import com.codeinglogs.remote.util.nerwork.NetworkInterceptor
+import com.facebook.stetho.okhttp3.StethoInterceptor
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -41,6 +42,7 @@ object RemoteCoreModule {
             val newRequest = originalRequest.newBuilder().url(newHttpUrl).build()
             chain.proceed(newRequest)
         })
+        .addNetworkInterceptor(StethoInterceptor())
         .addNetworkInterceptor(HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY))
         .build()
 

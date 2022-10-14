@@ -95,7 +95,9 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>() {
                     }
                     is State.Loading -> {
                         Log.i(TAG, "onBinding: MultiList Loading ${it.toString()}")
+                        Log.i("nerk", "setUpObserver: ${it.data?.trendingMovie?.results}")
                         if(it.data!=null&&it.data?.trendingPerson?.results?.isNotEmpty() == true){
+
                             trendingPerson.submitList(it.data?.trendingPerson?.results)
                             trendingMovie.submitList(it.data?.trendingMovie?.results)
                             trendingTvShow.submitList(it.data?.trendingTvShow?.results)
@@ -115,6 +117,7 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>() {
                         lifecycleScope.launch(Dispatchers.Main) {
                             delay(6000)
                             showProgressBar(false)
+                            Log.i("hnjk", "setUpObserver: ${it.data.trendingMovie.results}")
                             trendingPerson.submitList(it.data.trendingPerson.results)
                             trendingMovie.submitList(it.data.trendingMovie.results)
                             trendingTvShow.submitList(it.data.trendingTvShow.results)

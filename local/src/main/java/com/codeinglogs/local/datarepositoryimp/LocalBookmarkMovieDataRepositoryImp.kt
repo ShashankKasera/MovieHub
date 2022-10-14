@@ -15,10 +15,12 @@ import javax.inject.Inject
 class LocalBookmarkMovieDataRepositoryImp  @Inject constructor(
     private val bookmarkMoviesDao: BookmarkMoviesDao,
 ):LocalBookmarkMoviesData {
-
-    override suspend fun insertBookmarkMovies(bookmarkId: Long) {
-        coroutineScope{
-            launch { bookmarkMoviesDao.insert(BookmarkMovies(0,bookmarkId)) }
-        }
-    }
+//    override suspend fun isBookmarkMoviesExist(bookmarkId: Long): Boolean {
+//        return bookmarkMoviesDao.isBookmarkMoviesIsExist(bookmarkId)
+//    }
+//
+//
+//    override suspend fun updateBookmarkMovies(bookmarkId: Long) {
+//        bookmarkMoviesDao.insert(BookmarkMovies(0,bookmarkId))
+//    }
 }

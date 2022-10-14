@@ -21,7 +21,7 @@ data class TvShowDetailsDisplay(
     val tvShowInfoResponse: TvShowInfoResponse,
     val tvShowReviewsResponse: TvShowReviewsResponse,
     val tvShowVideosResponse: TvShowsVideosResponse,
-
+    val Bookmark: Boolean
     )
 
 fun DomainTvShowDetailsDisplay.toPresentationTvShowDetails()=TvShowDetailsDisplay(
@@ -30,4 +30,5 @@ fun DomainTvShowDetailsDisplay.toPresentationTvShowDetails()=TvShowDetailsDispla
     tvShowInfoResponse = tvShowInfoResponse.toPresentationTvShowInfoResponse(),
     tvShowReviewsResponse =tvShowReviewsResponse.toPresentationTvShowReviewsResponse(),
     tvShowVideosResponse =tvShowVideosResponse.toPresentationTvShowsVideosResponse(),
+    Bookmark = Bookmark
 )

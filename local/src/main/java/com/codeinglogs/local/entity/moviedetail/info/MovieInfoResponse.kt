@@ -7,7 +7,7 @@ import  com.codeinglogs.data.model.movies.moviedetail.info.MovieInfoResponse as 
 @Entity
 data class MovieInfoResponse(
     @PrimaryKey
-    val id: Int,
+    val id: Long,
     val backdrop_path: String,
     val budget: Int,
     val original_language: String,

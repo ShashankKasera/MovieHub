@@ -15,5 +15,5 @@ data class TvShowDetailsDisplay(
     val tvShowInfoResponse: TvShowInfoResponse,
     val tvShowReviewsResponse: TvShowReviewsResponse,
     val tvShowVideosResponse: TvShowsVideosResponse,
-
+    val Bookmark: Boolean
     )

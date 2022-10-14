@@ -12,6 +12,7 @@ import com.codeinglogs.moviehub.constant.IMAGE_BASE_URL_500
 import com.codeinglogs.presentation.model.State
 import com.codeinglogs.presentation.model.tvshow.tvshowdetails.TvShowDetailsDisplay
 import com.codeinglogs.presentation.viewmodel.tvshowdetails.TvShowDetailViewModel
+import com.codeinglogs.tvshowdetail.R
 import com.codeinglogs.tvshowdetail.databinding.FragmentTvShowInfoBinding
 import com.codeinglogs.tvshowdetail.ui.activity.TvShowAllCrewActivity
 import com.codeinglogs.tvshowdetail.ui.adapter.tvshow.TvShowCrewAdapter
@@ -28,7 +29,7 @@ class TvShowInfoFragment : BaseFragment<TvShowDetailViewModel, FragmentTvShowInf
     private lateinit var tvShowSeasonsAdapter: TvShowSeasonsAdapter
     private lateinit var tvShowVideoAdapter: TvShowVideoAdapter
     private lateinit var tvShowCrewAdapter: TvShowCrewAdapter
-
+    private var checkForBookmark =false
     override val mViewModel: TvShowDetailViewModel by activityViewModels()
     override fun getViewBinding() = FragmentTvShowInfoBinding.inflate(layoutInflater)
 
@@ -44,8 +45,18 @@ class TvShowInfoFragment : BaseFragment<TvShowDetailViewModel, FragmentTvShowInf
         setUpCrewAdapter()
         setUpSeasonsAdapter()
         setUpVideoAdapter()
+        onclick()
     }
 
+    private fun onclick() {
+        mViewBinding.imaBookmarkTvShowInfo.setOnClickListener {
+            mViewModel.getBookmarkTvShow(mViewModel.tvShowId.toLong())
+
+            Log.i("injk", "tvShowDetailObserve: ${checkForBookmark}")
+            checkForBookmark=true
+            setBookmarkImage()
+        }
+    }
     private fun tvShowDetailObserve(){
         mViewModel.tvShowDetails.observe(this){
             it.peekContent().let{it ->
@@ -64,7 +75,7 @@ class TvShowInfoFragment : BaseFragment<TvShowDetailViewModel, FragmentTvShowInf
                             setTrailer(it.data!!)
                             setFact(it.data!!)
                             setMedia(it.data!!)
-                            setProductionCompanies(it.data!!)
+
                             showProgressBar(false)
                         }
                         else{
@@ -83,6 +94,9 @@ class TvShowInfoFragment : BaseFragment<TvShowDetailViewModel, FragmentTvShowInf
                             setMedia(it.data)
                             setProductionCompanies(it.data)
 
+                            checkForBookmark=it.data.Bookmark
+                            setBookmarkImage()
+                            Log.i("dtjikd", "tvShowDetailObserve: ${it.data.Bookmark}")
                             mViewBinding.tvShowAllTvShowInfo.setOnClickListener(){
                                 startActivity(TvShowAllCrewActivity.getInstance(requireContext(),mViewModel.tvShowId))
                             }
@@ -91,8 +105,34 @@ class TvShowInfoFragment : BaseFragment<TvShowDetailViewModel, FragmentTvShowInf
                 }
             }
         }
+        mViewModel.bookmarkTvShows.observe(this){
+            it.peekContent()?.let { it ->
+                when(it){
+                    is State.Failed -> {
+                        Log.i("hkkbk", "Failed: 123InfoFragment ${it.message}")
+                        showProgressBar(false)
+                        showToast(it.message)
+                    }
+                    is State.Loading -> {
+
+                    }
+                    is State.Success -> {
+
+                        Log.i("hkkbk", "movieInfoObserve: ")
+                    }
+                }
+            }
+        }
     }
 
+    private fun setBookmarkImage() {
+
+        if(!checkForBookmark){
+            mViewBinding.imaBookmarkTvShowInfo.setImageResource(R.drawable.bookmark_border)
+        }else{
+            mViewBinding.imaBookmarkTvShowInfo.setImageResource(R.drawable.bookmark)
+        }
+    }
     private fun setDetails(it: TvShowDetailsDisplay){
 
         //mViewBinding.tvTimeTvShowInfo.text=convertNumberToHoursMinutes(it.data.tvShowInfoResponse.)

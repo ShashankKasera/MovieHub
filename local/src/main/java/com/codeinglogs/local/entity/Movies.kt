@@ -8,6 +8,7 @@ import com.codeinglogs.data.model.movies.movieslist.Movies as DataMovies
 data class Movies (
     @PrimaryKey
     val id: Long,
+    val movieId: Long,
     val original_title: String,
     val original_name: String,
     val poster_path: String,
@@ -17,7 +18,7 @@ data class Movies (
 )
 
 fun Movies.toDataMovies() = DataMovies(
-    id = id ,
+    id = movieId ,
     title = original_name ?: original_title,
     poster_path = poster_path,
     backdrop_path = backdrop_path,
@@ -33,6 +34,7 @@ fun List<Movies>.toDataMovies() : List<DataMovies>{
 
 fun DataMovies.toLocalMovies() = Movies(
     id = id ,
+    movieId = id,
     original_name = title,
     original_title = title,
     poster_path = poster_path,

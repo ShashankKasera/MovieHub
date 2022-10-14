@@ -32,6 +32,16 @@
                 app:layout_constraintGuide_end="16dp" />
 
             <ImageView
+                android:id="@+id/ima_bookmark_person_info"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                app:layout_constraintBottom_toBottomOf="@+id/tv__person_berth_person_det"
+                app:layout_constraintEnd_toStartOf="@+id/guideline2"
+                app:layout_constraintTop_toTopOf="@+id/tv__person_berth_person_det"
+                app:srcCompat="@drawable/bookmark_border"
+                app:tint="@color/white" />
+
+            <ImageView
                 android:id="@+id/ima_berth"
                 android:layout_width="30dp"
                 android:layout_height="30dp"

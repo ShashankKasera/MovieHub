@@ -8,10 +8,10 @@ import com.codeinglogs.data.model.movies.moviedetail.info.MovieInfoResponse
 import com.codeinglogs.data.model.movies.moviedetail.info.toDomainMovieInfoResponse
 import com.codeinglogs.data.model.movies.moviedetail.reviews.MovieReviewsResponse
 import com.codeinglogs.data.model.movies.moviedetail.reviews.toDomainMovieReviewsResponse
-import com.codeinglogs.data.model.movies.moviedetail.similar.MovieSimilarResponse
-import com.codeinglogs.data.model.movies.moviedetail.similar.toDomainMovieReviewsResponse
 import com.codeinglogs.data.model.movies.moviedetail.videos.MovieVideosResponse
 import com.codeinglogs.data.model.movies.moviedetail.videos.toDomainMovieVideosResponse
+import com.codeinglogs.data.model.movies.mylist.*
+
 
 import com.codeinglogs.domain.model.movies.moviedetail.MovieDetailsDisplay as DomainMovieDetailsDisplay
 
@@ -21,6 +21,8 @@ data class MovieDetailsDisplay(
     val movieInfoResponse: MovieInfoResponse,
     val movieReviewsResponse: MovieReviewsResponse,
     val MovieVideosResponse: MovieVideosResponse,
+    var myMovieList: List<MyMovieListDisplay> = listOf(),
+    var Bookmark: Boolean = false
 )
 
 fun MovieDetailsDisplay.toDomainMovieDetailsDisplay()=DomainMovieDetailsDisplay(
@@ -29,4 +31,6 @@ fun MovieDetailsDisplay.toDomainMovieDetailsDisplay()=DomainMovieDetailsDisplay(
     movieInfoResponse=movieInfoResponse.toDomainMovieInfoResponse(),
     movieReviewsResponse=movieReviewsResponse.toDomainMovieReviewsResponse(),
     MovieVideosResponse=MovieVideosResponse.toDomainMovieVideosResponse(),
+    myMovieList=myMovieList.toDomainMyMovieListDisplayList(),
+    Bookmark = Bookmark,
 )

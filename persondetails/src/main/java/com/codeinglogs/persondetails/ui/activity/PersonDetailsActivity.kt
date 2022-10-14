@@ -40,6 +40,7 @@ class PersonDetailsActivity : BaseActivity<PersonDetailViewModel, ActivityPerson
         val personId = intent.getStringExtra(PERSON_ID)
         personId?.let {
             mViewModel.getPersonDetails(it)
+            mViewModel.personId=it
         }
         setUpTabBar()
     }

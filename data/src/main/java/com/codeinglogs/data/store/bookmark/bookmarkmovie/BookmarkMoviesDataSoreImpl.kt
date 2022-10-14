@@ -1,9 +1,6 @@
-package com.codeinglogs.data.store.bookmark
+package com.codeinglogs.data.store.bookmark.bookmarkmovie
 
 import com.codeinglogs.data.repository.bookmark.LocalBookmarkMoviesData
-import com.codeinglogs.data.repository.moviedetails.LocalMovieDetailData
-import com.codeinglogs.data.repository.moviedetails.RemoteMovieDetailData
-import com.codeinglogs.data.store.moviedetails.MovieDetailsDataSore
 import javax.inject.Inject
 
 class BookmarkMoviesDataSoreImpl @Inject constructor(

@@ -23,5 +23,8 @@ interface BookmarkMoviesDao {
     fun insertAllBookmarkMovies(vararg movies: BookmarkMovies)
 
     @Query("SELECT * FROM Movies INNER JOIN BookmarkMovies ON Movies.id == BookmarkMovies.movieId")
-    fun getAllPopularMovies() : List<Movies>
+    fun getAllBookmarkMovies() : List<Movies>
+
+    @Query("SELECT EXISTS(SELECT * FROM BookmarkMovies WHERE movieId = :movieId)")
+    fun isBookmarkMoviesIsExist(movieId : Long) : Boolean
 }

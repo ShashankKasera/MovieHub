@@ -32,8 +32,14 @@ class PersonInfoFragment : BaseFragment<PersonDetailViewModel, FragmentPersonInf
     private fun init() {
         initProgressBar(mViewBinding.personDetailLoader)
         setUpPersonImagesAdapter()
+        onclick()
     }
 
+    private fun onclick() {
+        mViewBinding.imaBookmarkPersonInfo.setOnClickListener {
+            mViewModel.getBookmarkPerson(mViewModel.personId.toLong())
+        }
+    }
     private fun setUpPersonImagesAdapter(){
         personImagesAdapter = PersonImagesAdapter()
         mViewBinding.rvPersonImagesPersonDet.layoutManager= LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL,false)
@@ -79,6 +85,24 @@ class PersonInfoFragment : BaseFragment<PersonDetailViewModel, FragmentPersonInf
                             setUpInfo(it.data.personInfoResponse)
                         }
 
+                    }
+                }
+            }
+        }
+        mViewModel.bookmarkPersons.observe(this){
+            it.peekContent()?.let { it ->
+                when(it){
+                    is State.Failed -> {
+                        Log.i(TAG, "Failed: 123InfoFragment ${it.message}")
+                        showProgressBar(false)
+                        showToast(it.message)
+                    }
+                    is State.Loading -> {
+
+                    }
+                    is State.Success -> {
+
+                        Log.i("hkkbk", "movieInfoObserve: ")
                     }
                 }
             }

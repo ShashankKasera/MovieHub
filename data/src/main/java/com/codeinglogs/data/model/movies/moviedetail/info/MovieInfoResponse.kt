@@ -8,7 +8,7 @@ data class MovieInfoResponse(
     val budget: Int,
     val production_companies: List<MovieProductionCompanies>,
     val genres: List<MovieGener>,
-    val id: Int,
+    val id: Long,
     val original_language: String,
     val original_title: String,
     val overview: String,

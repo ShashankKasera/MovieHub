@@ -33,6 +33,7 @@ class MoviesPrimaryAdapter : ListAdapter<Movies, MoviesPrimaryAdapter.MoviesPrim
     inner class MoviesPrimaryViewHolder(var binding : MoviesAndTvShowPrimaryItemBinding) : RecyclerView.ViewHolder(binding.root) {
         init {
             binding.ivMovieImage.setOnClickListener {
+                Log.i("njknjk", ": ${getItem(layoutPosition).id} ")
                 binding.root.context.startActivity(MovieDetailActivity.getInstance(binding.root.context,getItem(layoutPosition).id.toString()))
             }
         }
