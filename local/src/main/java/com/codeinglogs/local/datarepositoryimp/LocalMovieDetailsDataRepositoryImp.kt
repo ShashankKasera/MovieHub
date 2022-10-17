@@ -207,9 +207,11 @@ class LocalMovieDetailsDataRepositoryImp  @Inject constructor (
         movieBookmarkMoviesDao.insert(BookmarkMovies(0,bookmarkId))
     }
 
-    override suspend fun insertMyMoviesList(list: String): Long {
-        return myMovieListDao.insert(MyMovieList(0,list))
+    override suspend fun insertMyMoviesList(name: String, movieId: String): Long {
+        return 123
     }
+
+
 
     override suspend fun insertMyMoviesListDetails(myMoviesListId: Long, movieId: Long): Long {
         return myMovieListDetailsDao.insert(MyMovieListDetails(0,myMoviesListId,movieId))

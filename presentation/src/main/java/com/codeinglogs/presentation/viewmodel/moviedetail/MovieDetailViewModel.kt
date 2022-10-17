@@ -64,7 +64,7 @@ class MovieDetailViewModel@Inject constructor(
     fun insertMyMoviesList(movieId:String,name:String ){
         viewModelScope.launch {
             insertMyMovieListUseCase(name,movieId).collect {
-                _MyMoviesList.value= Event(it.toPresentationState())
+               // _MyMoviesList.value= Event(it.toPresentationState())
             }
         }
     }

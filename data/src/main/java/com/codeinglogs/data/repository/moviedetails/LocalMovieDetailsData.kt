@@ -16,7 +16,7 @@ interface LocalMovieDetailData {
     suspend fun isBookmarkMoviesIsExist(movieId : Long): Boolean
     suspend fun updateBookmarkMovies(Bookmark: Long)
 
-    suspend fun insertMyMoviesList(name: String,movieId:String) :Boolean
+    suspend fun insertMyMoviesList(name: String,movieId:String) :Long
     suspend fun insertMyMoviesListDetails(myMoviesListId: Long, movieId: Long):Long
     suspend fun getAllMyMoviesList():List<MyMovieList>
 
