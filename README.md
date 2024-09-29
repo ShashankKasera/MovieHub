@@ -1,4 +1,4 @@
-# Movie Stack
+# Movie Hub
 
 
 Movie Stack gives you an overview of Movies TV shows & Actors from the largest community network The Movie Database (TMDb), like IMDB. You can discover movies and TV series, or browse through many categories to get the right information.
@@ -6,7 +6,7 @@ Movie Stack gives you an overview of Movies TV shows & Actors from the largest c
 In this project, I will use Android with Kotlin, MVVM, Dagger 2, RxJava/RxAndroid, Databinding, Retrofit, Pagination & Android JetPack.
 
 
-# Demo of Movie Stack App 
+# Demo of Movie Hub App 
 
   <img width="200px"   src="https://github.com/ShashankKasera/MovieHub/blob/master/midea/MovieHub.gif"></br>
 
